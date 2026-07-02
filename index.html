@@ -37,7 +37,6 @@
             --stat-label-color: var(--text3);
             --contact-link-color: var(--accent2);
             --tag-link-color: #ffffff;
-            /* টগল আইকন কালার */
             --toggle-icon-color: #e2e2f0;
         }
         [data-theme="light"] {
@@ -165,7 +164,7 @@
             transition: var(--transition);
         }
 
-        /* ===== থিম টগল — পরিষ্কার, বর্গাকার আর্টিফ্যাক্ট মুক্ত ===== */
+        /* ===== থিম টগল — সম্পূর্ণ গোলাকার, কোনো স্কয়ার আর্টিফ্যাক্ট নেই ===== */
         .theme-toggle {
             position: fixed;
             bottom: 28px;
@@ -173,7 +172,7 @@
             z-index: 250;
             width: 48px;
             height: 48px;
-            border-radius: 50%;
+            border-radius: 50% !important;
             border: 1px solid var(--border);
             background: var(--card);
             backdrop-filter: blur(16px);
@@ -188,11 +187,14 @@
             padding: 0;
             overflow: hidden;
             flex-shrink: 0;
+            transform: translateZ(0);
+            will-change: transform;
+            outline: none;
         }
         .theme-toggle:hover {
             border-color: var(--accent);
             box-shadow: 0 4px 28px var(--glow);
-            transform: scale(1.08);
+            transform: scale(1.08) translateZ(0);
         }
         .theme-toggle svg {
             width: 22px;
@@ -201,11 +203,11 @@
             stroke-width: 2;
             fill: none;
             transition: transform 0.4s ease;
+            display: block;
         }
         .theme-toggle:hover svg {
             transform: rotate(20deg);
         }
-        /* ডার্ক মোডে সান আইকন, লাইট মোডে মুন আইকন — ডিফল্ট */
         .theme-toggle .icon-sun {
             display: block;
         }
@@ -219,10 +221,10 @@
             display: block;
         }
 
-        /* ===== ফ্লোটিং নেভ — উপরে সামান্য সরানো ===== */
+        /* ===== ফ্লোটিং নেভ — উপরে ===== */
         .floating-nav {
             position: fixed;
-            top: 14px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
@@ -399,9 +401,10 @@
             transform: translateY(-3px);
         }
 
+        /* স্ক্রল ইন্ডিকেটর — উপরে */
         .scroll-indicator {
             position: absolute;
-            bottom: 20px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 5;
@@ -957,10 +960,8 @@
             .main-wrapper {
                 padding: 12px 16px 40px;
             }
-
-            /* নেভ — মোবাইলে ঠিক রাখা, আরও উপরে */
             .floating-nav {
-                top: 8px;
+                top: 6px;
                 padding: 4px 6px;
                 gap: 2px;
                 border-radius: 40px;
@@ -975,24 +976,26 @@
                 padding: 5px 10px;
                 flex-shrink: 0;
             }
-
-            /* থিম টগল — মোবাইলে ছোট */
             .theme-toggle {
                 width: 40px;
                 height: 40px;
                 bottom: 16px;
                 right: 16px;
+                border-radius: 50% !important;
+                transform: translateZ(0);
+                will-change: transform;
             }
             .theme-toggle svg {
                 width: 18px;
                 height: 18px;
             }
-
-            /* হিরো */
+            .theme-toggle:hover {
+                transform: scale(1.05) translateZ(0);
+            }
             .hero {
                 flex-direction: column;
                 min-height: auto;
-                padding: 80px 0 30px;
+                padding: 70px 0 30px;
                 gap: 24px;
             }
             .hero-avatar-wrap {
@@ -1026,8 +1029,6 @@
                 width: 16px;
                 height: 16px;
             }
-
-            /* স্ট্যাটস */
             .stats-row {
                 gap: 10px;
                 margin: 10px 0 30px;
@@ -1043,8 +1044,6 @@
             .stat-card .stat-label {
                 font-size: 0.7rem;
             }
-
-            /* সেকশন টাইটেল */
             .section-title {
                 font-size: 1.3rem;
                 margin: 30px 0 20px;
@@ -1054,8 +1053,6 @@
             .section-title::after {
                 flex: 0 0 20px;
             }
-
-            /* প্রোফাইল */
             .profile-card {
                 padding: 20px 16px;
                 gap: 16px;
@@ -1077,15 +1074,11 @@
                 font-size: 0.7rem;
                 padding: 4px 10px;
             }
-
-            /* গ্রিড */
             .grid-2 {
                 grid-template-columns: 1fr;
                 gap: 14px;
                 margin: 12px 0;
             }
-
-            /* টাইমলাইন */
             .timeline-wrapper {
                 padding: 0 6px;
             }
@@ -1111,16 +1104,12 @@
             .timeline-desc {
                 font-size: 0.8rem;
             }
-
-            /* প্রজেক্ট */
             .project-card {
                 padding: 16px 14px;
             }
             .project-title {
                 font-size: 0.95rem;
             }
-
-            /* ফর্ম */
             .contact-form {
                 max-width: 100%;
                 padding: 0 4px;
@@ -1130,14 +1119,11 @@
                 font-size: 0.85rem;
                 padding: 10px 14px;
             }
-
             .liquid-blob {
                 width: 300px;
                 height: 300px;
                 filter: blur(40px);
             }
-
-            /* মোডাল */
             .modal-box {
                 padding: 22px 16px;
                 max-width: 300px;
@@ -1151,7 +1137,6 @@
             }
         }
 
-        /* অতি ছোট স্ক্রিন */
         @media (max-width: 420px) {
             .floating-nav a {
                 font-size: 0.6rem;
@@ -1196,9 +1181,8 @@
     <!-- কার্সর গ্লো -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- ===== থিম টগল — SVG আইকন ===== -->
+    <!-- থিম টগল — SVG আইকন, সম্পূর্ণ গোল -->
     <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
-        <!-- সান (ডার্ক মোডে দেখা যায়) -->
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/>
@@ -1210,13 +1194,12 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
-        <!-- মুন (লাইট মোডে দেখা যায়) -->
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
     </button>
 
-    <!-- ===== নেভিগেশন — উপরে সামান্য সরানো ===== -->
+    <!-- নেভিগেশন — উপরে -->
     <nav class="floating-nav" id="floatingNav">
         <a href="#hero" class="active">Home</a>
         <a href="#profile">Profile</a>
@@ -1227,7 +1210,7 @@
     </nav>
 
     <div class="main-wrapper">
-        <!-- ===== হিরো ===== -->
+        <!-- হিরো -->
         <section class="hero" id="hero">
             <div class="liquid-blob"></div>
             <div class="hero-left">
@@ -1253,20 +1236,21 @@
                     </a>
                 </div>
             </div>
+            <!-- স্ক্রল ইন্ডিকেটর — উপরে -->
             <div class="scroll-indicator" onclick="document.getElementById('profile').scrollIntoView({behavior:'smooth'})">
                 <span>scroll</span>
                 <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             </div>
         </section>
 
-        <!-- ===== স্ট্যাটস ===== -->
+        <!-- স্ট্যাটস -->
         <div class="stats-row stagger-grid">
             <div class="stat-card stagger-item"><div class="stat-number" data-target="5">0</div><div class="stat-label">Projects</div></div>
             <div class="stat-card stagger-item"><div class="stat-number" data-target="32">0</div><div class="stat-label">Learning (mo)</div></div>
             <div class="stat-card stagger-item"><div class="stat-number visitor-count" data-target="">0</div><div class="stat-label">Visits</div></div>
         </div>
 
-        <!-- ===== প্রোফাইল ===== -->
+        <!-- প্রোফাইল -->
         <section id="profile">
             <div class="section-title"><span>Profile</span></div>
             <div class="profile-card stagger-grid glass">
@@ -1324,7 +1308,7 @@
             </div>
         </section>
 
-        <!-- ===== প্রজেক্ট ===== -->
+        <!-- প্রজেক্ট -->
         <section id="projects">
             <div class="section-title"><span>Featured Projects</span></div>
             <div class="grid-2 stagger-grid">
@@ -1352,7 +1336,7 @@
             </div>
         </section>
 
-        <!-- ===== স্কিল ===== -->
+        <!-- স্কিল -->
         <section id="skills">
             <div class="section-title"><span>Technical Skills</span></div>
             <div class="grid-2 stagger-grid">
@@ -1367,7 +1351,7 @@
             </div>
         </section>
 
-        <!-- ===== জার্নি ===== -->
+        <!-- জার্নি -->
         <section id="journey">
             <div class="section-title"><span>Journey Timeline</span></div>
             <div class="timeline-wrapper">
@@ -1379,7 +1363,7 @@
             </div>
         </section>
 
-        <!-- ===== কন্টাক্ট ===== -->
+        <!-- কন্টাক্ট -->
         <section id="contact">
             <div class="section-title"><span>Get In Touch</span></div>
             <form class="contact-form stagger-grid" id="contactForm">
@@ -1395,13 +1379,13 @@
             <div id="formResult" style="text-align:center;margin-top:10px;font-weight:bold;"></div>
         </section>
 
-        <!-- ===== ফুটার ===== -->
+        <!-- ফুটার -->
         <div class="footer">
             <p>Made by Abdullah Al Adib © 2026</p>
         </div>
     </div>
 
-    <!-- ===== মোডাল ===== -->
+    <!-- মোডাল -->
     <div class="modal-overlay" id="projectModal">
         <div class="modal-box glass">
             <p id="modalMessage">Do you want to visit this website?</p>
@@ -1422,10 +1406,9 @@
         </div>
     </div>
 
-    <!-- ===== স্ক্রিপ্ট ===== -->
+    <!-- স্ক্রিপ্ট -->
     <script>
         (function() {
-            // ===== থিম টগল =====
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
 
@@ -1440,7 +1423,6 @@
                 setTheme(current === 'dark' ? 'light' : 'dark');
             });
 
-            // ===== ভিজিটর কাউন্ট =====
             function updateVisitorCount() {
                 let visits = localStorage.getItem('visitorCount');
                 visits = visits ? parseInt(visits) + 1 : 1;
@@ -1450,7 +1432,6 @@
             }
             updateVisitorCount();
 
-            // ===== পার্টিকেল =====
             const canvas = document.getElementById('particleCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [],
@@ -1519,7 +1500,6 @@
             }
             animate();
 
-            // ===== কার্সর গ্লো =====
             const cursorGlow = document.getElementById('cursorGlow');
             document.addEventListener('mousemove', e => {
                 cursorGlow.style.left = e.clientX + 'px';
@@ -1528,7 +1508,6 @@
             document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
             document.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
 
-            // ===== স্ক্রল প্রগ্রেস =====
             const scrollProgress = document.getElementById('scrollProgress');
             window.addEventListener('scroll', () => {
                 const st = document.documentElement.scrollTop,
@@ -1536,7 +1515,6 @@
                 scrollProgress.style.width = (st / sh) * 100 + '%';
             });
 
-            // ===== নেভ অ্যাকটিভ =====
             const floatingNav = document.getElementById('floatingNav');
             const navLinks = floatingNav.querySelectorAll('a');
             window.addEventListener('scroll', () => {
@@ -1551,7 +1529,6 @@
                 });
             });
 
-            // ===== স্ট্যাগার + স্কিল বার =====
             const staggerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1595,7 +1572,6 @@
                 });
             }, 500);
 
-            // ===== টাইমলাইন =====
             const timelineObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1615,7 +1591,6 @@
                 }, 16);
             }
 
-            // ===== কন্টাক্ট ফর্ম =====
             const form = document.getElementById('contactForm');
             const resultDiv = document.getElementById('formResult');
             form.addEventListener('submit', function(e) {
@@ -1647,7 +1622,6 @@
                     });
             });
 
-            // ===== প্রজেক্ট মোডাল =====
             const projectModal = document.getElementById('projectModal'),
                 modalMsg = document.getElementById('modalMessage'),
                 modalVisit = document.getElementById('modalVisit'),
@@ -1677,7 +1651,6 @@
                 }
             });
 
-            // ===== লোকেশন মোডাল =====
             const locModal = document.getElementById('locationModal'),
                 locVisit = document.getElementById('locationModalVisit'),
                 locCancel = document.getElementById('locationModalCancel');
@@ -1702,7 +1675,6 @@
                 }
             });
 
-            // ===== প্রাথমিক অ্যানিমেশন =====
             setTimeout(() => {
                 document.querySelectorAll('.stagger-grid').forEach(grid => {
                     if (grid.getBoundingClientRect().top < window.innerHeight) {
