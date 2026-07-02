@@ -37,6 +37,8 @@
             --stat-label-color: var(--text3);
             --contact-link-color: var(--accent2);
             --tag-link-color: #ffffff;
+            /* টগল আইকন কালার */
+            --toggle-icon-color: #e2e2f0;
         }
         [data-theme="light"] {
             --bg: #f5f7fa;
@@ -64,6 +66,7 @@
             --stat-label-color: #000000;
             --contact-link-color: #000000;
             --tag-link-color: #1e40af;
+            --toggle-icon-color: #000000;
         }
 
         /* ===== গ্লোবাল রিসেট ===== */
@@ -154,8 +157,7 @@
         .info-card,
         .project-card,
         .timeline-content,
-        .modal-box,
-        .theme-toggle {
+        .modal-box {
             backdrop-filter: blur(var(--blur-amount));
             -webkit-backdrop-filter: blur(var(--blur-amount));
             border-radius: var(--radius);
@@ -163,48 +165,77 @@
             transition: var(--transition);
         }
 
-        /* ===== থিম টগল ===== */
+        /* ===== থিম টগল — পরিষ্কার, বর্গাকার আর্টিফ্যাক্ট মুক্ত ===== */
         .theme-toggle {
             position: fixed;
             bottom: 28px;
             right: 28px;
             z-index: 250;
-            background: var(--card);
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1.6rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            color: var(--text);
-            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: var(--transition);
+            color: var(--toggle-icon-color);
+            padding: 0;
+            overflow: hidden;
+            flex-shrink: 0;
         }
         .theme-toggle:hover {
             border-color: var(--accent);
-            box-shadow: 0 8px 30px var(--glow);
+            box-shadow: 0 4px 28px var(--glow);
             transform: scale(1.08);
         }
+        .theme-toggle svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.4s ease;
+        }
+        .theme-toggle:hover svg {
+            transform: rotate(20deg);
+        }
+        /* ডার্ক মোডে সান আইকন, লাইট মোডে মুন আইকন — ডিফল্ট */
+        .theme-toggle .icon-sun {
+            display: block;
+        }
+        .theme-toggle .icon-moon {
+            display: none;
+        }
+        [data-theme="light"] .theme-toggle .icon-sun {
+            display: none;
+        }
+        [data-theme="light"] .theme-toggle .icon-moon {
+            display: block;
+        }
 
-        /* ===== ফ্লোটিং নেভ ===== */
+        /* ===== ফ্লোটিং নেভ — উপরে সামান্য সরানো ===== */
         .floating-nav {
             position: fixed;
-            top: 20px;
+            top: 14px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
             background: var(--nav-bg);
             border: 1px solid var(--border);
             border-radius: 60px;
-            padding: 6px 10px;
+            padding: 5px 8px;
             display: flex;
-            gap: 4px;
+            gap: 3px;
             align-items: center;
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: all 0.4s;
             max-width: 95vw;
             overflow-x: auto;
@@ -217,14 +248,14 @@
         }
         .floating-nav.scrolled {
             border-color: var(--accent);
-            box-shadow: 0 12px 50px var(--glow);
+            box-shadow: 0 8px 44px var(--glow);
         }
         .floating-nav a {
             text-decoration: none;
             color: var(--text2);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 500;
-            padding: 8px 14px;
+            padding: 7px 13px;
             border-radius: 50px;
             transition: var(--transition);
             white-space: nowrap;
@@ -234,7 +265,7 @@
         .floating-nav a.active {
             background: var(--accent);
             color: #fff;
-            box-shadow: 0 6px 24px var(--glow);
+            box-shadow: 0 4px 20px var(--glow);
         }
 
         /* ===== হিরো ===== */
@@ -920,17 +951,17 @@
         }
 
         /* =========================================================
-                   মোবাইল রেসপন্সিভ — সব ফিক্স এখানে
+                   মোবাইল রেসপন্সিভ
                    ========================================================= */
         @media (max-width: 768px) {
             .main-wrapper {
                 padding: 12px 16px 40px;
             }
 
-            /* নেভ — মোবাইলে ঠিক রাখা */
+            /* নেভ — মোবাইলে ঠিক রাখা, আরও উপরে */
             .floating-nav {
-                top: 12px;
-                padding: 4px 8px;
+                top: 8px;
+                padding: 4px 6px;
                 gap: 2px;
                 border-radius: 40px;
                 max-width: 96vw;
@@ -940,16 +971,28 @@
                 -webkit-overflow-scrolling: touch;
             }
             .floating-nav a {
-                font-size: 0.7rem;
-                padding: 6px 12px;
+                font-size: 0.65rem;
+                padding: 5px 10px;
                 flex-shrink: 0;
+            }
+
+            /* থিম টগল — মোবাইলে ছোট */
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                bottom: 16px;
+                right: 16px;
+            }
+            .theme-toggle svg {
+                width: 18px;
+                height: 18px;
             }
 
             /* হিরো */
             .hero {
                 flex-direction: column;
                 min-height: auto;
-                padding: 90px 0 30px;
+                padding: 80px 0 30px;
                 gap: 24px;
             }
             .hero-avatar-wrap {
@@ -1012,7 +1055,7 @@
                 flex: 0 0 20px;
             }
 
-            /* প্রোফাইল কার্ড */
+            /* প্রোফাইল */
             .profile-card {
                 padding: 20px 16px;
                 gap: 16px;
@@ -1042,7 +1085,7 @@
                 margin: 12px 0;
             }
 
-            /* টাইমলাইন — মোবাইলে সম্পূর্ণ ডান দিকে */
+            /* টাইমলাইন */
             .timeline-wrapper {
                 padding: 0 6px;
             }
@@ -1088,15 +1131,6 @@
                 padding: 10px 14px;
             }
 
-            /* থিম টগল */
-            .theme-toggle {
-                width: 42px;
-                height: 42px;
-                font-size: 1.3rem;
-                bottom: 16px;
-                right: 16px;
-            }
-
             .liquid-blob {
                 width: 300px;
                 height: 300px;
@@ -1117,7 +1151,7 @@
             }
         }
 
-        /* অতি ছোট স্ক্রিন (≤400px) */
+        /* অতি ছোট স্ক্রিন */
         @media (max-width: 420px) {
             .floating-nav a {
                 font-size: 0.6rem;
@@ -1141,6 +1175,16 @@
                 font-size: 0.65rem;
                 padding: 3px 8px;
             }
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                bottom: 12px;
+                right: 12px;
+            }
+            .theme-toggle svg {
+                width: 16px;
+                height: 16px;
+            }
         }
     </style>
 </head>
@@ -1151,10 +1195,28 @@
     <canvas id="particleCanvas"></canvas>
     <!-- কার্সর গ্লো -->
     <div class="cursor-glow" id="cursorGlow"></div>
-    <!-- থিম টগল -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">🌙</button>
 
-    <!-- নেভিগেশন -->
+    <!-- ===== থিম টগল — SVG আইকন ===== -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+        <!-- সান (ডার্ক মোডে দেখা যায়) -->
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- মুন (লাইট মোডে দেখা যায়) -->
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <!-- ===== নেভিগেশন — উপরে সামান্য সরানো ===== -->
     <nav class="floating-nav" id="floatingNav">
         <a href="#hero" class="active">Home</a>
         <a href="#profile">Profile</a>
@@ -1363,14 +1425,13 @@
     <!-- ===== স্ক্রিপ্ট ===== -->
     <script>
         (function() {
-            // থিম টগল
+            // ===== থিম টগল =====
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
 
             function setTheme(theme) {
                 html.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
-                themeToggle.innerHTML = theme === 'dark' ? '🌙' : '☀️';
             }
             const saved = localStorage.getItem('theme') || 'dark';
             setTheme(saved);
@@ -1379,7 +1440,7 @@
                 setTheme(current === 'dark' ? 'light' : 'dark');
             });
 
-            // ভিজিটর কাউন্ট
+            // ===== ভিজিটর কাউন্ট =====
             function updateVisitorCount() {
                 let visits = localStorage.getItem('visitorCount');
                 visits = visits ? parseInt(visits) + 1 : 1;
@@ -1389,7 +1450,7 @@
             }
             updateVisitorCount();
 
-            // পার্টিকেল
+            // ===== পার্টিকেল =====
             const canvas = document.getElementById('particleCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [],
@@ -1458,7 +1519,7 @@
             }
             animate();
 
-            // কার্সর গ্লো
+            // ===== কার্সর গ্লো =====
             const cursorGlow = document.getElementById('cursorGlow');
             document.addEventListener('mousemove', e => {
                 cursorGlow.style.left = e.clientX + 'px';
@@ -1467,7 +1528,7 @@
             document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
             document.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
 
-            // স্ক্রল প্রগ্রেস
+            // ===== স্ক্রল প্রগ্রেস =====
             const scrollProgress = document.getElementById('scrollProgress');
             window.addEventListener('scroll', () => {
                 const st = document.documentElement.scrollTop,
@@ -1475,7 +1536,7 @@
                 scrollProgress.style.width = (st / sh) * 100 + '%';
             });
 
-            // নেভ অ্যাকটিভ
+            // ===== নেভ অ্যাকটিভ =====
             const floatingNav = document.getElementById('floatingNav');
             const navLinks = floatingNav.querySelectorAll('a');
             window.addEventListener('scroll', () => {
@@ -1490,7 +1551,7 @@
                 });
             });
 
-            // স্ট্যাগার + স্কিল বার
+            // ===== স্ট্যাগার + স্কিল বার =====
             const staggerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1534,7 +1595,7 @@
                 });
             }, 500);
 
-            // টাইমলাইন
+            // ===== টাইমলাইন =====
             const timelineObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1554,7 +1615,7 @@
                 }, 16);
             }
 
-            // কন্টাক্ট ফর্ম
+            // ===== কন্টাক্ট ফর্ম =====
             const form = document.getElementById('contactForm');
             const resultDiv = document.getElementById('formResult');
             form.addEventListener('submit', function(e) {
@@ -1586,7 +1647,7 @@
                     });
             });
 
-            // প্রজেক্ট মোডাল
+            // ===== প্রজেক্ট মোডাল =====
             const projectModal = document.getElementById('projectModal'),
                 modalMsg = document.getElementById('modalMessage'),
                 modalVisit = document.getElementById('modalVisit'),
@@ -1616,7 +1677,7 @@
                 }
             });
 
-            // লোকেশন মোডাল
+            // ===== লোকেশন মোডাল =====
             const locModal = document.getElementById('locationModal'),
                 locVisit = document.getElementById('locationModalVisit'),
                 locCancel = document.getElementById('locationModalCancel');
@@ -1641,7 +1702,7 @@
                 }
             });
 
-            // প্রাথমিক অ্যানিমেশন
+            // ===== প্রাথমিক অ্যানিমেশন =====
             setTimeout(() => {
                 document.querySelectorAll('.stagger-grid').forEach(grid => {
                     if (grid.getBoundingClientRect().top < window.innerHeight) {
