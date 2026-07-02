@@ -251,10 +251,10 @@
         /* ===== মোবাইল রেসপনসিভ ===== */
         @media (max-width: 768px) {
             .main-wrapper { padding: 16px 14px 40px; }
-            .hero { flex-direction: column; min-height: auto; padding: 88px 0 24px; gap: 14px; }
+            .hero { flex-direction: column; min-height: auto; padding: 82px 0 14px; gap: 10px; }
             .hero-avatar-wrap { width: 170px; height: 170px; }
             .hero h1 { font-size: 1.8rem; }
-            .hero h2 { font-size: 0.9rem; margin-bottom: 14px; }
+            .hero h2 { font-size: 0.9rem; margin-bottom: 8px; }
             .hero-cta { gap: 10px; }
             .hero-cta .btn { padding: 10px 18px; font-size: 0.85rem; }
 
@@ -280,7 +280,7 @@
                 color: #fff;
             }
 
-            .stats-row { gap: 12px; margin: 6px 0 30px; }
+            .stats-row { gap: 12px; margin: 0 0 30px; }
             .stat-card { padding: 16px 20px; min-width: 80px; flex: 1 1 80px; }
             .stat-card .stat-number { font-size: 1.8rem; }
 
@@ -328,7 +328,7 @@
                 bottom: auto;
                 transform: none;
                 display: flex;
-                margin: -8px auto -10px;
+                margin: -22px auto -24px;
                 animation: bounceDownMobile 2s ease infinite;
                 font-size: 0.7rem;
             }
@@ -339,10 +339,12 @@
         @media (max-width: 480px) {
             .hero-avatar-wrap { width: 140px; height: 140px; }
             .hero h1 { font-size: 1.5rem; }
-            .hero h2 { font-size: 0.8rem; }
+            .hero h2 { font-size: 0.8rem; margin-bottom: 6px; }
+            .hero { padding-bottom: 10px; gap: 8px; }
+            .scroll-indicator { margin: -28px auto -28px; }
             .floating-nav a { font-size: 0.6rem; padding: 4px 8px; }
             .stat-card .stat-number { font-size: 1.4rem; }
-            .stat-card { padding: 12px 14px; }
+            .stat-card { padding: 10px 12px; }
         }
     </style>
 </head>
@@ -770,6 +772,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
