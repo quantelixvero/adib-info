@@ -23,7 +23,533 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- HTML কন্টেন্ট একই থাকবে – উপরের CSS ফাইলের সাথে কাজ করবে -->
-    ...
+    <div id="scrollProgress"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" id="themeIcon">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+    <nav class="floating-nav" id="floatingNav">
+        <a href="#hero" class="active">Home</a>
+        <a href="#profile">Profile</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="main-wrapper">
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="liquid-blob"></div>
+            <div class="hero-left">
+                <div class="hero-avatar-wrap">
+                    <img src="adib.jpg" alt="Abdullah Al Adib" class="hero-avatar" loading="eager" />
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Aspiring Software Engineer
+                </div>
+                <h1>Abdullah<br />Al Adib</h1>
+                <h2>Dhaka College • HSC 2027</h2>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator" onclick="document.getElementById('profile').scrollIntoView({behavior:'smooth'})">
+                <span>scroll</span>
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-row stagger-grid">
+            <div class="stat-card stagger-item"><div class="stat-number" data-target="5">0</div><div class="stat-label">Projects</div></div>
+            <div class="stat-card stagger-item"><div class="stat-number" data-target="32">0</div><div class="stat-label">Learning (mo)</div></div>
+            <div class="stat-card stagger-item"><div class="stat-number visitor-count" data-target="">0</div><div class="stat-label">Visits</div></div>
+        </div>
+
+        <!-- Profile -->
+        <section id="profile">
+            <div class="section-title"><span>Profile</span></div>
+            <div class="profile-card stagger-grid glass">
+                <img src="adibp.jpg" alt="Abdullah" class="pfp-sm stagger-item" onerror="this.onerror=null; this.src='adib.jpg';" />
+                <div class="profile-info stagger-item">
+                    <h3>Abdullah Al Adib</h3>
+                    <p class="sub">Dhaka College • HSC 2027</p>
+                    <p class="bio"><strong>About Me</strong><br />
+                    I'm studying in the science department at Dhaka College. I build small apps and websites, and I try to learn something new every day.<br />
+                    <span style="display:flex;align-items:center;gap:4px;margin-top:6px;flex-wrap:wrap;">
+                        <em style="font-style:italic;">Goal — to create something no one has done before!</em>
+                    </span>
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:drseadib@gmail.com">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                            Email
+                        </a>
+                        <a href="https://facebook.com/seadix" target="_blank">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            Facebook
+                        </a>
+                        <a href="https://m.me/seadix" target="_blank">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.498 1.745 6.616 4.472 8.652V24l4.083-2.237c1.087.3 2.246.46 3.445.46 6.627 0 12-4.975 12-11.112S18.627 0 12 0zm1.193 14.963l-3.057-3.258-5.964 3.258 6.559-6.963 3.113 3.258 5.909-3.258-6.56 6.963z"/></svg>
+                            Messenger
+                        </a>
+                        <a href="https://wa.me/8801625329874" target="_blank">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                            WhatsApp
+                        </a>
+                        <a href="https://t.me/DrSahitto" target="_blank">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                            Telegram
+                        </a>
+                        <a href="https://github.com/seadib" target="_blank">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2 stagger-grid" style="margin-top:20px;">
+                <div class="info-card stagger-item glass">
+                    <h4><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg> Education</h4>
+                    <ul><li><strong>Dhaka College</strong> — Intermediate (Science)</li><li><strong>Abdul Motaleb High School</strong> — SSC Graduate</li></ul>
+                </div>
+                <div class="info-card stagger-item location-card clickable-card glass">
+                    <h4><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Location</h4>
+                    <p>Hatiya Island, Noakhali, Bangladesh</p>
+                </div>
+                <div class="info-card stagger-item glass">
+                    <h4><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> What I Do</h4>
+                    <ul><li>Web Design</li><li>Responsive UI</li><li>Blogging</li><li>AI & Automation</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="section-title"><span>Featured Projects</span></div>
+            <div class="grid-2 stagger-grid">
+                <div class="project-card stagger-item glass" data-url="https://seadib.blogspot.com" data-name="seadib.blogspot.com">
+                    <div class="project-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> My Personal Blog</div>
+                    <span class="tag"><a href="https://seadib.blogspot.com" target="_blank">seadib.blogspot.com</a></span>
+                </div>
+                <div class="project-card stagger-item glass" data-url="https://drsahitto.blogspot.com" data-name="drsahitto.blogspot.com">
+                    <div class="project-title"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Literature Website</div>
+                    <span class="tag"><a href="https://drsahitto.blogspot.com" target="_blank">drsahitto.blogspot.com</a></span>
+                </div>
+                <div class="project-card stagger-item glass" data-url="https://dchall.netlify.app" data-name="dchall.netlify.app">
+                    <div class="project-title"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Dhaka College Hall Website</div>
+                    <span class="tag"><a href="https://dchall.netlify.app" target="_blank">dchall.netlify.app</a></span>
+                </div>
+                <div class="project-card stagger-item glass" data-url="https://seadib.github.io/voice/" data-name="seadib.github.io/voice/">
+                    <div class="project-title"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> DrX Voice Typing</div>
+                    <span class="tag"><a href="https://seadib.github.io/voice/" target="_blank">seadib.github.io/voice/</a></span>
+                </div>
+                <div class="project-card stagger-item glass">
+                    <div class="project-title"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg> Experimental Apps</div>
+                    <p style="color:var(--text2);font-size:0.85rem;">Various small experimental tools & utilities</p>
+                    <span class="tag no-link">Experiments</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="section-title"><span>Technical Skills</span></div>
+            <div class="grid-2 stagger-grid">
+                <div class="stagger-item">
+                    <div class="skill-bar-wrap"><div class="skill-label"><span>HTML5</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+                    <div class="skill-bar-wrap"><div class="skill-label"><span>CSS3</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+                </div>
+                <div class="stagger-item">
+                    <div class="skill-bar-wrap"><div class="skill-label"><span>JavaScript (Basic)</span><span>60%</span></div><div class="skill-bar"><div class="skill-fill" data-width="60"></div></div></div>
+                    <div class="skill-bar-wrap"><div class="skill-label"><span>C Programming</span><span>40%</span></div><div class="skill-bar"><div class="skill-fill" data-width="40"></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey -->
+        <section id="journey">
+            <div class="section-title"><span>Journey Timeline</span></div>
+            <div class="timeline-wrapper">
+                <div class="timeline-line"></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content glass"><div class="timeline-year"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2022 — Start</div><div class="timeline-desc">Tech foundation with HTML5 & CSS3 basics.</div></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content glass"><div class="timeline-year"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>2023 — Blogging</div><div class="timeline-desc">First web presence and content presentation.</div></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content glass"><div class="timeline-year"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>2025 — Code</div><div class="timeline-desc">Logic building and core programming with C.</div></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content glass"><div class="timeline-year"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>2026 — Apps</div><div class="timeline-desc">Creating dynamic web utilities and experimental apps.</div></div></div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="section-title"><span>Get In Touch</span></div>
+            <form class="contact-form stagger-grid" id="contactForm">
+                <input type="hidden" name="access_key" value="02b89c0d-9b17-49dd-bd02-ee2c1dee8a9d" />
+                <input type="text" name="name" placeholder="Your Name" required class="stagger-item" />
+                <input type="email" name="email" placeholder="Your Email" required class="stagger-item" />
+                <textarea rows="4" name="message" placeholder="How can I help you?" required class="stagger-item"></textarea>
+                <button type="submit" class="btn btn-primary stagger-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    Send Message
+                </button>
+            </form>
+            <div id="formResult" style="text-align:center;margin-top:12px;font-weight:bold;"></div>
+        </section>
+
+        <div class="footer">
+            <p>Made by Abdullah Al Adib © 2026</p>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-box glass">
+            <p id="modalMessage">Do you want to visit this website?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-outline" id="modalCancel">Cancel</button>
+                <button class="btn btn-primary" id="modalVisit">Visit Website</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="locationModal">
+        <div class="modal-box glass">
+            <p id="locationModalMessage">View Hatiya Island on Google Maps?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-outline" id="locationModalCancel">Cancel</button>
+                <button class="btn btn-primary" id="locationModalVisit">View on Map</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // থিম টগল
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const html = document.documentElement;
+
+            function setTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                if (theme === 'dark') {
+                    themeIcon.innerHTML = `
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    `;
+                } else {
+                    themeIcon.innerHTML = `
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    `;
+                }
+            }
+            const saved = localStorage.getItem('theme') || 'dark';
+            setTheme(saved);
+            themeToggle.addEventListener('click', () => {
+                const current = html.getAttribute('data-theme');
+                setTheme(current === 'dark' ? 'light' : 'dark');
+            });
+
+            // ভিজিটর কাউন্ট
+            function updateVisitorCount() {
+                let visits = localStorage.getItem('visitorCount');
+                visits = visits ? parseInt(visits) + 1 : 1;
+                localStorage.setItem('visitorCount', visits);
+                const el = document.querySelector('.visitor-count');
+                if (el) el.setAttribute('data-target', visits);
+            }
+            updateVisitorCount();
+
+            // পার্টিকেল
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [], w, h;
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', () => { resize();
+                initParticles(); });
+            const hues = [210, 190, 260];
+            class Particle {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.size = Math.random() * 2.2 + 1;
+                    this.speedX = (Math.random() - 0.5) * 0.7;
+                    this.speedY = (Math.random() - 0.5) * 0.7;
+                    this.opacity = Math.random() * 0.5 + 0.3;
+                    this.hue = hues[Math.floor(Math.random() * hues.length)];
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < -20) this.x = w + 20;
+                    if (this.x > w + 20) this.x = -20;
+                    if (this.y < -20) this.y = h + 20;
+                    if (this.y > h + 20) this.y = -20;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${this.hue},70%,65%,${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = Array.from({ length: Math.floor(w * h / 9000) }, () => new Particle());
+            }
+            initParticles();
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => { p.update();
+                    p.draw(); });
+                for (let i = 0; i < particles.length; i++)
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x,
+                            dy = particles[i].y - particles[j].y,
+                            dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 130) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(162,155,254,${0.1*(1-dist/130)})`;
+                            ctx.lineWidth = 0.7;
+                            ctx.stroke();
+                        }
+                    }
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            // কার্সর গ্লো
+            const cursorGlow = document.getElementById('cursorGlow');
+            document.addEventListener('mousemove', e => {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+            document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
+            document.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
+
+            // স্ক্রল প্রগ্রেস
+            const scrollProgress = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', () => {
+                const st = document.documentElement.scrollTop,
+                    sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                scrollProgress.style.width = (st / sh) * 100 + '%';
+            });
+
+            // নেভ অ্যাক্টিভ
+            const floatingNav = document.getElementById('floatingNav');
+            const navLinks = floatingNav.querySelectorAll('a');
+            window.addEventListener('scroll', () => {
+                floatingNav.classList.toggle('scrolled', window.scrollY > 50);
+                let current = 'hero';
+                document.querySelectorAll('section[id]').forEach(sec => {
+                    if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+                });
+            });
+
+            // স্ট্যাগার অ্যানিমেশন
+            const staggerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const grid = entry.target;
+                        grid.querySelectorAll('.stagger-item').forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('show');
+                                const fill = item.querySelector('.skill-fill');
+                                if (fill) {
+                                    const w = fill.getAttribute('data-width');
+                                    if (w) fill.style.width = w + '%';
+                                }
+                                const counter = item.querySelector('.stat-number');
+                                if (counter) {
+                                    const t = parseInt(counter.getAttribute('data-target'));
+                                    if (t && !counter.dataset.animated) {
+                                        counter.dataset.animated = 'true';
+                                        animateCounter(counter, t);
+                                    }
+                                }
+                            }, index * 120);
+                        });
+                        staggerObserver.unobserve(grid);
+                    }
+                });
+            }, { threshold: 0.25 });
+            document.querySelectorAll('.stagger-grid').forEach(grid => staggerObserver.observe(grid));
+
+            window.addEventListener('load', () => {
+                document.querySelectorAll('.skill-fill').forEach(fill => {
+                    const w = fill.getAttribute('data-width');
+                    if (w) fill.style.width = w + '%';
+                });
+            });
+            setTimeout(() => {
+                document.querySelectorAll('.skill-fill').forEach(fill => {
+                    if (fill.style.width === '0%' || fill.style.width === '') {
+                        const w = fill.getAttribute('data-width');
+                        if (w) fill.style.width = w + '%';
+                    }
+                });
+            }, 500);
+
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.3 });
+            document.querySelectorAll('.timeline-item').forEach(item => timelineObserver.observe(item));
+
+            function animateCounter(el, target) {
+                let current = 0;
+                const step = target / (1800 / 16);
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        el.textContent = target;
+                        clearInterval(timer);
+                    } else el.textContent = Math.floor(current);
+                }, 16);
+            }
+
+            // কন্টাক্ট ফর্ম
+            const form = document.getElementById('contactForm');
+            const resultDiv = document.getElementById('formResult');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const json = JSON.stringify(Object.fromEntries(formData));
+                resultDiv.innerHTML = "⏳ Sending...";
+                resultDiv.style.color = "blue";
+                fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: json
+                    })
+                    .then(async (response) => {
+                        let res = await response.json();
+                        if (response.status == 200) {
+                            resultDiv.innerHTML = "✅ Thanks for contacting me! I will get back to you soon.";
+                            resultDiv.style.color = "green";
+                            form.reset();
+                        } else {
+                            resultDiv.innerHTML = "❌ " + (res.message || "Something went wrong. Please try again.");
+                            resultDiv.style.color = "red";
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        resultDiv.innerHTML = "❌ Network error. Please check your connection and try again.";
+                        resultDiv.style.color = "red";
+                    });
+            });
+
+            // প্রজেক্ট মোডাল
+            const projectModal = document.getElementById('projectModal'),
+                modalMsg = document.getElementById('modalMessage'),
+                modalVisit = document.getElementById('modalVisit'),
+                modalCancel = document.getElementById('modalCancel');
+            let pendingUrl = '';
+            document.querySelectorAll('.project-card[data-url]').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    pendingUrl = this.getAttribute('data-url');
+                    modalMsg.textContent = `Do you want to visit ${this.getAttribute('data-name') || 'this website'}?`;
+                    projectModal.classList.add('active');
+                });
+            });
+            modalVisit.addEventListener('click', () => {
+                if (pendingUrl) window.open(pendingUrl, '_blank');
+                projectModal.classList.remove('active');
+                pendingUrl = '';
+            });
+            modalCancel.addEventListener('click', () => {
+                projectModal.classList.remove('active');
+                pendingUrl = '';
+            });
+            projectModal.addEventListener('click', function(e) {
+                if (e.target === projectModal) {
+                    projectModal.classList.remove('active');
+                    pendingUrl = '';
+                }
+            });
+
+            // লোকেশন মোডাল
+            const locModal = document.getElementById('locationModal'),
+                locVisit = document.getElementById('locationModalVisit'),
+                locCancel = document.getElementById('locationModalCancel');
+            let mapUrl = '';
+            document.querySelector('.info-card.location-card').addEventListener('click', () => {
+                mapUrl = 'https://www.google.com/maps/search/?api=1&query=Hatiya+Island+Noakhali';
+                locModal.classList.add('active');
+            });
+            locVisit.addEventListener('click', () => {
+                if (mapUrl) window.open(mapUrl, '_blank');
+                locModal.classList.remove('active');
+                mapUrl = '';
+            });
+            locCancel.addEventListener('click', () => {
+                locModal.classList.remove('active');
+                mapUrl = '';
+            });
+            locModal.addEventListener('click', function(e) {
+                if (e.target === locModal) {
+                    locModal.classList.remove('active');
+                    mapUrl = '';
+                }
+            });
+
+            // প্রাথমিক অ্যানিমেশন
+            setTimeout(() => {
+                document.querySelectorAll('.stagger-grid').forEach(grid => {
+                    if (grid.getBoundingClientRect().top < window.innerHeight)
+                        grid.querySelectorAll('.stagger-item').forEach((item, idx) => setTimeout(() => item
+                            .classList.add('show'), idx * 80));
+                });
+                document.querySelectorAll('.timeline-item').forEach(item => {
+                    if (item.getBoundingClientRect().top < window.innerHeight) item.classList.add('visible');
+                });
+            }, 300);
+        })();
+    </script>
 </body>
 </html>
