@@ -1,31 +1,153 @@
 <!DOCTYPE html>
+<!-- ============================================================
+     ভাষা (Language): বাংলা ও ইংরেজি মিশ্রিত কন্টেন্টের জন্য 'en' সেট করা হয়েছে।
+     থিম (Theme): ডিফল্ট হিসেবে 'ডার্ক মোড' সেট করা আছে। ব্যবহারকারী চাইলে লাইট মোডে নিতে পারবে।
+     ============================================================ -->
 <html lang="en" data-theme="dark">
 <head>
+    <!-- ==========================================================
+    মেটা ট্যাগ (Meta Tags): 
+    এই অংশ ওয়েবসাইটের এনকোডিং, ভিউপোর্ট (মোবাইল ফ্রেন্ডলি), 
+    এবং সার্চ ইঞ্জিনের জন্য কন্টেন্টের বিবরণ নির্ধারণ করে।
+    ========================================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- গুগল অ্যানালিটিক্স -->
+    <!-- ==========================================================
+    গুগল অ্যানালিটিক্স (Google Analytics): 
+    ওয়েবসাইটের ভিজিটর ট্র্যাক করার জন্য গুগলের স্ক্রিপ্ট। 
+    'G-9YM84ZSWMF' হচ্ছে আপনার নির্দিষ্ট ট্র্যাকিং আইডি।
+    ========================================================== -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YM84ZSWMF"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-9YM84ZSWMF');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9YM84ZSWMF');
     </script>
 
-    <!-- SEO মেটা -->
+    <!-- ==========================================================
+    বিং সার্চ ইঞ্জিন ভেরিফিকেশন (Bing Webmaster):
+    বিং-এর ওয়েবমাস্টার টুলে সাইটের মালিকানা প্রমাণের জন্য মেটা ট্যাগ।
+    ========================================================== -->
     <meta name="msvalidate.01" content="F3ADCCD43A5041C5EEE1798E6DBE9F49" />
-    <title>Abdullah Al Adib — Portfolio</title> 
-    <link rel="icon" type="image/png" href="logo.png" />
+    
+    <!-- ==========================================================
+    মেটা ডেসক্রিপশন (Meta Description) - সার্চ ইঞ্জিনের জন্য:
+    গুগল ও বিং-এর সার্চ রেজাল্টে এই টেক্সটটি দেখাবে। 
+    এখানে আমরা স্পষ্ট করে দিয়েছি যে সাইটটি কী সম্পর্কিত।
+    ========================================================== -->
+    <meta name="description" content="SE Adib • HSC-27— Free study tools, class notes, and HSC resources for Dhaka College science students. Developed by seadib, seadix, adib halimi, adib dhaka college, and dr sahitto." />
+
+    <!-- ==========================================================
+    কীওয়ার্ড (Keywords): সার্চ ইঞ্জিনকে প্রাসঙ্গিক শব্দ জানানোর জন্য (ঐচ্ছিক)।
+    ========================================================== -->
+    <meta name="keywords" content="SE Adib, Abdullah Al Adib, HSC 2027, Dhaka College, web developer, portfolio, seadib, seadix, adib halimi, dr sahitto" />
+
+    <!-- ==========================================================
+    রোবটস ট্যাগ (Robots): সার্চ ইঞ্জিনকে পুরো পেজ ইন্ডেক্স করতে দেয়।
+    ========================================================== -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- ==========================================================
+    অথর (Author): ওয়েবসাইটের নির্মাতার নাম।
+    ========================================================== -->
+    <meta name="author" content="SE Adib Halimi" />
+
+    <!-- ==========================================================
+    পেজ টাইটেল (Page Title): 
+    ব্রাউজারের ট্যাবে এবং সার্চ রেজাল্টের শিরোনাম হিসেবে দেখায়।
+    ========================================================== -->
+    <title>Abdullah Al Adib — Portfolio</title>
+
+    <!-- ==========================================================
+    ফেভিকন (Favicon - ওয়েবসাইটের ছোট লোগো):
+    -----------------------------------------------------------
+    ১. favicon-48x48.png → গুগল সার্চ রেজাল্টের জন্য (সবচেয়ে গুরুত্বপূর্ণ)।
+    ২. favicon-32x32.png → বিং, ইয়াহু ও সাধারণ ব্রাউজার ট্যাবের জন্য।
+    ৩. favicon.ico → পুরোনো ব্রাউজার ও ব্যাকআপ হিসেবে কাজ করে।
+    
+    🚀 '?v=1' যোগ করার কারণ: ব্রাউজারের ক্যাশে সমস্যা এড়িয়ে সব সময় 
+       নতুন ফেভিকন লোড করতে বাধ্য করা।
+    🚀 '/' স্ল্যাশ ব্যবহার করার কারণ: ওয়েবসাইটের রুট ফোল্ডার থেকে 
+       সরাসরি ফাইল লোড করা, যাতে যেকোনো সাব-পেজেও কাজ করে।
+    ========================================================== -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1">
+
+    <!-- ==========================================================
+    ওপেন গ্রাফ (Open Graph) - ফেসবুক, লিংকডইন, হোয়াটসঅ্যাপ প্রিভিউ:
+    সোশ্যাল মিডিয়ায় শেয়ার করলে এই টাইটেল, ডেসক্রিপশন ও ছবিটি দেখাবে।
+    🔥 'og:url' ও 'og:image' আপনার নতুন ডোমেইন 'adi.pro.bd' অনুযায়ী আপডেট করা হলো।
+    ========================================================== -->
+    <meta property="og:title" content="Abdullah Al Adib — Portfolio" />
+    <meta property="og:description" content="SE Adib • HSC-27— Free study tools, class notes, and HSC resources for Dhaka College science students. Developed by seadib, seadix, adib halimi, adib dhaka college, and dr sahitto." />
+    <meta property="og:type" content="website" />
+    <!-- 👇 আপনার আসল ওয়েবসাইটের ঠিকানা (আপডেট করা হয়েছে) -->
+    <meta property="og:url" content="https://adi.pro.bd/" />
+    <!-- 👇 প্রিভিউতে দেখানোর ছবি (আপডেট করা হয়েছে) -->
+    <meta property="og:image" content="https://adi.pro.bd/adib.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- ==========================================================
+    টুইটার কার্ড (Twitter Card) - টুইটারে প্রিভিউ:
+    ========================================================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Abdullah Al Adib — Portfolio" />
+    <meta name="twitter:description" content="SE Adib • HSC-27— Free study tools, class notes, and HSC resources for Dhaka College science students." />
+    <!-- 👇 টুইটারের জন্যও ছবির লিংক আপডেট করা হলো -->
+    <meta name="twitter:image" content="https://adi.pro.bd/adib.jpg" />
+
+    <!-- ==========================================================
+    গুগল ফন্ট (Google Fonts): 
+    ওয়েবসাইটে 'Plus Jakarta Sans' (ইংরেজি) এবং 
+    'Noto Sans Bengali' (বাংলা) সুন্দর ফন্ট ব্যবহারের জন্য।
+    ========================================================== -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     
-    <!-- আলাদা CSS ফাইল -->
+    <!-- ==========================================================
+    বাহ্যিক CSS ফাইল (External Stylesheet): 
+    আমরা সব স্টাইল (রঙ, লেআউট, অ্যানিমেশন) 'style.css' ফাইলে রেখেছি। 
+    এটি লোড করার মাধ্যমেই পুরো সাইট সুন্দর দেখায়।
+    ========================================================== -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+    <!-- ==========================================================
+    HTML বডি (Body) - এখান থেকে ওয়েবসাইটের দৃশ্যমান অংশ শুরু হয়।
+    ========================================================== -->
+
+    <!-- ==========================================================
+    ১. স্ক্রল প্রগ্রেস বার (Scroll Progress Bar):
+    ব্যবহারকারী যখন পেজ স্ক্রল করে, উপরে একটি লাইন ভরে ওঠে, 
+    যা দেখায় পেজের কতটা অংশ পড়া হয়েছে।
+    ========================================================== -->
     <div id="scrollProgress"></div>
+    
+    <!-- ==========================================================
+    ২. পার্টিকেল ক্যানভাস (Particle Canvas): 
+    ব্যাকগ্রাউন্ডে এলোমেলো ঘুরতে থাকা ছোট বিন্দু (পার্টিকেল) তৈরি করে, 
+    যা সাইটটিকে ডায়নামিক (গতিশীল) দেখায়।
+    ========================================================== -->
     <canvas id="particleCanvas"></canvas>
+    
+    <!-- ==========================================================
+    ৩. কার্সর গ্লো (Cursor Glow): 
+    মাউসের পয়েন্টারের চারপাশে একটি অস্পষ্ট (ব্লার) আভা তৈরি করে, 
+    যা ইউজার এক্সপেরিয়েন্স বাড়ায়।
+    ========================================================== -->
     <div class="cursor-glow" id="cursorGlow"></div>
+    
+    <!-- ==========================================================
+    ৪. থিম টগল বাটন (Theme Toggle Button): 
+    ডার্ক ও লাইট মোডের মধ্যে সুইচ করার জন্য ফ্লোটিং বাটন। 
+    ক্লিক করলে 'data-theme' অ্যাট্রিবিউট পরিবর্তিত হয় এবং CSS 
+    সেই অনুযায়ী রঙ বদলায়।
+    ========================================================== -->
     <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
         <svg viewBox="0 0 24 24" id="themeIcon">
             <circle cx="12" cy="12" r="5" />
@@ -39,6 +161,13 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
     </button>
+
+    <!-- ==========================================================
+    ৫. ফ্লোটিং নেভিগেশন বার (Floating Navigation Bar):
+    পেজের উপরের অংশে ভেসে থাকা মেনু। 'Home', 'Profile' ইত্যাদি 
+    সেকশনে ক্লিক করলে স্মুথ স্ক্রল হয়। 
+    স্ক্রল করলে এর ডিজাইন কিছুটা পরিবর্তন হয় (স্ক্রল ইফেক্ট)।
+    ========================================================== -->
     <nav class="floating-nav" id="floatingNav">
         <a href="#hero" class="active">Home</a>
         <a href="#profile">Profile</a>
@@ -48,22 +177,42 @@
         <a href="#contact">Contact</a>
     </nav>
 
+    <!-- ==========================================================
+    ৬. মেইন কন্টেন্ট র‍্যাপার (Main Wrapper):
+    ওয়েবসাইটের সব কন্টেন্টকে মাঝখানে সীমাবদ্ধ রাখে 
+    এবং ব্যাকগ্রাউন্ড পার্টিকেলের উপরে বসানোর জন্য জেড-ইন্ডেক্স (z-index) সেট করে।
+    ========================================================== -->
     <div class="main-wrapper">
-        <!-- Hero -->
+
+        <!-- ==========================================================
+        সেকশন ১: হিরো (Hero Section) - পরিচিতি অংশ
+        এটি পেজের প্রথম অংশ। বাঁ দিকে প্রোফাইল ছবি, ডান দিকে নাম, 
+        পরিচয় এবং দুটি বড় বাটন (প্রজেক্ট দেখুন ও যোগাযোগ করুন)।
+        ========================================================== -->
         <section class="hero" id="hero">
+            <!-- লিকুইড ব্লব (Liquid Blob): পেছনে ঘুরতে থাকা রঙিন অস্পষ্টতা -->
             <div class="liquid-blob"></div>
+            
+            <!-- বাঁ দিকের ছবি অংশ -->
             <div class="hero-left">
                 <div class="hero-avatar-wrap">
-                    <img src="adib.jpg" alt="Abdullah Al Adib" class="hero-avatar" loading="eager" />
+                    <!-- 'adib.jpg' ফাইলটি অবশ্যই একই ফোল্ডারে থাকতে হবে -->
+                    <img src="adib.jpg" alt="SE Adib, Abdullah Al Adib photos, HSC-27, seadib, seadix, adib halimi, adib dhaka college, dr sahitto" class="hero-avatar" loading="eager" />
                 </div>
             </div>
+            
+            <!-- ডান দিকের লেখা অংশ -->
             <div class="hero-right">
+                <!-- ব্যাজ / ট্যাগ: পেশা পরিচয় -->
                 <div class="hero-badge">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     Aspiring Software Engineer
                 </div>
+                <!-- প্রধান শিরোনাম (নাম) -->
                 <h1>Abdullah<br />Al Adib</h1>
+                <!-- উপশিরোনাম (বর্তমান শিক্ষা) -->
                 <h2>Dhaka College • HSC 2027</h2>
+                <!-- কল টু অ্যাকশন (CTA) বাটন -->
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -75,23 +224,34 @@
                     </a>
                 </div>
             </div>
+            
+            <!-- স্ক্রল ইন্ডিকেটর: ব্যবহারকারীকে নিচে স্ক্রল করতে উৎসাহিত করে -->
             <div class="scroll-indicator" onclick="document.getElementById('profile').scrollIntoView({behavior:'smooth'})">
                 <span>scroll</span>
                 <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             </div>
         </section>
 
-        <!-- Stats -->
+        <!-- ==========================================================
+        সেকশন ২: স্ট্যাটস (Stats Row) - পরিসংখ্যান
+        'প্রজেক্ট সংখ্যা', 'শেখার সময়', এবং 'ভিজিটর কাউন্ট' দেখায়।
+        সংখ্যাগুলো অ্যানিমেটেডভাবে গণনা হয়।
+        ========================================================== -->
         <div class="stats-row stagger-grid">
             <div class="stat-card stagger-item"><div class="stat-number" data-target="5">0</div><div class="stat-label">Projects</div></div>
             <div class="stat-card stagger-item"><div class="stat-number" data-target="32">0</div><div class="stat-label">Learning (mo)</div></div>
             <div class="stat-card stagger-item"><div class="stat-number visitor-count" data-target="">0</div><div class="stat-label">Visits</div></div>
         </div>
 
-        <!-- Profile -->
+        <!-- ==========================================================
+        সেকশন ৩: প্রোফাইল (Profile Section)
+        বিস্তারিত বায়ো, শিক্ষা, অবস্থান, এবং দক্ষতা সম্পর্কে লেখা।
+        এখানে ফেসবুক, হোয়াটসঅ্যাপ, টেলিগ্রাম ইত্যাদির লিংক আছে।
+        ========================================================== -->
         <section id="profile">
             <div class="section-title"><span>Profile</span></div>
             <div class="profile-card stagger-grid glass">
+                <!-- প্রোফাইল ছবি (পিএফপি) -->
                 <img src="adibp.jpg" alt="Abdullah" class="pfp-sm stagger-item" onerror="this.onerror=null; this.src='adib.jpg';" />
                 <div class="profile-info stagger-item">
                     <h3>Abdullah Al Adib</h3>
@@ -102,6 +262,7 @@
                         <em style="font-style:italic;">Goal — to create something no one has done before!</em>
                     </span>
                     </p>
+                    <!-- সোশ্যাল মিডিয়া ও যোগাযোগের লিংক -->
                     <div class="contact-links">
                         <a href="mailto:drseadib@gmail.com">
                             <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
@@ -132,11 +293,14 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- প্রোফাইলের নিচে অতিরিক্ত তথ্য (শিক্ষা, অবস্থান, দক্ষতা) -->
             <div class="grid-2 stagger-grid" style="margin-top:20px;">
                 <div class="info-card stagger-item glass">
                     <h4><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg> Education</h4>
                     <ul><li><strong>Dhaka College</strong> — Intermediate (Science)</li><li><strong>Abdul Motaleb High School</strong> — SSC Graduate</li></ul>
                 </div>
+                <!-- লোকেশন কার্ডে ক্লিক করলে গুগল ম্যাপে নিয়ে যাবে (জাভাস্ক্রিপ্টে হ্যান্ডেল করা আছে) -->
                 <div class="info-card stagger-item location-card clickable-card glass">
                     <h4><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Location</h4>
                     <p>Hatiya Island, Noakhali, Bangladesh</p>
@@ -148,7 +312,11 @@
             </div>
         </section>
 
-        <!-- Projects -->
+        <!-- ==========================================================
+        সেকশন ৪: প্রজেক্ট (Projects Section)
+        আপনার তৈরি করা ওয়েবসাইট/ব্লগের লিংক দেখানো হয়েছে। 
+        কার্ডে ক্লিক করলে মোডাল (পপ-আপ) খুলে জিজ্ঞেস করে ভিজিট করবেন কিনা।
+        ========================================================== -->
         <section id="projects">
             <div class="section-title"><span>Featured Projects</span></div>
             <div class="grid-2 stagger-grid">
@@ -176,7 +344,11 @@
             </div>
         </section>
 
-        <!-- Skills -->
+        <!-- ==========================================================
+        সেকশন ৫: স্কিল (Skills Section) - দক্ষতা
+        HTML, CSS, JavaScript, C প্রোগ্রামিং-এর দক্ষতা শতকরা হারে দেখানো হয়েছে।
+        স্কিল বারগুলো অ্যানিমেটেডভাবে ভরে ওঠে।
+        ========================================================== -->
         <section id="skills">
             <div class="section-title"><span>Technical Skills</span></div>
             <div class="grid-2 stagger-grid">
@@ -191,7 +363,10 @@
             </div>
         </section>
 
-        <!-- Journey -->
+        <!-- ==========================================================
+        সেকশন ৬: জার্নি (Journey Section) - যাত্রা পথ
+        টাইমলাইন আকারে ২০২২ থেকে ২০২৬ পর্যন্ত আপনার ডেভেলপমেন্ট যাত্রা দেখানো হয়েছে।
+        ========================================================== -->
         <section id="journey">
             <div class="section-title"><span>Journey Timeline</span></div>
             <div class="timeline-wrapper">
@@ -203,10 +378,15 @@
             </div>
         </section>
 
-        <!-- Contact -->
+        <!-- ==========================================================
+        সেকশন ৭: কন্টাক্ট (Contact Section) - যোগাযোগ ফর্ম
+        এখানে একটি ফর্ম আছে যেখানে নাম, ইমেইল ও বার্তা দিলে 
+        'Web3Forms' API-র মাধ্যমে তা আপনার ইমেইলে পাঠানো হবে।
+        ========================================================== -->
         <section id="contact">
             <div class="section-title"><span>Get In Touch</span></div>
             <form class="contact-form stagger-grid" id="contactForm">
+                <!-- Web3Forms অ্যাক্সেস কী (গোপন রাখবেন না, এটি পাবলিক ফর্মের জন্য) -->
                 <input type="hidden" name="access_key" value="02b89c0d-9b17-49dd-bd02-ee2c1dee8a9d" />
                 <input type="text" name="name" placeholder="Your Name" required class="stagger-item" />
                 <input type="email" name="email" placeholder="Your Email" required class="stagger-item" />
@@ -216,15 +396,28 @@
                     Send Message
                 </button>
             </form>
+            <!-- ফর্ম জমা দেওয়ার পর ফলাফল এখানে দেখাবে (সফল/ব্যর্থ) -->
             <div id="formResult" style="text-align:center;margin-top:12px;font-weight:bold;"></div>
         </section>
 
+        <!-- ==========================================================
+        ফুটার (Footer): কপিরাইট তথ্য (আপডেট করা হয়েছে)।
+        ========================================================== -->
         <div class="footer">
-            <p>Made by Abdullah Al Adib © 2026</p>
+            <p>Made by SE Adib Halimi © 2026</p>
         </div>
     </div>
 
-    <!-- Modals -->
+    <!-- ==========================================================
+    মোডাল (Modal / পপ-আপ):
+    -----------------------------------------------------------
+    ১. প্রজেক্ট মোডাল: কোনো প্রজেক্ট কার্ডে ক্লিক করলে জিজ্ঞেস করে 
+       "আপনি কি এই ওয়েবসাইটটি ভিজিট করতে চান?"
+    ২. লোকেশন মোডাল: লোকেশন কার্ডে ক্লিক করলে গুগল ম্যাপে নিয়ে যাওয়ার 
+       অনুমতি চায়।
+    ========================================================== -->
+    
+    <!-- প্রজেক্ট ভিজিটের জন্য মোডাল -->
     <div class="modal-overlay" id="projectModal">
         <div class="modal-box glass">
             <p id="modalMessage">Do you want to visit this website?</p>
@@ -234,6 +427,8 @@
             </div>
         </div>
     </div>
+    
+    <!-- লোকেশন ভিউয়ের জন্য মোডাল -->
     <div class="modal-overlay" id="locationModal">
         <div class="modal-box glass">
             <p id="locationModalMessage">View Hatiya Island on Google Maps?</p>
@@ -244,16 +439,37 @@
         </div>
     </div>
 
+    <!-- ==========================================================
+    জাভাস্ক্রিপ্ট (JavaScript):
+    এখান থেকে সব ইন্টারঅ্যাকটিভিটি (থিম টগল, পার্টিকেল অ্যানিমেশন, 
+    ফর্ম সাবমিট, মোডাল কন্ট্রোল) কন্ট্রোল করা হয়।
+    ========================================================== -->
     <script>
+        /**
+         * ============================================================
+         * ১. আইআইএফই (Immediately Invoked Function Expression):
+         *    এই ফাংশনটি পেজ লোড হওয়ার সাথে সাথেই চালু হয় এবং সব ভেরিয়েবলকে 
+         *    গ্লোবাল স্কোপ থেকে আলাদা রাখে (যাতে অন্য কোনো স্ক্রিপ্টের সাথে 
+         *    নামের সংঘর্ষ না হয়)।
+         * ============================================================
+         */
         (function() {
-            // থিম টগল
+
+            // ==========================================================
+            // ২. থিম টগল (ডার্ক/লাইট মোড সুইচ)
+            //    ব্যবহারকারীর পছন্দ localStorage-এ সংরক্ষণ করা হয়, 
+            //    যাতে পরবর্তী ভিজিটেও সেই থিমটি মনে থাকে।
+            // ==========================================================
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = document.getElementById('themeIcon');
             const html = document.documentElement;
 
             function setTheme(theme) {
+                // HTML ট্যাগে 'data-theme' অ্যাট্রিবিউট সেট করা
                 html.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
+                
+                // আইকন পরিবর্তন করা (সূর্য বা চাঁদ)
                 if (theme === 'dark') {
                     themeIcon.innerHTML = `
                         <circle cx="12" cy="12" r="5" />
@@ -272,14 +488,22 @@
                     `;
                 }
             }
+
+            // সেভ করা থিম লোড করা (ডিফল্ট 'dark')
             const saved = localStorage.getItem('theme') || 'dark';
             setTheme(saved);
+
+            // বাটনে ক্লিক করলে থিম টগল করা
             themeToggle.addEventListener('click', () => {
                 const current = html.getAttribute('data-theme');
                 setTheme(current === 'dark' ? 'light' : 'dark');
             });
 
-            // ভিজিটর কাউন্ট
+            // ==========================================================
+            // ৩. ভিজিটর কাউন্ট (Visitor Count):
+            //    localStorage ব্যবহার করে ব্যবহারকারীর ব্রাউজারে ভিজিট সংখ্যা 
+            //    সংরক্ষণ করা হয় এবং 'স্ট্যাটস'-এ দেখানো হয়।
+            // ==========================================================
             function updateVisitorCount() {
                 let visits = localStorage.getItem('visitorCount');
                 visits = visits ? parseInt(visits) + 1 : 1;
@@ -289,7 +513,11 @@
             }
             updateVisitorCount();
 
-            // পার্টিকেল
+            // ==========================================================
+            // ৪. পার্টিকেল সিস্টেম (Particle System):
+            //    ক্যানভাসে এলোমেলো বিন্দু আঁকে যা ধীরে ধীরে ঘুরতে থাকে এবং 
+            //    কাছাকাছি থাকলে লাইন দ্বারা সংযুক্ত হয় (নেটওয়ার্ক ইফেক্ট)।
+            // ==========================================================
             const canvas = document.getElementById('particleCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [], w, h;
@@ -301,7 +529,9 @@
             resize();
             window.addEventListener('resize', () => { resize();
                 initParticles(); });
+
             const hues = [210, 190, 260];
+
             class Particle {
                 constructor() { this.reset(); }
                 reset() {
@@ -316,6 +546,7 @@
                 update() {
                     this.x += this.speedX;
                     this.y += this.speedY;
+                    // স্ক্রিনের বাইরে চলে গেলে উল্টো দিক থেকে ফিরিয়ে আনা
                     if (this.x < -20) this.x = w + 20;
                     if (this.x > w + 20) this.x = -20;
                     if (this.y < -20) this.y = h + 20;
@@ -338,6 +569,8 @@
                 ctx.clearRect(0, 0, w, h);
                 particles.forEach(p => { p.update();
                     p.draw(); });
+
+                // পার্টিকেলগুলোর মধ্যে লাইন আঁকা (যদি দূরত্ব ১৩০ পিক্সেলের কম হয়)
                 for (let i = 0; i < particles.length; i++)
                     for (let j = i + 1; j < particles.length; j++) {
                         const dx = particles[i].x - particles[j].x,
@@ -356,7 +589,10 @@
             }
             animate();
 
-            // কার্সর গ্লো
+            // ==========================================================
+            // ৫. কার্সর গ্লো ইফেক্ট (Cursor Glow Effect):
+            //    মাউসের সাথে সাথে গোলাকার আভা ঘোরে।
+            // ==========================================================
             const cursorGlow = document.getElementById('cursorGlow');
             document.addEventListener('mousemove', e => {
                 cursorGlow.style.left = e.clientX + 'px';
@@ -365,7 +601,10 @@
             document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
             document.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
 
-            // স্ক্রল প্রগ্রেস
+            // ==========================================================
+            // ৬. স্ক্রল প্রগ্রেস বার (Scroll Progress Bar):
+            //    পেজ কতটুকু নিচে নামানো হয়েছে তার শতাংশ দেখায়।
+            // ==========================================================
             const scrollProgress = document.getElementById('scrollProgress');
             window.addEventListener('scroll', () => {
                 const st = document.documentElement.scrollTop,
@@ -373,11 +612,17 @@
                 scrollProgress.style.width = (st / sh) * 100 + '%';
             });
 
-            // নেভ অ্যাক্টিভ
+            // ==========================================================
+            // ৭. নেভিগেশন অ্যাক্টিভ লিংক হাইলাইট:
+            //    স্ক্রল করার সময় কোন সেকশনে আছি, তার ওপর ভিত্তি করে 
+            //    মেনুর লিংকটি অ্যাক্টিভ হয়।
+            // ==========================================================
             const floatingNav = document.getElementById('floatingNav');
             const navLinks = floatingNav.querySelectorAll('a');
             window.addEventListener('scroll', () => {
+                // ৫০ পিক্সেল স্ক্রল করলে নেভে গ্লো ইফেক্ট আসে
                 floatingNav.classList.toggle('scrolled', window.scrollY > 50);
+                
                 let current = 'hero';
                 document.querySelectorAll('section[id]').forEach(sec => {
                     if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
@@ -388,7 +633,11 @@
                 });
             });
 
-            // স্ট্যাগার অ্যানিমেশন
+            // ==========================================================
+            // ৮. স্ট্যাগার অ্যানিমেশন (Stagger Animation):
+            //    এলিমেন্টগুলো যখন ভিউপোর্টে আসে, তখন একে একে (ডেলি দিয়ে) 
+            //    ফেড ইন হয়। স্কিল বার এবং কাউন্টারও এখানে ট্রিগার হয়।
+            // ==========================================================
             const staggerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -396,11 +645,15 @@
                         grid.querySelectorAll('.stagger-item').forEach((item, index) => {
                             setTimeout(() => {
                                 item.classList.add('show');
+                                
+                                // স্কিল ফিল (Skill Fill) অ্যানিমেশন
                                 const fill = item.querySelector('.skill-fill');
                                 if (fill) {
                                     const w = fill.getAttribute('data-width');
                                     if (w) fill.style.width = w + '%';
                                 }
+                                
+                                // স্ট্যাট কাউন্টার (Stat Counter) অ্যানিমেশন
                                 const counter = item.querySelector('.stat-number');
                                 if (counter) {
                                     const t = parseInt(counter.getAttribute('data-target'));
@@ -415,14 +668,18 @@
                     }
                 });
             }, { threshold: 0.25 });
+            
             document.querySelectorAll('.stagger-grid').forEach(grid => staggerObserver.observe(grid));
 
+            // পেজ লোড হওয়ার সাথে সাথে যদি কোনো স্কিল বার দৃশ্যমান থাকে, তবে সেটা লোড করো
             window.addEventListener('load', () => {
                 document.querySelectorAll('.skill-fill').forEach(fill => {
                     const w = fill.getAttribute('data-width');
                     if (w) fill.style.width = w + '%';
                 });
             });
+            
+            // কিছু ব্রাউজারে কখনো কখনো স্কিল বার লোড না হলে, ৫০০ মি.সে. পর আবার চেষ্টা
             setTimeout(() => {
                 document.querySelectorAll('.skill-fill').forEach(fill => {
                     if (fill.style.width === '0%' || fill.style.width === '') {
@@ -432,16 +689,13 @@
                 });
             }, 500);
 
-            const timelineObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.3 });
-            document.querySelectorAll('.timeline-item').forEach(item => timelineObserver.observe(item));
-
+            // ==========================================================
+            // ৯. কাউন্টার অ্যানিমেশন (Counter Animation):
+            //    নির্দিষ্ট টার্গেট নম্বর পর্যন্ত ধীরে ধীরে গণনা করে।
+            // ==========================================================
             function animateCounter(el, target) {
                 let current = 0;
-                const step = target / (1800 / 16);
+                const step = target / (1800 / 16); // ১.৮ সেকেন্ডে শেষ হবে
                 const timer = setInterval(() => {
                     current += step;
                     if (current >= target) {
@@ -451,15 +705,32 @@
                 }, 16);
             }
 
-            // কন্টাক্ট ফর্ম
+            // ==========================================================
+            // ১০. টাইমলাইন অ্যানিমেশন (Timeline Observer):
+            //     টাইমলাইন আইটেমগুলো ভিউপোর্টে এলে 'visible' ক্লাস যোগ হয়।
+            // ==========================================================
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.3 });
+            document.querySelectorAll('.timeline-item').forEach(item => timelineObserver.observe(item));
+
+            // ==========================================================
+            // ১১. কন্টাক্ট ফর্ম হ্যান্ডলিং (Contact Form Submission):
+            //      Web3Forms API ব্যবহার করে ডেটা ইমেইলে পাঠানো হয়।
+            // ==========================================================
             const form = document.getElementById('contactForm');
             const resultDiv = document.getElementById('formResult');
+            
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const formData = new FormData(form);
                 const json = JSON.stringify(Object.fromEntries(formData));
+                
                 resultDiv.innerHTML = "⏳ Sending...";
                 resultDiv.style.color = "blue";
+                
                 fetch('https://api.web3forms.com/submit', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -483,12 +754,17 @@
                     });
             });
 
-            // প্রজেক্ট মোডাল
+            // ==========================================================
+            // ১২. প্রজেক্ট মোডাল (Project Modal):
+            //      প্রজেক্ট কার্ডে ক্লিক করলে মোডাল খোলে, 
+            //      'Visit Website' ক্লিক করলে নতুন ট্যাবে লিংক ওপেন হয়।
+            // ==========================================================
             const projectModal = document.getElementById('projectModal'),
                 modalMsg = document.getElementById('modalMessage'),
                 modalVisit = document.getElementById('modalVisit'),
                 modalCancel = document.getElementById('modalCancel');
             let pendingUrl = '';
+
             document.querySelectorAll('.project-card[data-url]').forEach(card => {
                 card.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -497,6 +773,7 @@
                     projectModal.classList.add('active');
                 });
             });
+
             modalVisit.addEventListener('click', () => {
                 if (pendingUrl) window.open(pendingUrl, '_blank');
                 projectModal.classList.remove('active');
@@ -506,6 +783,7 @@
                 projectModal.classList.remove('active');
                 pendingUrl = '';
             });
+            // মোডালের বাইরে ক্লিক করলেও বন্ধ হবে
             projectModal.addEventListener('click', function(e) {
                 if (e.target === projectModal) {
                     projectModal.classList.remove('active');
@@ -513,15 +791,20 @@
                 }
             });
 
-            // লোকেশন মোডাল
+            // ==========================================================
+            // ১৩. লোকেশন মোডাল (Location Modal):
+            //      'Location' কার্ডে ক্লিক করলে গুগল ম্যাপে নিয়ে যাবে।
+            // ==========================================================
             const locModal = document.getElementById('locationModal'),
                 locVisit = document.getElementById('locationModalVisit'),
                 locCancel = document.getElementById('locationModalCancel');
             let mapUrl = '';
+
             document.querySelector('.info-card.location-card').addEventListener('click', () => {
                 mapUrl = 'https://www.google.com/maps/search/?api=1&query=Hatiya+Island+Noakhali';
                 locModal.classList.add('active');
             });
+
             locVisit.addEventListener('click', () => {
                 if (mapUrl) window.open(mapUrl, '_blank');
                 locModal.classList.remove('active');
@@ -538,7 +821,10 @@
                 }
             });
 
-            // প্রাথমিক অ্যানিমেশন
+            // ==========================================================
+            // ১৪. প্রাথমিক লোড অ্যানিমেশন (Initial Load Animation):
+            //      পেজ লোড হওয়ার পর দৃশ্যমান এলিমেন্টগুলো অ্যানিমেট করে।
+            // ==========================================================
             setTimeout(() => {
                 document.querySelectorAll('.stagger-grid').forEach(grid => {
                     if (grid.getBoundingClientRect().top < window.innerHeight)
@@ -549,7 +835,8 @@
                     if (item.getBoundingClientRect().top < window.innerHeight) item.classList.add('visible');
                 });
             }, 300);
-        })();
+
+        })(); // আইআইএফই শেষ
     </script>
 </body>
 </html>

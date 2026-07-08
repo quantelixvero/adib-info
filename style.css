@@ -1,50 +1,103 @@
-/* ===== রুট ভেরিয়েবল ও থিম ===== */
+/* ============================================================
+   CSS ফাইল: style.css
+   এই ফাইলটি 'index.html'-এর সঙ্গে সংযুক্ত। 
+   এখানে ওয়েবসাইটের সব ডিজাইন (রঙ, লেআউট, অ্যানিমেশন, রেস্পন্সিভ) কন্ট্রোল করা হয়।
+   ============================================================ */
+
+/* ============================================================
+   ১. রুট ভেরিয়েবল (Root Variables) ও থিম (ডার্ক/লাইট):
+   এখানে সব রঙ, সাইজ, শ্যাডো, গ্রেডিয়েন্ট ইত্যাদি সংরক্ষণ করা আছে।
+   'data-theme' অ্যাট্রিবিউটের উপর ভিত্তি করে ডার্ক বা লাইট মোড সক্রিয় হয়।
+   ============================================================ */
+
+/* ----- ডিফল্ট থিম: ডার্ক মোড (Dark Mode) ----- */
 :root,
 [data-theme="dark"] {
+    /* পেজের ব্যাকগ্রাউন্ড রঙ */
     --bg: #0a0a0f;
+    
+    /* স্বচ্ছ কার্ড/বক্সগুলোর ব্যাকগ্রাউন্ড (গ্লাসমরফিজমের জন্য) */
     --surface: rgba(18, 18, 26, 0.7);
     --surface2: rgba(26, 26, 38, 0.6);
     --card: rgba(22, 22, 34, 0.65);
-    --accent: #6c5ce7;
-    --accent2: #a29bfe;
-    --accent3: #fd79a8;
-    --text: #e2e2f0;
-    --text2: #a0a0c0;
-    --text3: #6b6b8a;
+    
+    /* প্রধান রঙ (অ্যাকসেন্ট) ও তার শেড */
+    --accent: #6c5ce7;        /* গভীর বেগুনি */
+    --accent2: #a29bfe;       /* হালকা বেগুনি */
+    --accent3: #fd79a8;       /* গোলাপি */
+    
+    /* টেক্সটের রঙ (শিরোনাম, বডি, সাবটেক্সট) */
+    --text: #e2e2f0;          /* প্রধান টেক্সট */
+    --text2: #a0a0c0;         /* মাধ্যমিক টেক্সট */
+    --text3: #6b6b8a;         /* গৌণ/হালকা টেক্সট */
+    
+    /* বর্ডার ও গ্লো ইফেক্টের রঙ */
     --border: rgba(255, 255, 255, 0.08);
     --glow: rgba(108, 92, 231, 0.35);
     --glow-pink: rgba(253, 121, 168, 0.3);
+    
+    /* নেভিগেশন ব্যাকগ্রাউন্ড */
     --nav-bg: rgba(22, 22, 34, 0.75);
+    
+    /* মোডাল (পপ-আপ) ব্যাকগ্রাউন্ড */
     --modal-overlay: rgba(0, 0, 0, 0.5);
     --modal-bg: rgba(22, 22, 34, 0.85);
+    
+    /* আউটলাইন বাটনের টেক্সট রঙ */
     --btn-outline-text: var(--text);
+    
+    /* হিরো সেকশনের গ্রেডিয়েন্ট টেক্সট */
     --hero-gradient: linear-gradient(135deg, #fff 0%, var(--accent2) 50%, var(--accent3) 100%);
+    
+    /* সেকশন টাইটেলের গ্রেডিয়েন্ট */
     --section-title-gradient: linear-gradient(135deg, #fff, var(--accent2));
+    
+    /* কর্নার রাউন্ডনেস (বৃত্তাকার কোণ) */
     --radius: 28px;
     --radius-sm: 16px;
+    
+    /* ট্রানজিশন (অ্যানিমেশন সময় ও স্পিড) */
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* গ্লাস ইফেক্টের জন্য ব্লার পরিমাণ */
     --blur-amount: 28px;
+    
+    /* প্লেসহোল্ডার ও অন্যান্য গৌণ রঙ */
     --placeholder-color: var(--text3);
     --footer-color: var(--text3);
     --stat-label-color: var(--text3);
     --contact-link-color: var(--accent2);
     --tag-link-color: #ffffff;
+    
+    /* মোবাইলে নেভ ব্যাকগ্রাউন্ড */
     --nav-bg-mobile: rgba(22, 22, 34, 0.92);
+    
+    /* কন্টাক্ট ফর্মের ফিল্ড ব্যাকগ্রাউন্ড */
     --contact-field-bg: #171624;
     --contact-field-focus-bg: #171624;
+    
+    /* কন্টাক্ট ফর্মের বর্ডার গ্রেডিয়েন্ট */
     --contact-border-gradient: linear-gradient(135deg, rgba(253, 121, 168, 0.52), rgba(162, 155, 254, 0.58), rgba(108, 92, 231, 0.50), rgba(6, 182, 212, 0.44));
 }
+
+/* ----- লাইট মোড (Light Mode) ----- */
 [data-theme="light"] {
+    /* লাইট মোডে ব্যাকগ্রাউন্ড হালকা ধূসর */
     --bg: #f5f7fa;
     --surface: rgba(255, 255, 255, 0.55);
     --surface2: rgba(240, 242, 245, 0.65);
     --card: rgba(255, 255, 255, 0.65);
+    
+    /* লাইট মোডে অ্যাকসেন্ট রঙ নীল টোনে */
     --accent: #1e40af;
     --accent2: #3b82f6;
     --accent3: #06b6d4;
+    
+    /* সব টেক্সট কালো (উচ্চ কনট্রাস্ট) */
     --text: #000000;
     --text2: #000000;
     --text3: #000000;
+    
     --border: rgba(0, 0, 0, 0.08);
     --glow: rgba(37, 99, 235, 0.25);
     --glow-pink: rgba(6, 182, 212, 0.35);
@@ -52,8 +105,11 @@
     --modal-overlay: rgba(15, 23, 42, 0.4);
     --modal-bg: rgba(255, 255, 255, 0.85);
     --btn-outline-text: #000000;
+    
+    /* লাইট মোডে গ্রেডিয়েন্ট */
     --hero-gradient: linear-gradient(135deg, #1e3a8a, #06b6d4);
     --section-title-gradient: linear-gradient(135deg, #1e3a8a, #0ea5e9);
+    
     --blur-amount: 22px;
     --placeholder-color: #000000;
     --footer-color: #000000;
@@ -66,18 +122,28 @@
     --contact-border-gradient: linear-gradient(135deg, #1e40af, #3b82f6, #06b6d4, #fd79a8);
 }
 
-/* ===== গ্লোবাল স্টাইল ===== */
+/* ============================================================
+   ২. গ্লোবাল রিসেট ও বেসিক স্টাইল (Global Reset & Base)
+   সব এলিমেন্টের মার্জিন-প্যাডিং রিসেট, স্ক্রলবার কাস্টমাইজেশন,
+   এবং বডির বেসিক ফন্ট ও ব্যাকগ্রাউন্ড সেট করা।
+   ============================================================ */
+
+/* সব এলিমেন্টের ডিফল্ট মার্জিন-প্যাডিং মুছে ফেলা */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;  /* বক্স সাইজিং বর্ডার-বক্স করা (প্যাডিং ও বর্ডার সাইজের মধ্যে গণনা হবে) */
 }
+
+/* HTML এলিমেন্টের জন্য স্ক্রল বিহেভিয়ার ও স্ক্রলবার কাস্টমাইজেশন */
 html {
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) transparent;
-    overflow-x: hidden;
+    scroll-behavior: smooth;          /* স্মুথ স্ক্রল */
+    scrollbar-width: thin;             /* ফায়ারফক্সে পাতলা স্ক্রলবার */
+    scrollbar-color: var(--accent) transparent;  /* ফায়ারফক্সে স্ক্রলবারের রঙ */
+    overflow-x: hidden;               /* অনুভূমিক স্ক্রল না হওয়া */
 }
+
+/* ওয়েবকিট ব্রাউজারে (ক্রোম, এজ, সাফারি) স্ক্রলবার কাস্টমাইজেশন */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -88,68 +154,86 @@ html {
     background: var(--accent);
     border-radius: 10px;
 }
+
+/* বডি: পুরো পেজের ব্যাকগ্রাউন্ড, টেক্সট রঙ, ফন্ট ও ট্রানজিশন */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
     overflow-x: hidden;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s;  /* থিম পরিবর্তনে স্মুথ ট্রানজিশন */
 }
 
-/* ===== স্ক্রল প্রগ্রেস ===== */
+/* ============================================================
+   ৩. স্ক্রল প্রগ্রেস বার (Scroll Progress Bar)
+   পেজের উপরে একটি সরু বার যা স্ক্রলের অগ্রগতি দেখায়।
+   ============================================================ */
 #scrollProgress {
     position: fixed;
     top: 0;
     left: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--accent), var(--accent3));
-    z-index: 200;
+    z-index: 200;           /* অন্যান্য এলিমেন্টের উপরে থাকবে */
     width: 0%;
     border-radius: 0 3px 3px 0;
     transition: width 0.1s linear;
 }
 
-/* ===== পার্টিকল ক্যানভাস ===== */
+/* ============================================================
+   ৪. পার্টিকেল ক্যানভাস (Particle Canvas)
+   ব্যাকগ্রাউন্ডে থাকা ডায়নামিক পার্টিকেলের ক্যানভাস।
+   ============================================================ */
 #particleCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none;   /* মাউসের ইভেন্ট ব্লক করে না (নিচের কন্টেন্টে ক্লিক করা যাবে) */
+    z-index: 0;             /* সব কন্টেন্টের পেছনে থাকবে */
     opacity: 0.5;
 }
 
-/* ===== কার্সর গ্লো ===== */
+/* ============================================================
+   ৫. কার্সর গ্লো ইফেক্ট (Cursor Glow)
+   মাউসের চারপাশে একটি বড় আভা যা ফোকাস তৈরি করে।
+   ============================================================ */
 .cursor-glow {
     position: fixed;
     width: 500px;
     height: 500px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
+    pointer-events: none;   /* মাউস ইভেন্ট ব্লক করে না */
+    z-index: 1;             /* পার্টিকেলের উপরে কিন্তু কন্টেন্টের নিচে */
     transform: translate(-50%, -50%);
     transition: opacity 0.3s;
-    opacity: 0;
+    opacity: 0;             /* ডিফল্টভাবে লুকানো */
 }
+/* হোভার করলেই গ্লো দেখাবে (পারফরম্যান্সের জন্য) */
 body:hover .cursor-glow {
     opacity: 1;
 }
 
-/* ===== মেইন র‍্যাপার ===== */
+/* ============================================================
+   ৬. মেইন র‍্যাপার (Main Wrapper)
+   সব কন্টেন্টকে মাঝখানে সীমাবদ্ধ রাখে এবং অন্যান্য এলিমেন্টের তুলনায় উপরে রাখে।
+   ============================================================ */
 .main-wrapper {
     position: relative;
-    z-index: 2;
+    z-index: 2;             /* পার্টিকেল ও কার্সর গ্লোর উপরে */
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px 28px 60px;
     overflow-x: hidden;
 }
 
-/* ===== গ্লাসমরফিজম ===== */
+/* ============================================================
+   ৭. গ্লাসমরফিজম ক্লাস (Glassmorphism)
+   'glass' ক্লাস যুক্ত এলিমেন্টগুলো স্বচ্ছ, ব্লারযুক্ত ও বর্ডারযুক্ত হয়।
+   ============================================================ */
 .glass,
 .stat-card,
 .profile-card,
@@ -164,7 +248,10 @@ body:hover .cursor-glow {
     transition: var(--transition);
 }
 
-/* ===== থিম টগল বাটন ===== */
+/* ============================================================
+   ৮. থিম টগল বাটন (Theme Toggle Button)
+   ডান নিচের কোণায় ভাসমান বাটন, ডার্ক/লাইট সুইচ করে।
+   ============================================================ */
 .theme-toggle {
     position: fixed;
     bottom: 28px;
@@ -178,17 +265,18 @@ body:hover .cursor-glow {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 0;
+    font-size: 0;           /* টেক্সট লুকানো */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     color: var(--text);
     border: 1px solid var(--border);
     transition: var(--transition);
+    /* ব্রাউজারের ডিফল্ট স্টাইল ওভাররাইড */
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     -webkit-appearance: none !important;
     appearance: none !important;
     -webkit-tap-highlight-color: transparent;
-    transform: translateZ(0);
+    transform: translateZ(0);        /* হার্ডওয়্যার অ্যাক্সিলারেশন */
     backface-visibility: hidden;
     contain: paint;
     overflow: hidden;
@@ -204,13 +292,17 @@ body:hover .cursor-glow {
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+/* হোভার এফেক্ট */
 .theme-toggle:hover {
     border-color: var(--accent);
     box-shadow: 0 8px 30px var(--glow);
     transform: translateZ(0) scale(1.08);
 }
 
-/* ===== ফ্লোটিং নেভ ===== */
+/* ============================================================
+   ৯. ফ্লোটিং নেভিগেশন বার (Floating Navigation Bar)
+   উপরের দিকে ভেসে থাকা মেনু, স্ক্রল করলে রঙ পরিবর্তন হয়।
+   ============================================================ */
 .floating-nav {
     position: fixed;
     top: 20px;
@@ -230,12 +322,13 @@ body:hover .cursor-glow {
     transition: all 0.4s;
     flex-wrap: nowrap;
     max-width: 92vw;
-    overflow-x: auto;
-    scrollbar-width: none;
+    overflow-x: auto;       /* ছোট স্ক্রিনে হরাইজন্টাল স্ক্রল */
+    scrollbar-width: none;  /* ফায়ারফক্সে স্ক্রলবার লুকানো */
 }
 .floating-nav::-webkit-scrollbar {
-    display: none;
+    display: none;          /* ক্রোমে স্ক্রলবার লুকানো */
 }
+/* নেভ স্ক্রল করলে গ্লো ইফেক্ট আসে (জাভাস্ক্রিপ্ট 'scrolled' ক্লাস যোগ করে) */
 .floating-nav.scrolled {
     border-color: var(--accent);
     box-shadow: 0 12px 50px var(--glow);
@@ -248,7 +341,7 @@ body:hover .cursor-glow {
     padding: 8px 14px;
     border-radius: 50px;
     transition: var(--transition);
-    white-space: nowrap;
+    white-space: nowrap;    /* লাইন ব্রেক না হওয়া */
 }
 .floating-nav a:hover,
 .floating-nav a.active {
@@ -257,18 +350,23 @@ body:hover .cursor-glow {
     box-shadow: 0 6px 24px var(--glow);
 }
 
-/* ===== হিরো সেকশন ===== */
+/* ============================================================
+   ১০. হিরো সেকশন (Hero Section)
+   প্রথম অংশ: প্রোফাইল ছবি, নাম, পরিচয় ও বাটন।
+   ============================================================ */
 .hero {
     display: flex;
     align-items: center;
     gap: 40px;
-    min-height: 100vh;
+    min-height: 100vh;       /* পুরো ভিউপোর্ট জুড়ে থাকবে */
     padding-top: 80px;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
     position: relative;
 }
+
+/* প্রোফাইল ছবির র‍্যাপার (অ্যানিমেটেড বর্ডার ও গ্লো) */
 .hero-avatar-wrap {
     position: relative;
     width: 240px;
@@ -278,6 +376,7 @@ body:hover .cursor-glow {
     background-color: var(--bg);
     background-origin: border-box;
     background-clip: padding-box, border-box;
+    /* মাল্টি-রঙের ঘূর্ণায়মান বর্ডার */
     background-image: linear-gradient(var(--bg), var(--bg)), linear-gradient(45deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6);
     box-shadow: 0 0 60px var(--glow), 0 0 120px var(--glow-pink);
     cursor: pointer;
@@ -293,8 +392,9 @@ body:hover .cursor-glow {
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    animation: float 3s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;  /* উপরে-নিচে ভাসা */
 }
+/* ফ্লোট অ্যানিমেশন */
 @keyframes float {
     0%,
     100% {
@@ -304,10 +404,14 @@ body:hover .cursor-glow {
         transform: translateY(-6px);
     }
 }
+
+/* ডান পাশের টেক্সট এলাকা */
 .hero-right {
     flex: 1 1 300px;
     max-width: 550px;
 }
+
+/* ব্যাজ/ট্যাগ */
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -321,6 +425,8 @@ body:hover .cursor-glow {
     margin-bottom: 20px;
     backdrop-filter: blur(16px);
 }
+
+/* নামের শিরোনাম - গ্রেডিয়েন্ট টেক্সট */
 .hero h1 {
     font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 800;
@@ -344,7 +450,10 @@ body:hover .cursor-glow {
     justify-content: center;
 }
 
-/* ===== বাটন ===== */
+/* ============================================================
+   ১১. বাটন (Buttons)
+   দুই ধরণের বাটন: প্রাইমারি (ভর্তি) ও আউটলাইন (খালি)।
+   ============================================================ */
 .btn {
     padding: 13px 28px;
     border-radius: 50px;
@@ -383,7 +492,10 @@ body:hover .cursor-glow {
     transform: translateY(-3px);
 }
 
-/* ===== স্ক্রল ইন্ডিকেটর ===== */
+/* ============================================================
+   ১২. স্ক্রল ইন্ডিকেটর (Scroll Indicator)
+   হিরোর নিচে 'scroll' লেখা ও তীর চিহ্ন যা নিচে স্ক্রল করতে উৎসাহিত করে।
+   ============================================================ */
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -396,7 +508,7 @@ body:hover .cursor-glow {
     gap: 6px;
     color: var(--text3);
     font-size: 0.75rem;
-    animation: bounceDown 2s ease infinite;
+    animation: bounceDown 2s ease infinite;  /* উপরে-নিচে লাফানো */
     cursor: pointer;
 }
 .scroll-indicator svg {
@@ -425,7 +537,10 @@ body:hover .cursor-glow {
     }
 }
 
-/* ===== স্ট্যাটস ===== */
+/* ============================================================
+   ১৩. স্ট্যাটস রো (Stats Row)
+   প্রজেক্ট সংখ্যা, শেখার সময়, ভিজিটর কাউন্ট দেখায়।
+   ============================================================ */
 .stats-row {
     display: flex;
     gap: 20px;
@@ -465,7 +580,10 @@ body:hover .cursor-glow {
     margin-top: 6px;
 }
 
-/* ===== সেকশন টাইটেল ===== */
+/* ============================================================
+   ১৪. সেকশন টাইটেল (Section Title)
+   প্রতিটি সেকশনের শিরোনাম, দুই পাশে লাইন ও গ্রেডিয়েন্ট টেক্সট।
+   ============================================================ */
 .section-title {
     font-size: 1.8rem;
     font-weight: 700;
@@ -483,6 +601,7 @@ body:hover .cursor-glow {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+/* দুই পাশের লাইন */
 .section-title::after,
 .section-title::before {
     content: '';
@@ -497,7 +616,10 @@ body:hover .cursor-glow {
     background: var(--accent);
 }
 
-/* ===== প্রোফাইল কার্ড ===== */
+/* ============================================================
+   ১৫. প্রোফাইল কার্ড (Profile Card)
+   বিস্তারিত পরিচয়, ছবি ও সোশ্যাল লিংক।
+   ============================================================ */
 .profile-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -535,6 +657,8 @@ body:hover .cursor-glow {
     color: var(--text2);
     font-size: 0.95rem;
 }
+
+/* যোগাযোগের লিংকগুলো */
 .contact-links {
     display: flex;
     gap: 12px;
@@ -566,7 +690,10 @@ body:hover .cursor-glow {
     fill: currentColor;
 }
 
-/* ===== গ্রিড ===== */
+/* ============================================================
+   ১৬. গ্রিড সিস্টেম (Grid 2 Columns)
+   দুই কলামের গ্রিড লেআউট, যা ছোট স্ক্রিনে এক কলামে পরিণত হয়।
+   ============================================================ */
 .grid-2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -574,7 +701,10 @@ body:hover .cursor-glow {
     margin: 20px 0;
 }
 
-/* ===== ইনফো কার্ড ===== */
+/* ============================================================
+   ১৭. ইনফো কার্ড (Info Card)
+   শিক্ষা, অবস্থান, দক্ষতা ইত্যাদি দেখানোর জন্য ছোট কার্ড।
+   ============================================================ */
 .info-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -587,6 +717,7 @@ body:hover .cursor-glow {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transform: translateY(-3px);
 }
+/* যে কার্ডে ক্লিক করা যায়, তার জন্য কার্সর পয়েন্টার */
 .info-card.clickable-card {
     cursor: pointer;
 }
@@ -624,7 +755,10 @@ body:hover .cursor-glow {
     border-bottom: none;
 }
 
-/* ===== স্কিল বার ===== */
+/* ============================================================
+   ১৮. স্কিল বার (Skill Bars)
+   দক্ষতার শতাংশ দেখানোর জন্য অ্যানিমেটেড বার।
+   ============================================================ */
 .skill-bar-wrap {
     margin-bottom: 16px;
 }
@@ -645,15 +779,19 @@ body:hover .cursor-glow {
     height: 100%;
     border-radius: 10px;
     background: linear-gradient(90deg, var(--accent), var(--accent3));
-    width: 0%;
+    width: 0%;               /* জাভাস্ক্রিপ্ট ডাইনামিক্যালি পরিবর্তন করবে */
     transition: width 1.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* ===== টাইমলাইন ===== */
+/* ============================================================
+   ১৯. টাইমলাইন (Timeline)
+   যাত্রাপথ দেখানোর জন্য লাইন ও ডটসহ টাইমলাইন।
+   ============================================================ */
 .timeline-wrapper {
     position: relative;
     margin: 40px 0;
 }
+/* মাঝখানের উল্লম্ব লাইন */
 .timeline-line {
     position: absolute;
     left: 50%;
@@ -665,19 +803,22 @@ body:hover .cursor-glow {
     border-radius: 2px;
     z-index: 0;
 }
+/* প্রতিটি টাইমলাইন আইটেম */
 .timeline-item {
     position: relative;
     display: flex;
     margin-bottom: 40px;
     z-index: 1;
-    opacity: 0;
+    opacity: 0;                 /* ডিফল্ট লুকানো (অ্যানিমেশন পরে দেখাবে) */
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
+/* যখন দৃশ্যমান হবে (জাভাস্ক্রিপ্ট 'visible' ক্লাস যোগ করবে) */
 .timeline-item.visible {
     opacity: 1;
     transform: translateY(0);
 }
+/* বাম ও ডান পাশে আইটেম সাজানো */
 .timeline-item:nth-child(odd) {
     flex-direction: row;
     justify-content: flex-start;
@@ -688,6 +829,7 @@ body:hover .cursor-glow {
     justify-content: flex-start;
     padding-left: calc(50% + 30px);
 }
+/* টাইমলাইন কন্টেন্ট বক্স */
 .timeline-content {
     background: var(--card);
     border: 1px solid var(--border);
@@ -718,6 +860,7 @@ body:hover .cursor-glow {
     fill: none;
     stroke-width: 2;
 }
+/* লাইনে ডট (বৃত্ত) */
 .timeline-dot {
     position: absolute;
     top: 20px;
@@ -735,7 +878,10 @@ body:hover .cursor-glow {
     left: calc(50% - 7px);
 }
 
-/* ===== প্রজেক্ট কার্ড ===== */
+/* ============================================================
+   ২০. প্রজেক্ট কার্ড (Project Cards)
+   প্রজেক্টের নাম, বিবরণ ও লিংক দেখানো কার্ড।
+   ============================================================ */
 .project-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -745,6 +891,7 @@ body:hover .cursor-glow {
     cursor: default;
     position: relative;
 }
+/* যে কার্ডে URL আছে, তার জন্য পয়েন্টার কার্সর */
 .project-card[data-url] {
     cursor: pointer;
 }
@@ -761,7 +908,7 @@ body:hover .cursor-glow {
     font-weight: 600;
     color: var(--text);
     margin-bottom: 6px;
-    pointer-events: none;
+    pointer-events: none;   /* ক্লিক ইভেন্ট প্যারেন্টে যাবে */
 }
 .project-title svg {
     width: 18px;
@@ -770,6 +917,7 @@ body:hover .cursor-glow {
     fill: none;
     stroke-width: 2;
 }
+/* ট্যাগ/ব্যাজ */
 .project-card .tag {
     display: inline-block;
     background: var(--surface2);
@@ -786,7 +934,10 @@ body:hover .cursor-glow {
     color: var(--tag-link-color);
 }
 
-/* ===== স্ট্যাগার অ্যানিমেশন ===== */
+/* ============================================================
+   ২১. স্ট্যাগার অ্যানিমেশন (Stagger Animation)
+   এলিমেন্টগুলো একে একে ফেড ইন হবে। জাভাস্ক্রিপ্ট 'show' ক্লাস যোগ করে।
+   ============================================================ */
 .stagger-item {
     opacity: 0;
     transform: translateY(25px);
@@ -797,7 +948,10 @@ body:hover .cursor-glow {
     transform: translateY(0);
 }
 
-/* ===== কন্টাক্ট ফর্ম ===== */
+/* ============================================================
+   ২২. কন্টাক্ট ফর্ম (Contact Form)
+   নাম, ইমেইল, বার্তা ও সাবমিট বাটন সহ ফর্ম।
+   ============================================================ */
 #contact {
     position: relative;
     padding-top: 18px;
@@ -821,9 +975,7 @@ body:hover .cursor-glow {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 }
-.contact-form::before {
-    content: none;
-}
+/* ইনপুট ও টেক্সটএরিয়া ফিল্ড */
 .contact-form input,
 .contact-form textarea {
     background: linear-gradient(var(--contact-field-bg), var(--contact-field-bg)) padding-box, var(--contact-border-gradient) border-box;
@@ -841,6 +993,7 @@ body:hover .cursor-glow {
     width: 100%;
     min-height: 74px;
 }
+/* প্লেসহোল্ডার স্টাইল */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
     font-family: 'JetBrains Mono', monospace;
@@ -851,14 +1004,16 @@ body:hover .cursor-glow {
 .contact-form textarea {
     min-height: 164px;
     max-height: 164px;
-    transform: translateY(-28px);
+    transform: translateY(-28px);   /* অন্যান্য ফিল্ডের সাথে সারিবদ্ধ করতে */
 }
+/* ফোকাস ইফেক্ট */
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: transparent;
     background: linear-gradient(var(--contact-field-focus-bg), var(--contact-field-focus-bg)) padding-box, var(--contact-border-gradient) border-box;
     box-shadow: 0 0 0 1px rgba(162, 155, 254, 0.18), 0 0 18px rgba(108, 92, 231, 0.22), 0 0 26px rgba(253, 121, 168, 0.10);
 }
+/* সাবমিট বাটন */
 .contact-form button {
     align-self: center;
     justify-content: center;
@@ -870,7 +1025,10 @@ body:hover .cursor-glow {
     transform: translateY(10px);
 }
 
-/* ===== ফুটার ===== */
+/* ============================================================
+   ২৩. ফুটার (Footer)
+   কপিরাইট ও অন্যান্য তথ্য।
+   ============================================================ */
 .footer {
     text-align: center;
     color: var(--footer-color);
@@ -883,7 +1041,10 @@ body:hover .cursor-glow {
     letter-spacing: 0.5px;
 }
 
-/* ===== মোডাল ===== */
+/* ============================================================
+   ২৪. মোডাল (Modal / Pop-up)
+   প্রজেক্ট ভিজিট ও লোকেশন ভিউয়ের জন্য পপ-আপ উইন্ডো।
+   ============================================================ */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -897,7 +1058,7 @@ body:hover .cursor-glow {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none;    /* লুকানো থাকলে ক্লিক করা যায় না */
     transition: opacity 0.3s ease;
 }
 .modal-overlay.active {
@@ -932,7 +1093,10 @@ body:hover .cursor-glow {
     border-radius: 50px;
 }
 
-/* ===== লিকুইড ব্লব ===== */
+/* ============================================================
+   ২৫. লিকুইড ব্লব (Liquid Blob)
+   হিরো সেকশনের পেছনে ঘুরতে থাকা রঙিন আভা (ডেকোরেশন)।
+   ============================================================ */
 .liquid-blob {
     position: absolute;
     top: 50%;
@@ -965,7 +1129,12 @@ body:hover .cursor-glow {
     }
 }
 
-/* ===== রেস্পন্সিভ ===== */
+/* ============================================================
+   ২৬. রেস্পন্সিভ ডিজাইন (Responsive Design)
+   মোবাইল ও ট্যাবলেট ডিভাইসের জন্য স্টাইল ওভাররাইড।
+   ============================================================ */
+
+/* ----- ৭৬৮px-এর নিচে (ট্যাবলেট ও বড় মোবাইল) ----- */
 @media (max-width: 768px) {
     .main-wrapper {
         padding: 16px 14px 40px;
@@ -994,6 +1163,7 @@ body:hover .cursor-glow {
         padding: 10px 18px;
         font-size: 0.85rem;
     }
+    /* মোবাইলে নেভ বার ছোট ও স্ক্রলযোগ্য */
     .floating-nav {
         top: 12px;
         padding: 6px 8px;
@@ -1037,7 +1207,7 @@ body:hover .cursor-glow {
         flex: 0 0 20px;
     }
     .grid-2 {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;   /* এক কলামে পরিণত */
         gap: 16px;
     }
     .profile-card {
@@ -1060,6 +1230,7 @@ body:hover .cursor-glow {
     .info-card {
         padding: 18px 16px;
     }
+    /* টাইমলাইন মোবাইলে বাম পাশে শিফট */
     .timeline-line {
         left: 20px;
     }
@@ -1101,6 +1272,7 @@ body:hover .cursor-glow {
     #contact .section-title {
         margin-bottom: 24px;
     }
+    /* কন্টাক্ট ফর্ম মোবাইলে এক কলামে */
     .contact-form {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -1130,6 +1302,7 @@ body:hover .cursor-glow {
         padding: 20px 0;
         margin-top: 30px;
     }
+    /* স্ক্রল ইন্ডিকেটর স্ট্যাটিক */
     .scroll-indicator {
         position: static;
         left: auto;
@@ -1141,9 +1314,11 @@ body:hover .cursor-glow {
         font-size: 0.7rem;
     }
     .cursor-glow {
-        display: none;
+        display: none;   /* মোবাইলে কার্সার গ্লো লুকানো (পারফরম্যান্স) */
     }
 }
+
+/* ----- ৪৮০px-এর নিচে (ছোট মোবাইল) ----- */
 @media (max-width: 480px) {
     .hero-avatar-wrap {
         width: 140px;
