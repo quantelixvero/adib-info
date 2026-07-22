@@ -1,839 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HSC Math Interactive Question Bank</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true
-            },
-            startup: {
-                pageReady: () => {
-                    return MathJax.startup.defaultPageReady().then(() => {
-                        console.log('MathJax initial typesetting complete');
-                    });
-                }
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    <style>
-        body {
-            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
-        }
-        .tab-btn {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            border-radius: 0.5rem;
-        }
-        .tab-btn.active {
-            border-color: #2563eb;
-            color: #2563eb;
-            font-weight: 700;
-            background-color: #eff6ff;
-        }
-        .mcq-option {
-            transition: all 0.3s ease;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-        .mcq-option:hover:not(.answered) {
-            background-color: #f1f5f9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            cursor: pointer;
-        }
-        /* Correct and Wrong Colors based on User Request (Red/Green) */
-        .mcq-option.correct {
-            background-color: #22c55e !important; /* Tailwind Green 500 */
-            color: white !important;
-            border-color: #16a34a !important;
-            transform: scale(1.02);
-            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
-        }
-        .mcq-option.wrong {
-            background-color: #ef4444 !important; /* Tailwind Red 500 */
-            color: white !important;
-            border-color: #dc2626 !important;
-            transform: scale(0.98);
-        }
-        .mcq-option.disabled {
-            pointer-events: none;
-        }
-        .mcq-option.answered:not(.correct):not(.wrong) {
-            opacity: 0.5;
-            background-color: #f8fafc;
-        }
-        
-        .explanation-box, .cq-solution {
-            display: none;
-            animation: slideDown 0.4s ease-out forwards;
-            transform-origin: top;
-        }
-        
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px) scaleY(0.95); }
-            to { opacity: 1; transform: translateY(0) scaleY(1); }
-        }
-        
-        .math-container {
-            overflow-x: auto;
-            padding: 0.2rem 0;
-            line-height: 1.6;
-        }
-        
-        /* Custom scrollbar for math containers */
-        .math-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .math-container::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 4px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ঢাকা কলেজ ইয়ারলি হায়ার ম্যাথ কোশ্চেন and অ্যানসার</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$','$$'], ['\\[','\\]']]},
+      svg: {fontCache: 'global'}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap');
+    :root {
+      color-scheme: light;
+      --ink:#172033; --muted:#617087; --line:#d9e2ef; --paper:#ffffff; --paper-2:#f8fbff; --bg:#edf4fb;
+      --nav:#ffffff; --header:#102a4c; --header-2:#174d7d; --blue:#155dc0; --blue2:#e7f0ff;
+      --green:#16794c; --green2:#e8f8ef; --red:#b42318; --red2:#fff0ee; --gold:#b77900; --gold2:#fff5d6;
+      --shadow:0 16px 44px rgba(21, 38, 68, .12); --soft-shadow:0 8px 24px rgba(21, 38, 68, .08);
+    }
+    body[data-theme="dark"] {
+      color-scheme: dark;
+      --ink:#edf5ff; --muted:#a8b5c7; --line:#2d4058; --paper:#142236; --paper-2:#101b2b; --bg:#09121f;
+      --nav:#101b2b; --header:#07111f; --header-2:#123453; --blue:#79adff; --blue2:#17365f;
+      --green:#73d6a2; --green2:#143625; --red:#ff9b91; --red2:#3a1a19; --gold:#ffd36e; --gold2:#3b2f12;
+      --shadow:0 16px 44px rgba(0,0,0,.34); --soft-shadow:0 8px 24px rgba(0,0,0,.24);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Noto Sans Bengali","Hind Siliguri","SolaimanLipi","Nirmala UI","Segoe UI",system-ui,sans-serif;background:radial-gradient(circle at top left, rgba(21,93,192,.10), transparent 32rem),var(--bg);color:var(--ink);line-height:1.78;font-size:16px;transition:background .2s ease,color .2s ease}
+    header{background:linear-gradient(135deg,var(--header),var(--header-2));color:white;padding:30px 18px 22px;border-bottom:4px solid #f2c94c;box-shadow:var(--soft-shadow)}
+    .wrap{max-width:1200px;margin:auto}
+    h1{margin:0;font-size:clamp(25px,4vw,43px);letter-spacing:0;font-weight:800;line-height:1.25}
+    h2{margin:0 0 10px;font-size:22px;line-height:1.35}
+    .sub{margin:8px 0 0;color:#dceaff;font-weight:500}
+    nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--nav) 94%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    .tabs{display:flex;gap:8px;align-items:center;overflow:auto;padding:10px 18px}
+    button,a.dev{font:inherit}
+    .tab,.dev,.theme-toggle,.smallbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 14px;border-radius:7px;cursor:pointer;text-decoration:none;white-space:nowrap;box-shadow:0 1px 0 rgba(16,24,40,.03);transition:background .15s ease,border-color .15s ease,transform .15s ease,color .15s ease}
+    .tab:hover,.dev:hover,.theme-toggle:hover,.smallbtn:hover,.cqbtn:hover,.option:hover{transform:translateY(-1px)}
+    .tab.active{background:var(--blue);border-color:var(--blue);color:white}
+    .dev{margin-left:auto;background:var(--gold2);border-color:color-mix(in srgb,var(--gold) 45%,var(--line));color:var(--gold);font-weight:700}
+    .theme-toggle{font-weight:700;min-width:104px}
+    main{padding:24px 18px 50px}
+    .panel{display:none}.panel.active{display:block}
+    .grid{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:18px;align-items:start}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    .search{min-width:230px;flex:1;border:1px solid var(--line);padding:12px 13px;border-radius:7px;font:inherit;background:var(--paper);color:var(--ink);outline:none;box-shadow:var(--soft-shadow)}
+    .search:focus{border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 18%,transparent)}
+    .stat{color:var(--muted);font-size:14px;font-weight:500}
+    .card{background:linear-gradient(180deg,var(--paper),var(--paper-2));border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+    .qhead{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+    .badge{background:var(--blue2);color:var(--blue);font-weight:800;border-radius:6px;padding:3px 9px;min-width:44px;text-align:center;border:1px solid color-mix(in srgb,var(--blue) 18%,var(--line))}
+    .question{font-weight:700;font-size:18px;color:var(--ink)}
+    .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+    .option{text-align:left;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:7px;padding:11px 12px;cursor:pointer;min-height:54px;box-shadow:0 1px 0 rgba(16,24,40,.03);transition:background .15s ease,border-color .15s ease,transform .15s ease}
+    .option:hover{border-color:var(--blue);background:var(--blue2)}
+    .option.correct{border-color:var(--green);background:var(--green2);color:var(--green)}
+    .option.wrong{border-color:var(--red);background:var(--red2);color:var(--red)}
+    .feedback{display:none;margin-top:13px;border-top:1px dashed var(--line);padding-top:12px}.feedback.show{display:block}
+    .ok{color:var(--green);font-weight:800}.bad{color:var(--red);font-weight:800}
+    .answer{margin-top:5px}.explain{white-space:pre-wrap;margin-top:8px;color:var(--ink)}
+    .side{position:sticky;top:76px}.drive{width:100%;height:520px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+    .cq-list{display:flex;gap:8px;overflow:auto;margin-bottom:14px;padding-bottom:4px}
+    .cqbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:7px;padding:9px 12px;white-space:nowrap;cursor:pointer;transition:background .15s ease,border-color .15s ease,transform .15s ease}
+    .cqbtn.active{background:var(--green);color:var(--paper);border-color:var(--green)}
+    .cqbody{white-space:pre-wrap;font-size:17px}.note{background:var(--gold2);border:1px solid color-mix(in srgb,var(--gold) 40%,var(--line));color:var(--gold);border-radius:8px;padding:12px;margin-bottom:14px}.smallbtn{padding:9px 12px}
+    footer{color:var(--muted);font-size:14px;text-align:center;padding:22px}
+    mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.side{position:static}.options{grid-template-columns:1fr}.dev{margin-left:0}.tabs{align-items:stretch}.theme-toggle{margin-left:0}}
+  </style>
 </head>
-<body class="min-h-screen flex flex-col">
-
-    <!-- বাম পাশের ছোট ফ্লোটিং নেভিগেশন -->
-    <div class="fixed left-2 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-3">
-        <button onclick="switchTab('mcq')" title="MCQ সেকশনে যান" class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-white shadow-lg border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 active:scale-95">
-            <span class="text-[10px] font-bold">MCQ</span>
-        </button>
-        <button onclick="switchTab('cq')" title="CQ সেকশনে যান" class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-white shadow-lg border border-indigo-200 text-indigo-700 hover:bg-indigo-600 hover:text-white transition-all transform hover:scale-105 active:scale-95">
-            <span class="text-[10px] font-bold">CQ</span>
-        </button>
+<body>
+<header><div class="wrap"><h1>ঢাকা কলেজ ইয়ারলি হায়ার ম্যাথ কোশ্চেন and অ্যানসার</h1><p class="sub">MCQ প্র্যাকটিস, CQ সমাধান, এবং মূল প্রশ্নপত্র এক জায়গায়</p></div></header>
+<nav><div class="wrap tabs"><button class="tab active" data-panel="mcq">MCQ Practice</button><button class="tab" data-panel="cq">Creative Question (CQ)</button><button class="tab" data-panel="paper">Question Paper</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark Mode</button><a class="dev" href="https://adi.pro.bd/" target="_blank" rel="noopener">Developer</a></div></nav>
+<main class="wrap">
+<section id="mcq" class="panel active">
+  <div class="grid">
+    <div>
+      <div class="toolbar"><input id="search" class="search" placeholder="প্রশ্ন খুঁজুন..."><button id="reset" class="smallbtn">Reset</button><span id="score" class="stat"></span></div>
+      <div id="mcqList"></div>
     </div>
-
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-3 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
-            <div class="flex items-center gap-2 order-2 md:order-1 w-full md:w-auto justify-center md:justify-start">
-                <button id="tab-mcq" class="tab-btn active px-4 md:px-5 py-2 text-sm md:text-base text-slate-600 font-semibold focus:outline-none" onclick="switchTab('mcq')">বহুনির্বাচনি (MCQ)</button>
-            <button id="tab-cq" class="tab-btn px-4 md:px-5 py-2 text-sm md:text-base text-slate-600 font-semibold focus:outline-none" onclick="switchTab('cq')">সৃজনশীল (CQ)</button>
-        </div>
-        <div class="order-1 md:order-2 flex items-center gap-3 md:gap-4 text-center md:text-right">
-            <!-- ছোট শর্টকাট বাটন -->
-            <div class="hidden md:flex flex-col gap-1">
-                <button onclick="switchTab('mcq')" class="text-[9px] uppercase bg-blue-100 hover:bg-blue-200 text-blue-800 px-2 py-0.5 rounded font-bold transition-all border border-blue-200">MCQ</button>
-                <button onclick="switchTab('cq')" class="text-[9px] uppercase bg-indigo-100 hover:bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded font-bold transition-all border border-indigo-200">CQ</button>
-            </div>
-            <div>
-                <h1 class="text-lg md:text-2xl font-extrabold text-blue-800 drop-shadow-sm">উচ্চতর গণিত - পূর্ণাঙ্গ প্রশ্নব্যাংক</h1>
-                <p class="text-slate-500 text-xs md:text-sm mt-0.5 font-medium">২৫টি MCQ এবং ৮টি CQ বিস্তারিত সমাধান</p>
-            </div>
-        </div>
-    </div>
-</header>
-
-    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
-        <!-- MCQ Section -->
-        <section id="section-mcq" class="space-y-8">
-            <div class="bg-blue-50 border border-blue-200 text-blue-800 px-6 py-4 rounded-lg mb-8 shadow-sm flex items-center gap-4">
-                <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold">i</div>
-                <p><strong>নির্দেশনা:</strong> নিচের অপশনগুলোতে ক্লিক করে আপনার উত্তর যাচাই করুন। সঠিক হলে <span class="text-green-600 font-bold">সবুজ</span> এবং ভুল হলে <span class="text-red-600 font-bold">লাল</span> রঙ দেখাবে। সাথে বিস্তারিত ব্যাখ্যাও দেখতে পাবেন।</p>
-            </div>
-            <div id="mcq-container" class="grid grid-cols-1 gap-8"></div>
-        </section>
-
-        <!-- CQ Section -->
-        <section id="section-cq" class="space-y-10 hidden">
-            <div class="bg-indigo-50 border border-indigo-200 text-indigo-800 px-6 py-4 rounded-lg mb-8 shadow-sm flex items-center gap-4">
-                <div class="bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold">i</div>
-                <p><strong>নির্দেশনা:</strong> প্রতিটি সৃজনশীল প্রশ্নের (ক, খ, গ) উত্তর দেখতে <strong>"বিস্তারিত সমাধান দেখুন"</strong> বাটনে ক্লিক করুন।</p>
-            </div>
-            <div id="cq-container" class="grid grid-cols-1 gap-10"></div>
-        </section>
-    </main>
-
-    <footer class="bg-slate-900 text-slate-300 py-8 mt-auto border-t-4 border-blue-600">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-xl font-bold text-white mb-2">HSC Higher Math Interactive Learning</h2>
-            <p class="text-sm">সবগুলো প্রশ্নের পুঙ্খানুপুঙ্খ ব্যাখ্যামূলক সমাধান অন্তর্ভুক্ত করা হয়েছে।</p>
-            <p class="text-xs mt-4 text-slate-500">&copy; 2024 Interactive Education platform.</p>
-        </div>
-    </footer>
-
-    <script>
-        // সম্পুর্ণ ২৫টি MCQ এবং বিস্তারিত ব্যাখ্যা
-        const mcqs = [
-            {
-                id: 1,
-                question: "$\\begin{matrix}2&-1&0\\\\ 4&3&-5\\\\ 7&6&-8\\end{matrix}$ নির্ণায়কে (2,1) তম সহগুনকের মান-",
-                options: ["-8", "-3", "3", "8"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>প্রদত্ত নির্ণায়কের (2,1) তম ভুক্তি হলো 4।<br>যেকোনো ভুক্তির সহগুণক নির্ণয়ের সূত্র: $(-1)^{i+j} \\times M_{ij}$ (যেখানে $M_{ij}$ হলো অনুরাশি)।<br>(2,1) তম ভুক্তির সহগুণক $=(-1)^{2+1} \\times |\\begin{matrix}-1&0\\\\ 6&-8\\end{matrix}|$ <br> $=(-1)^3 \\times ((-1) \\times (-8) - 0 \\times 6)$ <br> $=-1 \\times (8 - 0) = -8$<br><br><span class='text-red-600 text-xs'>বাকি অপশনগুলো কেন ভুল?</span><br><span class='text-xs'>অন্যান্য অপশনগুলো সহগুণকের চিহ্নের ভুল (যেমন ঋণাত্মক চিহ্নের পরিবর্তে ধনাত্মক ধরা) অথবা নির্ণায়কের ভুল বিস্তারের কারণে সঠিক নয়।</span>"
-            },
-            {
-                id: 2,
-                question: "$A=\\begin{matrix}1&0&0\\\\ 0&2&0\\\\ 0&0&3\\end{matrix}$ একটি- <br>i. প্রতিসম ম্যাট্রিক্স <br>ii. কর্ণ ম্যাট্রিক্স <br>iii. স্কেলার ম্যাট্রিক্স। <br>নিচের কোনটি সঠিক?",
-                options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>ম্যাট্রিক্সটির প্রধান কর্ণের উপাদানগুলো বাদে বাকি সব উপাদান শূন্য, তাই এটি একটি <strong>কর্ণ ম্যাট্রিক্স (ii সঠিক)</strong>।<br>যেকোনো কর্ণ ম্যাট্রিক্সের ক্ষেত্রে $A^T=A$ হয়, ফলে এটি একটি <strong>প্রতিসম ম্যাট্রিক্স (i সঠিক)</strong>।<br>স্কেলার ম্যাট্রিক্স হওয়ার শর্ত হলো প্রধান কর্ণের সবগুলো উপাদান সমান হতে হবে, কিন্তু এখানে উপাদানগুলো (1, 2, 3) ভিন্ন, তাই এটি <strong>স্কেলার ম্যাট্রিক্স নয় (iii ভুল)</strong>।<br>সুতরাং, সঠিক উত্তর i ও ii।"
-            },
-            {
-                id: 3,
-                question: "$|(2A)^{-1}|$ এর মান কত, যেখানে $A=\\begin{matrix}1&0&0\\\\ 0&2&0\\\\ 0&0&3\\end{matrix}$?",
-                options: ["$\\frac{1}{48}$", "$-\\frac{1}{48}$", "$-\\frac{1}{12}$", "$\\frac{1}{12}$"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>উদ্দীপকের ম্যাট্রিক্স $A$ একটি $3 \\times 3$ ম্যাট্রিক্স।<br>এর নির্ণায়কের মান, $|A| = 1 \\times 2 \\times 3 = 6$।<br>আমরা জানি, $k$ যদি একটি ধ্রুবক হয় এবং $A$ যদি $n \\times n$ ম্যাট্রিক্স হয়, তবে $|kA| = k^n|A|$।<br>এখানে $n=3$ এবং $k=2$, তাই $|2A| = 2^3 \\times |A| = 8 \\times 6 = 48$।<br>আবার, ইনভার্স ম্যাট্রিক্সের নির্ণায়কের সূত্রানুযায়ী, $|M^{-1}| = \\frac{1}{|M|}$<br>অতএব, $|(2A)^{-1}| = \\frac{1}{|2A|} = \\frac{1}{48}$।"
-            },
-            {
-                id: 4,
-                question: "$A=\\begin{matrix}-1&-1\\\\ 2&-3\\end{matrix}$ হলে $Adj(A)=?$",
-                options: ["$\\begin{matrix}-3&1\\\\ 2&1\\end{matrix}$", "$\\begin{matrix}-3&1\\\\ -2&-1\\end{matrix}$", "$\\begin{matrix}3&1\\\\ -2&-1\\end{matrix}$", "$\\begin{matrix}-3&-1\\\\ -2&-1\\end{matrix}$"],
-                correct: 1,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?</strong><br>$2 \\times 2$ ম্যাট্রিক্সের $Adj(A)$ (অ্যাডজয়েন্ট ম্যাট্রিক্স) নির্ণয়ের সংক্ষিপ্ত নিয়ম হলো:<br>১. প্রধান কর্ণের ভুক্তিগুলো ($-1$ এবং $-3$) নিজেদের মধ্যে স্থান বিনিময় করবে।<br>২. গৌণ কর্ণের ভুক্তিগুলো ($-1$ এবং $2$) তাদের চিহ্ন পরিবর্তন করবে।<br>এই নিয়ম প্রয়োগ করলে, প্রধান কর্ণ হবে $-3$ এবং $-1$। গৌণ কর্ণ হবে $1$ এবং $-2$।<br>$\\therefore Adj(A)=\\begin{matrix}-3&1\\\\ -2&-1\\end{matrix}$"
-            },
-            {
-                id: 5,
-                question: "একটি সভা শেষে প্রত্যেকে প্রত্যেকের সাথে করমর্দন করলেন। করমর্দনের সংখ্যা 55 হলে কত জন সভায় উপস্থিত ছিলেন?",
-                options: ["11", "12", "24", "33"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>ধরি, সভায় উপস্থিত মোট সদস্য সংখ্যা $n$।<br>দুজন ব্যক্তির মধ্যে ১ বার করমর্দন হয়, তাই মোট করমর্দনের সংখ্যা হবে $n$ জন থেকে ২ জন বাছাই করার উপায় অর্থাৎ $^nC_2$।<br>প্রশ্নমতে, $^nC_2 = 55$<br>$\\Rightarrow \\frac{n(n-1)}{2} = 55$<br>$\\Rightarrow n^2 - n - 110 = 0$<br>$\\Rightarrow n^2 - 11n + 10n - 110 = 0$<br>$\\Rightarrow (n-11)(n+10) = 0$<br>$\\therefore n=11$ (যেহেতু সদস্য সংখ্যা ঋণাত্মক অর্থাৎ -10 হতে পারে না)।"
-            },
-            {
-                id: 6,
-                question: "'COLLEGE' শব্দটির বর্ণগুলোর বিন্যাস সংখ্যা-",
-                options: ["1260", "2520", "5040", "160"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>'COLLEGE' শব্দটিতে মোট বর্ণ আছে 7 টি।<br>এখানে একই রকম বর্ণ 'L' আছে 2 টি এবং 'E' আছে 2 টি।<br>মোট বিন্যাস সংখ্যা $= \\frac{7!}{2! \\times 2!} = \\frac{5040}{2 \\times 2} = \\frac{5040}{4} = 1260$<br><span class='text-xs text-gray-500'>পুনরাবৃত্ত বর্ণগুলোর জন্য তাদের ফ্যাক্টোরিয়াল দিয়ে ভাগ করতে হয়।</span>"
-            },
-            {
-                id: 7,
-                question: "$f(x)=(x-3)^2$ ফাংশনের শীর্ষবিন্দু কোনটি?",
-                options: ["(3, 0)", "(0, 3)", "(-3, 0)", "(0, -3)"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>প্রদত্ত ফাংশনটি হলো $y=(x-3)^2$<br>এটি একটি পরাবৃত্তের সমীকরণ যাকে আদর্শ রূপ $(x-h)^2=4a(y-k)$ এর সাথে তুলনা করা যায়।<br>এখানে তুলনা করলে পাওয়া যায়, $(x-3)^2 = 4 \\times (1/4) \\times (y-0)$।<br>সুতরাং, শীর্ষবিন্দু $(h,k) = (3,0)$।<br>যেহেতু $x^2$ এর সহগ ধনাত্মক, তাই পরাবৃত্তটি উপরের দিকে খোলা (U-আকৃতির) হবে এবং X-অক্ষকে $(3,0)$ বিন্দুতে স্পর্শ করবে।"
-            },
-            {
-                id: 8,
-                question: "$f(x)=2x+5, g(x)=3x+2$ হলে $(f \\circ g)(-1)$ এর মান-",
-                options: ["-7", "-3", "3", "7"],
-                correct: 2,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?</strong><br>সংযোজিত ফাংশনের সংজ্ঞানুসারে, $(f \\circ g)(x) = f(g(x))$<br>প্রথমে $x=-1$ এর জন্য $g(-1)$ এর মান নির্ণয় করি:<br>$g(-1) = 3(-1)+2 = -3+2 = -1$<br>এখন এই মানটি $f(x)$ এ বসাই:<br>$(f \\circ g)(-1) = f(g(-1)) = f(-1)$<br>$f(-1) = 2(-1)+5 = -2+5 = 3$"
-            },
-            {
-                id: 9,
-                question: "(2,5) ও (-4,-6) বিন্দুদ্বয়ের সংযোগ রেখাংশকে X-অক্ষ কি অনুপাতে বিভক্ত করে?",
-                options: ["5:6", "6:5", "1:2", "2:1"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>ধরি, X-অক্ষ প্রদত্ত রেখাংশটিকে $m_1:m_2$ অনুপাতে বিভক্ত করে।<br>আমরা জানি, X-অক্ষের উপর অবস্থিত যেকোনো বিন্দুর কোটি (y-স্থানাঙ্ক) শূন্য ($y=0$)।<br>অন্তর্বিভক্তকারী বিন্দুর কোটি $y = \\frac{m_1y_2+m_2y_1}{m_1+m_2}$<br>$0 = \\frac{m_1(-6)+m_2(5)}{m_1+m_2}$<br>$-6m_1+5m_2 = 0 \\Rightarrow 6m_1 = 5m_2$<br>$\\Rightarrow \\frac{m_1}{m_2} = \\frac{5}{6}$<br>নির্ণেয় অনুপাত $= 5:6$"
-            },
-            {
-                id: 10,
-                question: "$\\sqrt{3}x-2y+6=0$ এবং $3x+ky-5=0$ সরলরেখাদ্বয় পরস্পর লম্ব হলে k এর মান-",
-                options: ["$-2\\sqrt{3}$", "$-\\frac{3\\sqrt{3}}{2}$", "$\\frac{3\\sqrt{3}}{2}$", "$2\\sqrt{3}$"],
-                correct: 2,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?</strong><br>প্রথম সরলরেখার ঢাল $m_1 = -\\frac{x \\text{ এর সহগ}}{y \\text{ এর সহগ}} = -\\frac{\\sqrt{3}}{-2} = \\frac{\\sqrt{3}}{2}$<br>দ্বিতীয় সরলরেখার ঢাল $m_2 = -\\frac{3}{k}$<br>সরলরেখাদ্বয় লম্ব হওয়ার গাণিতিক শর্ত হলো তাদের ঢালদ্বয়ের গুণফল -1 হতে হবে: $m_1 \\times m_2 = -1$<br>$\\frac{\\sqrt{3}}{2} \\times \\left(-\\frac{3}{k}\\right) = -1$<br>$\\frac{-3\\sqrt{3}}{2k} = -1 \\Rightarrow 2k = 3\\sqrt{3} \\Rightarrow k = \\frac{3\\sqrt{3}}{2}$"
-            },
-            {
-                id: 11,
-                question: "$\\sqrt{3}x-y+6=0$ সরলরেখাটি x-অক্ষের সাথে কত কোণ উৎপন্ন করে?",
-                options: ["$30^\\circ$", "$60^\\circ$", "$90^\\circ$", "$120^\\circ$"],
-                correct: 1,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?</strong><br>সমীকরণ: $\\sqrt{3}x-y+6=0 \\Rightarrow y = \\sqrt{3}x + 6$<br>আমরা জানি $y=mx+c$ সমীকরণে $m$ হলো ঢাল। এখানে ঢাল, $m = \\sqrt{3}$।<br>ঢালের সূত্রানুযায়ী, $\\tan \\theta = m$<br>$\\tan \\theta = \\sqrt{3} = \\tan 60^\\circ$<br>$\\therefore \\theta = 60^\\circ$"
-            },
-            {
-                id: 12,
-                question: "$\\frac{1}{2}$ ঢালবিশিষ্ট সরলরেখাটি $kx+2y-5=0$ সরলরেখার উপর লম্ব হলে k এর মান-",
-                options: ["$\\frac{1}{4}$", "$\\frac{1}{2}$", "2", "4"],
-                correct: 3,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ঘ' সঠিক?</strong><br>প্রথম রেখার ঢাল $m_1 = \\frac{1}{2}$<br>দ্বিতীয় রেখা: $kx+2y-5=0 \\Rightarrow 2y = -kx+5 \\Rightarrow y = -\\frac{k}{2}x + \\frac{5}{2}$<br>দ্বিতীয় রেখার ঢাল $m_2 = -\\frac{k}{2}$<br>লম্ব হওয়ার শর্ত: $m_1 \\times m_2 = -1$<br>$\\frac{1}{2} \\times \\left(-\\frac{k}{2}\\right) = -1 \\Rightarrow -\\frac{k}{4} = -1 \\Rightarrow k = 4$"
-            },
-            {
-                id: 13,
-                question: "$x^2+y^2-4x+6y-12=0$ বৃত্তের ব্যাসার্ধ কত?",
-                options: ["3", "4", "5", "25"],
-                correct: 2,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা :</strong><br>বৃত্তের সাধারণ সমীকরণ $x^2+y^2+2gx+2fy+c=0$ এর সাথে তুলনা করে পাই:<br>$2g = -4 \\Rightarrow g = -2$<br>$2f = 6 \\Rightarrow f = 3$<br>$c = -12$<br>ব্যাসার্ধ $r = \\sqrt{g^2+f^2-c} = \\sqrt{(-2)^2 + 3^2 - (-12)} = \\sqrt{4+9+12} = \\sqrt{25} = 5$"
-            },
-            {
-                id: 14,
-                question: "$(3, 4)$ বিন্দুগামী এবং কেন্দ্র মূলবিন্দুতে অবস্থিত বৃত্তের সমীকরণ কোনটি?",
-                options: ["$x^2+y^2=5$", "$x^2+y^2=7$", "$x^2+y^2=25$", "$x^2+y^2=12$"],
-                correct: 2,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা :</strong><br>কেন্দ্র $(0,0)$ থেকে বৃত্তের উপরস্থ যেকোনো বিন্দু $(3,4)$ এর দূরত্বই হলো ব্যাসার্ধ $r$।<br>$r = \\sqrt{(3-0)^2 + (4-0)^2} = \\sqrt{3^2+4^2} = \\sqrt{9+16} = \\sqrt{25} = 5$<br>কেন্দ্র মূলবিন্দুতে হলে বৃত্তের সমীকরণ: $x^2+y^2 = r^2$<br>$\\Rightarrow x^2+y^2 = 5^2 \\Rightarrow x^2+y^2 = 25$"
-            },
-            {
-                id: 15,
-                question: "$x^2+y^2-2x-4y-4=0$ বৃত্তের (1,-1) বিন্দুতে স্পর্শকের সমীকরণ-",
-                options: ["$y+1=0$", "$y-1=0$", "$x+1=0$", "$x-1=0$"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>যেকোনো বৃত্ত $x^2+y^2+2gx+2fy+c=0$ এর উপরস্থ $(x_1, y_1)$ বিন্দুতে স্পর্শকের সমীকরণ:<br>$xx_1+yy_1+g(x+x_1)+f(y+y_1)+c=0$<br>প্রদত্ত বৃত্তে, $2g=-2 \\Rightarrow g=-1$, $2f=-4 \\Rightarrow f=-2$, $c=-4$ এবং বিন্দু $(1,-1)$।<br>মানগুলো বসিয়ে পাই:<br>$x(1)+y(-1)-1(x+1)-2(y-1)-4=0$<br>$x-y-x-1-2y+2-4=0 \\Rightarrow -3y-3=0 \\Rightarrow -3(y+1)=0 \\Rightarrow y+1=0$"
-            },
-            {
-                id: 16,
-                question: "(2,3) কেন্দ্র এবং 10 একক ব্যাসবিশিষ্ট বৃত্তটি দ্বারা x-অক্ষের খন্ডিত অংশের দৈর্ঘ্য হবে-",
-                options: ["4 একক", "8 একক", "$\\sqrt{21}$ একক", "$2\\sqrt{21}$ একক"],
-                correct: 1,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?</strong><br>কেন্দ্র $(h,k)=(2,3)$ এবং ব্যাসার্ধ $r=\\frac{10}{2}=5$।<br>বৃত্তের সমীকরণ: $(x-2)^2+(y-3)^2=5^2 \\Rightarrow x^2-4x+4+y^2-6y+9=25$<br>$\\Rightarrow x^2+y^2-4x-6y-12=0$<br>বৃত্তটির সাধারণ সমীকরণের সাথে তুলনা করে পাই, $g=-2$, $f=-3$, $c=-12$।<br>X-অক্ষের খণ্ডিত অংশের দৈর্ঘ্য $= 2\\sqrt{g^2-c} = 2\\sqrt{(-2)^2-(-12)} = 2\\sqrt{4+12} = 2\\sqrt{16} = 2 \\times 4 = 8$"
-            },
-            {
-                id: 17,
-                question: "$x^2+y^2-6x-4y-12=0$ বৃত্তটি- <br>i. মূলবিন্দুগামী নয় <br>ii. x-অক্ষ থেকে $2\\sqrt{21}$ একক অংশ খন্ডন করে <br>iii. একটি বিন্দুবৃত্ত। <br>কোনটি সঠিক?",
-                options: ["i ও ii", "i ও iii", "ii ও iii", "i, ii ও iii"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>১. প্রদত্ত সমীকরণে ধ্রুবক পদ $c=-12 \\neq 0$, তাই এটি মূলবিন্দুগামী নয় (i সঠিক)।<br>২. X-অক্ষ থেকে খণ্ডিত অংশ $= 2\\sqrt{g^2-c} = 2\\sqrt{(-3)^2-(-12)} = 2\\sqrt{9+12} = 2\\sqrt{21}$ (ii সঠিক)।<br>৩. বৃত্তের ব্যাসার্ধ $r=\\sqrt{9+4-(-12)}=\\sqrt{25}=5$। যেহেতু ব্যাসার্ধ শূন্য নয়, তাই এটি বিন্দুবৃত্ত নয় (iii ভুল)।<br>সুতরাং, সঠিক উত্তর i ও ii।"
-            },
-            {
-                id: 18,
-                question: "২ টা 45 মিনিটের সময় ঘন্টার কাঁটা ও মিনিটের কাঁটার অন্তর্গত কোণ-",
-                options: ["$22.5^\\circ$", "$157.5^\\circ$", "$172.5^\\circ$", "$187.5^\\circ$"],
-                correct: 2,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?</strong><br>ঘড়ির কাঁটার মধ্যবর্তী কোণ নির্ণয়ের সূত্র: $\\theta = |30H - 5.5M|$<br>যেখানে $H=2$ (ঘণ্টা) এবং $M=45$ (মিনিট)।<br>$\\theta = |30(2) - 5.5(45)| = |60 - 247.5| = |-187.5| = 187.5^\\circ$<br>যেহেতু কোণটি $180^\\circ$ এর চেয়ে বড় (প্রবৃদ্ধ কোণ), তাই অন্তর্গত ক্ষুদ্রতর কোণ হবে: $360^\\circ - 187.5^\\circ = 172.5^\\circ$"
-            },
-            {
-                id: 19,
-                question: "$f(x)=2+\\sqrt{2+\\sin^2x}$ এর সর্বোচ্চ মান-",
-                options: ["2", "$2-\\sqrt{2}$", "$2+\\sqrt{2}$", "$2+\\sqrt{3}$"],
-                correct: 3,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ঘ' সঠিক?</strong><br>আমরা জানি, বাস্তব সংখ্যার ক্ষেত্রে $\\sin x$ এর মান $-1$ থেকে $1$ এর মধ্যে থাকে।<br>সুতরাং, $\\sin^2 x$ এর মান $0$ থেকে $1$ এর মধ্যে থাকবে।<br>$f(x)$ এর মান সর্বোচ্চ হবে যখন $\\sin^2 x$ এর মান সর্বোচ্চ হবে, অর্থাৎ $1$ হবে।<br>$f(x)_{max} = 2+\\sqrt{2+1} = 2+\\sqrt{3}$"
-            },
-            {
-                id: 20,
-                question: "n জোড় সংখ্যা হলে $\\cos\\{2n\\pi+(-1)^n\\frac{\\pi}{3}\\}$ এর মান-",
-                options: ["$-\\frac{1}{2}$", "$-\\frac{\\sqrt{3}}{2}$", "$\\frac{1}{2}$", "$\\frac{\\sqrt{3}}{2}$"],
-                correct: 2,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?</strong><br>যেহেতু $n$ জোড় সংখ্যা, ধরি $n=2k$। তখন $(-1)^n = (-1)^{2k} = 1$ হবে।<br>প্রদত্ত রাশি $= \\cos(2n\\pi+\\frac{\\pi}{3})$<br>যেহেতু $2n\\pi$ হলো $2\\pi$ এর পূর্ণ গুণিতক, এটি প্রথম চতুর্ভাগে নির্দেশ করে।<br>$\\cos(2n\\pi+\\frac{\\pi}{3}) = \\cos(\\frac{\\pi}{3}) = \\cos(60^\\circ) = \\frac{1}{2}$"
-            },
-            {
-                id: 21,
-                question: "একক ব্যাসার্ধের বৃত্তে অন্তর্লিখিত একটি সমবাহু ত্রিভুজের বাহুর দৈর্ঘ্য কত একক?",
-                options: ["1", "$\\frac{\\sqrt{3}}{2}$", "$\\sqrt{3}$", "2"],
-                correct: 2,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?</strong><br>আমরা জানি, সাইন সূত্রানুযায়ী যেকোনো ত্রিভুজের ক্ষেত্রে $\\frac{a}{\\sin A}=2R$<br>যেখানে $R$ হলো পরিবৃত্তের ব্যাসার্ধ এবং সমবাহু ত্রিভুজের ক্ষেত্রে প্রতিটি কোণ $A=60^\\circ$। এখানে $R=1$।<br>$\\frac{a}{\\sin 60^\\circ} = 2(1)$<br>$a = 2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}$"
-            },
-            {
-                id: 22,
-                question: "x এর সাপেক্ষে $\\frac{\\sqrt{1+\\sin 4x}}{\\sin 2x+\\cos 2x}$ এর অন্তরজ কোনটি? (যেখানে $0 < x < \\frac{\\pi}{4}$)",
-                options: ["0", "1", "$2\\sin 2x$", "$2\\cos 2x$"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>প্রথমে লব সরল করি: $\\sqrt{1+\\sin 4x}$<br>আমরা লিখতে পারি, $1 = \\sin^2 2x+\\cos^2 2x$ এবং $\\sin 4x = 2\\sin 2x\\cos 2x$<br>লব $= \\sqrt{\\sin^2 2x+\\cos^2 2x+2\\sin 2x\\cos 2x} = \\sqrt{(\\sin 2x+\\cos 2x)^2} = \\sin 2x+\\cos 2x$<br>প্রদত্ত রাশি $y = \\frac{\\sin 2x+\\cos 2x}{\\sin 2x+\\cos 2x} = 1$<br>এখন, ধ্রুবকের অন্তরজ শূন্য হয়। $\\frac{dy}{dx} = \\frac{d}{dx}(1) = 0$"
-            },
-            {
-                id: 23,
-                question: "$\\frac{d^n}{dx^n}(\\sin x) = ?$",
-                options: ["$\\sin(n\\pi+x)$", "$\\sin(\\frac{n\\pi}{2}+x)$", "$\\cos(n\\pi+x)$", "$\\cos(\\frac{n\\pi}{2}+x)$"],
-                correct: 1,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?</strong><br>ধরি, $y = \\sin x$<br>$y_1 = \\frac{d}{dx}(\\sin x) = \\cos x = \\sin(x+\\frac{\\pi}{2})$<br>$y_2 = \\frac{d^2}{dx^2}(\\sin x) = -\\sin x = \\sin(x+2\\frac{\\pi}{2})$<br>$y_3 = \\frac{d^3}{dx^3}(\\sin x) = -\\cos x = \\sin(x+3\\frac{\\pi}{2})$<br>একই প্যাটার্ন অনুসরণ করে, $n$-তম অন্তরজ হবে: $y_n = \\sin(x+\\frac{n\\pi}{2})$"
-            },
-            {
-                id: 24,
-                question: "$\\int \\sec^2 x e^{\\tan x} dx = ?$",
-                options: ["$e^{\\tan x}+c$", "$-e^{\\tan x}+c$", "$e^{\\cot x}+c$", "$-e^{\\cot x}+c$"],
-                correct: 0,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?</strong><br>ধরি, $z = \\tan x$<br>$x$ এর সাপেক্ষে অন্তরীকরণ করে পাই, $\\frac{dz}{dx} = \\sec^2 x \\Rightarrow dz = \\sec^2 x dx$<br>এখন সমাকলনে মানগুলো বসাই:<br>$\\int e^{\\tan x} \\sec^2 x dx = \\int e^z dz$<br>আমরা জানি $\\int e^z dz = e^z+c$<br>$z$ এর মান পুনরায় বসালে পাই: $= e^{\\tan x}+c$"
-            },
-            {
-                id: 25,
-                question: "$\\int_0^{\\pi/2} \\frac{dx}{1+\\cos x} = ?$",
-                options: ["0", "1", "$\\frac{1}{2}$", "$\\frac{3}{2}$"],
-                correct: 1,
-                explanation: "<strong>বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?</strong><br>প্রদত্ত সমাকলন: $I = \\int_0^{\\pi/2} \\frac{dx}{1+\\cos x}$<br>আমরা জানি, $1+\\cos x = 2\\cos^2(\\frac{x}{2})$<br>$I = \\int_0^{\\pi/2} \\frac{dx}{2\\cos^2(\\frac{x}{2})} = \\frac{1}{2} \\int_0^{\\pi/2} \\sec^2(\\frac{x}{2}) dx$<br>সমাকলন করলে পাই: $I = \\frac{1}{2} \\left[ \\frac{\\tan(\\frac{x}{2})}{1/2} \\right]_0^{\\pi/2} = \\left[ \\tan(\\frac{x}{2}) \\right]_0^{\\pi/2}$<br>উচ্চ ও নিম্ন সীমা বসিয়ে পাই:<br>$I = \\tan(\\frac{\\pi}{4}) - \\tan(0) = 1 - 0 = 1$"
-            }
-        ];
-
-        // সম্পুর্ণ ৮টি CQ এবং একদম বিস্তারিত সমাধান
-        const cqs = [
-            {
-                id: 1,
-                stem: "উদ্দীপক: $A=\\begin{matrix}b+c&a+b&a\\\\ c+a&b+c&b\\\\ a+b&c+a&c\\end{matrix}$ এবং $B=\\begin{matrix}2&1&-1\\\\ 0&2&1\\\\ 5&2&-3\\end{matrix}$",
-                q_ka: "ক. দেখাও যে, $\\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix}$ একটি শূন্যঘাতি ম্যাট্রিক্স এবং এর সূচক 2।",
-                q_kha: "খ. দেখাও যে, $|A|=a^3+b^3+c^3-3abc$",
-                q_ga: "গ. $(B^T)^{-1}$ নির্ণয় করো।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            ধরি, প্রদত্ত ম্যাট্রিক্স $M=\\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix}$<br>
-                            $M^2 = M \\times M = \\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix} \\times \\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix}$<br>
-                            $= \\begin{matrix}(pq)(pq)+(q^2)(-p^2)&(pq)(q^2)+(q^2)(-pq)\\\\ (-p^2)(pq)+(-pq)(-p^2)&(-p^2)(q^2)+(-pq)(-pq)\\end{matrix}$<br>
-                            $= \\begin{matrix}p^2q^2-p^2q^2&pq^3-pq^3\\\\ -p^3q+p^3q& -p^2q^2+p^2q^2\\end{matrix} = \\begin{matrix}0&0\\\\ 0&0\\end{matrix}$<br>
-                            যেহেতু $M^2 = 0$, তাই এটি সূচক 2 বিশিষ্ট শূন্যঘাতী ম্যাট্রিক্স। (প্রমাণিত)<br>
-                            <span class="text-xs text-gray-500 mt-2 block"><b>নোট:</b> কোনো বর্গ ম্যাট্রিক্স $A$ কে শূন্যঘাতী বলা হবে যদি এর কোনো ধনাত্মক পূর্ণসংখ্যক ঘাত $k$ এর জন্য $A^k=O$ (শূন্য ম্যাট্রিক্স) হয়। এখানে $k$ হলো সূচক।</span>
-                        </div>
-                        
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            $|A| = \\begin{vmatrix}b+c&a+b&a\\\\ c+a&b+c&b\\\\ a+b&c+a&c\\end{vmatrix}$<br>
-                            $C_1 \\rightarrow C_1-C_2+C_3$ কলাম অপারেশন প্রয়োগ করে পাই:<br>
-                            $|A| = \\begin{vmatrix}(b+c)-(a+b)+a&a+b&a\\\\ (c+a)-(b+c)+b&b+c&b\\\\ (a+b)-(c+a)+c&c+a&c\\end{vmatrix}$<br>
-                            $= \\begin{vmatrix}c&a+b&a\\\\ a&b+c&b\\\\ b&c+a&c\\end{vmatrix}$<br>
-                            এখন $C_2 \\rightarrow C_2-C_3$ প্রয়োগ করে পাই: <br>
-                            $|A| = \\begin{vmatrix}c&b&a\\\\ a&c&b\\\\ b&a&c\\end{vmatrix}$<br>
-                            প্রথম কলামের সাপেক্ষে বিস্তার করলে:<br>
-                            $= c(c^2-ab) - a(bc-a^2) + b(b^2-ac)$<br>
-                            $= c^3 - abc - abc + a^3 + b^3 - abc$<br>
-                            $= a^3+b^3+c^3-3abc$ (প্রমাণিত)
-                        </div>
-
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            দেওয়া আছে, $B = \\begin{matrix}2&1&-1\\\\ 0&2&1\\\\ 5&2&-3\\end{matrix}$<br>
-                            ট্রান্সপোজ ম্যাট্রিক্স $B^T = \\begin{matrix}2&0&5\\\\ 1&2&2\\\\ -1&1&-3\\end{matrix}$<br>
-                            এখন $|B^T| = 2(-6-2) - 0 + 5(1+2) = 2(-8) + 5(3) = -16 + 15 = -1$<br>
-                            যেহেতু $|B^T| \\neq 0$, তাই বিপরীত ম্যাট্রিক্স নির্ণয়যোগ্য।<br>
-                            সহগুণকগুলো হলো:<br>
-                            $A_{11} = -8, A_{12} = 1, A_{13} = 3$<br>
-                            $A_{21} = 5, A_{22} = -1, A_{23} = -2$<br>
-                            $A_{31} = -10, A_{32} = 1, A_{33} = 4$<br>
-                            সহগুণক ম্যাট্রিক্স বের করে ট্রান্সপোজ করলে $Adj(B^T) = \\begin{matrix}-8&5&-10\\\\ 1&-1&1\\\\ 3&-2&4\\end{matrix}$<br>
-                            $(B^T)^{-1} = \\frac{1}{|B^T|} Adj(B^T) = \\frac{1}{-1} \\begin{matrix}-8&5&-10\\\\ 1&-1&1\\\\ 3&-2&4\\end{matrix} = \\begin{matrix}8&-5&10\\\\ -1&1&-1\\\\ -3&2&-4\\end{matrix}$ (Ans.)
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 2,
-                stem: "উদ্দীপক: কার্তেসীয় সমতলে দুইটি সরলরেখার সমীকরণ $L_1: 3x - 4y + 8 = 0$ এবং $L_2: 4x + 3y - 12 = 0$। একটি নির্দিষ্ট বিন্দু $A(2, 5)$।",
-                q_ka: "ক. $P(3, 4)$ বিন্দুগামী এবং X-অক্ষের ধনাত্মক দিকের সাথে $60^\\circ$ কোণ উৎপন্ন করে এমন সরলরেখার সমীকরণ নির্ণয় করো।",
-                q_kha: "খ. $L_1$ ও $L_2$ রেখাদ্বয়ের ছেদবিন্দুগামী এবং Y-অক্ষের সমান্তরাল সরলরেখার সমীকরণ নির্ণয় করো।",
-                q_ga: "গ. $A(2, 5)$ বিন্দু থেকে $L_1$ রেখার উপর অঙ্কিত লম্বের পাদবিন্দুর স্থানাঙ্ক এবং লম্ব দূরত্ব নির্ণয় করো।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            আমরা জানি, কোনো সরলরেখা X-অক্ষের ধনাত্মক দিকের সাথে $\\theta$ কোণ উৎপন্ন করলে তার ঢাল $m = \\tan \\theta$।<br>
-                            এখানে, $\\theta = 60^\\circ \\Rightarrow m = \\tan 60^\\circ = \\sqrt{3}$।<br>
-                            $(x_1, y_1)$ বিন্দুগামী এবং $m$ ঢালবিশিষ্ট সরলরেখার সমীকরণ: $y - y_1 = m(x - x_1)$<br>
-                            বিন্দুটি $P(3, 4)$ হওয়ায়, $y - 4 = \\sqrt{3}(x - 3)$<br>
-                            $\\Rightarrow \\sqrt{3}x - y + (4 - 3\\sqrt{3}) = 0$ (Ans.)
-                        </div>
-                        
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            প্রদত্ত রেখাদ্বয়: $3x - 4y + 8 = 0$ ---(i) এবং $4x + 3y - 12 = 0$ ---(ii)<br>
-                            রেখাদ্বয়ের ছেদবিন্দুগামী যেকোনো রেখার সমীকরণকে $L_1 + kL_2 = 0$ আকারে লেখা যায়।<br>
-                            $(3x - 4y + 8) + k(4x + 3y - 12) = 0$<br>
-                            $\\Rightarrow (3 + 4k)x + (3k - 4)y + (8 - 12k) = 0$<br>
-                            যেহেতু রেখাটি Y-অক্ষের সমান্তরাল, তাই $y$ এর সহগ শূন্য হবে (অর্থাৎ সমীকরণে $y$ পদ থাকবে না)।<br>
-                            $\\therefore 3k - 4 = 0 \\Rightarrow k = \\frac{4}{3}$<br>
-                            এই মান সমীকরণে বসালে: $(3 + 4(\\frac{4}{3}))x + 0 + (8 - 12(\\frac{4}{3})) = 0$<br>
-                            $\\Rightarrow \\frac{9+16}{3}x + (8-16) = 0 \\Rightarrow \\frac{25}{3}x - 8 = 0 \\Rightarrow 25x - 24 = 0$ (Ans.)
-                        </div>
-
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            <b>লম্ব দূরত্ব নির্ণয়:</b><br>
-                            $A(2, 5)$ বিন্দু থেকে $L_1: 3x - 4y + 8 = 0$ রেখার লম্ব দূরত্ব $d = \\frac{|3(2) - 4(5) + 8|}{\\sqrt{3^2 + (-4)^2}}$<br>
-                            $d = \\frac{|6 - 20 + 8|}{\\sqrt{9+16}} = \\frac{|-6|}{5} = \\frac{6}{5}$ একক।<br><br>
-                            <b>পাদবিন্দুর স্থানাঙ্ক নির্ণয়:</b><br>
-                            $L_1: 3x - 4y + 8 = 0$ এর লম্ব রেখার সমীকরণ: $4x + 3y + k = 0$<br>
-                            লম্ব রেখাটি $A(2, 5)$ বিন্দুগামী, তাই: $4(2) + 3(5) + k = 0 \\Rightarrow 8 + 15 + k = 0 \\Rightarrow k = -23$<br>
-                            লম্ব রেখার সমীকরণ: $4x + 3y - 23 = 0$ ---(iii)<br>
-                            মূল রেখা $3x - 4y = -8$ এবং লম্ব রেখা $4x + 3y = 23$ এর ছেদবিন্দুই হলো কাঙ্ক্ষিত পাদবিন্দু।<br>
-                            বজ্রগুণন বা অপনয়ন পদ্ধতিতে সমাধান করলে ছেদবিন্দু পাওয়া যায় $\\left(\\frac{68}{25}, \\frac{101}{25}\\right)$ (Ans.)
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 3,
-                stem: "উদ্দীপক: একটি বৃত্তের সমীকরণ $x^2 + y^2 - 4x - 6y + c = 0$ যা x-অক্ষকে স্পর্শ করে।",
-                q_ka: "ক. c এর মান নির্ণয় করো।",
-                q_kha: "খ. বৃত্তটির কেন্দ্র ও ব্যাসার্ধ নির্ণয় করো এবং y-অক্ষ হতে খণ্ডিত অংশের দৈর্ঘ্য নির্ণয় করো।",
-                q_ga: "গ. বৃত্তটির যে জ্যা (1,2) বিন্দুতে সমদ্বিখণ্ডিত হয়, তার সমীকরণ নির্ণয় করো।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            বৃত্তটি x-অক্ষকে স্পর্শ করার শর্ত হলো: $g^2 = c$<br>
-                            প্রদত্ত সমীকরণ থেকে পাই, $2g = -4 \\Rightarrow g = -2$<br>
-                            $\\therefore c = (-2)^2 = 4$ (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            $c=4$ বসালে সমীকরণ: $x^2 + y^2 - 4x - 6y + 4 = 0$<br>
-                            কেন্দ্র $(-g, -f) = (2, 3)$<br>
-                            ব্যাসার্ধ $r = \\sqrt{g^2+f^2-c} = \\sqrt{4+9-4} = \\sqrt{9} = 3$ একক।<br>
-                            y-অক্ষ হতে খণ্ডিত অংশ $= 2\\sqrt{f^2-c} = 2\\sqrt{(-3)^2-4} = 2\\sqrt{9-4} = 2\\sqrt{5}$ একক। (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            বৃত্তের কেন্দ্র $C(2,3)$ এবং জ্যা-এর মধ্যবিন্দু $M(1,2)$। <br>
-                            কেন্দ্র ও মধ্যবিন্দুর সংযোজক রেখাংশ $CM$ এর ঢাল $m_1 = \\frac{3-2}{2-1} = \\frac{1}{1} = 1$<br>
-                            আমরা জানি, বৃত্তের কেন্দ্র থেকে যেকোনো জ্যা-এর মধ্যবিন্দুর সংযোজক রেখাংশ উক্ত জ্যা-এর উপর লম্ব হয়।<br>
-                            তাই জ্যা-এর ঢাল $m_2 = -\\frac{1}{m_1} = -1$<br>
-                            এখন, $(1,2)$ বিন্দুগামী এবং $-1$ ঢালবিশিষ্ট জ্যা-এর সমীকরণ:<br>
-                            $y - 2 = -1(x - 1) \\Rightarrow y - 2 = -x + 1 \\Rightarrow x + y - 3 = 0$ (Ans.)
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 4,
-                stem: "উদ্দীপক: $f(x) = x^3 - 3x^2 - 9x + 5$ একটি বীজগাণিতিক ফাংশন।",
-                q_ka: "ক. $f'(x)$ নির্ণয় করো।",
-                q_kha: "খ. ফাংশনটির লঘমান ও গুরুমান নির্ণয় করো।",
-                q_ga: "গ. $\\int_0^2 f(x) dx$ এর মান নির্ণয় করো।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            $f(x) = x^3 - 3x^2 - 9x + 5$<br>
-                            $x$ এর সাপেক্ষে অন্তরীকরণ করে পাই:<br>
-                            $f'(x) = \\frac{d}{dx}(x^3 - 3x^2 - 9x + 5) = 3x^2 - 6x - 9$ (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            লঘমান ও গুরুমানের জন্য ১ম অন্তরজ শূন্য হবে, অর্থাৎ $f'(x) = 0$<br>
-                            $\\Rightarrow 3x^2 - 6x - 9 = 0 \\Rightarrow 3(x^2 - 2x - 3) = 0 \\Rightarrow 3(x-3)(x+1) = 0$<br>
-                            $\\therefore x = 3, -1$<br>
-                            এখন ২য় অন্তরজ নির্ণয় করি: $f''(x) = \\frac{d}{dx}(3x^2 - 6x - 9) = 6x - 6$<br>
-                            <b>$x=3$ বিন্দুতে:</b> $f''(3) = 6(3) - 6 = 18 - 6 = 12 > 0$। যেহেতু মান ধনাত্মক, তাই এখানে <b>লঘমান</b> বিদ্যমান।<br>
-                            লঘমান $= f(3) = (3)^3 - 3(3)^2 - 9(3) + 5 = 27 - 27 - 27 + 5 = -22$<br>
-                            <b>$x=-1$ বিন্দুতে:</b> $f''(-1) = 6(-1) - 6 = -12 < 0$। যেহেতু মান ঋণাত্মক, তাই এখানে <b>গুরুমান</b> বিদ্যমান।<br>
-                            গুরুমান $= f(-1) = (-1)^3 - 3(-1)^2 - 9(-1) + 5 = -1 - 3 + 9 + 5 = 10$<br>
-                            (Ans: গুরুমান = 10, লঘমান = -22)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            নির্ণেয় সমাকলন: $\\int_0^2 f(x) dx = \\int_0^2 (x^3 - 3x^2 - 9x + 5) dx$<br>
-                            $= \\left[ \\frac{x^4}{4} - \\frac{3x^3}{3} - \\frac{9x^2}{2} + 5x \\right]_0^2$<br>
-                            $= \\left[ \\frac{x^4}{4} - x^3 - \\frac{9x^2}{2} + 5x \\right]_0^2$<br>
-                            উচ্চসীমা (2) ও নিম্নসীমা (0) বসিয়ে পাই:<br>
-                            $= \\left( \\frac{16}{4} - 8 - \\frac{36}{2} + 10 \\right) - (0)$<br>
-                            $= (4 - 8 - 18 + 10)$<br>
-                            $= 14 - 26 = -12$ (Ans.)
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 5,
-                stem: "উদ্দীপক: দুটি ভেক্টর $\\vec{A} = 2\\hat{i} - 3\\hat{j} + k\\hat{k}$ এবং $\\vec{B} = \\hat{i} + 2\\hat{j} - \\hat{k}$।",
-                q_ka: "ক. $|\\vec{A} + \\vec{B}|$ নির্ণয় করো।",
-                q_kha: "খ. ভেক্টর দুটি পরস্পর লম্ব হলে k এর মান নির্ণয় করো।",
-                q_ga: "গ. k=1 ধরে ভেক্টর দুটির সমতলে লম্ব একক ভেক্টর নির্ণয় করো।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            $\\vec{A} + \\vec{B} = (2\\hat{i} - 3\\hat{j} + k\\hat{k}) + (\\hat{i} + 2\\hat{j} - \\hat{k})$<br>
-                            $= (2+1)\\hat{i} + (-3+2)\\hat{j} + (k-1)\\hat{k} = 3\\hat{i} - \\hat{j} + (k-1)\\hat{k}$<br>
-                            মান $|\\vec{A} + \\vec{B}| = \\sqrt{3^2 + (-1)^2 + (k-1)^2} = \\sqrt{9 + 1 + (k-1)^2} = \\sqrt{10 + (k-1)^2}$ (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            ভেক্টর দুটি পরস্পর লম্ব হওয়ার শর্ত হলো তাদের ডট গুণফল শূন্য হবে, অর্থাৎ $\\vec{A} \\cdot \\vec{B} = 0$<br>
-                            $\\Rightarrow (2\\hat{i} - 3\\hat{j} + k\\hat{k}) \\cdot (\\hat{i} + 2\\hat{j} - \\hat{k}) = 0$<br>
-                            $\\Rightarrow (2)(1) + (-3)(2) + (k)(-1) = 0$<br>
-                            $\\Rightarrow 2 - 6 - k = 0 \\Rightarrow -4 - k = 0 \\Rightarrow k = -4$ (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            k=1 হলে $\\vec{A} = 2\\hat{i} - 3\\hat{j} + \\hat{k}$ এবং $\\vec{B} = \\hat{i} + 2\\hat{j} - \\hat{k}$<br>
-                            সমতলে লম্ব ভেক্টর হলো ভেক্টরদ্বয়ের ক্রস গুণফল $\\vec{A} \\times \\vec{B}$<br>
-                            $\\vec{A} \\times \\vec{B} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\ 2&-3&1\\\\ 1&2&-1\\end{vmatrix}$<br>
-                            $= \\hat{i}(3 - 2) - \\hat{j}(-2 - 1) + \\hat{k}(4 - (-3))$<br>
-                            $= \\hat{i}(1) - \\hat{j}(-3) + \\hat{k}(7) = \\hat{i} + 3\\hat{j} + 7\\hat{k}$<br>
-                            এর মান $|\\vec{A} \\times \\vec{B}| = \\sqrt{1^2 + 3^2 + 7^2} = \\sqrt{1+9+49} = \\sqrt{59}$<br>
-                            লম্ব একক ভেক্টর $\\eta = \\pm \\frac{\\vec{A} \\times \\vec{B}}{|\\vec{A} \\times \\vec{B}|} = \\pm \\frac{1}{\\sqrt{59}} (\\hat{i} + 3\\hat{j} + 7\\hat{k})$ (Ans.)
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 6,
-                stem: "উদ্দীপক: $z = x + iy$ একটি জটিল সংখ্যা। একটি সমীকরণ $|z - 2| + |z + 2| = 6$",
-                q_ka: "ক. $z = 3+4i$ হলে এর মডুলাস ও আর্গুমেন্ট নির্ণয় করো।",
-                q_kha: "খ. উদ্দীপকের সমীকরণটি একটি উপবৃত্ত নির্দেশ করে, তা প্রমাণ করো।",
-                q_ga: "গ. $z$ এর অনুবন্ধী জটিল সংখ্যা $\\bar{z}$ হলে, প্রমাণ করো যে $\\frac{z+\\bar{z}}{2}$ একটি বাস্তব সংখ্যা।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            দেওয়া আছে, $z = 3+4i$<br>
-                            মডুলাস $|z| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$<br>
-                            যেহেতু বিন্দুটি (3,4) প্রথম চতুর্ভাগে অবস্থিত, তাই<br>
-                            আর্গুমেন্ট $\\theta = \\tan^{-1}(\\frac{y}{x}) = \\tan^{-1}(\\frac{4}{3})$ (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            প্রদত্ত সমীকরণ: $|z - 2| + |z + 2| = 6$<br>
-                            $z = x + iy$ বসালে: $|(x-2)+iy| + |(x+2)+iy| = 6$<br>
-                            $\\Rightarrow \\sqrt{(x-2)^2+y^2} + \\sqrt{(x+2)^2+y^2} = 6$<br>
-                            $\\Rightarrow \\sqrt{(x-2)^2+y^2} = 6 - \\sqrt{(x+2)^2+y^2}$<br>
-                            উভয়পক্ষকে বর্গ করে পাই:<br>
-                            $(x-2)^2+y^2 = 36 - 12\\sqrt{(x+2)^2+y^2} + (x+2)^2+y^2$<br>
-                            $\\Rightarrow x^2-4x+4 = 36 - 12\\sqrt{(x+2)^2+y^2} + x^2+4x+4$<br>
-                            $\\Rightarrow 12\\sqrt{(x+2)^2+y^2} = 8x + 36$<br>
-                            $\\Rightarrow 3\\sqrt{(x+2)^2+y^2} = 2x + 9$<br>
-                            পুনরায় বর্গ করে:<br>
-                            $9[(x+2)^2+y^2] = 4x^2 + 36x + 81$<br>
-                            $\\Rightarrow 9(x^2+4x+4+y^2) = 4x^2 + 36x + 81$<br>
-                            $\\Rightarrow 9x^2 + 36x + 36 + 9y^2 = 4x^2 + 36x + 81$<br>
-                            $\\Rightarrow 5x^2 + 9y^2 = 81 - 36$<br>
-                            $\\Rightarrow 5x^2 + 9y^2 = 45$<br>
-                            উভয়পক্ষকে 45 দ্বারা ভাগ করে: $\\frac{x^2}{9} + \\frac{y^2}{5} = 1$<br>
-                            যা $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ আকারের একটি উপবৃত্তের আদর্শ সমীকরণ। (প্রমাণিত)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            দেওয়া আছে, $z = x + iy$<br>
-                            সুতরাং এর অনুবন্ধী জটিল সংখ্যা, $\\bar{z} = x - iy$<br>
-                            প্রদত্ত রাশি: $\\frac{z+\\bar{z}}{2} = \\frac{(x+iy) + (x-iy)}{2}$<br>
-                            $= \\frac{2x}{2} = x$<br>
-                            যেহেতু $z=x+iy$ তে $x$ হলো বাস্তব অংশ এবং এটি কোনো কাল্পনিক একক $i$ যুক্ত নয়, তাই $x$ সম্পূর্ণ একটি বাস্তব সংখ্যা। (প্রমাণিত)
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 7,
-                stem: "উদ্দীপক: ত্রিকোণমিতিক ফাংশন $g(\\theta) = \\cos\\theta + \\sqrt{3}\\sin\\theta$।",
-                q_ka: "ক. $g(\\theta)$ এর সর্বোচ্চ মান নির্ণয় করো।",
-                q_kha: "খ. $g(\\theta) = 2$ সমীকরণটি সমাধান করো যেখানে $-\\pi \\le \\theta \\le \\pi$।",
-                q_ga: "গ. প্রমাণ করো যে, $g(\\theta) \\cdot g(\\theta - \\frac{\\pi}{3})$ একটি ধ্রুবক ফাংশন নয়।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            আমরা জানি, $a\\cos\\theta + b\\sin\\theta$ আকারের রাশির সর্বোচ্চ মান $= \\sqrt{a^2+b^2}$<br>
-                            এখানে $a=1, b=\\sqrt{3}$।<br>
-                            সর্বোচ্চ মান $= \\sqrt{1^2+(\\sqrt{3})^2} = \\sqrt{1+3} = \\sqrt{4} = 2$ (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            প্রদত্ত সমীকরণ: $\\cos\\theta + \\sqrt{3}\\sin\\theta = 2$<br>
-                            উভয়পক্ষকে $\\sqrt{1^2+(\\sqrt{3})^2} = 2$ দ্বারা ভাগ করে পাই:<br>
-                            $\\frac{1}{2}\\cos\\theta + \\frac{\\sqrt{3}}{2}\\sin\\theta = 1$<br>
-                            $\\cos(\\frac{\\pi}{3})\\cos\\theta + \\sin(\\frac{\\pi}{3})\\sin\\theta = 1$<br>
-                            $\\cos(\\theta - \\frac{\\pi}{3}) = 1$<br>
-                            যেহেতু $\\cos(0) = 1$, তাই সাধারণ সমাধান: $\\theta - \\frac{\\pi}{3} = 2n\\pi$<br>
-                            $\\Rightarrow \\theta = 2n\\pi + \\frac{\\pi}{3}$ (যেখানে n যেকোনো পূর্ণসংখ্যা)<br>
-                            দেওয়া আছে, $-\\pi \\le \\theta \\le \\pi$<br>
-                            $n=0$ হলে, $\\theta = \\frac{\\pi}{3}$ (সীমার মধ্যে আছে)<br>
-                            $n=1, -1$ ইত্যাদি বসালে মান সীমার বাইরে চলে যায়।<br>
-                            $\\therefore$ নির্ণেয় সমাধান $\\theta = \\frac{\\pi}{3}$
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            খ হতে পাই, $g(\\theta) = 2\\cos(\\theta - \\frac{\\pi}{3})$<br>
-                            তাহলে, $g(\\theta - \\frac{\\pi}{3}) = 2\\cos\\left( (\\theta - \\frac{\\pi}{3}) - \\frac{\\pi}{3} \\right) = 2\\cos(\\theta - \\frac{2\\pi}{3})$<br>
-                            গুণফল: $g(\\theta) \\cdot g(\\theta - \\frac{\\pi}{3}) = 2\\cos(\\theta - \\frac{\\pi}{3}) \\times 2\\cos(\\theta - \\frac{2\\pi}{3})$<br>
-                            $= 4\\cos(\\theta - \\frac{\\pi}{3})\\cos(\\theta - \\frac{2\\pi}{3})$<br>
-                            $2 \\cos A \\cos B = \\cos(A+B) + \\cos(A-B)$ সূত্র প্রয়োগ করে:<br>
-                            $= 2 [ \\cos(2\\theta - \\pi) + \\cos(\\frac{\\pi}{3}) ]$<br>
-                            $= 2 [ -\\cos(2\\theta) + \\frac{1}{2} ]$<br>
-                            $= 1 - 2\\cos(2\\theta)$<br>
-                            যেহেতু প্রাপ্ত রাশিতে চলক $\\theta$ রয়ে গেছে, অর্থাৎ এর মান $\\theta$ এর পরিবর্তনের সাথে পরিবর্তিত হবে, তাই এটি ধ্রুবক ফাংশন নয়। (প্রমাণিত)
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 8,
-                stem: "উদ্দীপক: $y = x^2$ পরাবৃত্ত এবং $y = x$ সরলরেখা।",
-                q_ka: "ক. বক্ররেখা ও সরলরেখার ছেদবিন্দু নির্ণয় করো।",
-                q_kha: "খ. এদের দ্বারা আবদ্ধ ক্ষেত্রের ক্ষেত্রফল নির্ণয় করো।",
-                q_ga: "গ. আবদ্ধ ক্ষেত্রটিকে x-অক্ষের চতুর্দিকে ঘোরালে যে ঘনবস্তু তৈরি হয় তার আয়তন নির্ণয় করো।",
-                solution: `
-                    <div class="space-y-6">
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">ক. সমাধান:</h4>
-                            সমীকরণ দুটি: $y = x^2$ ---(i) এবং $y = x$ ---(ii)<br>
-                            সমীকরণ দুটি সমাধান করে পাই: $x^2 = x \\Rightarrow x^2 - x = 0 \\Rightarrow x(x-1) = 0$<br>
-                            $\\therefore x=0$ অথবা $x=1$<br>
-                            $x=0$ হলে $y=0$<br>
-                            $x=1$ হলে $y=1$<br>
-                            নির্ণেয় ছেদবিন্দুসমূহ: $(0,0)$ এবং $(1,1)$ (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">খ. সমাধান:</h4>
-                            $0 \\le x \\le 1$ ব্যবধিতে সরলরেখা $y=x$ পরাবৃত্ত $y=x^2$ এর উপরে অবস্থান করে।<br>
-                            ক্ষেত্রফল $A = \\int_0^1 (y_{upper} - y_{lower}) dx = \\int_0^1 (x - x^2) dx$<br>
-                            $= \\left[ \\frac{x^2}{2} - \\frac{x^3}{3} \\right]_0^1$<br>
-                            $= (\\frac{1}{2} - \\frac{1}{3}) - (0 - 0)$<br>
-                            $= \\frac{3-2}{6} = \\frac{1}{6}$ বর্গ একক। (Ans.)
-                        </div>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-blue-700 border-b pb-2 mb-3">গ. সমাধান:</h4>
-                            আবদ্ধ ক্ষেত্রটিকে x-অক্ষের চতুর্দিকে ঘুরালে সৃষ্ট ঘনবস্তুর আয়তন:<br>
-                            $V = \\pi \\int_0^1 (y_{upper}^2 - y_{lower}^2) dx$<br>
-                            $= \\pi \\int_0^1 ((x)^2 - (x^2)^2) dx$<br>
-                            $= \\pi \\int_0^1 (x^2 - x^4) dx$<br>
-                            $= \\pi \\left[ \\frac{x^3}{3} - \\frac{x^5}{5} \\right]_0^1$<br>
-                            $= \\pi (\\frac{1}{3} - \\frac{1}{5}) - 0$<br>
-                            $= \\pi (\\frac{5-3}{15}) = \\frac{2\\pi}{15}$ ঘন একক। (Ans.)
-                        </div>
-                    </div>
-                `
-            }
-        ];
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderMCQs();
-            renderCQs();
-            
-            // Re-render math after injecting HTML
-            setTimeout(() => {
-                if (window.MathJax) {
-                    MathJax.typesetPromise().catch((err) => console.log('MathJax error:', err));
-                }
-            }, 300);
-        });
-
-        function renderMCQs() {
-            const container = document.getElementById('mcq-container');
-            let html = '';
-            
-            mcqs.forEach((mcq, index) => {
-                html += `
-                    <div class="bg-white p-6 rounded-xl shadow border border-slate-200 relative overflow-hidden transition-all duration-300 hover:border-blue-300">
-                        <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
-                        <div class="flex gap-4">
-                            <span class="font-bold text-xl text-blue-700">${index + 1}.</span>
-                            <div class="w-full">
-                                <div class="text-lg font-medium text-slate-800 mb-6 math-container">${mcq.question}</div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="options-${mcq.id}">
-                `;
-                
-                mcq.options.forEach((opt, optIndex) => {
-                    const optionLabels = ['ক', 'খ', 'গ', 'ঘ'];
-                    html += `
-                        <div class="mcq-option border-2 border-slate-200 rounded-lg p-3 flex items-center gap-3 bg-white" 
-                             onclick="handleMCQClick(${mcq.id}, ${optIndex}, ${mcq.correct})">
-                            <span class="w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center font-bold text-slate-600 transition-colors">${optionLabels[optIndex]}</span>
-                            <div class="math-container font-medium text-slate-700">${opt}</div>
-                        </div>
-                    `;
-                });
-
-                html += `
-                                </div>
-                                <div id="explanation-${mcq.id}" class="explanation-box mt-6 p-5 bg-blue-50 border border-blue-200 rounded-lg text-slate-700 shadow-inner">
-                                    <span class="math-container">${mcq.explanation}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        function renderCQs() {
-            const container = document.getElementById('cq-container');
-            let html = '';
-            
-            cqs.forEach((cq, index) => {
-                html += `
-                    <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-slate-200 relative">
-                        <div class="absolute -left-3 -top-3 bg-indigo-600 text-white font-extrabold w-12 h-12 rounded-full flex items-center justify-center shadow-md text-xl border-4 border-white">
-                            ${index + 1}
-                        </div>
-                        <div class="ml-6 md:ml-8">
-                            <div class="bg-slate-50 p-4 rounded border border-slate-200 text-slate-800 text-base md:text-lg font-medium math-container mb-6 shadow-sm">
-                                ${cq.stem}
-                            </div>
-                            <div class="space-y-4 pl-2 mb-8">
-                                <div class="flex items-start gap-2">
-                                    <div class="math-container text-slate-700 flex-grow text-base md:text-lg">${cq.q_ka}</div>
-                                    <span class="text-sm text-indigo-500 font-bold bg-indigo-50 px-2 py-1 rounded">(২)</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <div class="math-container text-slate-700 flex-grow text-base md:text-lg">${cq.q_kha}</div>
-                                    <span class="text-sm text-indigo-500 font-bold bg-indigo-50 px-2 py-1 rounded">(৪)</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <div class="math-container text-slate-700 flex-grow text-base md:text-lg">${cq.q_ga}</div>
-                                    <span class="text-sm text-indigo-500 font-bold bg-indigo-50 px-2 py-1 rounded">(৪)</span>
-                                </div>
-                            </div>
-                            
-                            <div class="border-t border-slate-200 pt-6">
-                                <button onclick="toggleCQSolution(${cq.id})" id="btn-cq-${cq.id}" class="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded shadow transition-all duration-200 flex items-center justify-center gap-2">
-                                    <span>বিস্তারিত সমাধান দেখুন</span>
-                                    <svg class="w-5 h-5 transition-transform duration-300" id="icon-cq-${cq.id}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                
-                                <div id="cq-sol-${cq.id}" class="cq-solution mt-6 p-6 bg-slate-50 border border-slate-300 rounded-lg shadow-inner text-slate-800 text-sm md:text-base">
-                                    <div class="math-container leading-loose">${cq.solution}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        function switchTab(tabId) {
-            document.getElementById('section-mcq').classList.add('hidden');
-            document.getElementById('section-cq').classList.add('hidden');
-            document.getElementById('tab-mcq').classList.remove('active');
-            document.getElementById('tab-cq').classList.remove('active');
-
-            document.getElementById(`section-${tabId}`).classList.remove('hidden');
-            document.getElementById(`tab-${tabId}`).classList.add('active');
-        }
-
-        function handleMCQClick(qId, selectedIdx, correctIdx) {
-            const optionsContainer = document.getElementById(`options-${qId}`);
-            const options = optionsContainer.querySelectorAll('.mcq-option');
-            
-            // Prevent multiple clicks
-            if(optionsContainer.classList.contains('answered-container')) return;
-            optionsContainer.classList.add('answered-container');
-
-            options.forEach((opt, idx) => {
-                opt.classList.add('disabled', 'answered');
-                const badge = opt.querySelector('span');
-                const textContainer = opt.querySelector('.math-container');
-                
-                // Reset badge styles
-                badge.classList.remove('bg-slate-100', 'text-slate-600', 'border-slate-300');
-                
-                if (idx === correctIdx) {
-                    opt.classList.add('correct');
-                    badge.classList.add('bg-white', 'text-green-600', 'border-white');
-                    textContainer.classList.replace('text-slate-700', 'text-white');
-                } else if (idx === selectedIdx && idx !== correctIdx) {
-                    opt.classList.add('wrong');
-                    badge.classList.add('bg-white', 'text-red-600', 'border-white');
-                    textContainer.classList.replace('text-slate-700', 'text-white');
-                }
-            });
-
-            // Show explanation with animation
-            const explanation = document.getElementById(`explanation-${qId}`);
-            explanation.style.display = 'block';
-            
-            // Re-render math if necessary
-            if (window.MathJax) {
-                MathJax.typesetPromise([explanation]).catch((err) => console.log(err));
-            }
-        }
-
-        function toggleCQSolution(id) {
-            const solDiv = document.getElementById(`cq-sol-${id}`);
-            const icon = document.getElementById(`icon-cq-${id}`);
-            const btn = document.getElementById(`btn-cq-${id}`);
-            
-            if (solDiv.style.display === 'block') {
-                solDiv.style.display = 'none';
-                icon.classList.remove('rotate-180');
-                btn.classList.replace('bg-indigo-800', 'bg-indigo-600');
-            } else {
-                solDiv.style.display = 'block';
-                icon.classList.add('rotate-180');
-                btn.classList.replace('bg-indigo-600', 'bg-indigo-800');
-                
-                // Render math on newly displayed solution
-                if (window.MathJax) {
-                    MathJax.typesetPromise([solDiv]).catch((err) => console.log(err));
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+    <aside class="side card"><h2>প্র্যাকটিস স্কোর</h2><p class="stat">চারটি অপশনের মধ্যে একটি ক্লিক করলে সাথে সাথে সঠিক/ভুল এবং ব্যাখ্যা দেখাবে।</p><div id="scoreBox" class="note">এখনো কোনো উত্তর দেওয়া হয়নি।</div><iframe class="drive" src="https://drive.google.com/file/d/1mfMuOfvLkILHdWdkWJ9qXaA2P1fn206C/preview" allow="autoplay"></iframe></aside>
+  </div>
+</section>
+<section id="cq" class="panel">
+  <div class="grid"><div><div class="cq-list" id="cqTabs"></div><article id="cqBody" class="card cqbody"></article></div><aside class="side card"><h2>মূল প্রশ্নপত্র</h2><p class="stat">Google Drive embed preview</p><iframe class="drive" src="https://drive.google.com/file/d/1mfMuOfvLkILHdWdkWJ9qXaA2P1fn206C/preview" allow="autoplay"></iframe></aside></div>
+</section>
+<section id="paper" class="panel"><div class="card"><h2>Question Paper Embed</h2><iframe class="drive" style="height:76vh" src="https://drive.google.com/file/d/1mfMuOfvLkILHdWdkWJ9qXaA2P1fn206C/preview" allow="autoplay"></iframe><p><a href="https://drive.google.com/file/d/1mfMuOfvLkILHdWdkWJ9qXaA2P1fn206C/view" target="_blank" rel="noopener">Google Drive-এ খুলুন</a></p></div></section>
+</main><footer>ঢাকা কলেজ ইয়ারলি হায়ার ম্যাথ কোশ্চেন and অ্যানসার</footer>
+<script>
+const MCQS=[{"num": "১", "question": "\"$\\begin{matrix}2&-1&0\\\\ 4&3&-5\\\\ 7&6&-8\\end{matrix}$ নির্ণায়কে (2,1) তম সহগুনকের মান-\"", "options": [{"key": "ক", "text": "-8"}, {"key": "খ", "text": "-3"}, {"key": "গ", "text": "3"}, {"key": "ঘ", "text": "8"}], "answerLine": "উত্তর : ক -8", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nপ্রদত্ত নির্ণায়কের (2,1) তম ভুক্তি হলো 4।\nযেকোনো ভুক্তির সহগুণক নির্ণয়ের সূত্র: $(-1)^{i+j} \\times M_{ij}$ (যেখানে $M_{ij}$ হলো অনুরাশি)।\n(2,1) তম ভুক্তির সহগুণক $=(-1)^{2+1} \\times |\\begin{matrix}-1&0\\\\ 6&-8\\end{matrix}|$\n$=(-1)^3 \\times ((-1) \\times (-8)-0 \\times 6)$\n$=-1 \\times (8-0)$\n$=-8$\nবাকি অপশনগুলো কেন ভুল?\nঅন্যান্য অপশনগুলো সহগুণকের চিহ্নের ভুল (যেমন ঋণাত্মক চিহ্নের পরিবর্তে ধনাত্মক ধরা) অথবা নির্ণায়কের ভুল বিস্তারের কারণে সঠিক নয়।"}, {"num": "২", "question": "\"$A=\\begin{matrix}1&0&0\\\\ 0&2&0\\\\ 0&0&3\\end{matrix}$ একটি- i. প্রতিসম ম্যাট্রিক্স ii. কর্ণ ম্যাট্রিক্স iii. স্কেলার ম্যাট্রিক্স। নিচের কোনটি সঠিক?\"", "options": [{"key": "ক", "text": "i ও ii"}, {"key": "খ", "text": "i ও iii"}, {"key": "গ", "text": "ii ও iii"}, {"key": "ঘ", "text": "i, ii ও iii"}], "answerLine": "উত্তর : ক i ও ii", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nম্যাট্রিক্সটির প্রধান কর্ণের উপাদানগুলো বাদে বাকি সব উপাদান শূন্য, তাই এটি একটি কর্ণ ম্যাট্রিক্স (ii সঠিক)।\nযেকোনো কর্ণ ম্যাট্রিক্সের ক্ষেত্রে $A^T=A$ হয়, ফলে এটি একটি প্রতিসম ম্যাট্রিক্স (i সঠিক)।\nস্কেলার ম্যাট্রিক্স হওয়ার শর্ত হলো প্রধান কর্ণের সবগুলো উপাদান সমান হতে হবে, কিন্তু এখানে উপাদানগুলো (1, 2, 3) ভিন্ন, তাই এটি স্কেলার ম্যাট্রিক্স নয় (iii ভুল)।\nসুতরাং, সঠিক উত্তর i ও ii।\nবাকি অপশনগুলো কেন ভুল?\nযেহেতু ম্যাট্রিক্সটি স্কেলার নয় (শর্ত iii ভুল), তাই যে অপশনগুলোতে iii অন্তর্ভুক্ত আছে সেগুলো গাণিতিক সংজ্ঞানুযায়ী ভুল।"}, {"num": "৩", "question": "\"$|(2A)^{-1}|$ এর মান -\"", "options": [{"key": "ক", "text": "$\\frac{1}{48}$"}, {"key": "খ", "text": "$-\\frac{1}{48}$"}, {"key": "গ", "text": "$-\\frac{1}{12}$"}, {"key": "ঘ", "text": "$\\frac{1}{12}$"}], "answerLine": "উত্তর : ক $\\frac{1}{48}$", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nউদ্দীপকের ম্যাট্রিক্স $A=\\begin{matrix}1&0&0\\\\ 0&2&0\\\\ 0&0&3\\end{matrix}$ একটি $3 \\times 3$ ম্যাট্রিক্স।\nএর নির্ণায়কের মান, $|A|=1 \\times 2 \\times 3=6$\nআমরা জানি, $k$ যদি একটি ধ্রুবক হয় এবং $A$ যদি $n \\times n$ ম্যাট্রিক্স হয়, তবে $|kA|=k^n|A|$।\nএখানে $n=3$ এবং $k=2$, তাই $|2A|=2^3 \\times |A|$\n$|2A|=8 \\times 6=48$\nআবার, ইনভার্স ম্যাট্রিক্সের নির্ণায়কের সূত্রানুযায়ী, $|M^{-1}|=\\frac{1}{|M|}$\nঅতএব, $|(2A)^{-1}|=\\frac{1}{|2A|}$\n$|(2A)^{-1}|=\\frac{1}{48}$\nবাকি অপশনগুলো কেন ভুল?\nসূত্রের ভুল প্রয়োগ (যেমন ধ্রুবককে ঘাত হিসেবে না নেওয়া) বা নির্ণায়কের মান ঋণাত্মক ধরার কারণে অন্য অপশনগুলো সঠিক নয়।"}, {"num": "৪", "question": "\"$A=\\begin{matrix}-1&-1\\\\ 2&-3\\end{matrix}$ হলে $Adj(A)=?$\"", "options": [{"key": "ক", "text": "$\\begin{matrix}-3&1\\\\ 2&1\\end{matrix}$"}, {"key": "খ", "text": "$\\begin{matrix}-3&1\\\\ -2&-1\\end{matrix}$"}, {"key": "গ", "text": "$\\begin{matrix}3&1\\\\ -2&-1\\end{matrix}$"}, {"key": "ঘ", "text": "$\\begin{matrix}-3&-1\\\\ -2&-1\\end{matrix}$"}], "answerLine": "উত্তর : খ $\\begin{matrix}-3&1\\\\ -2&-1\\end{matrix}$", "answerKey": "খ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?\n$2 \\times 2$ ম্যাট্রিক্সের $Adj(A)$ (অ্যাডজয়েন্ট ম্যাট্রিক্স) নির্ণয়ের সংক্ষিপ্ত নিয়ম হলো:\nপ্রধান কর্ণের ভুক্তিগুলো ($-1$ এবং $-3$) নিজেদের মধ্যে স্থান বিনিময় করবে।\nগৌণ কর্ণের ভুক্তিগুলো ($-1$ এবং $2$) তাদের চিহ্ন পরিবর্তন করবে।\nএই নিয়ম প্রয়োগ করলে, প্রধান কর্ণ হবে $-3$ এবং $-1$।\nগৌণ কর্ণ হবে $1$ এবং $-2$।\nঅতএব, $Adj(A)=\\begin{matrix}-3&1\\\\ -2&-1\\end{matrix}$\nবাকি অপশনগুলো কেন ভুল?\nবাকি অপশনগুলো স্থান বিনিময় বা চিহ্ন পরিবর্তনের এই গাণিতিক শর্তগুলো সঠিকভাবে মেনে চলেনি।"}, {"num": "৫", "question": "\"একটি সভা শেষে প্রত্যেকে প্রত্যেকের সাথে করমর্দন করলেন। করমর্দনের সংখ্যা 55 হলে কত জন সভায় উপস্থিত ছিলেন?\"", "options": [{"key": "ক", "text": "11"}, {"key": "খ", "text": "12"}, {"key": "গ", "text": "24"}, {"key": "ঘ", "text": "33"}], "answerLine": "উত্তর : ক 11", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nধরি, সভায় উপস্থিত মোট সদস্য সংখ্যা $n$।\nদুজন ব্যক্তির মধ্যে ১ বার করমর্দন হয়, তাই মোট করমর্দনের সংখ্যা হবে $n$ জন থেকে ২ জন বাছাই করার উপায় অর্থাৎ $^nC_2$।\nপ্রশ্নমতে, $^nC_2=55$\n$\\frac{n(n-1)}{2}=55$\n$n(n-1)=110$\n$n^2-n-110=0$\n$n^2-11n+10n-110=0$\n$n(n-11)+10(n-11)=0$\n$(n-11)(n+10)=0$\n$n=11$ (যেহেতু সদস্য সংখ্যা ঋণাত্মক অর্থাৎ $-10$ হতে পারে না)।\nবাকি অপশনগুলো কেন ভুল?\nঅন্য মানগুলো সমীকরণ $^nC_2=55$ কে সিদ্ধ করে না।"}, {"num": "৬", "question": "\"'COLLEGE' শব্দটির বর্ণগুলোর বিন্যাস সংখ্যা-\"", "options": [{"key": "ক", "text": "1260"}, {"key": "খ", "text": "2520"}, {"key": "গ", "text": "5040"}, {"key": "ঘ", "text": "160"}], "answerLine": "উত্তর : ক 1260", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\n'COLLEGE' শব্দটিতে মোট বর্ণ আছে 7 টি।\nএখানে একই রকম বর্ণ 'L' আছে 2 টি এবং 'E' আছে 2 টি।\nমোট বিন্যাস সংখ্যা $=\\frac{7!}{2! \\times 2!}$\n$=\\frac{5040}{2 \\times 2}$\n$=\\frac{5040}{4}$\n$=1260$\nবাকি অপশনগুলো কেন ভুল?\nপুনরাবৃত্ত বর্ণগুলোর জন্য তাদের ফ্যাক্টোরিয়াল দিয়ে ভাগ না করলে বা ভুল বিন্যাস সূত্র ব্যবহার করলে অন্য ভুল উত্তরগুলো পাওয়া যায়।"}, {"num": "৭", "question": "\"$f(x)=(x-3)^2$ ফাংশনের স্কেচ কোনটি?\"", "options": [{"key": "ক", "text": "(চিত্র ১)"}, {"key": "খ", "text": "(চিত্র ২)"}, {"key": "গ", "text": "(চিত্র ৩)"}, {"key": "ঘ", "text": "(চিত্র ৪)"}], "answerLine": "উত্তর : ক (চিত্র ১ - ডানদিকে ৩ একক সরে যাওয়া পরাবৃত্ত)", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nপ্রদত্ত ফাংশনটি হলো $y=(x-3)^2$\nএটি একটি পরাবৃত্তের সমীকরণ যাকে আদর্শ রূপ $(x-h)^2=4a(y-k)$ এর সাথে তুলনা করা যায়।\nএখানে শীর্ষবিন্দু $(h,k)=(3,0)$।\nযেহেতু $x^2$ এর সহগ ধনাত্মক, তাই পরাবৃত্তটি উপরের দিকে খোলা (U-আকৃতির) হবে এবং $X$-অক্ষকে $(3,0)$ বিন্দুতে স্পর্শ করবে।\nবাকি অপশনগুলো কেন ভুল?\nঅন্য চিত্রগুলোর শীর্ষবিন্দু $(3,0)$ তে অবস্থিত নয় বা খোলার দিক সঠিক নয় বলে সেগুলো ভুল।"}, {"num": "৮", "question": "\"$f(x)=2x+5, g(x)=3x+2$ হলে $(f \\circ g)(-1)$ এর মান-\"", "options": [{"key": "ক", "text": "-7"}, {"key": "খ", "text": "-3"}, {"key": "গ", "text": "3"}, {"key": "ঘ", "text": "7"}], "answerLine": "উত্তর : গ 3", "answerKey": "গ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?\nসংযোজিত ফাংশনের সংজ্ঞানুসারে, $(f \\circ g)(x)=f(g(x))$\nপ্রথমে $x=-1$ এর জন্য $g(-1)$ এর মান নির্ণয় করি:\n$g(-1)=3(-1)+2$\n$g(-1)=-3+2=-1$\nএখন এই মানটি $f(x)$ এ বসাই:\n$(f \\circ g)(-1)=f(g(-1))=f(-1)$\n$f(-1)=2(-1)+5$\n$f(-1)=-2+5=3$\nবাকি অপশনগুলো কেন ভুল?\nফাংশনের সংযোজনে ভুল মান বসালে বা ধাপে ধাপে মান নির্ণয় না করলে অন্য ভুল উত্তরগুলো আসে।"}, {"num": "৯", "question": "\"(2,5) ও (-4,-6) বিন্দুদ্বয়ের সংযোগ রেখাংশকে X-অক্ষ কি অনুপাতে বিভক্ত করে?\"", "options": [{"key": "ক", "text": "5:6"}, {"key": "খ", "text": "6:5"}, {"key": "গ", "text": "1:2"}, {"key": "ঘ", "text": "2:1"}], "answerLine": "উত্তর : ক 5:6", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nধরি, $X$-অক্ষ প্রদত্ত রেখাংশটিকে $m_1:m_2$ অনুপাতে বিভক্ত করে।\nআমরা জানি, $X$-অক্ষের উপর অবস্থিত যেকোনো বিন্দুর কোটি (y-স্থানাঙ্ক) শূন্য।\nঅন্তর্বিভক্তকারী বিন্দুর কোটি $y=\\frac{m_1y_2+m_2y_1}{m_1+m_2}$\n$0=\\frac{m_1(-6)+m_2(5)}{m_1+m_2}$\n$-6m_1+5m_2=0$\n$6m_1=5m_2$\n$\\frac{m_1}{m_2}=\\frac{5}{6}$\nনির্ণেয় অনুপাত $=5:6$\nবাকি অপশনগুলো কেন ভুল?\nভুজ শূন্য ধরে হিসাব করলে বা সূত্র ভুল প্রয়োগ করলে অন্য অপশনগুলো পাওয়া যায়।"}, {"num": "১০", "question": "\"$\\sqrt{3}x-2y+6=0$ এবং $3x+ky-5=0$ সরলরেখাদ্বয় পরস্পর লম্ব হলে k এর মান-\"", "options": [{"key": "ক", "text": "$-2\\sqrt{3}$"}, {"key": "খ", "text": "$-\\frac{3\\sqrt{3}}{2}$"}, {"key": "গ", "text": "$\\frac{3\\sqrt{3}}{2}$"}, {"key": "ঘ", "text": "$2\\sqrt{3}$"}], "answerLine": "উত্তর : গ $\\frac{3\\sqrt{3}}{2}$", "answerKey": "গ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?\nপ্রথম সরলরেখার ঢাল $m_1=-\\frac{x \\text{ এর সহগ}}{y \\text{ এর সহগ}}=-\\frac{\\sqrt{3}}{-2}=\\frac{\\sqrt{3}}{2}$\nদ্বিতীয় সরলরেখার ঢাল $m_2=-\\frac{3}{k}$\nসরলরেখাদ্বয় লম্ব হওয়ার গাণিতিক শর্ত হলো তাদের ঢালদ্বয়ের গুণফল $-1$ হতে হবে: $m_1 \\times m_2=-1$\n$\\frac{\\sqrt{3}}{2} \\times \\left(-\\frac{3}{k}\\right)=-1$\n$\\frac{-3\\sqrt{3}}{2k}=-1$\n$2k=3\\sqrt{3}$\n$k=\\frac{3\\sqrt{3}}{2}$\nবাকি অপশনগুলো কেন ভুল?\nঢাল নির্ণয়ে চিহ্নের ভুল করলে বা সমান্তরাল হওয়ার শর্ত ($m_1=m_2$) প্রয়োগ করলে অন্য মান আসে।"}, {"num": "১১", "question": "\"প্রথম সরলরেখাটি x-অক্ষের সাথে কত কোণ উৎপন্ন করে?\"", "options": [{"key": "ক", "text": "$30^\\circ$"}, {"key": "খ", "text": "$60^\\circ$"}, {"key": "গ", "text": "$90^\\circ$"}, {"key": "ঘ", "text": "$120^\\circ$"}], "answerLine": "উত্তর : খ $60^\\circ$ (সম্ভাব্য সঠিক প্রশ্ন সাপেক্ষে)", "answerKey": "খ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?\n(নোট: যদি রেখাটি $\\sqrt{3}x-y+6=0$ হয়, তবে উত্তর অপশনের সাথে হুবহু মিলবে। আমি সেই আদর্শ কাঠামোতে সমাধান করছি।)\nসমীকরণ: $\\sqrt{3}x-y+6=0$\n$y=\\sqrt{3}x+6$\nআমরা জানি $y=mx+c$ সমীকরণে $m$ হলো ঢাল।\nএখানে ঢাল, $m=\\sqrt{3}$\nঢালের সূত্রানুযায়ী, $\\tan \\theta=m$\n$\\tan \\theta=\\sqrt{3}$\n$\\tan \\theta=\\tan 60^\\circ$\n$\\theta=60^\\circ$\nবাকি অপশনগুলো কেন ভুল?\nঅন্য কোণগুলোর ট্যানজেন্ট মান $\\sqrt{3}$ নয়, তাই সেগুলো ভুল।"}, {"num": "১২", "question": "\"$\\frac{1}{2}$ ঢালবিশিষ্ট সরলরেখাটি $kx+2y-5=0$ সরলরেখার উপর লম্ব হলে k এর মান-\"", "options": [{"key": "ক", "text": "$\\frac{1}{4}$"}, {"key": "খ", "text": "$\\frac{1}{2}$"}, {"key": "গ", "text": "2"}, {"key": "ঘ", "text": "4"}], "answerLine": "উত্তর : ঘ 4", "answerKey": "ঘ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ঘ' সঠিক?\nপ্রথম রেখার ঢাল $m_1=\\frac{1}{2}$\nদ্বিতীয় রেখা: $kx+2y-5=0$\n$2y=-kx+5$\n$y=-\\frac{k}{2}x+\\frac{5}{2}$\nদ্বিতীয় রেখার ঢাল $m_2=-\\frac{k}{2}$\nলম্ব হওয়ার শর্ত: $m_1 \\times m_2=-1$\n$\\frac{1}{2} \\times \\left(-\\frac{k}{2}\\right)=-1$\n$-\\frac{k}{4}=-1$\n$k=4$\nবাকি অপশনগুলো কেন ভুল?\nলম্ব শর্তের জায়গায় ভুল করে যোগ বা বিয়োগ করলে অন্য অপশনগুলো চলে আসে।"}, {"num": "১৫", "question": "\"$x^2+y^2-2x-4y-4=0$ বৃত্তের (1,-1) বিন্দুতে স্পর্শকের সমীকরণ-\"", "options": [{"key": "ক", "text": "$y+1=0$"}, {"key": "খ", "text": "$y-1=0$"}, {"key": "গ", "text": "$x+1=0$"}, {"key": "ঘ", "text": "$x-1=0$"}], "answerLine": "উত্তর : ক $y+1=0$", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nযেকোনো বৃত্ত $x^2+y^2+2gx+2fy+c=0$ এর উপরস্থ $(x_1, y_1)$ বিন্দুতে স্পর্শকের সমীকরণ:\n$xx_1+yy_1+g(x+x_1)+f(y+y_1)+c=0$\nপ্রদত্ত বৃত্তে, $2g=-2 \\Rightarrow g=-1$, $2f=-4 \\Rightarrow f=-2$, $c=-4$ এবং বিন্দু $(1,-1)$।\nমানগুলো বসিয়ে পাই:\n$x(1)+y(-1)-1(x+1)-2(y-1)-4=0$\n$x-y-x-1-2y+2-4=0$\n$-3y-3=0$\n$-3(y+1)=0$\n$y+1=0$\nবাকি অপশনগুলো কেন ভুল?\nস্পর্শকের সূত্রে বিন্দুটি বসানোর সময় চিহ্নে বা গাণিতিক যোগ-বিয়োগে ভুল হলে অন্য রেখার সমীকরণ পাওয়া যায়।"}, {"num": "১৬", "question": "\"(2,3) কেন্দ্র এবং 10 একক ব্যাসবিশিষ্ট বৃত্তটি দ্বারা x-অক্ষের খন্ডিত অংশের দৈর্ঘ্য হবে-\"", "options": [{"key": "ক", "text": "4 একক"}, {"key": "খ", "text": "8 একক"}, {"key": "গ", "text": "$\\sqrt{21}$ একক"}, {"key": "ঘ", "text": "$2\\sqrt{21}$ একক"}], "answerLine": "উত্তর : খ 8 একক", "answerKey": "খ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?\nকেন্দ্র $(h,k)=(2,3)$ এবং ব্যাসার্ধ $r=\\frac{10}{2}=5$।\nবৃত্তের সমীকরণ: $(x-2)^2+(y-3)^2=5^2$\n$x^2-4x+4+y^2-6y+9=25$\n$x^2+y^2-4x-6y-12=0$\nবৃত্তটির সাধারণ সমীকরণের সাথে তুলনা করে পাই, $g=-2$, $f=-3$, $c=-12$।\n$X$-অক্ষের খণ্ডিত অংশের দৈর্ঘ্য $=2\\sqrt{g^2-c}$\n$=2\\sqrt{(-2)^2-(-12)}$\n$=2\\sqrt{4+12}$\n$=2\\sqrt{16}$\n$=2 \\times 4$\n$=8$\nবাকি অপশনগুলো কেন ভুল?\nসূত্রে $f$ এর মান বসিয়ে ফেললে বা $c$ এর মান ভুল ধরলে অন্যান্য অপশন আসে।"}, {"num": "১৭", "question": "\"$x^2+y^2-6x-4y-12=0$ বৃত্তটি- i. মূলবিন্দুগামী নয় ii. x-অক্ষ থেকে $2\\sqrt{21}$ একক অংশ খন্ডন করে iii. একটি বিন্দুবৃত্ত। কোনটি সঠিক?\"", "options": [{"key": "ক", "text": "i ও ii"}, {"key": "খ", "text": "i ও iii"}, {"key": "গ", "text": "i ও iii"}, {"key": "ঘ", "text": "i, ii ও iii"}], "answerLine": "উত্তর : ক i ও ii", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nপ্রদত্ত সমীকরণে ধ্রুবক পদ $c=-12 \\neq 0$, তাই এটি মূলবিন্দুগামী নয় (i সঠিক)।\n$X$-অক্ষ থেকে খণ্ডিত অংশ $=2\\sqrt{g^2-c}=2\\sqrt{(-3)^2-(-12)}=2\\sqrt{9+12}=2\\sqrt{21}$ (ii সঠিক)।\nবৃত্তের ব্যাসার্ধ $r=\\sqrt{g^2+f^2-c}=\\sqrt{9+4+12}=\\sqrt{25}=5$। যেহেতু ব্যাসার্ধ শূন্য নয়, তাই এটি বিন্দুবৃত্ত নয় (iii ভুল)।\nসুতরাং, সঠিক উত্তর i ও ii।\nবাকি অপশনগুলো কেন ভুল?\niii শর্তটি ভুল হওয়ায় বাকি অপশনগুলো এমনিতেই বাদ পড়ে যায়।"}, {"num": "১৮", "question": "\"২ টা 45 মিনিটের সময় ঘন্টার কাঁটা ও মিনিটের কাঁটার অন্তর্গত কোণ-\"", "options": [{"key": "ক", "text": "$22.5^\\circ$"}, {"key": "খ", "text": "$157.5^\\circ$"}, {"key": "গ", "text": "$172.5^\\circ$"}, {"key": "ঘ", "text": "$187.5^\\circ$"}], "answerLine": "উত্তর : গ $172.5^\\circ$ (বা ক্ষুদ্রতর কোণটি)", "answerKey": "গ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?\nঘড়ির কাঁটার মধ্যবর্তী কোণ নির্ণয়ের সূত্র: $\\theta=|30H - 5.5M|$\nযেখানে $H=2$ (ঘণ্টা) এবং $M=45$ (মিনিট)।\n$\\theta=|30(2)-5.5(45)|$\n$\\theta=|60-247.5|$\n$\\theta=|-187.5|$\n$\\theta=187.5^\\circ$\nযেহেতু কোণটি $180^\\circ$ এর চেয়ে বড় (প্রবৃদ্ধ কোণ), তাই অন্তর্গত ক্ষুদ্রতর কোণ হবে:\n$=360^\\circ-187.5^\\circ$\n$=172.5^\\circ$\nবাকি অপশনগুলো কেন ভুল?\nসরাসরি সূত্রের ভুল প্রয়োগ বা প্রবৃদ্ধ কোণ থেকে বিয়োগ না করলে ভুল অপশনগুলো পাওয়া যায়।"}, {"num": "১৯", "question": "\"$f(x)=2+\\sqrt{2+\\sin^2x}$ এর সর্বোচ্চ মান-\"", "options": [{"key": "ক", "text": "2"}, {"key": "খ", "text": "$2-\\sqrt{2}$"}, {"key": "গ", "text": "$2+\\sqrt{2}$"}, {"key": "ঘ", "text": "$2+\\sqrt{3}$"}], "answerLine": "উত্তর : ঘ $2+\\sqrt{3}$", "answerKey": "ঘ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ঘ' সঠিক?\nআমরা জানি, বাস্তব সংখ্যার ক্ষেত্রে $\\sin x$ এর মান $-1$ থেকে $1$ এর মধ্যে থাকে।\nসুতরাং, $\\sin^2 x$ এর মান $0$ থেকে $1$ এর মধ্যে থাকবে।\n$f(x)$ এর মান সর্বোচ্চ হবে যখন $\\sin^2 x$ এর মান সর্বোচ্চ হবে।\n$\\sin^2 x$ এর সর্বোচ্চ মান $=1$\n$f(x)_{max}=2+\\sqrt{2+1}$\n$=2+\\sqrt{3}$\nবাকি অপশনগুলো কেন ভুল?\n$\\sin^2 x$ এর সর্বোচ্চ মান ভুলভাবে ধরলে (যেমন 0 বা -1) অন্য মানগুলো আসে।"}, {"num": "২০", "question": "\"n জোড় সংখ্যা হলে $\\cos\\{2n\\pi+(-1)^n\\frac{\\pi}{3}\\}$ এর মান-\"", "options": [{"key": "ক", "text": "$-\\frac{1}{2}$"}, {"key": "খ", "text": "$-\\frac{\\sqrt{3}}{2}$"}, {"key": "গ", "text": "$\\frac{1}{2}$"}, {"key": "ঘ", "text": "$\\frac{\\sqrt{3}}{2}$"}], "answerLine": "উত্তর : গ $\\frac{1}{2}$", "answerKey": "গ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?\nযেহেতু $n$ জোড় সংখ্যা, ধরি $n=2k$। তখন $(-1)^n=(-1)^{2k}=1$ হবে।\nপ্রদত্ত রাশি $=\\cos(2n\\pi+\\frac{\\pi}{3})$\nযেহেতু $2n\\pi$ হলো $2\\pi$ এর পূর্ণ গুণিতক, এটি প্রথম চতুর্ভাগে নির্দেশ করে।\n$\\cos(2n\\pi+\\frac{\\pi}{3})=\\cos(\\frac{\\pi}{3})$\n$\\cos(60^\\circ)=\\frac{1}{2}$\nবাকি অপশনগুলো কেন ভুল?\n$n$ কে বিজোড় ধরলে বা চতুর্ভাগের চিহ্ন ভুল করলে অন্য মানগুলো আসে।"}, {"num": "২১", "question": "\"একক ব্যাসার্ধের বৃত্তে অন্তর্লিখিত একটি সমবাহু ত্রিভুজের বাহুর দৈর্ঘ্য কত একক?\"", "options": [{"key": "ক", "text": "1"}, {"key": "খ", "text": "$\\frac{\\sqrt{3}}{2}$"}, {"key": "গ", "text": "$\\sqrt{3}$"}, {"key": "ঘ", "text": "2"}], "answerLine": "উত্তর : গ $\\sqrt{3}$", "answerKey": "গ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'গ' সঠিক?\nআমরা জানি, সাইন সূত্রানুযায়ী যেকোনো ত্রিভুজের ক্ষেত্রে $\\frac{a}{\\sin A}=2R$\nযেখানে $R$ হলো পরিবৃত্তের ব্যাসার্ধ এবং সমবাহু ত্রিভুজের ক্ষেত্রে প্রতিটি কোণ $A=60^\\circ$।\nএখানে $R=1$।\n$\\frac{a}{\\sin 60^\\circ}=2(1)$\n$a=2 \\times \\frac{\\sqrt{3}}{2}$\n$a=\\sqrt{3}$\nবাকি অপশনগুলো কেন ভুল?\nজ্যামিতিক অনুপাত বা সাইন সূত্র প্রয়োগ না করতে পারলে অন্য মানগুলো আসবে।"}, {"num": "২২", "question": "\"x এর সাপেক্ষে $\\frac{\\sqrt{1+\\sin 4x}}{\\sin 2x+\\cos 2x}$ এর অন্তরজ কোনটি?\"", "options": [{"key": "ক", "text": "0"}, {"key": "খ", "text": "1"}, {"key": "গ", "text": "$2\\sin 2x$"}, {"key": "ঘ", "text": "$2\\cos 2x$"}], "answerLine": "উত্তর : ক 0", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nপ্রথমে লব সরল করি: $\\sqrt{1+\\sin 4x}$\nআমরা লিখতে পারি, $1=\\sin^2 2x+\\cos^2 2x$ এবং $\\sin 4x=2\\sin 2x\\cos 2x$\n$\\sqrt{\\sin^2 2x+\\cos^2 2x+2\\sin 2x\\cos 2x}=\\sqrt{(\\sin 2x+\\cos 2x)^2}$\n$=|\\sin 2x+\\cos 2x|$\nপ্রদত্ত রাশি $y=\\frac{\\sin 2x+\\cos 2x}{\\sin 2x+\\cos 2x}$\n$y=1$\nএখন, ধ্রুবকের অন্তরজ শূন্য হয়।\n$\\frac{dy}{dx}=\\frac{d}{dx}(1)=0$\nবাকি অপশনগুলো কেন ভুল?\nত্রিকোণমিতিক সরলীকরণ না করে সরাসরি চেইন রুল প্রয়োগ করতে গিয়ে ভুল করলে বাকি অপশনগুলো আসতে পারে।"}, {"num": "২৩", "question": "\"$\\frac{d^n}{dx^n}(\\sin x) = ?$\"", "options": [{"key": "ক", "text": "$\\sin(n\\pi+x)$"}, {"key": "খ", "text": "$\\sin(\\frac{n\\pi}{2}+x)$"}, {"key": "গ", "text": "$\\cos(n\\pi+x)$"}, {"key": "ঘ", "text": "$\\cos(\\frac{n\\pi}{2}+x)$"}], "answerLine": "উত্তর : খ $\\sin(\\frac{n\\pi}{2}+x)$", "answerKey": "খ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?\nধরি, $y=\\sin x$\n$y_1=\\frac{d}{dx}(\\sin x)=\\cos x=\\sin(x+\\frac{\\pi}{2})$\n$y_2=\\frac{d^2}{dx^2}(\\sin x)=-\\sin x=\\sin(x+2\\frac{\\pi}{2})$\n$y_3=\\frac{d^3}{dx^3}(\\sin x)=-\\cos x=\\sin(x+3\\frac{\\pi}{2})$\nএকই প্যাটার্ন অনুসরণ করে, $n$-তম অন্তরজ হবে:\n$y_n=\\sin(x+\\frac{n\\pi}{2})$\nবাকি অপশনগুলো কেন ভুল?\nঅন্তরীকরণের ক্রমিক ধারার প্যাটার্ন বুঝতে ভুল করলে অন্য অপশনগুলো আসে।"}, {"num": "২৪", "question": "\"$\\int \\sec^2 x e^{\\tan x} dx = ?$\"", "options": [{"key": "ক", "text": "$e^{\\tan x}+c$"}, {"key": "খ", "text": "$-e^{\\tan x}+c$"}, {"key": "গ", "text": "$e^{\\cot x}+c$"}, {"key": "ঘ", "text": "$-e^{\\cot x}+c$"}], "answerLine": "উত্তর : ক $e^{\\tan x}+c$", "answerKey": "ক", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ক' সঠিক?\nধরি, $z=\\tan x$\n$x$ এর সাপেক্ষে অন্তরীকরণ করে পাই, $\\frac{dz}{dx}=\\sec^2 x \\Rightarrow dz=\\sec^2 x dx$\nএখন সমাকলনে মানগুলো বসাই:\n$\\int e^{\\tan x} \\sec^2 x dx=\\int e^z dz$\nআমরা জানি $\\int e^z dz=e^z+c$\n$z$ এর মান পুনরায় বসালে পাই:\n$=e^{\\tan x}+c$\nবাকি অপশনগুলো কেন ভুল?\nভুল চলক ধরা বা সমাকলনের সূত্র ভুল করার কারণে বাকি উত্তরগুলো ভুল।"}, {"num": "২৫", "question": "\"$\\int_0^{\\pi/2} \\frac{dx}{1+\\cos x} = ?$\"", "options": [{"key": "ক", "text": "0"}, {"key": "খ", "text": "1"}, {"key": "গ", "text": "$\\frac{1}{2}$"}, {"key": "ঘ", "text": "$\\frac{3}{2}$"}], "answerLine": "উত্তর : খ 1", "answerKey": "খ", "explanation": "বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'খ' সঠিক?\nপ্রদত্ত সমাকলন: $I=\\int_0^{\\pi/2} \\frac{dx}{1+\\cos x}$\nআমরা জানি, $1+\\cos x=2\\cos^2(\\frac{x}{2})$\n$I=\\int_0^{\\pi/2} \\frac{dx}{2\\cos^2(\\frac{x}{2})}$\n$I=\\frac{1}{2} \\int_0^{\\pi/2} \\sec^2(\\frac{x}{2}) dx$\nসমাকলন করলে পাই:\n$I=\\frac{1}{2} \\left[ \\frac{\\tan(\\frac{x}{2})}{1/2} \\right]_0^{\\pi/2}$\n$I=\\left[ \\tan(\\frac{x}{2}) \\right]_0^{\\pi/2}$\nউচ্চ ও নিম্ন সীমা বসিয়ে পাই:\n$I=\\tan(\\frac{\\pi}{4})-\\tan(0)$\n$I=1-0$\n$I=1$\nবাকি অপশনগুলো কেন ভুল?\nঅর্ধ-কোণ সূত্র প্রয়োগ না করা বা সীমার মান নির্ণয়ে ভুল করার জন্য।"}];
+const CQS=[{"title": "১ নং সৃজনশীল প্রশ্ন", "body": "১ নং সৃজনশীল প্রশ্ন\nউদ্দীপক:\n$A=\\begin{matrix}b+c&a+b&a\\\\ c+a&b+c&b\\\\ a+b&c+a&c\\end{matrix}$\nএবং $B=\\begin{matrix}2&1&-1\\\\ 0&2&1\\\\ 5&2&-3\\end{matrix}$ (নলেজ বেস থেকে প্রাপ্ত সামঞ্জস্যপূর্ণ উপাত্ত অনুযায়ী)\nক. দেখাও যে, $\\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix}$ একটি শূন্যঘাতি ম্যাট্রিক্স এবং এর সূচক 2। (2 Marks)\nখ. দেখাও যে, $|A|=a^3+b^3+c^3-3abc$ (4 Marks)\nগ. $(B^T)^{-1}$ নির্ণয় করো। (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\nধরি, প্রদত্ত ম্যাট্রিক্স $M=\\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix}$\n$M^2=M \\times M$\n$M^2=\\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix} \\begin{matrix}pq&q^2\\\\ -p^2&-pq\\end{matrix}$\n$M^2=\\begin{matrix}(pq)(pq)+(q^2)(-p^2)&(pq)(q^2)+(q^2)(-pq)\\\\ (-p^2)(pq)+(-pq)(-p^2)&(-p^2)(q^2)+(-pq)(-pq)\\end{matrix}$\n$M^2=\\begin{matrix}p^2q^2-p^2q^2&pq^3-pq^3\\\\ -p^3q+p^3q&-p^2q^2+p^2q^2\\end{matrix}$\n$M^2=\\begin{matrix}0&0\\\\ 0&0\\end{matrix}$\nযেহেতু $M^2=0$, তাই $M$ একটি শূন্যঘাতী ম্যাট্রিক্স যার সূচক 2। (প্রমাণিত)\nখ.\nপ্রদত্ত ম্যাট্রিক্স $A=\\begin{matrix}b+c&a+b&a\\\\ c+a&b+c&b\\\\ a+b&c+a&c\\end{matrix}$\n$|A|=|\\begin{matrix}b+c&a+b&a\\\\ c+a&b+c&b\\\\ a+b&c+a&c\\end{matrix}|$\n$C_1 \\rightarrow C_1-C_2+C_3$ কলাম অপারেশন প্রয়োগ করে পাই:\n$|A|=|\\begin{matrix}(b+c)-(a+b)+a&a+b&a\\\\ (c+a)-(b+c)+b&b+c&b\\\\ (a+b)-(c+a)+c&c+a&c\\end{matrix}|$\n$|A|=|\\begin{matrix}c&a+b&a\\\\ a&b+c&b\\\\ b&c+a&c\\end{matrix}|$\nএখন $C_2 \\rightarrow C_2-C_3$ প্রয়োগ করে পাই:\n$|A|=|\\begin{matrix}c&b&a\\\\ a&c&b\\\\ b&a&c\\end{matrix}|$\nনির্ণায়কটির বিস্তার করে পাই:\n$|A|=c(c^2-ab)-b(ac-b^2)+a(a^2-bc)$\n$|A|=c^3-abc-abc+b^3+a^3-abc$\n$|A|=a^3+b^3+c^3-3abc$ (প্রমাণিত)\nগ.\nদেওয়া আছে, $B=\\begin{matrix}2&1&-1\\\\ 0&2&1\\\\ 5&2&-3\\end{matrix}$\nট্রান্সপোজ ম্যাট্রিক্স $B^T=\\begin{matrix}2&0&5\\\\ 1&2&2\\\\ -1&1&-3\\end{matrix}$\nএখন $|B^T|=2(-6-2)-0(-3+2)+5(1+2)$\n$|B^T|=2(-8)+5(3)$\n$|B^T|=-16+15=-1$\nযেহেতু $|B^T| \\neq 0$, তাই বিপরীত ম্যাট্রিক্স নির্ণয়যোগ্য।\nসহগুণক ম্যাট্রিক্স $Adj(B^T)$ নির্ণয়ের জন্য ভুক্তিগুলোর সহগুণক বের করি:\n$A_{11}=(-3 \\times 2)-(2 \\times 1)=-8$\n$A_{12}=-((-3 \\times 1)-(2 \\times -1))=-(-3+2)=1$\n$A_{13}=(1 \\times 1)-(2 \\times -1)=3$\n$A_{21}=-((-3 \\times 0)-(5 \\times 1))=5$\n$A_{22}=(-3 \\times 2)-(5 \\times -1)=-6+5=-1$\n$A_{23}=-((1 \\times 2)-(0 \\times -1))=-2$\n$A_{31}=(2 \\times 0)-(5 \\times 2)=-10$\n$A_{32}=-((2 \\times 2)-(5 \\times 1))=-(4-5)=1$\n$A_{33}=(2 \\times 2)-(0 \\times 1)=4$\n$Cofactor \\ Matrix = \\begin{matrix}-8&1&3\\\\ 5&-1&-2\\\\ -10&1&4\\end{matrix}$\n$Adj(B^T) = (Cofactor \\ Matrix)^T = \\begin{matrix}-8&5&-10\\\\ 1&-1&1\\\\ 3&-2&4\\end{matrix}$\n$(B^T)^{-1}=\\frac{1}{|B^T|} Adj(B^T)$\n$(B^T)^{-1}=\\frac{1}{-1} \\begin{matrix}-8&5&-10\\\\ 1&-1&1\\\\ 3&-2&4\\end{matrix}$\n$(B^T)^{-1}=\\begin{matrix}8&-5&10\\\\ -1&1&-1\\\\ -3&2&-4\\end{matrix}$ (Ans.)\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী:\nশূন্যঘাতী ম্যাট্রিক্স: কোনো বর্গ ম্যাট্রিক্স $A$ কে শূন্যঘাতী বলা হবে যদি এর কোনো ধনাত্মক পূর্ণসংখ্যক ঘাত $k$ এর জন্য $A^k=O$ (শূন্য ম্যাট্রিক্স) হয়। এখানে $k$ হলো সূচক।\nনির্ণায়কের ধর্ম: কলাম অপারেশন $C_i \\rightarrow C_i \\pm C_j$ করলে নির্ণায়কের মানের কোনো পরিবর্তন হয় না।\nবিপরীত ম্যাট্রিক্স: $A^{-1}=\\frac{1}{|A|} Adj(A)$। প্রথমে নির্ণায়কের মান বের করতে হয়। মান শূন্য হলে বিপরীত ম্যাট্রিক্স থাকে না।\nবিকল্প নিয়ম: (খ) এর প্রমাণটি $C_1+C_2+C_3$ করে $a+b+c$ কমন নিয়ে এবং পরবর্তীতে সারি বিয়োগ করে শূন্য বানানোর মাধ্যমেও সমাধান করা যেত।\nকমন ভুলের জায়গা: শিক্ষার্থীরা সাধারণত $Adj(A)$ নির্ণয়ের সময় সহগুণক ম্যাট্রিক্সকে ট্রান্সপোজ করতে ভুলে যায় অথবা চিহ্ন $(-1)^{i+j}$ ধরতে ভুল করে। কলাম অপারেশনে হিসাবের সময় চিহ্নের ভুলের কারণে নির্ণায়কের কাঙ্ক্ষিত প্রমাণ মেলানো কঠিন হয়ে যায়।"}, {"title": "২ নং সৃজনশীল প্রশ্ন", "body": "২ নং সৃজনশীল প্রশ্ন\nউদ্দীপক: OABC একটি সামান্তরিকের OC বাহুর সমীকরণ 3x+y=0 এবং OC বাহুটি, 3x+4y+1=0 ও L=0 রেখাদ্বয়ের মধ্যবর্তী কোণের সমদ্বিখন্ডক।\nক. একটি সরলরেখার ভেক্টর সমীকরণ নির্ণয় কর, যা z-অক্ষের সমান্তরাল ও (4,-3,-1) বিন্দুগামী। (2 Marks)\nখ. A বিন্দুতে AB রেখার উপর লম্বের সমীকরণ নির্ণয় করো। (4 Marks)\nগ. L=0 রেখাটির সমীকরণ নির্ণয় করো। (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\nz-অক্ষের সমান্তরাল ভেক্টর হলো:\n$\\vec{b} = \\hat{k}$\nপ্রদত্ত বিন্দুর অবস্থান ভেক্টর:\n$\\vec{a} = 4\\hat{i} - 3\\hat{j} - \\hat{k}$\nসরলরেখার ভেক্টর সমীকরণ:\n$\\vec{r} = \\vec{a} + t\\vec{b}$\n$\\vec{r} = (4\\hat{i} - 3\\hat{j} - \\hat{k}) + t\\hat{k}$\nখ.\nOABC সামান্তরিকের O মূলবিন্দু (0,0) এবং B বিন্দু (-6,3)।\nOC রেখার সমীকরণ:\n$3x+y=0$\nOC রেখার ঢাল:\n$m_1 = -3$\nযেহেতু সামান্তরিকের বিপরীত বাহুগুলো সমান্তরাল, তাই AB রেখা OC রেখার সমান্তরাল।\nAB রেখার ঢাল = -3\nB(-6,3) বিন্দুগামী AB রেখার সমীকরণ:\n$y - 3 = -3(x - (-6))$\n$y - 3 = -3x - 18$\n$3x + y + 15 = 0$\nচিত্রানুযায়ী OA রেখা x-অক্ষের উপর অবস্থিত, তাই OA এর সমীকরণ:\n$y = 0$\nAB এবং OA রেখার ছেদবিন্দুই হলো A বিন্দু।\n$3x + 0 + 15 = 0$\n$3x = -15$\n$x = -5$\nA বিন্দুর স্থানাঙ্ক (-5,0)।\nA বিন্দুতে AB রেখার উপর লম্ব রেখার ঢাল:\n$m_2 = -\\frac{1}{-3} = \\frac{1}{3}$\nলম্ব রেখার সমীকরণ:\n$y - 0 = \\frac{1}{3}(x - (-5))$\n$3y = x + 5$\n$x - 3y + 5 = 0$\nগ.\nL=0 এবং 3x+4y+1=0 রেখাদ্বয়ের সমদ্বিখণ্ডক হলো OC রেখা।\nOC রেখার সমীকরণ:\n$3x+y=0$\nOC এর ঢাল:\n$m = -3$\nপ্রথম রেখার ঢাল:\n$m_1 = -\\frac{3}{4}$\nধরি, L=0 রেখার ঢাল $m_2$।\nসমদ্বিখণ্ডক ও রেখাদ্বয়ের মধ্যবর্তী কোণ সমান হওয়ায়:\n$\\frac{m - m_1}{1 + m m_1} = - \\left( \\frac{m_2 - m}{1 + m_2 m} \\right)$ (যেহেতু একটি রেখার সাপেক্ষে অপরটি প্রতিবিম্ব)\n$\\frac{-3 - (-3/4)}{1 + (-3)(-3/4)} = - \\frac{m_2 - (-3)}{1 + m_2(-3)}$\n$\\frac{-3 + 3/4}{1 + 9/4} = - \\frac{m_2 + 3}{1 - 3m_2}$\n$\\frac{-9/4}{13/4} = \\frac{m_2 + 3}{3m_2 - 1}$\n$-\\frac{9}{13} = \\frac{m_2 + 3}{3m_2 - 1}$\n$-27m_2 + 9 = 13m_2 + 39$\n$-40m_2 = 30$\n$m_2 = -\\frac{3}{4}$ (এটি প্রথম রেখাটিরই ঢাল, তাই আমরা ধনাত্মক মান নিয়ে অন্য রেখাটি পাব)\nবিকল্পভাবে, ধনাত্মক মান নিলে:\n$\\frac{-9}{13} = - \\frac{m_2 + 3}{1 - 3m_2}$\n$\\frac{9}{13} = \\frac{m_2 + 3}{1 - 3m_2}$\n$9 - 27m_2 = 13m_2 + 39$\n$40m_2 = -30$\n$m_2 = -\\frac{3}{4}$ (উভয় ক্ষেত্রে একই আসছে, কারণ সমদ্বিখণ্ডকের সূত্রে পরমমান ব্যবহার করতে হবে)।\nপ্রকৃত সূত্রানুযায়ী:\n$\\left\\vert{} \\frac{-3 - (-3/4)}{1 + 9/4} \\right\\vert{} = \\left\\vert{} \\frac{m_2 - (-3)}{1 - 3m_2} \\right\\vert{}$\n$\\frac{9}{13} = \\pm \\frac{m_2 + 3}{1 - 3m_2}$\n(+) চিহ্ন নিলে আমরা $m_2 = -3/4$ পাই।\n(-) চিহ্ন নিলে:\n$\\frac{9}{13} = \\frac{m_2 + 3}{3m_2 - 1}$\n$27m_2 - 9 = 13m_2 + 39$\n$14m_2 = 48$\n$m_2 = \\frac{24}{7}$\nএখন, রেখাদ্বয়ের ছেদবিন্দু নির্ণয় করি:\n$3x+y=0 \\implies y = -3x$\n$3x+4(-3x)+1=0$\n$-9x+1=0$\n$x = \\frac{1}{9}$\n$y = -\\frac{1}{3}$\nছেদবিন্দু: $(\\frac{1}{9}, -\\frac{1}{3})$\nL=0 রেখার সমীকরণ:\n$y - (-\\frac{1}{3}) = \\frac{24}{7}(x - \\frac{1}{9})$\n$y + \\frac{1}{3} = \\frac{24}{7}x - \\frac{24}{63}$\n$y + \\frac{1}{3} = \\frac{24}{7}x - \\frac{8}{21}$\n$21y + 7 = 72x - 8$\n$72x - 21y - 15 = 0$\n$24x - 7y - 5 = 0$\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী: সামান্তরিকের বিপরীত বাহু সমান্তরাল হওয়ার শর্ত এবং দুটি সরলরেখার সমদ্বিখণ্ডকের সাপেক্ষে উৎপন্ন কোণ সমান হওয়ার জ্যামিতিক ধর্ম ব্যবহার করা হয়েছে।\nবিকল্প নিয়ম: (গ) এর ক্ষেত্রে রেখাদ্বয়ের ছেদবিন্দু দিয়ে যায় এমন রেখার সমীকরণ $3x+4y+1+k(3x+y)=0$ ধরে সমদ্বিখণ্ডক শর্ত প্রয়োগ করে $k$ এর মান বের করা যায়।\nকমন ভুলের জায়গা: পরমমান (Modulus) থেকে দুটি মান বের করতে শিক্ষার্থীরা প্রায়ই ভুল করে, যার ফলে নতুন রেখার পরিবর্তে আগের রেখাটিই পুনরায় চলে আসে।"}, {"title": "৩ নং সৃজনশীল প্রশ্ন", "body": "৩ নং সৃজনশীল প্রশ্ন\nউদ্দীপক: বৃত্তটির একটি ব্যাস CD এর সমীকরণ, 4x+3y=0\nক. (1,-1) বিন্দু হতে $2x^2+2y^2-x+3y+1=0$ বৃত্তে অংকিত স্পর্শকের দৈর্ঘ্য নির্ণয় করো। (2 Marks)\nখ. উদ্দিপকের বৃত্তটির সমীকরণ নির্ণয় করো। (4 Marks)\nগ. এমন বৃত্তের সমীকরণ নির্ণয় কর যা CD রেখাকে এবং y-অক্ষকে B বিন্দুতে স্পর্শ করে। (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\nপ্রদত্ত বৃত্তের সমীকরণকে আদর্শ রূপে সাজাই (2 দিয়ে ভাগ করে):\n$x^2 + y^2 - \\frac{1}{2}x + \\frac{3}{2}y + \\frac{1}{2} = 0$\nস্পর্শকের দৈর্ঘ্য $L = \\sqrt{x_1^2 + y_1^2 + 2gx_1 + 2fy_1 + c}$\n$L = \\sqrt{1^2 + (-1)^2 - \\frac{1}{2}(1) + \\frac{3}{2}(-1) + \\frac{1}{2}}$\n$L = \\sqrt{1 + 1 - 0.5 - 1.5 + 0.5}$\n$L = \\sqrt{2 - 1.5}$\n$L = \\sqrt{0.5}$\n$L = \\frac{1}{\\sqrt{2}}$ একক।\nখ.\nউদ্দীপকের চিত্রানুযায়ী বৃত্তটি y-অক্ষকে A(0,-2) এবং B(0,6) বিন্দুতে ছেদ করে।\nধরি, বৃত্তের সমীকরণ:\n$x^2 + y^2 + 2gx + 2fy + c = 0$\nA(0,-2) বিন্দুগামী হওয়ার শর্ত:\n$0 + 4 + 0 - 4f + c = 0$\n$4f - c = 4$ --- (i)\nB(0,6) বিন্দুগামী হওয়ার শর্ত:\n$0 + 36 + 0 + 12f + c = 0$\n$12f + c = -36$ --- (ii)\n(i) ও (ii) যোগ করে পাই:\n$16f = -32$\n$f = -2$\n(i) নং এ $f$ এর মান বসাই:\n$4(-2) - c = 4$\n$-8 - c = 4$\n$c = -12$\nবৃত্তের কেন্দ্র $(-g, -f) = (-g, 2)$\nকেন্দ্রটি CD ব্যাস ($4x+3y=0$) এর উপর অবস্থিত:\n$4(-g) + 3(2) = 0$\n$-4g + 6 = 0$\n$g = \\frac{3}{2}$\nনির্ণেয় বৃত্তের সমীকরণ:\n$x^2 + y^2 + 2(\\frac{3}{2})x + 2(-2)y - 12 = 0$\n$x^2 + y^2 + 3x - 4y - 12 = 0$\nগ.\nনির্ণেয় বৃত্তটি y-অক্ষকে B(0,6) বিন্দুতে স্পর্শ করে।\ny-অক্ষকে (0,6) বিন্দুতে স্পর্শকারী বৃত্তের সমীকরণ:\n$(x - h)^2 + (y - 6)^2 = h^2$\n$x^2 - 2hx + h^2 + y^2 - 12y + 36 = h^2$\n$x^2 + y^2 - 2hx - 12y + 36 = 0$\nবৃত্তটির কেন্দ্র (h, 6) এবং ব্যাসার্ধ = |h|।\nএই বৃত্তটি CD ($4x+3y=0$) রেখাকে স্পর্শ করে।\nকেন্দ্র (h, 6) হতে $4x+3y=0$ রেখার লম্ব দূরত্ব = ব্যাসার্ধ।\n$\\frac{\\vert{}4h + 3(6)\\vert{}}{\\sqrt{4^2 + 3^2}} = \\vert{}h\\vert{}$\n$\\frac{\\vert{}4h + 18\\vert{}}{5} = \\vert{}h\\vert{}$\n$4h + 18 = 5h$ অথবা $4h + 18 = -5h$\n$h = 18$ অথবা $9h = -18 \\implies h = -2$\n$h = 18$ হলে বৃত্তের সমীকরণ:\n$(x - 18)^2 + (y - 6)^2 = 324$\n$x^2 + y^2 - 36x - 12y + 36 = 0$\n$h = -2$ হলে বৃত্তের সমীকরণ:\n$(x + 2)^2 + (y - 6)^2 = 4$\n$x^2 + y^2 + 4x - 12y + 36 = 0$\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী: স্পর্শকের দৈর্ঘ্য নির্ণয়ের সময় সর্বদা $x^2$ ও $y^2$ এর সহগ ১ করে নিতে হয়। অক্ষকে নির্দিষ্ট বিন্দুতে স্পর্শ করার সমীকরণ $(x-h)^2+(y-k)^2=r^2$ এর ধারণা ব্যবহার করা হয়েছে।\nকমন ভুলের জায়গা: (ক) তে সমীকরণকে ২ দিয়ে ভাগ না করেই $g, f, c$ এর মান বের করা সবচেয়ে সাধারণ ভুল।"}, {"title": "৪ নং সৃজনশীল প্রশ্ন", "body": "৪ নং সৃজনশীল প্রশ্ন\nউদ্দীপক: NEWZEALAND ক্রিকেট দলে 8 জন ব্যাটসম্যান, 5 জন বোলার ও 2 জন উইকেট রক্ষক আছে।\nক. $f(x)=\\frac{1}{\\sqrt{\\vert{}x\\vert{}-x}}$ ফাংশনটি ডোমেন নির্ণয় করো। (2 Marks)\nখ. কমপক্ষে 3 জন বোলার ও কমপক্ষে 1 জন উইকেট রক্ষক নিয়ে কত ভাবে 11 জনের দল গঠন করা যায়, তা নির্ণয় করো। (4 Marks)\nগ. ইংরেজি শব্দটির অক্ষর গুলো হতে 4 টি করে বর্ণ নিয়ে কত ভাবে বিন্যাস করা যায়, তা নির্ণয় করো। (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\nপ্রদত্ত ফাংশন:\n$f(x) = \\frac{1}{\\sqrt{\\vert{}x\\vert{}-x}}$\nফাংশনটি বাস্তব ও সংজ্ঞায়িত হবে যদি ও কেবল যদি রুটের ভেতরের মান ধনাত্মক হয়।\n$\\vert{}x\\vert{} - x > 0$\n$\\vert{}x\\vert{} > x$\nএই শর্তটি শুধুমাত্র ঋণাত্মক বাস্তব সংখ্যার জন্য সত্য। (কারণ $x \\ge 0$ হলে $\\vert{}x\\vert{}=x \\implies x-x=0$ যা অসংজ্ঞায়িত করে)।\nসুতরাং, $x < 0$\nডোমেন $D_f = (-\\infty, 0)$\nখ.\nমোট খেলোয়াড়:\nবোলার = 5 জন\nউইকেট রক্ষক = 2 জন\nব্যাটসম্যান = 8 জন\nদল গঠন করতে হবে 11 জনের।\nশর্ত: বোলার $\\ge 3$ এবং উইকেট রক্ষক $\\ge 1$।\nবাছাইয়ের সম্ভাব্য উপায়গুলো নিচে দেওয়া হলো:\nউপায় ১: ৩ জন বোলার, ১ জন উ. রক্ষক, ৭ জন ব্যাটসম্যান\n$= ^5C_3 \\times ^2C_1 \\times ^8C_7 = 10 \\times 2 \\times 8 = 160$\nউপায় ২: ৩ জন বোলার, ২ জন উ. রক্ষক, ৬ জন ব্যাটসম্যান\n$= ^5C_3 \\times ^2C_2 \\times ^8C_6 = 10 \\times 1 \\times 28 = 280$\nউপায় ৩: ৪ জন বোলার, ১ জন উ. রক্ষক, ৬ জন ব্যাটসম্যান\n$= ^5C_4 \\times ^2C_1 \\times ^8C_6 = 5 \\times 2 \\times 28 = 280$\nউপায় ৪: ৪ জন বোলার, ২ জন উ. রক্ষক, ৫ জন ব্যাটসম্যান\n$= ^5C_4 \\times ^2C_2 \\times ^8C_5 = 5 \\times 1 \\times 56 = 280$\nউপায় ৫: ৫ জন বোলার, ১ জন উ. রক্ষক, ৫ জন ব্যাটসম্যান\n$= ^5C_5 \\times ^2C_1 \\times ^8C_5 = 1 \\times 2 \\times 56 = 112$\nউপায় ৬: ৫ জন বোলার, ২ জন উ. রক্ষক, ৪ জন ব্যাটসম্যান\n$= ^5C_5 \\times ^2C_2 \\times ^8C_4 = 1 \\times 1 \\times 70 = 70$\nমোট উপায় = $160 + 280 + 280 + 280 + 112 + 70 = 1182$\nগ.\n'NEWZEALAND' শব্দটিতে মোট বর্ণ আছে 10 টি।\nএকই জাতীয় বর্ণ: N আছে 2 টি, E আছে 2 টি, A আছে 2 টি।\nভিন্ন বর্ণ: N, E, A, W, Z, L, D (মোট 7 টি)।\n4 টি বর্ণ নিয়ে বিন্যাস:\nক্ষেত্র ১: ৪টি বর্ণই ভিন্ন।\nবাছাই সংখ্যা = $^7C_4 = 35$\nবিন্যাস সংখ্যা = $35 \\times 4! = 840$\nক্ষেত্র ২: ২টি এক জাতীয় এবং বাকি ২টি ভিন্ন।\n৩টি জোড়া থেকে ১টি জোড়া বাছাই = $^3C_1 = 3$\nবাকি ৬টি ভিন্ন বর্ণ থেকে ২টি বাছাই = $^6C_2 = 15$\nবিন্যাস সংখ্যা = $(3 \\times 15) \\times \\frac{4!}{2!} = 45 \\times 12 = 540$\nক্ষেত্র ৩: ২টি এক জাতীয় এবং অন্য ২টি আরেক জাতীয়।\n৩টি জোড়া থেকে ২টি জোড়া বাছাই = $^3C_2 = 3$\nবিন্যাস সংখ্যা = $3 \\times \\frac{4!}{2!2!} = 3 \\times 6 = 18$\nমোট বিন্যাস সংখ্যা = $840 + 540 + 18 = 1398$\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী: বিন্যাস ও সমাবেশের শর্তসাপেক্ষ গাণিতিক কাঠামো। ডোমেন নির্ণয়ের ক্ষেত্রে পরমমানের ধর্ম।\nকমন ভুলের জায়গা: (খ) তে কোনো একটি সম্ভাবনা বাদ পড়ে যাওয়া এবং (গ) তে জোড়া বর্ণ থেকে ভিন্ন বর্ণ বাছাইয়ের সময় সেটের সদস্য সংখ্যা নির্ধারণে ভুল করা (যেমন $^6C_2$ এর জায়গায় $^7C_2$ লিখে ফেলা)।"}, {"title": "৫ নং সৃজনশীল প্রশ্ন", "body": "৫ নং সৃজনশীল প্রশ্ন\nউদ্দীপক: $\\Delta ABC$ এর মধ্যে 6 cm ব্যাসার্ধ বিশিষ্ট একটি বৃত্তকলা AEF এবং AB=12 cm, AC = 10 cm, BC=14 cm\nক. $f(x)=sin x \\tan 2x$ এর পর্যায়কাল নির্ণয় করো। (2 Marks)\nখ. উদ্দিপকের ছায়াঘেরা অংশের ক্ষেত্রফল নির্ণয় করো। (4 Marks)\nগ. উদ্দিপক হতে প্রমাণ করো যে, $\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma=1-2 \\cos \\alpha \\cos \\beta \\cos \\gamma$ (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\nপ্রদত্ত ফাংশন, $f(x) = \\sin x \\tan 2x$\n$\\sin x$ এর পর্যায়কাল = $2\\pi$\n$\\tan 2x$ এর পর্যায়কাল = $\\frac{\\pi}{2}$\nউভয় অংশের পর্যায়কালের লসাগু হলো $2\\pi$।\nযাচাই করি:\n$f(x+2\\pi) = \\sin(x+2\\pi) \\tan(2x+4\\pi)$\n$f(x+2\\pi) = (\\sin x) (\\tan 2x)$\n$f(x+2\\pi) = f(x)$\nঅতএব, নির্ণেয় পর্যায়কাল = $2\\pi$।\nখ.\n$\\Delta ABC$ এর তিন বাহু: $a=14, b=10, c=12$।\nঅর্ধপরিসীমা $s = \\frac{14+10+12}{2} = 18$\nত্রিভুজের ক্ষেত্রফল $\\Delta = \\sqrt{s(s-a)(s-b)(s-c)}$\n$\\Delta = \\sqrt{18(18-14)(18-10)(18-12)}$\n$\\Delta = \\sqrt{18 \\times 4 \\times 8 \\times 6}$\n$\\Delta = \\sqrt{3456}$\n$\\Delta = 24\\sqrt{6} \\approx 58.787$ cm$^2$\nকোসাইন সূত্র ব্যবহার করে A কোণ নির্ণয় করি:\n$\\cos A = \\frac{b^2+c^2-a^2}{2bc}$\n$\\cos A = \\frac{100+144-196}{2(10)(12)}$\n$\\cos A = \\frac{48}{240} = 0.2$\n$A = \\cos^{-1}(0.2) \\approx 1.3694$ রেডিয়ান।\nবৃত্তকলা AEF এর ব্যাসার্ধ $r=6$।\nবৃত্তকলার ক্ষেত্রফল = $\\frac{1}{2} r^2 \\theta$ (যেখানে $\\theta$ রেডিয়ানে)\n$= \\frac{1}{2} \\times 6^2 \\times 1.3694$\n$= 18 \\times 1.3694$\n$= 24.649$ cm$^2$\nছায়াঘেরা অংশের ক্ষেত্রফল = $\\Delta - \\text{বৃত্তকলার ক্ষেত্রফল}$\n$= 58.787 - 24.649$\n$= 34.138$ cm$^2$\nগ.\nধরি, উদ্দীপকের ত্রিভুজের কোণগুলো হলো $\\alpha, \\beta, \\gamma$।\nসুতরাং, $\\alpha + \\beta + \\gamma = \\pi$\nবামপক্ষ = $\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma$\n$= \\frac{1}{2}(2\\cos^2\\alpha + 2\\cos^2\\beta) + \\cos^2\\gamma$\n$= \\frac{1}{2}(1 + \\cos 2\\alpha + 1 + \\cos 2\\beta) + \\cos^2\\gamma$\n$= 1 + \\frac{1}{2}(\\cos 2\\alpha + \\cos 2\\beta) + \\cos^2\\gamma$\n$= 1 + \\frac{1}{2}(2\\cos(\\alpha+\\beta)\\cos(\\alpha-\\beta)) + \\cos^2\\gamma$\n$= 1 + \\cos(\\pi-\\gamma)\\cos(\\alpha-\\beta) + \\cos^2\\gamma$\n$= 1 - \\cos\\gamma\\cos(\\alpha-\\beta) + \\cos^2\\gamma$\n$= 1 - \\cos\\gamma(\\cos(\\alpha-\\beta) - \\cos\\gamma)$\n$= 1 - \\cos\\gamma(\\cos(\\alpha-\\beta) - \\cos(\\pi-(\\alpha+\\beta)))$\n$= 1 - \\cos\\gamma(\\cos(\\alpha-\\beta) + \\cos(\\alpha+\\beta))$\n$= 1 - \\cos\\gamma(2\\cos\\alpha\\cos\\beta)$\n$= 1 - 2\\cos\\alpha\\cos\\beta\\cos\\gamma$\n= ডানপক্ষ (প্রমাণিত)\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী: ত্রিভুজের ক্ষেত্রফল নির্ণয়ে হেরনের সূত্র এবং কোণ নির্ণয়ে কোসাইন সূত্র ব্যবহৃত হয়েছে।\nকমন ভুলের জায়গা: বৃত্তকলার ক্ষেত্রফল নির্ণয়ে কোণকে ডিগ্রিতে রেখে সরাসরি সূত্রে মান বসানো।"}, {"title": "৬ নং সৃজনশীল প্রশ্ন", "body": "৬ নং সৃজনশীল প্রশ্ন\nউদ্দীপক: ত্রিভুজ ABC এবং $f(x)=\\cos x$\nক. প্রমাণ করো, $\\tan\\frac{\\pi}{20}+\\tan\\frac{\\pi}{5}+\\tan\\frac{\\pi}{20}\\tan\\frac{\\pi}{5}=1$ (2 Marks)\nখ. উদ্দিপক হতে দেখাও যে, $a\\sin(\\frac{A}{2}+B)=(b+c)\\sin\\frac{A}{2}$ (4 Marks)\nগ. (ত্রুটিপূর্ণ পাঠ সাপেক্ষে আদর্শ প্রমাণ): $A+B+C=\\pi$ হলে দেখাও যে, $f(\\frac{\\pi}{2}-\\frac{B}{2})f(\\frac{\\pi}{2}-\\frac{C}{2})=f(\\frac{\\pi}{2}+\\frac{A}{2}) + \\dots$ (যেহেতু প্রশ্ন অস্পষ্ট, আমরা $b+c=2a$ শর্তাধীনে $\\sin\\frac{B}{2}\\sin\\frac{C}{2}$ এর সম্পর্কটি দেখাব)। সংশোধিত প্রশ্ন: $f(\\frac{\\pi}{2}-\\frac{B}{2})f(\\frac{\\pi}{2}-\\frac{C}{2})$ এর মান বের করো। (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\nআমরা জানি,\n$\\frac{\\pi}{20} + \\frac{\\pi}{5} = \\frac{\\pi+4\\pi}{20} = \\frac{5\\pi}{20} = \\frac{\\pi}{4}$\nউভয় পক্ষে $\\tan$ নিয়ে পাই:\n$\\tan(\\frac{\\pi}{20} + \\frac{\\pi}{5}) = \\tan\\frac{\\pi}{4}$\n$\\frac{\\tan\\frac{\\pi}{20} + \\tan\\frac{\\pi}{5}}{1 - \\tan\\frac{\\pi}{20}\\tan\\frac{\\pi}{5}} = 1$\n$\\tan\\frac{\\pi}{20} + \\tan\\frac{\\pi}{5} = 1 - \\tan\\frac{\\pi}{20}\\tan\\frac{\\pi}{5}$\n$\\tan\\frac{\\pi}{20} + \\tan\\frac{\\pi}{5} + \\tan\\frac{\\pi}{20}\\tan\\frac{\\pi}{5} = 1$ (প্রমাণিত)\nখ.\nডানপক্ষ = $(b+c)\\sin\\frac{A}{2}$\nসাইন সূত্র হতে $b=2R\\sin B, c=2R\\sin C$ বসিয়ে:\n$= (2R\\sin B + 2R\\sin C)\\sin\\frac{A}{2}$\n$= 2R(\\sin B + \\sin C)\\sin\\frac{A}{2}$\n$= 2R (2\\sin\\frac{B+C}{2}\\cos\\frac{B-C}{2})\\sin\\frac{A}{2}$\nযেহেতু $A+B+C=\\pi \\implies \\frac{B+C}{2} = \\frac{\\pi}{2} - \\frac{A}{2}$\n$= 4R \\sin(\\frac{\\pi}{2}-\\frac{A}{2}) \\cos\\frac{B-C}{2} \\sin\\frac{A}{2}$\n$= 4R \\cos\\frac{A}{2} \\cos\\frac{B-C}{2} \\sin\\frac{A}{2}$\n$= 2R (2\\sin\\frac{A}{2}\\cos\\frac{A}{2}) \\cos\\frac{B-C}{2}$\n$= 2R \\sin A \\cos\\frac{B-C}{2}$\n$= a \\cos\\frac{B-C}{2}$\nএখন বামপক্ষ = $a\\sin(\\frac{A}{2}+B)$\n$= a\\sin(\\frac{\\pi - (B+C)}{2} + B)$\n$= a\\sin(\\frac{\\pi}{2} - \\frac{B}{2} - \\frac{C}{2} + B)$\n$= a\\sin(\\frac{\\pi}{2} + \\frac{B-C}{2})$\n$= a\\cos\\frac{B-C}{2}$\nবামপক্ষ = ডানপক্ষ (প্রমাণিত)\nগ.\nদেওয়া আছে, $f(x) = \\cos x$।\nনির্ণেয় রাশি = $f(\\frac{\\pi}{2}-\\frac{B}{2}) f(\\frac{\\pi}{2}-\\frac{C}{2})$\n$= \\cos(\\frac{\\pi}{2}-\\frac{B}{2}) \\cos(\\frac{\\pi}{2}-\\frac{C}{2})$\n$= \\sin\\frac{B}{2} \\sin\\frac{C}{2}$\n$= \\frac{1}{2} (2\\sin\\frac{B}{2}\\sin\\frac{C}{2})$\n$= \\frac{1}{2} (\\cos\\frac{B-C}{2} - \\cos\\frac{B+C}{2})$\n$= \\frac{1}{2} (\\cos\\frac{B-C}{2} - \\sin\\frac{A}{2})$\n(প্রশ্নের অস্পষ্টতার কারণে লজিক্যাল সমীকরণ পর্যন্ত সমাধান রাখা হলো)।\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী: গুণিতক কোণের ত্রিকোণমিতিক অনুপাত এবং ত্রিভুজের সাইন সূত্র।"}, {"title": "৭ নং সৃজনশীল প্রশ্ন", "body": "৭ নং সৃজনশীল প্রশ্ন\nউদ্দীপক: $e^y=x+\\sqrt{p+x^2}$ এবং $g(x)=\\frac{4x^2+3x+1}{2x}$\nক. $\\lim_{x\\to0}\\frac{1-\\cos 3x}{7x^2}$ এর মান নির্ণয় করো। (2 Marks)\nখ. দেখাও যে, $(p+x^2)y_3+3xy_2+y_1=0$ (4 Marks)\nগ. দেখাও যে, $g(x)$ এর লঘুমান গুরুমান অপেক্ষা বৃহত্তর। (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\n$\\lim_{x\\to0} \\frac{1-\\cos 3x}{7x^2}$\n$= \\lim_{x\\to0} \\frac{2\\sin^2(\\frac{3x}{2})}{7x^2}$\n$= \\frac{2}{7} \\lim_{x\\to0} \\frac{\\sin^2(\\frac{3x}{2})}{(\\frac{3x}{2})^2} \\times \\frac{9}{4}$\n$= \\frac{2}{7} \\times 1^2 \\times \\frac{9}{4}$\n$= \\frac{9}{14}$\nখ.\nদেওয়া আছে, $e^y = x + \\sqrt{p+x^2}$\nউভয়পক্ষে $\\ln$ নিয়ে পাই:\n$y = \\ln(x + \\sqrt{p+x^2})$\nx এর সাপেক্ষে অন্তরীকরণ করে পাই:\n$y_1 = \\frac{1}{x + \\sqrt{p+x^2}} \\times \\frac{d}{dx}(x + \\sqrt{p+x^2})$\n$y_1 = \\frac{1}{x + \\sqrt{p+x^2}} \\times (1 + \\frac{2x}{2\\sqrt{p+x^2}})$\n$y_1 = \\frac{1}{x + \\sqrt{p+x^2}} \\times (\\frac{\\sqrt{p+x^2} + x}{\\sqrt{p+x^2}})$\n$y_1 = \\frac{1}{\\sqrt{p+x^2}}$\nবর্গ করে আরগুণন করে পাই:\n$y_1^2 (p+x^2) = 1$\nপুনরায় x এর সাপেক্ষে অন্তরীকরণ করে পাই:\n$2y_1 y_2 (p+x^2) + y_1^2 (2x) = 0$\n$2y_1$ দ্বারা ভাগ করে পাই:\n$(p+x^2)y_2 + xy_1 = 0$\nআবার x এর সাপেক্ষে অন্তরীকরণ করে পাই:\n$(p+x^2)y_3 + y_2(2x) + xy_2 + y_1(1) = 0$\n$(p+x^2)y_3 + 3xy_2 + y_1 = 0$ (প্রমাণিত)\nগ.\n$g(x) = \\frac{4x^2+3x+1}{2x}$\n$g(x) = 2x + \\frac{3}{2} + \\frac{1}{2x}$\nপর্যায়ক্রমিক অন্তরীকরণ করি:\n$g'(x) = 2 - \\frac{1}{2x^2}$\n$g''(x) = \\frac{1}{x^3}$\nচরম মানের জন্য $g'(x) = 0$:\n$2 - \\frac{1}{2x^2} = 0$\n$2x^2 = \\frac{1}{2}$\n$x^2 = \\frac{1}{4}$\n$x = \\pm \\frac{1}{2}$\n$x = \\frac{1}{2}$ বিন্দুতে:\n$g''(\\frac{1}{2}) = \\frac{1}{(1/2)^3} = 8 > 0$ (অর্থাৎ লঘুমান বিদ্যমান)\nলঘুমান $= g(\\frac{1}{2}) = 2(\\frac{1}{2}) + \\frac{3}{2} + \\frac{1}{2(1/2)} = 1 + 1.5 + 1 = 3.5$\n$x = -\\frac{1}{2}$ বিন্দুতে:\n$g''(-\\frac{1}{2}) = \\frac{1}{(-1/2)^3} = -8 < 0$ (অর্থাৎ গুরুমান বিদ্যমান)\nগুরুমান $= g(-\\frac{1}{2}) = 2(-\\frac{1}{2}) + \\frac{3}{2} + \\frac{1}{2(-1/2)} = -1 + 1.5 - 1 = -0.5$\nযেহেতু $3.5 > -0.5$, তাই লঘুমান গুরুমান অপেক্ষা বৃহত্তর। (প্রমাণিত)\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী: লিমিটের আদর্শ সূত্র $\\lim_{\\theta\\to0} \\frac{\\sin\\theta}{\\theta}=1$ এবং লিডনিজ থিওরেম সম্পর্কিত অন্তরীকরণের ধারাবাহিক প্রয়োগ। চরম মানের প্রথম ও দ্বিতীয় অন্তরজ পরীক্ষা।\nকমন ভুলের জায়গা: (খ) নং প্রশ্নে বর্গ করার পর $2y_1$ দিয়ে ভাগ করতে ভুলে যাওয়া।"}, {"title": "৮ নং সৃজনশীল প্রশ্ন", "body": "৮ নং সৃজনশীল প্রশ্ন\nউদ্দীপক: একটি পরাবৃত্তের সমীকরণ $y^2=4x$ ও একটি সরলরেখার সমীকরণ $y=2x-4$ এবং $M(x)=x\\tan^{-1}x$\nক. $\\int 4^{\\ln x} dx$ এর মান নির্ণয় করো। (2 Marks)\nখ. $\\int_1^{\\sqrt{3}} M(x) dx$ এর মান নির্ণয় করো। (4 Marks)\nগ. উদ্দিপকের পরাবৃত্ত ও সরলরেখা দ্বারা আবদ্ধ ক্ষেত্রের ক্ষেত্রফল নির্ণয় করো। (4 Marks)\n[অংশ ১: সমাধান (Solution Section)]\nক.\nপ্রদত্ত সমাকলন:\n$I = \\int 4^{\\ln x} dx$\nসূচকের নিয়ম অনুযায়ী $a^{\\ln x} = x^{\\ln a}$\n$I = \\int x^{\\ln 4} dx$\n$I = \\frac{x^{\\ln 4 + 1}}{\\ln 4 + 1} + c$\nখ.\nপ্রদত্ত ফাংশন, $M(x) = x\\tan^{-1}x$\nসমাকলন:\n$\\int x\\tan^{-1}x dx$\nLIATE নিয়ম অনুযায়ী $\\tan^{-1}x$ কে $u$ এবং $x$ কে $v$ ধরি।\n$= \\tan^{-1}x \\int x dx - \\int \\left( \\frac{d}{dx}(\\tan^{-1}x) \\int x dx \\right) dx$\n$= \\frac{x^2}{2}\\tan^{-1}x - \\int \\frac{1}{1+x^2} \\frac{x^2}{2} dx$\n$= \\frac{x^2}{2}\\tan^{-1}x - \\frac{1}{2} \\int \\frac{x^2+1-1}{x^2+1} dx$\n$= \\frac{x^2}{2}\\tan^{-1}x - \\frac{1}{2} \\int (1 - \\frac{1}{x^2+1}) dx$\n$= \\frac{x^2}{2}\\tan^{-1}x - \\frac{1}{2}x + \\frac{1}{2}\\tan^{-1}x$\n$= \\frac{1}{2}(x^2+1)\\tan^{-1}x - \\frac{x}{2}$\nএখন সীমা বসিয়ে:\n$I = \\left[ \\frac{1}{2}(x^2+1)\\tan^{-1}x - \\frac{x}{2} \\right]_1^{\\sqrt{3}}$\nউচ্চসীমা বসিয়ে:\n$= \\frac{1}{2}(3+1)\\tan^{-1}\\sqrt{3} - \\frac{\\sqrt{3}}{2} = 2(\\frac{\\pi}{3}) - \\frac{\\sqrt{3}}{2}$\nনিম্নসীমা বসিয়ে:\n$= \\frac{1}{2}(1+1)\\tan^{-1}1 - \\frac{1}{2} = 1(\\frac{\\pi}{4}) - \\frac{1}{2}$\nমান = $(\\frac{2\\pi}{3} - \\frac{\\sqrt{3}}{2}) - (\\frac{\\pi}{4} - \\frac{1}{2})$\n$= \\frac{5\\pi}{12} - \\frac{\\sqrt{3}}{2} + \\frac{1}{2}$\nগ.\nপরাবৃত্তের সমীকরণ: $y^2 = 4x \\implies x = \\frac{y^2}{4}$\nসরলরেখার সমীকরণ: $y = 2x-4 \\implies x = \\frac{y+4}{2}$\nছেদবিন্দু নির্ণয় করি:\n$\\frac{y^2}{4} = \\frac{y+4}{2}$\n$y^2 = 2y + 8$\n$y^2 - 2y - 8 = 0$\n$(y-4)(y+2) = 0$\n$y = 4, y = -2$\nনির্ণেয় ক্ষেত্রফল (y-অক্ষের সাপেক্ষে):\n$A = \\int_{-2}^{4} (x_2 - x_1) dy$\n$A = \\int_{-2}^{4} \\left( \\frac{y+4}{2} - \\frac{y^2}{4} \\right) dy$\n$A = \\left[ \\frac{y^2}{4} + 2y - \\frac{y^3}{12} \\right]_{-2}^{4}$\nউচ্চসীমা (4) বসিয়ে:\n$= \\frac{16}{4} + 8 - \\frac{64}{12} = 4 + 8 - \\frac{16}{3} = \\frac{20}{3}$\nনিম্নসীমা (-2) বসিয়ে:\n$= \\frac{4}{4} - 4 - \\frac{-8}{12} = 1 - 4 + \\frac{2}{3} = -\\frac{7}{3}$\nক্ষেত্রফল $= \\frac{20}{3} - (-\\frac{7}{3})$\n$= \\frac{27}{3}$\n$= 9$ বর্গ একক।\n[অংশ ২: বিস্তারিত কনসেপ্ট ও বিকল্প নিয়ম (Concept & Alternative Methods)]\nমূল কনসেপ্ট ও সূত্রাবলী: Integration by parts (LIATE Rule) এবং বক্ররেখার মধ্যবর্তী আবদ্ধ ক্ষেত্রের ক্ষেত্রফল নির্ণয়ে Definite Integral এর প্রয়োগ।\nবিকল্প নিয়ম: (গ) এর ক্ষেত্রে x-অক্ষের সাপেক্ষে সমাকলন করলে দুটি আলাদা অংশে ভাগ করে ক্ষেত্রফল নির্ণয় করতে হয়, যা অপেক্ষাকৃত জটিল। তাই y-অক্ষের সাপেক্ষে সমাকলন বেশি সুবিধাজনক।"}];
+MCQS.push(
+  {"num":"১৩","question":"\"একটি কণার উপর $2\\hat{i}+3\\hat{j}-6\\hat{k}$ ও $2\\hat{j}-5\\hat{k}$ [টেক্সট ত্রুটিযুক্ত] মানের দুইটি ধ্রুব বল কাজ করার ফলে কণাটির $2\\hat{i}-3\\hat{j}-6\\hat{k}$ বিন্দু হতে $6\\hat{i}+3\\hat{j}-2\\hat{k}$ বিন্দুতে সরণ হলে সম্পন্ন কাজের পরিমাণ কত একক?\"","options":[{"key":"ক","text":"98"},{"key":"খ","text":"58"},{"key":"গ","text":"38"},{"key":"ঘ","text":"2"}],"answerLine":"উত্তর : ঘ. 2","answerKey":"ঘ","explanation":"বিস্তারিত গাণিতিক ব্যাখ্যা : কেন 'ঘ' সঠিক?\nপ্রদত্ত বলদ্বয়ের লব্ধি বল $\\vec{F} = (2\\hat{i}+3\\hat{j}-6\\hat{k}) + (2\\hat{i}+2\\hat{j}-5\\hat{k}) = 4\\hat{i}+5\\hat{j}-11\\hat{k}$ [এখানে প্রথম বলের টাইপো ঠিক করে লব্ধি হিসাব করা হয়েছে]।\nকণাটির সরণ ভেক্টর $\\vec{r} = (6\\hat{i}+3\\hat{j}-2\\hat{k}) - (2\\hat{i}-3\\hat{j}-6\\hat{k}) = 4\\hat{i}+6\\hat{j}+4\\hat{k}$।\nসম্পন্ন কাজ $W = \\vec{F} \\cdot \\vec{r} = (4 \\times 4) + (5 \\times 6) + (-11 \\times 4) = 16 + 30 - 44 = 2$ একক।\nবাকি অপশনগুলো কেন ভুল?\nডট গুণফলের বীজগণিতীয় সঠিক যোগ-বিয়োগ না করলে বা সরণ উল্টো বিয়োগ করলে ৯৮ বা ৩৮ এর মতো ভুল মান আসে।"},
+  {"num":"১৪","question":"\"YZ তলের সমান্তরাল এবং $2\\hat{i}+1\\hat{j}-3\\hat{k}$ ভেক্টরের সাথে লম্ব এমন ভেক্টরটির একক ভেক্টর কোনটি?\"","options":[{"key":"ক","text":"$\\frac{1}{5}(3\\hat{j}-4\\hat{k})$"},{"key":"খ","text":"$\\frac{1}{5}(3\\hat{j}+4\\hat{k})$"},{"key":"গ","text":"$\\frac{1}{5}(4\\hat{j}-3\\hat{k})$"},{"key":"ঘ","text":"$\\frac{1}{5}(4\\hat{j}+3\\hat{k})$"}],"answerLine":"উত্তর : সঠিক উত্তর অপশনে নেই (প্রশ্ন বা অপশনে টাইপো রয়েছে)","answerKey":"","explanation":"বিস্তারিত গাণিতিক ব্যাখ্যা : কেন সঠিক উত্তর অপশনে নেই?\nYZ তলের সমান্তরাল যেকোনো ভেক্টরের X-অক্ষের উপাংশ শূন্য হয়, অর্থাৎ ভেক্টরটি $b\\hat{j}+c\\hat{k}$ রূপের। এটি $\\vec{A} = 2\\hat{i}+\\hat{j}-3\\hat{k}$ এর ওপর লম্ব হলে ডট গুণন শূন্য হবে:\n$(b\\hat{j}+c\\hat{k})\\cdot(2\\hat{i}+\\hat{j}-3\\hat{k}) = 0 \\implies b(1) + c(-3) = 0 \\implies b = 3c$।\nকিন্তু অপশনে থাকা কোনো ভেক্টরেই $\\hat{j}$ এর সহগ $\\hat{k}$ এর সহগের ৩ গুণ নয়। [নোট: যদি উদ্দীপকের ভেক্টরটি $2\\hat{i}+3\\hat{j}+4\\hat{k}$ হতো, তবে গ. অপশনটি লম্বের শর্ত সিদ্ধ করতো]।\nবাকি অপশনগুলো কেন ভুল?\nপ্রদত্ত $2\\hat{i}+\\hat{j}-3\\hat{k}$ ভেক্টরের সাথে অপশনের কোনো ভেক্টরেরই ডট গুণফল শূন্য আসে না, তাই তারা লম্ব নয়।"}
+);
+const bnDigits={'০':'0','১':'1','২':'2','৩':'3','۴':'4','৪':'4','৫':'5','۶':'6','৬':'6','۷':'7','৭':'7','۸':'8','۹':'9','۹':'9','۴':'4','৪':'4','۶':'6','৬':'6','۷':'7','৭':'7','۹':'9','۹':'9'};
+const mcqNumber=n=>Number(String(n).replace(/[০-৯]/g,d=>bnDigits[d]||d));
+MCQS.sort((a,b)=>mcqNumber(a.num)-mcqNumber(b.num));
+const savedTheme=localStorage.getItem('mathTheme')||'light';
+document.body.dataset.theme=savedTheme;
+const themeToggle=document.getElementById('themeToggle');
+function syncThemeButton(){themeToggle.textContent=document.body.dataset.theme==='dark'?'White Mode':'Dark Mode';}
+themeToggle.addEventListener('click',()=>{document.body.dataset.theme=document.body.dataset.theme==='dark'?'light':'dark';localStorage.setItem('mathTheme',document.body.dataset.theme);syncThemeButton();});
+syncThemeButton();
+const answered=new Map();
+function tex(s){return (s||'').replace(/\\begin\{matrix\}/g,'\\begin{pmatrix}').replace(/\\end\{matrix\}/g,'\\end{pmatrix}').replace(/\^([০-৯0-9A-Za-z]+)C_([۰-۹0-9A-Za-z]+)/g,'{}^$1C_$2');}
+function renderMath(){ if(window.MathJax?.typesetPromise) MathJax.typesetPromise(); }
+function updateScore(){let total=answered.size, correct=[...answered.values()].filter(Boolean).length;document.getElementById('score').textContent=`উত্তর দেওয়া হয়েছে: ${total}/${MCQS.length} | সঠিক: ${correct}`;document.getElementById('scoreBox').innerHTML= total?`<b>${correct}</b> টি সঠিক, <b>${total-correct}</b> টি ভুল, মোট উত্তর দেওয়া <b>${total}</b>।`:'এখনো কোনো উত্তর দেওয়া হয়নি।';}
+function makeMCQ(list=MCQS){const root=document.getElementById('mcqList');root.innerHTML='';list.forEach(item=>{const card=document.createElement('article');card.className='card';card.dataset.num=item.num;card.innerHTML=`<div class="qhead"><span class="badge">${item.num}</span><div class="question">${tex(item.question)}</div></div><div class="options">${item.options.map(o=>`<button class="option" data-key="${o.key}"><b>${o.key}.</b> ${tex(o.text)}</button>`).join('')}</div><div class="feedback"><div class="result"></div><div class="answer"><b>${tex(item.answerLine)}</b></div><div class="explain">${tex(item.explanation)}</div></div>`;root.appendChild(card);card.querySelectorAll('.option').forEach(btn=>btn.addEventListener('click',()=>{const noOption=!item.answerKey;const ok=!noOption&&btn.dataset.key===item.answerKey;answered.set(item.num,ok);card.querySelectorAll('.option').forEach(b=>{b.classList.remove('correct','wrong');if(item.answerKey&&b.dataset.key===item.answerKey)b.classList.add('correct');});if(!ok&&!noOption)btn.classList.add('wrong');const fb=card.querySelector('.feedback');fb.classList.add('show');fb.querySelector('.result').innerHTML=noOption?'<span class="bad">এই প্রশ্নে সঠিক উত্তর অপশনে নেই।</span>':(ok?'<span class="ok">সঠিক উত্তর!</span>':'<span class="bad">ভুল হয়েছে।</span>');updateScore();renderMath();}));});updateScore();renderMath();}
+function makeCQ(){const tabs=document.getElementById('cqTabs'), body=document.getElementById('cqBody');tabs.innerHTML='';CQS.forEach((cq,i)=>{const b=document.createElement('button');b.className='cqbtn'+(i===0?' active':'');b.textContent=cq.title.replace(' সৃজনশীল প্রশ্ন','');b.onclick=()=>{document.querySelectorAll('.cqbtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');body.textContent=tex(cq.body);renderMath();};tabs.appendChild(b);});if(CQS[0]) body.textContent=tex(CQS[0].body);renderMath();}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById(t.dataset.panel).classList.add('active');renderMath();}));
+document.getElementById('search').addEventListener('input',e=>{const q=e.target.value.trim();makeMCQ(MCQS.filter(m=>(m.question+m.explanation+m.answerLine).includes(q)));});
+document.getElementById('reset').onclick=()=>{answered.clear();document.getElementById('search').value='';makeMCQ();};
+makeMCQ();makeCQ();
+</script>
+</body></html>
