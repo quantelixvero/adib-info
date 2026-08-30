@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourseLink — HSC & Engineering Course Directory</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar"></nav>
+
+<!-- HERO -->
+<section class="hero-banner">
+  <div class="container">
+    <div class="hero-pill">
+      <i class="bi bi-patch-check-fill" style="color:#22c55e;"></i>
+      35+ Verified Telegram Course Cycles
+    </div>
+    <h1 class="hero-title">
+      Academic Courses & <br>
+      <span class="gradient-text">Complete Cycle Directory</span>
+    </h1>
+    <p class="hero-desc">
+      All HSC 2026, HSC 2027 and Engineering academic programs organized with their respective cycle links. Select your batch and join directly.
+    </p>
+  </div>
+</section>
+
+<!-- QUICK BATCH ACCESS -->
+<section class="container" style="padding-top: 10px;">
+  <div class="batch-cards-grid">
+
+    <a href="hsc26.html" class="batch-card-box">
+      <div class="batch-icon-square icon-hsc26"><i class="bi bi-collection-play-fill"></i></div>
+      <div class="batch-box-info">
+        <h3>HSC 2026 Courses</h3>
+        <p>Higher Math (1-6), Physics (1-6), Chemistry (1-5 & BP 4)</p>
+      </div>
+      <i class="bi bi-arrow-right batch-box-arrow"></i>
+    </a>
+
+    <a href="hsc27.html" class="batch-card-box">
+      <div class="batch-icon-square icon-hsc27"><i class="bi bi-stars"></i></div>
+      <div class="batch-box-info">
+        <h3>HSC 2027 Courses</h3>
+        <p>BP Chemistry (1-4), ACS Physics (1-6), ACS Math (1-6)</p>
+      </div>
+      <i class="bi bi-arrow-right batch-box-arrow"></i>
+    </a>
+
+    <a href="special.html" class="batch-card-box">
+      <div class="batch-icon-square icon-eng"><i class="bi bi-cpu"></i></div>
+      <div class="batch-box-info">
+        <h3>Engineering Special</h3>
+        <p>BP Engineering Chemistry 25 (Saikat Sir)</p>
+      </div>
+      <i class="bi bi-arrow-right batch-box-arrow"></i>
+    </a>
+
+  </div>
+</section>
+
+<!-- MAIN SEARCH & PROGRAM DIRECTORY -->
+<section class="container" id="courses">
+
+  <!-- SEARCH & FILTER BAR -->
+  <div class="search-filter-wrapper">
+    <div class="search-input-box">
+      <i class="bi bi-search"></i>
+      <input
+        type="search" 
+        id="searchInput"
+        placeholder="Search course or cycle — e.g. HSC 26 Math, Physics Cycle 2, BP Chemistry, Saikat Sir..."
+        autocomplete="off"
+      />
+      <button class="btn-clear" id="searchClear" title="Clear Search">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <div class="filter-chips-row">
+      <span class="filter-tag-label">Batch:</span>
+      <div id="batchFilters" style="display:contents;"></div>
+
+      <div style="width:1px;height:16px;background:#1e293b;margin:0 4px;"></div>
+
+      <span class="filter-tag-label">Subject:</span>
+      <div id="subjectFilters" style="display:contents;"></div>
+
+      <span class="results-stats-text" id="resultCount"></span>
+    </div>
+  </div>
+
+  <!-- ACADEMIC COURSE PROGRAMS CONTAINER -->
+  <div class="programs-wrapper" id="programsContainer">
+    <!-- Populated hierarchically by main.js -->
+  </div>
+
+</section>
+
+<!-- TELEGRAM COMMUNITY BANNER -->
+<section class="container">
+  <div class="tg-channel-banner">
+    <h2>Join the Official Telegram Community</h2>
+    <p>Get notified as soon as new cycle links and admission materials are released.</p>
+    <a href="https://t.me/+-QWIZo1ntN5kNDk1" target="_blank" rel="noopener" class="btn-tg" style="padding:12px 28px;font-size:0.95rem;">
+      <i class="bi bi-telegram"></i> Open Telegram Channel
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initNavbar('home');
+    initFooter();
+  });
+</script>
+</body>
+</html>
