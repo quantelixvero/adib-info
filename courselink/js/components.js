@@ -27,8 +27,8 @@ function initNavbar(active) {
         </ul>
 
         <div class="nav-right">
-          <a href="https://t.me/+-QWIZo1ntN5kNDk1" target="_blank" class="btn-tg">
-            <i class="bi bi-telegram"></i> Telegram
+          <a href="https://adi.pro.bd" target="_blank" rel="noopener" class="btn-dev">
+            <i class="bi bi-code-slash"></i> Developer
           </a>
           <button class="burger" id="burgerBtn" aria-label="Menu">
             <i class="bi bi-list"></i>
@@ -49,8 +49,8 @@ function initNavbar(active) {
           <i class="bi ${p.icon}"></i>${p.label}
         </a>`).join('')}
       <div style="margin-top:auto; padding-top:16px; border-top:1px solid #1e293b;">
-        <a href="https://t.me/+-QWIZo1ntN5kNDk1" target="_blank" class="btn-tg" style="width:100%;justify-content:center;display:flex;border-radius:8px;padding:10px;">
-          <i class="bi bi-telegram"></i> Join Telegram Channel
+        <a href="https://adi.pro.bd" target="_blank" rel="noopener" class="btn-dev" style="width:100%;justify-content:center;display:flex;border-radius:8px;padding:10px;">
+          <i class="bi bi-code-slash"></i> Developer (adi.pro.bd)
         </a>
       </div>
     </div>`;

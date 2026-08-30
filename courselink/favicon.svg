@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e0e7ff" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Background Squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+
+  <!-- Inner Soft Border Glow -->
+  <rect x="12" y="12" width="488" height="488" rx="116" fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="8" />
+
+  <!-- Graduation Cap Icon -->
+  <g filter="url(#glow)">
+    <!-- Cap Diamond Top -->
+    <polygon points="256,120 420,200 256,280 92,200" fill="url(#capGrad)" />
+
+    <!-- Cap Under Skullcap Body -->
+    <path d="M152,240 L152,320 C152,370 200,400 256,400 C312,400 360,370 360,320 L360,240 L256,290 Z" fill="#ffffff" fill-opacity="0.92" />
+
+    <!-- Tassel String -->
+    <path d="M370,215 L400,260 L400,340" fill="none" stroke="#22d3ee" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Tassel Bell / Bead -->
+    <circle cx="400" cy="350" r="14" fill="#22d3ee" />
+    <path d="M394,364 L406,364 L404,386 L396,386 Z" fill="#22d3ee" />
+  </g>
+</svg>
