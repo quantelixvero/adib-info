@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSC 2027 — All Cycles | CourseLink</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar"></nav>
+
+<!-- PAGE HEADER -->
+<section style="padding:44px 0 32px;border-bottom:1px solid #1e2535;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(6,182,212,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#22d3ee;">
+        <i class="bi bi-stars"></i>
+      </div>
+      <span style="font-size:0.8rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.07em;">HSC 2027 Batch</span>
+    </div>
+    <h1 style="font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;margin-bottom:10px;line-height:1.2;">
+      HSC 2027 — <span style="background:linear-gradient(135deg,#06b6d4,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">All Cycles</span>
+    </h1>
+    <p style="color:#64748b;font-size:0.95rem;max-width:580px;line-height:1.7;margin-bottom:20px;">
+      BP Chemistry Cycles 1–4 by Saikat Sir, ACS Physics Cycles 1–6, and ACS Higher Math Cycles 1–6. All live Telegram join links in one place.
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.25);font-size:0.8rem;font-weight:700;color:#f472b6;">
+        <i class="bi bi-flask-fill"></i> 4 BP Chemistry Cycles
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.25);font-size:0.8rem;font-weight:700;color:#818cf8;">
+        <i class="bi bi-lightning-charge-fill"></i> 6 ACS Physics Cycles
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.25);font-size:0.8rem;font-weight:700;color:#34d399;">
+        <i class="bi bi-calculator-fill"></i> 6 ACS Higher Math Cycles
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="container" style="padding-top:32px;">
+
+  <div class="search-section">
+    <div class="search-bar">
+      <i class="bi bi-search"></i>
+      <input type="search" id="searchInput"
+        placeholder="Search HSC 2027 cycles — e.g. BP Chemistry Cycle 2, ACS Physics, Math..."
+        autocomplete="off" />
+      <button class="clear-btn" id="searchClear"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Subject:</span>
+      <div id="subjectFilters" style="display:contents;"></div>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+  </div>
+
+  <div class="courses-grid" id="coursesGrid"></div>
+
+</section>
+
+<footer class="footer site-footer"></footer>
+
+<script>window.PAGE_BATCH = 'HSC 27';</script>
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initNavbar('hsc27');
+    initFooter();
+  });
+</script>
+</body>
+</html>
