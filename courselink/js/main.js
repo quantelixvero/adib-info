@@ -1,4 +1,6 @@
-/* CourseLink — Search & Filter Logic */
+/* =====================================================================
+   CourseLink — Search & Program Hierarchical Filter Logic
+   ===================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
@@ -9,25 +11,26 @@ document.addEventListener('DOMContentLoaded', () => {
     query:   params.get('q') || '',
   };
 
-  buildFilters();
-  bindEvents();
-  render();
+  buildFilterChips();
+  bindSearchEvents();
+  renderCoursePrograms();
 });
 
-function buildFilters() {
-  const sSel = document.getElementById('subjectFilters');
-  const bSel = document.getElementById('batchFilters');
+/* ── BUILD SUBJECT & BATCH CHIPS ── */
+function buildFilterChips() {
+  const subjectContainer = document.getElementById('subjectFilters');
+  const batchContainer   = document.getElementById('batchFilters');
 
-  if (sSel && window.SUBJECTS) {
-    sSel.innerHTML = window.SUBJECTS.map(s =>
+  if (subjectContainer && window.SUBJECTS) {
+    subjectContainer.innerHTML = window.SUBJECTS.map(s =>
       `<button class="chip ${window.AppState.subject === s.id ? 'active' : ''}" data-subject="${s.id}">
         <i class="bi ${s.icon}"></i>${s.name}
       </button>`
     ).join('');
   }
 
-  if (bSel && window.BATCHES && !window.PAGE_BATCH) {
-    bSel.innerHTML = window.BATCHES.map(b =>
+  if (batchContainer && window.BATCHES && !window.PAGE_BATCH) {
+    batchContainer.innerHTML = window.BATCHES.map(b =>
       `<button class="chip ${window.AppState.batch === b.id ? 'active' : ''}" data-batch="${b.id}">
         ${b.name}
       </button>`
@@ -35,109 +38,145 @@ function buildFilters() {
   }
 }
 
-function bindEvents() {
-  const input   = document.getElementById('searchInput');
+/* ── BIND SEARCH AND FILTER EVENTS ── */
+function bindSearchEvents() {
+  const inputEl  = document.getElementById('searchInput');
   const clearBtn = document.getElementById('searchClear');
 
-  if (input) {
+  if (inputEl) {
     if (window.AppState.query) {
-      input.value = window.AppState.query;
+      inputEl.value = window.AppState.query;
       clearBtn && clearBtn.classList.add('show');
     }
-    input.addEventListener('input', e => {
+
+    inputEl.addEventListener('input', e => {
       window.AppState.query = e.target.value.trim();
       clearBtn && clearBtn.classList.toggle('show', window.AppState.query.length > 0);
-      render();
+      renderCoursePrograms();
     });
   }
 
   clearBtn && clearBtn.addEventListener('click', () => {
-    if (input) input.value = '';
+    if (inputEl) inputEl.value = '';
     window.AppState.query = '';
     clearBtn.classList.remove('show');
-    render();
+    renderCoursePrograms();
   });
 
+  // Delegate click for subject chips
   document.addEventListener('click', e => {
-    const sc = e.target.closest('[data-subject]');
-    if (sc) {
-      window.AppState.subject = sc.dataset.subject;
+    const subjectBtn = e.target.closest('[data-subject]');
+    if (subjectBtn) {
+      window.AppState.subject = subjectBtn.dataset.subject;
       document.querySelectorAll('[data-subject]').forEach(c =>
         c.classList.toggle('active', c.dataset.subject === window.AppState.subject)
       );
-      render(); return;
+      renderCoursePrograms();
+      return;
     }
-    const bc = e.target.closest('[data-batch]');
-    if (bc && !window.PAGE_BATCH) {
-      window.AppState.batch = bc.dataset.batch;
+
+    const batchBtn = e.target.closest('[data-batch]');
+    if (batchBtn && !window.PAGE_BATCH) {
+      window.AppState.batch = batchBtn.dataset.batch;
       document.querySelectorAll('[data-batch]').forEach(c =>
         c.classList.toggle('active', c.dataset.batch === window.AppState.batch)
       );
-      render();
+      renderCoursePrograms();
     }
   });
 }
 
-function score(course, q) {
-  if (!q) return 1;
-  const text = [
-    course.title, course.batch, course.subject,
-    course.category, course.provider, course.instructor || '',
-    ...(course.tags || []), String(course.cycle)
-  ].join(' ').toLowerCase();
-  const qLow = q.toLowerCase();
-  if (text.includes(qLow)) return 2;
-  const words = qLow.split(/\s+/);
-  const hits  = words.filter(w => w && text.includes(w));
-  return hits.length ? hits.length / words.length : 0;
+/* ── SCORE PROGRAM & ITS CYCLES ── */
+function matchCycle(cycle, queryLow) {
+  if (!queryLow) return true;
+  const str = `${cycle.title} ${cycle.shortTitle || ''} cycle ${cycle.cycleNum} c${cycle.cycleNum}`.toLowerCase();
+  return str.includes(queryLow);
 }
 
-function render() {
-  const grid = document.getElementById('coursesGrid');
-  if (!grid || !window.COURSE_DATA) return;
+/* ── RENDER PROGRAMS ── */
+function renderCoursePrograms() {
+  const container = document.getElementById('programsContainer');
+  if (!container || !window.COURSE_PROGRAMS) return;
 
   const { batch, subject, query } = window.AppState;
+  const qLow = query.toLowerCase();
 
-  const results = window.COURSE_DATA
-    .map(c => ({ c, s: score(c, query) }))
-    .filter(({ c, s }) => {
-      if (s === 0) return false;
-      if (window.PAGE_BATCH && c.batch !== window.PAGE_BATCH) return false;
-      if (!window.PAGE_BATCH && batch !== 'all' && c.batch !== batch) return false;
-      if (subject !== 'all' && c.category !== subject && c.subject !== subject) return false;
-      return true;
-    })
-    .sort((a, b) => b.s - a.s)
-    .map(({ c }) => c);
+  const matchingPrograms = [];
+  let totalCyclesCount = 0;
 
-  const counter = document.getElementById('resultCount');
-  if (counter) counter.innerHTML = `<strong>${results.length}</strong> cycle${results.length !== 1 ? 's' : ''}`;
+  window.COURSE_PROGRAMS.forEach(prog => {
+    // Check batch filter
+    if (window.PAGE_BATCH && prog.batch !== window.PAGE_BATCH) return;
+    if (!window.PAGE_BATCH && batch !== 'all' && prog.batch !== batch) return;
 
-  if (results.length === 0) {
-    grid.innerHTML = `
-      <div class="empty-state">
+    // Check subject filter
+    if (subject !== 'all' && prog.category !== subject && prog.subject !== subject) return;
+
+    // Check search query
+    if (qLow) {
+      const progText = `${prog.title} ${prog.batch} ${prog.subject} ${prog.provider} ${prog.instructor} ${(prog.tags || []).join(' ')} ${prog.description}`.toLowerCase();
+      const progMatches = progText.includes(qLow);
+
+      if (progMatches) {
+        // Show all cycles in this program
+        matchingPrograms.push({ program: prog, cycles: prog.cycles });
+        totalCyclesCount += prog.cycles.length;
+      } else {
+        // Check if specific cycles match (e.g. "cycle 2", "integration")
+        const matchedCycles = prog.cycles.filter(c => matchCycle(c, qLow));
+        if (matchedCycles.length > 0) {
+          matchingPrograms.push({ program: prog, cycles: matchedCycles });
+          totalCyclesCount += matchedCycles.length;
+        }
+      }
+    } else {
+      // No search query: show full program
+      matchingPrograms.push({ program: prog, cycles: prog.cycles });
+      totalCyclesCount += prog.cycles.length;
+    }
+  });
+
+  // Update counter
+  const counterEl = document.getElementById('resultCount');
+  if (counterEl) {
+    counterEl.innerHTML = `<strong>${matchingPrograms.length}</strong> Course${matchingPrograms.length !== 1 ? 's' : ''} (${totalCyclesCount} Cycles)`;
+  }
+
+  // Render empty state or programs list
+  if (matchingPrograms.length === 0) {
+    container.innerHTML = `
+      <div class="empty-search-state">
         <i class="bi bi-search"></i>
-        <h3>Nothing found</h3>
-        <p>Try a different keyword or reset the filters.</p>
-        <button class="chip active" onclick="resetAll()">
-          <i class="bi bi-arrow-clockwise"></i> Reset
+        <h3>No courses or cycles found</h3>
+        <p>Try searching for a different keyword or reset filters to view all courses.</p>
+        <button class="chip active" style="margin-top:12px;" onclick="resetAllFilters()">
+          <i class="bi bi-arrow-clockwise"></i> Reset Filters
         </button>
-      </div>`;
+      </div>
+    `;
     return;
   }
 
-  grid.innerHTML = results.map(c => buildCard(c)).join('');
+  container.innerHTML = matchingPrograms.map(({ program, cycles }) => 
+    buildProgramCard(program, cycles)
+  ).join('');
 }
 
-function resetAll() {
+/* ── RESET ALL FILTERS ── */
+function resetAllFilters() {
   window.AppState.subject = 'all';
   window.AppState.query   = '';
   if (!window.PAGE_BATCH) window.AppState.batch = 'all';
-  const input = document.getElementById('searchInput');
-  const clr   = document.getElementById('searchClear');
-  if (input) input.value = '';
-  clr && clr.classList.remove('show');
+
+  const inputEl  = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('searchClear');
+  if (inputEl) inputEl.value = '';
+  clearBtn && clearBtn.classList.remove('show');
+
   document.querySelectorAll('[data-subject]').forEach(c => c.classList.toggle('active', c.dataset.subject === 'all'));
-  if (!window.PAGE_BATCH) document.querySelectorAll('[data-batch]').forEach(c => c.classList.toggle('active', c.dataset.batch === 'all'));
-  render();
+  if (!window.PAGE_BATCH) {
+    document.querySelectorAll('[data-batch]').forEach(c => c.classList.toggle('active', c.dataset.batch === 'all'));
+  }
+
+  renderCoursePrograms();
 }
