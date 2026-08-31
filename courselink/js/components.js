@@ -1,11 +1,11 @@
 /* ── NAVBAR ── */
 function initNavbar(active) {
   const pages = [
-    { id:'home',    href:'index.html',   label:'Home',         icon:'bi-house' },
-    { id:'hsc26',   href:'hsc26.html',   label:'HSC 2026',     icon:'bi-collection' },
-    { id:'hsc27',   href:'hsc27.html',   label:'HSC 2027',     icon:'bi-stars' },
-    { id:'special', href:'special.html', label:'Engineering',  icon:'bi-cpu' },
-    { id:'request', href:'request.html', label:'Notice & Guide', icon:'bi-bell' },
+    { id:'home',      href:'index.html',     label:'Home',        icon:'bi-house' },
+    { id:'physics',   href:'physics.html',   label:'Physics',     icon:'bi-lightning-charge' },
+    { id:'chemistry', href:'chemistry.html', label:'Chemistry',   icon:'bi-flask' },
+    { id:'math',      href:'math.html',      label:'Math',        icon:'bi-calculator' },
+    { id:'request',   href:'request.html',   label:'Notice',      icon:'bi-bell' },
   ];
 
   const header = document.querySelector('.navbar');
@@ -49,6 +49,9 @@ function initNavbar(active) {
           <i class="bi ${p.icon}"></i>${p.label}
         </a>`).join('')}
       <div style="margin-top:auto; padding-top:16px; border-top:1px solid #1e293b;">
+        <a href="https://t.me/DrSahitto" target="_blank" rel="noopener" class="btn-tg" style="width:100%;justify-content:center;display:flex;border-radius:8px;padding:10px;margin-bottom:8px;">
+          <i class="bi bi-telegram"></i> Contact @DrSahitto
+        </a>
         <a href="https://adi.pro.bd" target="_blank" rel="noopener" class="btn-dev" style="width:100%;justify-content:center;display:flex;border-radius:8px;padding:10px;">
           <i class="bi bi-code-slash"></i> Developer (adi.pro.bd)
         </a>
@@ -75,16 +78,17 @@ function initFooter() {
           <i class="bi bi-mortarboard-fill"></i>
         </div>
         <span style="font-weight:700;font-size:0.95rem;">CourseLink</span>
-        <span style="color:#475569;font-size:0.82rem;">— HSC & Engineering Directory</span>
+        <span style="color:#475569;font-size:0.82rem;">— HSC & Engineering Cycle Directory</span>
       </div>
       <ul class="footer-nav">
         <li><a href="index.html">Home</a></li>
-        <li><a href="hsc26.html">HSC 2026</a></li>
-        <li><a href="hsc27.html">HSC 2027</a></li>
-        <li><a href="special.html">Engineering</a></li>
-        <li><a href="request.html">Notice & Guide</a></li>
+        <li><a href="physics.html">Physics</a></li>
+        <li><a href="chemistry.html">Chemistry</a></li>
+        <li><a href="math.html">Math</a></li>
+        <li><a href="request.html">Notice</a></li>
+        <li><a href="https://t.me/DrSahitto" target="_blank" rel="noopener" style="color:#22d3ee;"><i class="bi bi-telegram"></i> @DrSahitto</a></li>
       </ul>
-      <div class="footer-copy">&copy; ${new Date().getFullYear()} CourseLink. All links verified.</div>
+      <div class="footer-copy">&copy; ${new Date().getFullYear()} CourseLink. Contact: <a href="https://t.me/DrSahitto" target="_blank" rel="noopener" style="color:#38bdf8;font-weight:600;">@DrSahitto</a></div>
     </div>`;
 }
 

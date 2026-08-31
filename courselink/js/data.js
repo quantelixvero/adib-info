@@ -456,7 +456,7 @@ const COURSE_DATA = COURSE_PROGRAMS.flatMap(prog =>
 const SUBJECTS = [
   { id: "all", name: "All Subjects", icon: "bi-grid-fill" },
   { id: "Physics", name: "Physics", icon: "bi-lightning-charge-fill" },
-  { id: "Chemistry", name: "Chemistry", icon: "bi-flask-fill" },
+  { id: "Chemistry", name: "Chemistry", icon: "bi-flask" },
   { id: "Math", name: "Higher Math", icon: "bi-calculator-fill" }
 ];
 

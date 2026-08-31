@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chemistry 1st Paper - Complete Solution | Dhaka College</title>
+
+    <!-- ====== FASTER CDN ====== -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                        serif: ['Noto Serif Bengali', 'serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .cq-answer {
+            transition: all 0.15s ease;
+        }
+        .mcq-option:disabled {
+            cursor: default;
+            opacity: 0.85;
+        }
+        /* PDF iframe responsive */
+        .pdf-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 141.4%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .pdf-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: white;
+        }
+        @media (min-width: 768px) {
+            .pdf-container {
+                padding-bottom: 70%;
+            }
+        }
+        /* Math styling without MathJax */
+        .math {
+            font-family: 'Courier New', monospace;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            display: inline-block;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        .dark .math {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        .math-block {
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 1.05rem;
+        }
+        .math-block sub {
+            font-size: 0.8rem;
+        }
+        .math-block sup {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+
+    <!-- ====== HEADER ====== -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/80 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-lg shadow-indigo-500/30 dark:shadow-none">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-serif leading-tight">Dhaka College, Dhaka</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Annual Examination 2026 | Class XI (2025-2026)</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="https://adib-info.netlify.app/" target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold text-sm shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-200">
+                <i class="fa-solid fa-code text-xs"></i>
+                <span>Developer</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+            </a>
+            <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200 transition-all">
+                <i class="fa-solid fa-moon dark:hidden"></i>
+                <i class="fa-solid fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ====== MAIN ====== -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Banner -->
+    <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-indigo-500/10 mb-8 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 opacity-10 text-[180px] font-bold select-none pointer-events-none">
+            <i class="fa-solid fa-flask"></i>
+        </div>
+        <div class="relative z-10 max-w-3xl">
+            <span class="bg-white/20 text-white text-xs font-semibold px-3.5 py-1.5 rounded-full backdrop-blur-sm uppercase tracking-wider mb-4 inline-block">Chemistry 1st Paper</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold font-serif mb-3 leading-tight">Class XI Annual Examination 2026</h2>
+            <p class="text-sm sm:text-base text-indigo-100 mb-6">NCTB সিলেবাস এবং হাজারী স্যার ও রয়েল রসায়ন বইয়ের সমাধান কাঠামোর ওপর ভিত্তি করে তৈরি একটি আকর্ষণীয় ও রঙিন সমাধান পোর্টাল।</p>
+            <div class="flex flex-wrap gap-3">
+                <button onclick="switchTab('mcq')" id="tabBtn-mcq" class="px-5 py-3 rounded-xl bg-white text-indigo-700 font-bold shadow-md hover:bg-indigo-50 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> Multiple Choice (MCQ)
+                </button>
+                <button onclick="switchTab('cq')" id="tabBtn-cq" class="px-5 py-3 rounded-xl bg-white/10 text-white border border-white/20 font-bold hover:bg-white/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-file-signature"></i> Creative (CQ)
+                </button>
+                <button onclick="switchTab('pdf')" id="tabBtn-pdf" class="px-5 py-3 rounded-xl bg-white/10 text-white border border-white/20 font-bold hover:bg-white/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i> Question Paper
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== MCQ SECTION ====== -->
+    <section id="section-mcq" class="space-y-6">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-bold font-serif text-slate-900 dark:text-white">Multiple Choice Solutions (MCQ)</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Total Questions: 25 | Marks: 25 | Time: 25 minutes</p>
+            </div>
+            <div class="flex gap-2 bg-indigo-50 dark:bg-slate-900 p-1.5 rounded-xl border border-indigo-100 dark:border-slate-800">
+                <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 px-3 py-1 bg-white dark:bg-slate-800 rounded-lg shadow-sm">Set: A</span>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="mcq-container"></div>
+    </section>
+
+    <!-- ====== CQ SECTION ====== -->
+    <section id="section-cq" class="hidden space-y-6">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-bold font-serif text-slate-900 dark:text-white">Creative Solutions (CQ)</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Answer any 5 questions | Marks: 50 | Time: 2 hours 30 minutes</p>
+            </div>
+        </div>
+        <div class="space-y-8" id="cq-container"></div>
+    </section>
+
+    <!-- ====== PDF / QUESTION PAPER SECTION ====== -->
+    <section id="section-pdf" class="hidden space-y-6">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-bold font-serif text-slate-900 dark:text-white">Question Paper (PDF)</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Complete Question Paper of Annual Examination 2026</p>
+            </div>
+        </div>
+        <div class="pdf-container">
+            <iframe src="https://drive.google.com/file/d/1ibLbtKgFh2IUD1lP5BKaaNq2QZDAOkZI/preview" allowfullscreen></iframe>
+        </div>
+        <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 text-center">
+            <i class="fa-regular fa-circle-info"></i> If you have trouble viewing the PDF, 
+            <a href="https://drive.google.com/file/d/1ibLbtKgFh2IUD1lP5BKaaNq2QZDAOkZI/view" target="_blank" class="text-indigo-600 dark:text-indigo-400 underline">click here</a> to open directly.
+        </p>
+    </section>
+
+</main>
+
+<footer class="bg-slate-100 dark:bg-slate-900 py-12 mt-16 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-serif">Dhaka College, Dhaka - Annual Examination 2026 Solution Portal</p>
+        <p class="text-xs text-slate-400 dark:text-slate-500 mt-2">© ২০২৬ All Rights Reserved. Student-Friendly Digital Booklet.</p>
+    </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- ====== JAVASCRIPT ====== -->
+<!-- ============================================================ -->
+<script>
+    // ----- THEME -----
+    document.getElementById('themeToggle').addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+    });
+
+    // ----- TAB SWITCH -----
+    function switchTab(tab) {
+        const mcqSec = document.getElementById('section-mcq');
+        const cqSec = document.getElementById('section-cq');
+        const pdfSec = document.getElementById('section-pdf');
+
+        const btnM = document.getElementById('tabBtn-mcq');
+        const btnC = document.getElementById('tabBtn-cq');
+        const btnP = document.getElementById('tabBtn-pdf');
+
+        mcqSec.classList.add('hidden');
+        cqSec.classList.add('hidden');
+        pdfSec.classList.add('hidden');
+
+        const defaultBtnClass = "px-5 py-3 rounded-xl bg-white/10 text-white border border-white/20 font-bold hover:bg-white/20 transition-all flex items-center gap-2";
+        const activeBtnClass = "px-5 py-3 rounded-xl bg-white text-indigo-700 font-bold shadow-md hover:bg-indigo-50 transition-all flex items-center gap-2";
+
+        btnM.className = defaultBtnClass;
+        btnC.className = defaultBtnClass;
+        btnP.className = defaultBtnClass;
+
+        if (tab === 'mcq') {
+            mcqSec.classList.remove('hidden');
+            btnM.className = activeBtnClass;
+        } else if (tab === 'cq') {
+            cqSec.classList.remove('hidden');
+            btnC.className = activeBtnClass;
+        } else if (tab === 'pdf') {
+            pdfSec.classList.remove('hidden');
+            btnP.className = activeBtnClass;
+        }
+    }
+
+    // ================================================================
+    //  MCQ DATA – CHEMISTRY (25 questions) – All math in HTML tags
+    // ================================================================
+    const MCQ = [{
+        id: 1,
+        q: "নিচের কোনটি প্রাইমারী স্ট্যান্ডার্ড পদার্থ?",
+        opts: ["KMnO₄", "KOH", "K₂Cr₂O₇", "Na₂S₂O₃"],
+        ans: 2,
+        exp: "প্রাইমারী স্ট্যান্ডার্ড পদার্থ অতি বিশুদ্ধ, বায়ু দ্বারা অপরিবর্তিত এবং দ্রবণের ঘনমাত্রা দীর্ঘদিন স্থিতিশীল থাকে। K₂Cr₂O₇ এই শর্ত পূরণ করে। বাকিগুলো সেকেন্ডারি স্ট্যান্ডার্ড।"
+    }, {
+        id: 2,
+        q: "পেপার ক্রোমাটোগ্রাফিতে স্থির ও সচল দশা যথাক্রমে কোনটি?",
+        opts: ["তরল-কঠিন", "তরল-তরল", "তরল-গ্যাস", "গ্যাস-গ্যাস"],
+        ans: 1,
+        exp: "পেপারের সেলুলোজে আবদ্ধ পানি স্থির দশা (তরল) এবং জৈব দ্রাবক সচল দশা (তরল) – এটি পার্টিশন ক্রোমাটোগ্রাফি।"
+    }, {
+        id: 3,
+        q: "নিচের কোন জোড়টিতে একই ধরনের জ্যামিতিক আকৃতি দেখা যায়?",
+        opts: ["XeF₂, IF₂⁻", "NH₃, BF₃", "CO₃²⁻, SO₃²⁻", "PCl₅, ICl₅"],
+        ans: 0,
+        exp: "উভয়ে sp³d সংকরণ ও ৩টি মুক্তজোড় নিরক্ষীয় থাকায় আকৃতি সরলরৈখিক (Linear)।"
+    }, {
+        id: 4,
+        q: "কোন দুটি পর্যায় পরিবর্তন তাপপাতপাদী (Exothermic)?",
+        opts: ["বাষ্পীভবন ও গলন", "ঘনীভবন ও হিমায়ন", "গলন ও হিমায়ন", "ঊর্ধ্বপাতন"],
+        ans: 1,
+        exp: "ঘনীভবন (গ্যাস→তরল) ও হিমায়ন (তরল→কঠিন) – এই প্রক্রিয়ায় তাপ নির্গত হয়।"
+    }, {
+        id: 5,
+        q: "প্রাকৃতিক খাদ্য সংরক্ষক (Natural Food Preservative) কোনটি?",
+        opts: ["ফরমালিন", "অ্যালকোহল", "ভিনেগার", "খাদ্য লবণ"],
+        ans: 3,
+        exp: "খাদ্য লবণ (NaCl) প্রাচীনতম প্রাকৃতিক সংরক্ষক, অসমোটিক চাপ বাড়িয়ে ব্যাকটেরিয়া ধ্বংস করে।"
+    }, {
+        id: 6,
+        q: "সেমিমাইক্রো বিশ্লেষণ সম্পর্কে—<br>i. বস্তুর পরিমাণ ৫০-১০০ mg হয়<br>ii. H₂S-এর বদলে থায়োঅ্যাসিটামাইড ব্যবহৃত হয়<br>iii. এটি সবুজ রসায়নের সাথে সামঞ্জস্যপূর্ণ<br>নিচের কোনটি সঠিক?",
+        opts: ["i ও ii", "ii ও iii", "i ও iii", "i, ii ও iii"],
+        ans: 3,
+        exp: "সবকটি বিবৃতিই সঠিক – অল্প নমুনা, থায়োঅ্যাসিটামাইড ব্যবহার, এবং পরিবেশবান্ধব (সবুজ রসায়ন)।"
+    }, {
+        id: 7,
+        q: "সবুজ বর্ণের আলোর তরঙ্গ দৈর্ঘ্য পরিসর (nm)-এ কোনটি?",
+        opts: ["৪৩০-৪৬০", "৪৫০-৪৯০", "৫০০-৫৭০", "৫৬০-৬৪৭"],
+        ans: 2,
+        exp: "দৃশ্যমান বর্ণালীতে সবুজ আলোর তরঙ্গদৈর্ঘ্য ৫০০-৫৭০ nm।"
+    }, {
+        id: 8,
+        q: "H₂C=CH–CH₂–CH₂–C≡CH যৌগে C₂–C₃ সংকরণ কোনটি?",
+        opts: ["sp–sp²", "sp²–sp³", "sp–sp³", "sp³–sp³"],
+        ans: 1,
+        exp: "C₂ (দ্বিবন্ধনযুক্ত) sp² এবং C₃ (একক বন্ধনযুক্ত) sp³ সংকরিত।"
+    }, {
+        id: 9,
+        q: "রক্তের pH = 7.4 হলে, [HCO₃⁻] / [H₂CO₃] এর অনুপাত কত? (H₂CO₃-এর pKa = 6.1)",
+        opts: ["১/২০", "২০", "১০", "২৫"],
+        ans: 1,
+        exp: "Henderson–Hasselbalch: pH = pKa + log(অনুপাত) &rarr; 7.4 = 6.1 + log(অনুপাত) &rarr; অনুপাত = 10<sup>1.3</sup> &asymp; ২০।"
+    }, {
+        id: 10,
+        q: "তরলের স্ফুটনাংক সম্পর্কে—<br>i. বাষ্পচাপ বায়ুমণ্ডলীয় চাপের সমান হয়<br>ii. তরল-বাষ্প সাম্যাবস্থা থাকে<br>নিচের কোনটি সঠিক?",
+        opts: ["i", "ii", "i ও ii", "i, ii ও iii (iii নেই)"],
+        ans: 2,
+        exp: "স্ফুটনাংকে বাষ্পচাপ বায়ুমণ্ডলীয় চাপের সমান হয় এবং তরল-বাষ্প সাম্যাবস্থা থাকে।"
+    }, {
+        id: 11,
+        q: "ব্যুরেটরের সাহায্যে সর্বনিম্ন কত mL দ্রবণ স্থানান্তর করা যায়?",
+        opts: ["০.০১", "০.১", "১.০", "০.৫"],
+        ans: 1,
+        exp: "সাধারণ ব্যুরেটরের ক্ষুদ্রতম পাঠ ০.১ mL পর্যন্ত নির্ভুলভাবে নেওয়া যায়।"
+    }, {
+        id: 12,
+        q: "আয়নিক ব্যাসার্ধের সঠিক ক্রম কোনটি?",
+        opts: ["Mg²⁺ < Na⁺ < F⁻ < O²⁻ < N³⁻", "N³⁻ < O²⁻ < F⁻ < Na⁺ < Mg²⁺"],
+        ans: 0,
+        exp: "সম-ইলেকট্রনীয় আয়নে প্রোটন সংখ্যা বাড়লে ব্যাসার্ধ কমে। প্রোটন সংখ্যা: Mg(12)>Na(11)>F(9)>O(8)>N(7)।"
+    }, {
+        id: 13,
+        q: "বোর পরমাণু মডেল কোনটির ক্ষেত্রে প্রযোজ্য?",
+        opts: ["H", "He", "Li", "Be"],
+        ans: 0,
+        exp: "বোর মডেল শুধুমাত্র এক-ইলেকট্রন বিশিষ্ট পরমাণু/আয়নের ক্ষেত্রে প্রযোজ্য (যেমন H, He⁺)।"
+    }, {
+        id: 14,
+        q: "X³⁺ = (n–1)d⁵ আয়নে n-এর মান d-অরবিটালের জন্য সর্বনিম্ন। মৌলটির পর্যায় ও গ্রুপ নির্ণয় কর।",
+        opts: ["৩য় পর্যায়, গ্রুপ-৬", "৪র্থ পর্যায়, গ্রুপ-৮", "৪র্থ পর্যায়, গ্রুপ-৫", "৩য় পর্যায়, গ্রুপ-৭"],
+        ans: 1,
+        exp: "d-অরবিটাল ৩য় স্তর থেকে শুরু, তাই n=4। X = Fe (3d⁶4s²) &rarr; ৪র্থ পর্যায়, গ্রুপ-৮।"
+    }, {
+        id: 15,
+        q: "X (Fe) মৌলটির—<br>i. চৌম্বক ধর্ম বিদ্যমান<br>ii. সন্নিবেশ সংখ্যা ৪<br>iii. কিলেট জটিল যৌগ গঠন করে<br>নিচের কোনটি সঠিক?",
+        opts: ["i ও ii", "ii ও iii", "i ও iii", "i, ii ও iii"],
+        ans: 3,
+        exp: "Fe-তে বিজোড় ইলেকট্রন (চৌম্বক), সন্নিবেশ সংখ্যা ৪ বা ৬, এবং কিলেট গঠন করে – সবকটি সঠিক।"
+    }, {
+        id: 16,
+        q: "xX → yY বিক্রিয়ার ক্ষেত্রে বিক্রিয়ার হার—",
+        opts: ["–(১/x) d[X]/dt", "–(১/y) d[X]/dt", "+(১/x) d[X]/dt", "–d[X]/dt"],
+        ans: 0,
+        exp: "বিক্রিয়কের ঘনমাত্রা হ্রাসের হারকে সহগ দিয়ে ভাগ করে হার নির্ণয় করা হয়।"
+    }, {
+        id: 17,
+        q: "১.৫৮ গ্রাম KMnO₄ ব্যবহার করে ১০০ mL দ্রবণ তৈরি করলে ঘনমাত্রা কত? (K=39, Mn=55, O=16)",
+        opts: ["০.০০১ M", "০.০১ M", "০.১ M", "১.০ M"],
+        ans: 2,
+        exp: "M = 158, S = (1.58 &times; 1000) / (158 &times; 100) = 0.1 M।"
+    }, {
+        id: 18,
+        q: "HA + H₂O → A⁻ + H₃O⁺ বিক্রিয়ায় অনুবন্ধী অম্ল কোনটি?",
+        opts: ["HA", "H₂O", "A⁻", "H₃O⁺"],
+        ans: 3,
+        exp: "H₂O একটি H⁺ গ্রহণ করে H₃O⁺-এ পরিণত হয়, তাই H₃O⁺ হলো অনুবন্ধী অম্ল।"
+    }, {
+        id: 19,
+        q: "০.০১ M HA-দ্রবণের pH কত? (Ka = 6.8×10⁻⁴)",
+        opts: ["২.২৮", "২.৫৮", "৫.২৮", "৫.৮২"],
+        ans: 1,
+        exp: "[H⁺] = &radic;(Ka &times; C) = &radic;(6.8 &times; 10<sup>&minus;4</sup> &times; 0.01) = 2.6 &times; 10<sup>&minus;3</sup> M; pH = &minus;log(2.6 &times; 10<sup>&minus;3</sup>) = 2.58।"
+    }, {
+        id: 20,
+        q: "অ্যান্টি-অক্সিডেন্ট খাদ্যে যোগ করা হয়, কারণ এটি—<br>i. খাদ্যের স্থায়িত্ব বৃদ্ধি করে<br>ii. খাদ্যের জারণ ক্রিয়া ত্বরান্বিত করে<br>iii. মুক্তমূলক কৌশলে কাজ করে<br>নিচের কোনটি সঠিক?",
+        opts: ["i ও ii", "ii ও iii", "i ও iii", "i, ii ও iii"],
+        ans: 2,
+        exp: "অ্যান্টি-অক্সিডেন্ট জারণ প্রতিরোধ করে (ত্বরান্বিত করে না) এবং মুক্তমূলকের সাথে বিক্রিয়া করে স্থায়িত্ব বাড়ায়।"
+    }, {
+        id: 21,
+        q: "লঘু HCl যোগ করলে কোন মিশ্রণে বর্ণহীন গ্যাস উৎপন্ন হয় কিন্তু সম্পূর্ণ দ্রবীভূত হয় না?",
+        opts: ["BaSO₄, CaCO₃", "CaCO₃, MgCO₃", "Ba(NO₃)₂, Ca(OH)₂", "Ca(OH)₂, MgCO₃"],
+        ans: 0,
+        exp: "CaCO₃ HCl-এ দ্রবীভূত হয়ে CO₂ দেয়, কিন্তু BaSO₄ অদ্রবণীয় থাকে।"
+    }, {
+        id: 22,
+        q: "এন্টাসিড সিরাপ হলো একটি—",
+        opts: ["সল", "জেল", "ইমালশন", "সাসপেনশন"],
+        ans: 3,
+        exp: "এতে অদ্রবণীয় অ্যান্টাসিড কণা তরলে ভাসমান থাকে – এটি সাসপেনশন।"
+    }, {
+        id: 23,
+        q: "নিচের কোন কোয়ান্টাম সংখ্যার সেটটি গ্রহণযোগ্য?",
+        opts: ["n=2, l=1, m=0", "n=2, l=1, m=-2", "n=3, l=1, m=2", "n=3, l=2, m=-3"],
+        ans: 0,
+        exp: "l < n এবং |m| &le; l শর্তপূরণ করে – (২,১,০) ২p অরবিটাল নির্দেশ করে।"
+    }, {
+        id: 24,
+        q: "ক্ষারীয়, উভধর্মী ও অম্লীয় অক্সাইডের সঠিক ক্রম কোনটি?",
+        opts: ["SO₂, P₂O₅, CO", "CO₂, Al₂O₃, SiO₂", "CaO, SiO₂, Al₂O₃", "BaO, Al₂O₃, SO₂"],
+        ans: 3,
+        exp: "BaO (ক্ষারীয়), Al₂O₃ (উভধর্মী), SO₂ (অম্লীয়) – সঠিক ক্রম।"
+    }, {
+        id: 25,
+        q: "pH-এর মান বেশি হলে—",
+        opts: ["pOH-এর মান বেশি হবে", "Ka-এর মান কম হবে", "pKa-এর মান কম হবে", "pKb-এর মান বেশি হবে"],
+        ans: 1,
+        exp: "অম্ল যত দুর্বল (Ka যত কম), pH তত বেশি হয়।"
+    }];
+
+    // ================================================================
+    //  CQ DATA – CHEMISTRY (8 Creative Questions) 
+    //  ALL MATH REWRITTEN WITH HTML TAGS (sup, sub, &times;, &radic;, &rarr;, etc.)
+    // ================================================================
+    const CQ = [{
+        id: 1,
+        stimulus: "অস্টওয়াল্ড পদ্ধতিতে HNO₃ প্রস্তুতির জন্য NO গ্যাস প্রস্তুতির সমীকরণ—<br>2NH₃(g) + 5/2 O₂(g) &harr; 2NO(g) + 3H₂O(g); &Delta;H = &minus;104 kJ",
+        qA: "বাফার ক্ষমতা কী?",
+        ansA: `বাফার ক্ষমতা (Buffer Capacity) হলো কোনো বাফার দ্রবণে সামান্য পরিমাণ শক্তিশালী অম্ল বা শক্তিশালী ক্ষার যোগ করলেও দ্রবণের pH-এর মান প্রায় অপরিবর্তিত রাখার যে সামর্থ্য বা ধারণক্ষমতা, তাকে বাফার ক্ষমতা বলে। সহজ ভাষায়, ১ ইউনিট pH পরিবর্তন করতে প্রতি লিটার দ্রবণে কত মোল শক্তিশালী অম্ল বা ক্ষার যোগ করতে হয়, তা-ই বাফার ক্ষমতার পরিমাপ। বাফার ক্ষমতা নির্ভর করে বাফারের উপাদানগুলোর ঘনমাত্রার ওপর – ঘনমাত্রা যত বেশি, বাফার ক্ষমতা তত বেশি। যেমন: অ্যাসিটিক অ্যাসিড-সোডিয়াম অ্যাসিটেট বাফারের ক্ষেত্রে [অ্যাসিড] ও [লবণ] এর ঘনমাত্রা বৃদ্ধি করলে বাফার ক্ষমতা বাড়ে।`,
+        qB: "Qc ও Kc-এর পার্থক্য লেখ।",
+        ansB: `Qc (বিক্রিয়া অনুপাত) ও Kc (সাম্য ধ্রুবক) – এদের মধ্যে প্রধান পার্থক্যগুলো নিচে আলোচনা করা হলো:
+
+১. সংজ্ঞাগত পার্থক্য: Qc হলো যে-কোনো মুহূর্তে (সাম্যাবস্থা হোক বা না হোক) বিক্রিয়ক ও উৎপাদের ঘনমাত্রার গুণফলের অনুপাত। অন্যদিকে, Kc হলো শুধুমাত্র সাম্যাবস্থায় এই অনুপাত।
+
+২. পরিবর্তনশীলতা: Qc-এর মান বিক্রিয়ার অগ্রগতির সাথে সাথে ক্রমাগত পরিবর্তিত হতে থাকে। কিন্তু Kc-এর মান একটি নির্দিষ্ট তাপমাত্রায় সর্বদা ধ্রুবক থাকে (শুধু তাপমাত্রা পরিবর্তন করলে এর মান পরিবর্তিত হয়)।
+
+৩. তুলনা: বিক্রিয়াটি যদি সাম্যাবস্থায় না পৌঁছে, তবে Qc &ne; Kc হয়। Qc < Kc হলে বিক্রিয়া সামনের দিকে অগ্রসর হবে; Qc > Kc হলে বিক্রিয়া পেছনের দিকে অগ্রসর হবে; আর Qc = Kc হলে বিক্রিয়াটি সাম্যাবস্থায় আছে বলে বোঝা যায়।`,
+        qC: "উদ্দীপকের বিক্রিয়াটির Kp ও Kc-এর মধ্যে সম্পর্ক প্রতিষ্ঠা করো।",
+        ansC: `উদ্দীপকে প্রদত্ত গ্যাসীয় বিক্রিয়াটি হলো:
+2NH₃(g) + 5/2 O₂(g) &harr; 2NO(g) + 3H₂O(g)
+
+এখানে, উৎপাদগুলোর মোট মোল সংখ্যা = 2 + 3 = 5
+বিক্রিয়কগুলোর মোট মোল সংখ্যা = 2 + 2.5 = 4.5
+
+সুতরাং, গ্যাসীয় মোল সংখ্যার পরিবর্তন, &Delta;n = উৎপাদের মোল – বিক্রিয়কের মোল = 5 &minus; 4.5 = 0.5
+
+আমরা জানি, আদর্শ গ্যাসের ক্ষেত্রে Kp ও Kc-এর মধ্যে সম্পর্ক হলো:
+K<sub>p</sub> = K<sub>c</sub> (RT)<sup>&Delta;n</sup>
+
+এখন &Delta;n = 0.5 বসিয়ে পাই:
+K<sub>p</sub> = K<sub>c</sub> (RT)<sup>0.5</sup>
+
+অর্থাৎ, K<sub>p</sub> = K<sub>c</sub> &radic;(RT)
+
+এটিই উদ্দীপকের বিক্রিয়াটির জন্য Kp ও Kc-এর মধ্যে সুনির্দিষ্ট গাণিতিক সম্পর্ক। (প্রমাণিত)`,
+        qD: "সর্বোচ্চ NO পাওয়ার শর্তসমূহ বিশ্লেষণ করো।",
+        ansD: `লা-শাতেলিয়ারের নীতি অনুসারে সর্বোচ্চ NO (নাইট্রিক অক্সাইড) উৎপাদনের জন্য নিম্নলিখিত শর্তগুলি বিশ্লেষণ করা হলো:
+
+১. তাপমাত্রার প্রভাব: যেহেতু বিক্রিয়াটি তাপপাতপাদী (&Delta;H = &minus;104 kJ/mol, অর্থাৎ তাপ নির্গত হয়), তাই লা-শাতেলিয়ারের নীতি অনুযায়ী তাপমাত্রা কমালে সাম্যাবস্থা ডান দিকে (উৎপাদের দিকে) অগ্রসর হবে এবং NO-এর উৎপাদন বৃদ্ধি পাবে। কিন্তু তাপমাত্রা খুব বেশি কমালে বিক্রিয়ার গতি (rate) অত্যন্ত হ্রাস পায়, যা শিল্পক্ষেত্রে লাভজনক নয়। তাই কারখানায় ৮০০-৯০০°C তাপমাত্রা ব্যবহার করা হয় (যাকে অনুকূল তাপমাত্রা বলে) এবং সঙ্গে প্ল্যাটিনাম-রোডিয়াম (Pt-Rh) অনুঘটক ব্যবহার করে বিক্রিয়ার গতি বাড়ানো হয়।
+
+২. চাপের প্রভাব: এখানে বিক্রিয়কের মোট মোল (৪.৫) অপেক্ষা উৎপাদের মোট মোল (৫) বেশি, অর্থাৎ &Delta;n ধনাত্মক। তাই চাপ কমালে সাম্যাবস্থা ডান দিকে সরে যাবে এবং NO-এর উৎপাদন বাড়বে। শিল্পকারখানায় সাধারণত ৫-৭ atm চাপ বজায় রাখা হয়, যা মধ্যম চাপ হিসেবে অনুকূল।
+
+৩. ঘনমাত্রার প্রভাব: বিক্রিয়ক NH₃ ও O₂-এর ঘনমাত্রা ক্রমাগত বাড়ালে বা উৎপাদিত NO ও H₂O গ্যাসকে দ্রুত বিক্রিয়া পাত্র থেকে সরিয়ে নিলেও লা-শাতেলিয়ারের নীতি অনুযায়ী সাম্যাবস্থা ডান দিকে অগ্রসর হবে, ফলে NO-এর উৎপাদন বৃদ্ধি পাবে। এই কৌশলটি শিল্পক্ষেত্রে 'প্রবাহী পদ্ধতি' (flow method) নামে পরিচিত।`
+    }, {
+        id: 2,
+        stimulus: "[CoF₆]³⁻ ও [Co(CN)₆]³⁻ – দুটি জটিল যৌগের সংকরণ ও ধর্ম।",
+        qA: "অপরিহার্য মৌল কাকে বলে?",
+        ansA: `যেসব d-ব্লক মৌলের (স্থানান্তর ধাতু) অন্তত একটি আয়নে d-অরবিটাল আংশিক পূর্ণ অবস্থায় থাকে, অর্থাৎ d<sup>1</sup> থেকে d<sup>9</sup> পর্যন্ত ইলেকট্রন বিন্যাস থাকে, তাদের অপরিহার্য মৌল (Essential Elements) বলে। যেমন: Fe (আয়রন), Cu (কপার), Zn (জিংক), Mn (ম্যাঙ্গানিজ) ইত্যাদি। এসব মৌলের যৌগগুলো সাধারণত রঙিন হয়, অনুঘটক হিসেবে কাজ করে এবং জটিল যৌগ গঠনে সক্ষম হয়।`,
+        qB: "পোলারিজিবিলিটি ও পোলারাইজেশন কী?",
+        ansB: `পোলারিজিবিলিটি (Polarizability): কোনো অ্যানায়নের ইলেকট্রন মেঘকে বাইরের কোনো ক্যাটায়নের প্রভাবে বিকৃত বা আকর্ষণ করার সহজতাকে পোলারিজিবিলিটি বলে। বড় আকারের অ্যানায়নে (যেমন: I<sup>&minus;</sup>) ইলেকট্রন মেঘ শিথিলভাবে আবদ্ধ থাকে, তাই এদের পোলারিজিবিলিটি বেশি। অন্যদিকে, ছোট আকারের অ্যানায়নে (যেমন: F<sup>&minus;</sup>) পোলারিজিবিলিটি কম।
+
+পোলারাইজেশন (Polarization): কোনো ক্যাটায়ন কর্তৃক অ্যানায়নের ইলেকট্রন মেঘকে নিজের দিকে আকর্ষণ করে বিকৃত করার ঘটনাকে পোলারাইজেশন বলে। উচ্চ চার্জ ও ছোট আকারের ক্যাটায়ন (যেমন: Al³⁺, Mg²⁺) অ্যানায়নের ইলেকট্রন মেঘকে বেশি বিকৃত করতে পারে, ফলে সমযোজী চরিত্র বৃদ্ধি পায়।`,
+        qC: "[Co(CN)₆]Cl₃ যৌগের বন্ধনসমূহ লেখ।",
+        ansC: `[Co(CN)₆]Cl₃ যৌগটি তিন ধরনের বন্ধন দ্বারা গঠিত:
+
+১. আয়নিক বন্ধন: জটিল ক্যাটায়ন [Co(CN)₆]³⁺ ও তিনটি Cl⁻ আয়নের মধ্যে আয়নিক আকর্ষণ বল বিদ্যমান।
+
+২. সমযোজী-সমন্বয় বন্ধন (Co-ordinate covalent bond): কেন্দ্রীয় Co³⁺ আয়নের ফাঁকা d-অরবিটালের সাথে ছয়টি CN⁻ লিগ্যান্ডের প্রতিটির মুক্তজোড় ইলেকট্রন সমন্বয়ের মাধ্যমে যে বন্ধন গঠিত হয়, তা সমযোজী-সমন্বয় বন্ধন।
+
+৩. সমযোজী বন্ধন: প্রতিটি CN⁻ লিগ্যান্ডের ভেতরে কার্বন (C) ও নাইট্রোজেন (N) পরমাণুর মধ্যে সমযোজী বন্ধন (ট্রিপল বন্ড) বিদ্যমান।`,
+        qD: "সংকরণের ভিন্নতা বিশ্লেষণ করো।",
+        ansD: `উভয় যৌগের কেন্দ্রীয় ধাতব আয়ন হলো Co³⁺, যার ইলেকট্রন বিন্যাস 3d<sup>6</sup>।
+
+[CoF₆]³⁻ যৌগে: F⁻ একটি দুর্বল লিগ্যান্ড (Weak field ligand)। এটি Co³⁺-এর 3d অরবিটালের ইলেকট্রনগুলোর জোড়াবদ্ধতা ঘটাতে পারে না। তাই ইলেকট্রনগুলো অযুগ্ম অবস্থায় থাকে এবং কেন্দ্রীয় আয়ন বাইরের d-অরবিটাল (4d) ব্যবহার করে sp³d² সংকরণ ঘটায়। একে 'বহিঃস্থ অরবিটাল জটিল' (Outer orbital complex) বা উচ্চ স্পিন (High spin) কমপ্লেক্স বলে।
+
+[Co(CN)₆]³⁻ যৌগে: CN⁻ একটি শক্তিশালী লিগ্যান্ড (Strong field ligand)। এটি Co³⁺-এর 3d ইলেকট্রনগুলোকে জোড়াবদ্ধ করতে বাধ্য করে, ফলে 3d অরবিটালের দুটি অরবিটাল ফাঁকা হয়ে যায়। এই ফাঁকা অন্তঃস্থ 3d অরবিটাল ব্যবহার করে d²sp³ সংকরণ ঘটে। একে 'অন্তঃস্থ অরবিটাল জটিল' (Inner orbital complex) বা নিম্ন স্পিন (Low spin) কমপ্লেক্স বলে।
+
+সুতরাং, লিগ্যান্ডের শক্তির তারতম্যই এই দুই জটিল যৌগের সংকরণের ভিন্নতার মূল কারণ।`
+    }, {
+        id: 3,
+        stimulus: "দুধ (A) → ঘি (B); ভিনেগার (C) ও চিনি (D) – খাদ্য রসায়ন।",
+        qA: "জেল কাকে বলে?",
+        ansA: `জেল (Gel) হলো এক প্রকার কলয়েডীয় ব্যবস্থা যেখানে তরল মাধ্যমের মধ্যে কঠিন কণাগুলো একটি জালকাঠামো তৈরি করে বিচ্ছুরিত অবস্থায় থাকে এবং সমগ্র মিশ্রণটি আধা-কঠিন বা জেলির মতো আকার ধারণ করে। যেমন: দুধের তৈরি চিজ, জেলি, জ্যাম, সাবানের জেল, সিলিকা জেল ইত্যাদি। জেলের একটি বিশেষ ধর্ম হলো 'থিক্সোট্রপি' – অর্থাৎ ঝাঁকালে তরল হয়ে যায় এবং স্থির রাখলে আবার জেল আকারে ফিরে আসে।`,
+        qB: "খাদ্য নিরাপত্তা ও নিরাপদ খাদ্য কী?",
+        ansB: `খাদ্য নিরাপত্তা (Food Security): এটি একটি বহুমাত্রিক ধারণা, যার অর্থ হলো জনগণের সুস্থ ও সক্রিয় জীবনের জন্য পর্যাপ্ত, পুষ্টিকর, সাশ্রয়ী ও নিরাপদ খাদ্যের নিরবচ্ছিন্ন প্রাপ্যতা এবং সহজলভ্যতা নিশ্চিত করা। এতে খাদ্যের উৎপাদন, বিতরণ, সংরক্ষণ ও ভোগ – সবকিছু অন্তর্ভুক্ত।
+
+নিরাপদ খাদ্য (Safe Food): সেই খাদ্য যা ক্ষতিকর ব্যাকটেরিয়া, ভাইরাস, পরজীবী, বিষাক্ত রাসায়নিক (কীটনাশক, ভারী ধাতু), ভেজাল বা মিশ্রণমুক্ত এবং যা মানুষের শরীরে কোনো রোগ বা ক্ষতি না করে বরং প্রয়োজনীয় পুষ্টি সরবরাহ করে। যেমন: ভালোভাবে রান্না করা খাবার, ফুড গ্রেড প্যাকেটজাত খাবার।`,
+        qC: "দুধ থেকে ঘি তৈরির প্রক্রিয়া লেখ।",
+        ansC: `দুধ থেকে ঘি তৈরির ধাপসমূহ নিচে বর্ণনা করা হলো:
+
+(১) প্রথমে দুধকে সেন্ট্রিফিউগেশন (Centrifugation) বা হিমায়ন প্রক্রিয়ায় ফ্যাট বা মাখন (Cream) আলাদা করা হয়। দুধের চর্বি হালকা হওয়ায় এটি ওপরে ভেসে ওঠে।
+
+(২) সংগৃহীত মাখনকে একটি পাত্রে নিয়ে প্রায় ১০০-১১০°C তাপমাত্রায় ধীরে ধীরে গরম করা হয়। এই তাপে মাখনের ভেতরের পানি বাষ্পীভূত হয়ে বেরিয়ে যায়।
+
+(৩) তাপ দিতে থাকলে মাখনের দুধের শুষ্ক পদার্থ (প্রোটিন ও ল্যাকটোজ) জমাট বেঁধে নিচে তলানি হিসেবে পড়ে যায় এবং উপরিভাগে একটি স্বচ্ছ, সোনালি-হলুদ তরল তৈরি হয়।
+
+(৪) এই স্বচ্ছ তরল অংশটি ছেঁকে বা ঢেলে আলাদা করে নেওয়া হয়, যা পরে ঠাণ্ডা করে কঠিন আকার ধারণ করে – এটিই ঘি (Ghee)।`,
+        qD: "ভিনেগার ও চিনির সংরক্ষণ কৌশল বিশ্লেষণ করো।",
+        ansD: `ভিনেগার (অ্যাসিটিক অ্যাসিডের জলীয় দ্রবণ) ও চিনি (সুক্রোজ) – উভয়ই প্রাকৃতিক খাদ্য সংরক্ষক, কিন্তু এদের সংরক্ষণের প্রক্রিয়া ভিন্ন:
+
+ভিনেগারের সংরক্ষণ কৌশল: ভিনেগার অম্লীয় (pH প্রায় ২.৪-৩.৪)। এই অম্লীয় পরিবেশে অধিকাংশ ব্যাকটেরিয়া ও ছত্রাকের এনজাইম সক্রিয়তা বন্ধ হয়ে যায় এবং তাদের কোষপ্রাচীর ক্ষতিগ্রস্ত হয়। ফলে তারা বংশবিস্তার করতে পারে না। এটি মূলত pH নিয়ন্ত্রণের মাধ্যমে খাদ্য সংরক্ষণ করে (যেমন: আচার, স্যালাড ড্রেসিং)।
+
+চিনির সংরক্ষণ কৌশল: চিনি দ্রবণে উচ্চ ঘনমাত্রা (যেমন: ৬০-৭০% চিনি) তৈরি করে, যার ফলে দ্রবণের অসমোটিক চাপ (Osmotic Pressure) অনেক বেড়ে যায়। এই উচ্চ চাপে খাদ্যে উপস্থিত ব্যাকটেরিয়া বা ছত্রাকের কোষের ভেতরের পানি বাইরে বেরিয়ে আসে (প্লাজমোলাইসিস – Plasmolysis)। পানিশূন্য হয়ে অণুজীবগুলোর মৃত্যু ঘটে এবং খাদ্য নষ্ট হয় না (যেমন: মোরব্বা, জেলি, জ্যাম)।`
+    }, {
+        id: 4,
+        stimulus: "H-পরমাণুর শক্তিস্তর ও Cr (A₂₄)-এর ইলেকট্রন বিন্যাস: 1s²2s²2p⁶3s²3p⁶3d⁵4s¹",
+        qA: "দ্রাব্যতার সংজ্ঞা দাও।",
+        ansA: `নির্দিষ্ট তাপমাত্রায় কোনো নির্দিষ্ট দ্রাবকে (সাধারণত ১০০ গ্রাম পানিতে) সম্পৃক্ত দ্রবণ তৈরি করতে যত গ্রাম দ্রব্যের প্রয়োজন হয়, তাকে ওই তাপমাত্রায় ওই দ্রব্যের দ্রাব্যতা (Solubility) বলে। যেমন: ০°C তাপমাত্রায় ১০০ গ্রাম পানিতে সর্বোচ্চ ৩৫.৭ গ্রাম NaCl দ্রবীভূত হয়, তাই NaCl-এর দ্রাব্যতা ৩৫.৭ গ্রাম/১০০ গ্রাম পানি। দ্রাব্যতা তাপমাত্রা, চাপ ও দ্রব্যের প্রকৃতির ওপর নির্ভর করে।`,
+        qB: "কোয়ান্টাম সেট (3, 2, -2, +½) বলতে কী বুঝ?",
+        ansB: `কোয়ান্টাম সংখ্যার এই সেটটি একটি নির্দিষ্ট ইলেকট্রনের অবস্থান ও ঘূর্ণন সম্পূর্ণরূপে চিহ্নিত করে:
+
+(৩) – প্রধান কোয়ান্টাম সংখ্যা (n): এটি নির্দেশ করে ইলেকট্রনটি পরমাণুর ৩য় প্রধান শক্তিস্তরে (M শেল) অবস্থান করছে।
+
+(২) – সহকারী/অজিমুথাল কোয়ান্টাম সংখ্যা (l): l=২ মানে এটি d-উপশক্তিস্তরের (subshell) ইলেকট্রন, অর্থাৎ এটি ৩d অরবিটালে আছে।
+
+(-২) – চৌম্বক কোয়ান্টাম সংখ্যা (m): m=-২ নির্দেশ করে ৩d উপশক্তিস্তরের পাঁচটি অরবিটালের মধ্যে একটি নির্দিষ্ট অরবিটালে (যেমন: 3d<sub>xy</sub>) ইলেকট্রনটি অবস্থান করছে।
+
+(+½) – স্পিন কোয়ান্টাম সংখ্যা (s): +½ অর্থাৎ ইলেকট্রনটির স্পিন 'আপ স্পিন' বা ঘড়ির কাঁটার দিকে (clockwise) আবর্তন করছে।`,
+        qC: "গাণিতিকভাবে দেখাও যে, n-এর মান বৃদ্ধিতে শক্তিস্তরের ব্যবধান হ্রাস পায়।",
+        ansC: `বোর পরমাণু মডেল অনুযায়ী, হাইড্রোজেন পরমাণুর n-তম কক্ষপথে ইলেকট্রনের শক্তি নির্ণয়ের সূত্র:
+E<sub>n</sub> = &minus;13.6 / n<sup>2</sup> eV (যেখানে n = 1, 2, 3, ...)
+
+এখন পরপর দুটি শক্তিস্তরের শক্তির পার্থক্য (&Delta;E) হিসাব করি:
+
+**১ম ও ২য় স্তরের মধ্যে:**
+E<sub>1</sub> = &minus;13.6 / 1<sup>2</sup> = &minus;13.6 eV
+E<sub>2</sub> = &minus;13.6 / 2<sup>2</sup> = &minus;3.4 eV
+&Delta;E<sub>2&rarr;1</sub> = E<sub>2</sub> &minus; E<sub>1</sub> = &minus;3.4 &minus; (&minus;13.6) = 10.2 eV
+
+**২য় ও ৩য় স্তরের মধ্যে:**
+E<sub>3</sub> = &minus;13.6 / 3<sup>2</sup> = &minus;1.51 eV
+&Delta;E<sub>3&rarr;2</sub> = E<sub>3</sub> &minus; E<sub>2</sub> = &minus;1.51 &minus; (&minus;3.4) = 1.89 eV
+
+**৩য় ও ৪র্থ স্তরের মধ্যে:**
+E<sub>4</sub> = &minus;13.6 / 4<sup>2</sup> = &minus;0.85 eV
+&Delta;E<sub>4&rarr;3</sub> = E<sub>4</sub> &minus; E<sub>3</sub> = &minus;0.85 &minus; (&minus;1.51) = 0.66 eV
+
+উপরের মানগুলো থেকে স্পষ্ট: 10.2 eV > 1.89 eV > 0.66 eV
+অর্থাৎ, n-এর মান যত বাড়ে, পরপর শক্তিস্তরগুলোর শক্তির ব্যবধান (Energy gap) ক্রমাগত হ্রাস পায়। (গাণিতিকভাবে প্রমাণিত)`,
+        qD: "১৫তম ও সর্বশেষ ইলেকট্রনের ক্ষেত্রে পাউলির নীতি যাচাই করো।",
+        ansD: `পাউলির বর্জন নীতি (Pauli's Exclusion Principle) বলে: "একই পরমাণুর কোনো দুটি ইলেকট্রনের চারটি কোয়ান্টাম সংখ্যা (n, l, m, s) একই হতে পারে না।" অর্থাৎ, অন্তত একটি কোয়ান্টাম সংখ্যার মান ভিন্ন হতে হবে।
+
+ক্রোমিয়াম (Cr, Z=24)-এর ইলেকট্রন বিন্যাস: 1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁵ 4s¹
+
+১৫তম ইলেকট্রনটি 3p অরবিটালে অবস্থিত। আউফবাউ নীতি ও হুন্ডের নীতি অনুযায়ী:
+n = 3, l = 1 (p-অরবিটাল), m = +1 (3p<sub>z</sub> অরবিটাল), s = +½ (আপ স্পিন)
+
+সর্বশেষ (২৪তম) ইলেকট্রনটি 3d অরবিটালে অবস্থিত:
+n = 3, l = 2 (d-অরবিটাল), m = +2 (3d অরবিটাল), s = +½ (আপ স্পিন)
+
+এখন তুলনা করি:
+উভয় ইলেকট্রনের n = 3 এবং s = +½ একই।
+কিন্তু l-এর মান (১ বনাম ২) এবং m-এর মান (+১ বনাম +২) সম্পূর্ণ ভিন্ন।
+
+যেহেতু চারটি কোয়ান্টাম সংখ্যার পূর্ণ সেটটি এক হয়নি (l ও m ভিন্ন), তাই পাউলির নীতি এখানে সম্পূর্ণরূপে সত্যায়িত হয়েছে। কোনো নীতি লঙ্ঘন হয়নি।`
+    }, {
+        id: 5,
+        stimulus: "NH₄OH ও HCl-এর মিশ্রণে HF যোগ করা – বাফার ক্রিয়া ও প্রশমন তাপ।",
+        qA: "বিয়োজন ধ্রুবক কী?",
+        ansA: `কোনো মৃদু অম্ল বা মৃদু ক্ষারের জলীয় দ্রবণে আয়নিক বিয়োজন একটি উভমুখী বিক্রিয়া, যা একটি সাম্যাবস্থায় পৌঁছায়। এই সাম্যাবস্থায় উৎপাদ ও বিক্রিয়কের আয়নিক ঘনমাত্রার গুণফলের অনুপাতকে বিয়োজন ধ্রুবক (Dissociation Constant) বলে। অম্লের জন্য এটি K<sub>a</sub> এবং ক্ষারের জন্য K<sub>b</sub> দ্বারা প্রকাশ করা হয়। যেমন: CH₃COOH-এর জন্য K<sub>a</sub> = 1.8&times;10<sup>&minus;5</sup>; NH₄OH-এর জন্য K<sub>b</sub> = 1.8&times;10<sup>&minus;5</sup>। বিয়োজন ধ্রুবকের মান যত কম, অম্ল বা ক্ষার তত দুর্বল।`,
+        qB: "pK<sub>w</sub> = pK<sub>a</sub> + pK<sub>b</sub> সম্পর্কটি দেখাও।",
+        ansB: `আমরা জানি, পানির আয়নিক গুণফল (Ionic product of water), K<sub>w</sub> = [H⁺][OH⁻] = 10<sup>&minus;14</sup> (২৫°C তাপমাত্রায়)।
+
+আবার, কোনো দুর্বল অম্লের K<sub>a</sub> ও তার অনুবন্ধী ক্ষারের K<sub>b</sub>-এর মধ্যে সম্পর্ক:
+K<sub>a</sub> &times; K<sub>b</sub> = K<sub>w</sub>
+
+এখন উভয় পাশে '-log' ব্যবহার করি:
+&minus;log(K<sub>a</sub> &times; K<sub>b</sub>) = &minus;log K<sub>w</sub>
+&rArr; (&minus;log K<sub>a</sub>) + (&minus;log K<sub>b</sub>) = &minus;log K<sub>w</sub>
+
+আমরা জানি, pK<sub>a</sub> = &minus;log K<sub>a</sub>, pK<sub>b</sub> = &minus;log K<sub>b</sub>, pK<sub>w</sub> = &minus;log K<sub>w</sub>
+
+সুতরাং, pK<sub>a</sub> + pK<sub>b</sub> = pK<sub>w</sub> (প্রমাণিত)`,
+        qC: "NH₄OH ও HCl-এর মিশ্রণে HF যোগ করলে pH-এর কী হয়?",
+        ansC: `প্রথমে, ৩০ mL ০.১ M NH₄OH-এ ১৫ mL ০.১ M HCl যোগ করলে:
+NH₄OH-এর মোল = ৩০ &times; ০.১ = ৩ mmol
+HCl-এর মোল = ১৫ &times; ০.১ = ১.৫ mmol
+
+বিক্রিয়া: NH₄OH + HCl &rarr; NH₄Cl + H₂O
+এখানে ১.৫ mmol HCl সম্পূর্ণ ১.৫ mmol NH₄OH-কে প্রশমিত করে ১.৫ mmol NH₄Cl তৈরি করে এবং অবশিষ্ট থাকে (৩ &minus; ১.৫) = ১.৫ mmol NH₄OH।
+
+অর্থাৎ, মিশ্রণটিতে একটি দুর্বল ক্ষার (NH₄OH) ও তার লবণ (NH₄Cl) উভয়ই উপস্থিত – যা একটি ক্ষারীয় বাফার (Basic buffer) তৈরি করে।
+
+এখন এই বাফার দ্রবণে যদি HF (মৃদু অম্ল) যোগ করা হয়, তাহলে HF থেকে বিচ্ছিন্ন H⁺ আয়ন বাফারের ক্ষারীয় উপাদান NH₄OH দ্বারা প্রশমিত হয়:
+NH₄OH + H⁺ &rarr; NH₄⁺ + H₂O
+
+যেহেতু বাফারটি H⁺ আয়নকে প্রশমিত করতে সক্ষম, তাই দ্রবণের pH-এর কোনো উল্লেখযোগ্য পরিবর্তন ঘটে না। এই ঘটনাই বাফারের ক্রিয়া।`,
+        qD: "প্রশমন তাপের তারতম্য বিশ্লেষণ করো।",
+        ansD: `শক্তিশালী অম্ল ও শক্তিশালী ক্ষারের প্রশমন তাপ (Heat of neutralisation) সর্বদা প্রায় &minus;৫৭.৩৪ kJ/mol (নির্দিষ্ট, ধ্রুবক) হয়। কিন্তু দুর্বল অম্ল বা দুর্বল ক্ষার জড়িত থাকলে প্রশমন তাপের মান পরিবর্তিত হয়:
+
+NH₄OH + HCl বিক্রিয়ায়: এখানে NH₄OH একটি দুর্বল ক্ষার। দুর্বল ক্ষার সম্পূর্ণরূপে আয়নিত হয় না; আয়নিত হওয়ার জন্য কিছু শক্তি খরচ হয় (বিয়োজন এনথালপি)। তাই সম্পূর্ণ প্রশমন তাপের কিছু অংশ এই বিয়োজন এনথালপি পূরণে ব্যয় হয়, ফলে প্রকৃত প্রশমন তাপ কম হয় (প্রায় &minus;৫১.৫ kJ/mol)।
+
+HF + NaOH বিক্রিয়ায়: HF একটি দুর্বল অম্ল। কিন্তু এর অনুবন্ধী ক্ষার F<sup>&minus;</sup> আয়নের আকার অত্যন্ত ছোট এবং এর হাইড্রেশন এনথালপি (Hydration enthalpy) অত্যন্ত বেশি ঋণাত্মক (&minus;৫১৫ kJ/mol)। যখন F<sup>&minus;</sup> আয়ন H⁺-এর সাথে যুক্ত হয়ে HF তৈরি করে, তখন অতিরিক্ত হাইড্রেশন শক্তি নির্গত হয়। ফলস্বরূপ, এই বিক্রিয়ার প্রশমন তাপ আদর্শ মানের চেয়ে বেশি হয় (প্রায় &minus;৬৮.৬ kJ/mol)।
+
+সুতরাং, দুর্বল অম্ল/ক্ষারের বিয়োজন এনথালপি ও আয়নগুলোর হাইড্রেশন এনথালপির তারতম্যই প্রশমন তাপের ভিন্নতার জন্য দায়ী।`
+    }, {
+        id: 6,
+        stimulus: "ফসফোরেসেন্স ও CuS/ZnS পৃথকীকরণ – অম্লীয় ও ক্ষারীয় মাধ্যম।",
+        qA: "ফসফোরেসেন্স কাকে বলে?",
+        ansA: `কোনো পদার্থে যখন আলোক রশ্মি (বিকিরণ) পড়ে, তখন পদার্থটির ইলেকট্রন উত্তেজিত হয়। উত্তেজিত ইলেকট্রন যখন স্বাভাবিক অবস্থায় ফিরে আসে, তখন আলো নির্গত হয়। কিন্তু ফসফোরেসেন্স (Phosphorescence) হলো সেই বিশেষ ঘটনা, যেখানে আলোক উৎস বন্ধ করে দেওয়ার পরেও পদার্থটি কিছু সময় ধরে আলো নির্গত করতে থাকে। এর কারণ হলো, উত্তেজিত ইলেকট্রন ট্রিপলেট অবস্থায় চলে যায় এবং সেখান থেকে সিঙ্গলেট অবস্থায় ফিরে আসতে বেশি সময় লাগে (জীবনকাল ১০<sup>&minus;৪</sup> সেকেন্ড থেকে কয়েক সেকেন্ড পর্যন্ত)। যেমন: সন্ধ্যায় ঘড়ির ডায়ালে আলো জ্বলতে দেখা (যাতে ফসফরাস ব্যবহার হয়) – এটি ফসফোরেসেন্সের উদাহরণ।`,
+        qB: "বেগুনি আলো লাল আলো অপেক্ষা তীব্র কেন?",
+        ansB: `আলোর তীব্রতা ও শক্তি নির্ভর করে এর তরঙ্গদৈর্ঘ্যের ওপর। প্লাংকের কোয়ান্টাম তত্ত্ব অনুযায়ী, একটি ফোটনের শক্তি, E = h&nu; = hc/&lambda; (যেখানে h = প্লাংকের ধ্রুবক, c = আলোর বেগ, &lambda; = তরঙ্গদৈর্ঘ্য)।
+
+বেগুনি আলোর তরঙ্গদৈর্ঘ্য (প্রায় ৪০০ nm) লাল আলোর তরঙ্গদৈর্ঘ্য (প্রায় ৭০০ nm)-এর তুলনায় অনেক কম। যেহেতু E &prop; 1/&lambda;, তাই তরঙ্গদৈর্ঘ্য কম হলে ফোটনের শক্তি বেশি হয়। এই উচ্চ শক্তির কারণে বেগুনি আলো চোখের রেটিনায় বা অন্যান্য মাধ্যমে অধিক প্রতিক্রিয়া সৃষ্টি করে, ফলে এটি লাল আলোর চেয়ে অধিক তীব্র অনুভূত হয়।`,
+        qC: "CuS-এর অধঃক্ষেপণের জন্য প্রয়োজনীয় [S²⁻]-এর সর্বনিম্ন মান নির্ণয় করো।",
+        ansC: `CuS-এর দ্রাব্যতা গুণফল (K<sub>sp</sub>) দেওয়া আছে: K<sub>sp</sub> = 3.8&times;10<sup>&minus;38</sup>
+Cu²⁺ আয়নের ঘনমাত্রা দেওয়া আছে: [Cu²⁺] = 0.02 M
+
+CuS-এর অধঃক্ষেপণ শুরু হওয়ার শর্ত হলো: আয়নিক গুণফল (IP) = K<sub>sp</sub>
+অর্থাৎ, [Cu²⁺] &times; [S²⁻] = K<sub>sp</sub>
+
+&rArr; 0.02 &times; [S²⁻] = 3.8&times;10<sup>&minus;38</sup>
+&rArr; [S²⁻] = (3.8&times;10<sup>&minus;38</sup>) / 0.02
+&rArr; [S²⁻] = 1.9&times;10<sup>&minus;36</sup> M
+
+সুতরাং, দ্রবণে S²⁻ আয়নের ঘনমাত্রা যদি 1.9&times;10<sup>&minus;36</sup> M-এর বেশি হয়, তাহলে CuS অধঃক্ষিপ্ত হবে। এর কম হলে অধঃক্ষেপণ হবে না।`,
+        qD: "অম্লীয় ও ক্ষারীয় মাধ্যমের ভূমিকা বিশ্লেষণ করো।",
+        ansD: `গুণগত বিশ্লেষণে (Qualitative analysis) গ্রুপ-২ (Cu²⁺) ও গ্রুপ-৩ (Zn²⁺) ক্যাটায়ন পৃথকীকরণে অম্লীয় ও ক্ষারীয় মাধ্যমের ভূমিকা অত্যন্ত গুরুত্বপূর্ণ:
+
+অম্লীয় মাধ্যমের ভূমিকা: দ্রবণে লঘু HCl যোগ করে H₂S গ্যাস চালনা করলে, HCl থেকে প্রাপ্ত H⁺ আয়নের কারণে H₂S-এর বিয়োজন (H₂S &harr; 2H⁺ + S²⁻) দমন হয় (সম-আয়ন প্রভাব – Common ion effect)। ফলে দ্রবণে S²⁻ আয়নের ঘনমাত্রা অত্যন্ত কম থাকে (প্রায় ১০<sup>&minus;২০</sup> M)। এই স্বল্প S²⁻ ঘনমাত্রা শুধুমাত্র CuS-এর অত্যন্ত কম K<sub>sp</sub> (3.8&times;10<sup>&minus;38</sup>)-কে অতিক্রম করতে পারে, কিন্তু ZnS-এর তুলনামূলকভাবে বেশি K<sub>sp</sub> (1.2&times;10<sup>&minus;20</sup>)-কে অতিক্রম করতে পারে না। তাই শুধু CuS অধঃক্ষিপ্ত হয় এবং Zn²⁺ দ্রবণে থেকে যায়।
+
+ক্ষারীয় মাধ্যমের ভূমিকা: CuS অপসারণের পর দ্রবণে NH₄OH যোগ করলে তা H⁺-কে প্রশমিত করে ফেলে, ফলে H₂S-এর বিয়োজন বহুগুণ বৃদ্ধি পায় এবং S²⁻ আয়নের ঘনমাত্রা অনেক বেশি হয় (প্রায় ১০<sup>&minus;৪</sup> M)। এই উচ্চ S²⁻ ঘনমাত্রা এখন ZnS-এর K<sub>sp</sub>-কে অতিক্রম করে এবং ZnS অধঃক্ষিপ্ত হয়।
+
+এভাবেই অম্লীয় মাধ্যমে Cu²⁺ ও ক্ষারীয় মাধ্যমে Zn²⁺ পৃথকীকরণ সম্পন্ন হয়।`
+    }, {
+        id: 7,
+        stimulus: "আয়নিক বন্ধন ও সমযোজী বন্ধনের তুলনা – উদাহরণসহ।",
+        qA: "আয়নিক বন্ধন কাকে বলে?",
+        ansA: `বিপরীত চার্জবিশিষ্ট দুটি আয়নের মধ্যে স্থির তড়িৎ আকর্ষণ বলের মাধ্যমে যে রাসায়নিক বন্ধন গঠিত হয়, তাকে আয়নিক বন্ধন (Ionic Bond) বলে। সাধারণত ধাতব পরমাণু (যাদের ইলেকট্রন ত্যাগ করার প্রবণতা বেশি) ইলেকট্রন ত্যাগ করে ধনাত্মক আয়নে (ক্যাটায়ন) পরিণত হয় এবং অধাতব পরমাণু (যাদের ইলেকট্রন গ্রহণের প্রবণতা বেশি) সেই ইলেকট্রন গ্রহণ করে ঋণাত্মক আয়নে (অ্যানায়ন) পরিণত হয়। এই বিপরীত চার্জের আকর্ষণেই আয়নিক বন্ধন সৃষ্টি হয়। যেমন: NaCl-এ Na⁺ ও Cl⁻-এর মধ্যে আয়নিক বন্ধন।`,
+        qB: "সমযোজী বন্ধনের বৈশিষ্ট্য লেখ।",
+        ansB: `সমযোজী বন্ধনের (Covalent Bond) প্রধান বৈশিষ্ট্যগুলো হলো:
+
+১. এটি দুই বা ততোধিক পরমাণুর মধ্যে ইলেকট্রন শেয়ারের মাধ্যমে গঠিত হয়।
+
+২. দিকনির্দেশক (Directional) বন্ধন, অর্থাৎ নির্দিষ্ট দিকে বন্ধন তৈরি হয়।
+
+৩. গলনাঙ্ক ও স্ফুটনাঙ্ক সাধারণত কম হয় (আন্তঃআণবিক বল দুর্বল)।
+
+৪. পানিতে সাধারণত অদ্রবণীয়, কিন্তু জৈব দ্রাবকে দ্রবণীয়।
+
+৫. তড়িৎ পরিবাহী নয় (আয়ন নেই)।
+
+৬. বন্ধনে ইলেকট্রনের ঘনত্ব বেশি থাকে, ফলে অণুর আকার ও আকৃতি নির্দিষ্ট হয়।
+
+৭. একক, দ্বি ও ত্রি – তিন ধরনের বন্ধন দেখা যায়।`,
+        qC: "NaCl ও CO₂-এর বন্ধন ব্যাখ্যা করো।",
+        ansC: `NaCl (সোডিয়াম ক্লোরাইড): এখানে Na পরমাণু (1s²2s²2p⁶3s¹) তার 3s অরবিটালের একটি ইলেকট্রন ত্যাগ করে Na⁺ (1s²2s²2p⁶) আয়নে পরিণত হয়। অপরদিকে, Cl পরমাণু (1s²2s²2p⁶3s²3p⁵) সেই একটি ইলেকট্রন গ্রহণ করে Cl⁻ (1s²2s²2p⁶3s²3p⁶) আয়নে পরিণত হয়। এখন Na⁺ ও Cl⁻-এর মধ্যে শক্তিশালী স্থির তড়িৎ আকর্ষণ (Coulombic force) কাজ করে, যা আয়নিক বন্ধন (Ionic bond) গঠন করে।
+
+CO₂ (কার্বন ডাই–অক্সাইড): এখানে কেন্দ্রীয় C পরমাণু (2s²2p²) ও দুইটি O পরমাণু (2s²2p⁴) ইলেকট্রন শেয়ার করে বন্ধন গঠন করে। C-এর ২টি অযুগ্ম ইলেকট্রন প্রতিটি O-এর ২টি অযুগ্ম ইলেকট্রনের সাথে মিলিত হয়ে দুইটি দ্বিবন্ধন (C=O) গঠন করে। অর্থাৎ, প্রতিটি বন্ধনে ২টি ইলেকট্রন জোড় শেয়ার হয় – এটি সমযোজী বন্ধন (Covalent bond)।`,
+        qD: "আয়নিক ও সমযোজী যৌগের গলনাঙ্কের তারতম্য বিশ্লেষণ করো।",
+        ansD: `আয়নিক যৌগ ও সমযোজী যৌগের গলনাঙ্কের মধ্যে উল্লেখযোগ্য তারতম্য দেখা যায়, যা নিচে বিশ্লেষণ করা হলো:
+
+আয়নিক যৌগের গলনাঙ্ক: আয়নিক যৌগে (যেমন: NaCl, MgO) ধনাত্মক ও ঋণাত্মক আয়নের মধ্যে স্থির তড়িৎ আকর্ষণ বল অত্যন্ত শক্তিশালী হয়। কঠিন অবস্থায় এই আয়নগুলো একটি সুগঠিত জালকাঠামো (Crystal lattice) তৈরি করে, যা ভাঙতে প্রচুর তাপশক্তির প্রয়োজন হয়। তাই আয়নিক যৌগের গলনাঙ্ক সাধারণত অত্যন্ত বেশি (NaCl-এর গলনাঙ্ক ৮০১°C, MgO-এর গলনাঙ্ক ২৮৫২°C)।
+
+সমযোজী যৌগের গলনাঙ্ক: সমযোজী যৌগে (যেমন: H₂O, CO₂, CH₄) অণুগুলোর মধ্যে আন্তঃআণবিক বল (ভ্যান ডার ওয়ালস বল, হাইড্রোজেন বন্ধন) তুলনামূলকভাবে দুর্বল হয়। এই দুর্বল বল ভাঙতে খুব কম তাপশক্তির প্রয়োজন হয়, তাই এদের গলনাঙ্ক অনেক কম (H₂O-এর গলনাঙ্ক ০°C, CO₂-এর গলনাঙ্ক &minus;৭৮°C, CH₄-এর গলনাঙ্ক &minus;১৮২°C)।
+
+সুতরাং, শক্তিশালী আয়নিক আকর্ষণ বনাম দুর্বল আন্তঃআণবিক বল – এই মূল কারণেই আয়নিক ও সমযোজী যৌগের গলনাঙ্কের এত বড় পার্থক্য।`
+    }, {
+        id: 8,
+        stimulus: "রাসায়নিক সাম্যাবস্থা – লা-শাতেলিয়ারের নীতি ও প্রয়োগ।",
+        qA: "সাম্য ধ্রুবক Kc কী?",
+        ansA: `কোনো উভমুখী রাসায়নিক বিক্রিয়া সাম্যাবস্থায় পৌঁছালে, সেই সাম্যাবস্থায় উৎপাদগুলোর মোলার ঘনমাত্রার গুণফলকে বিক্রিয়কগুলোর মোলার ঘনমাত্রার গুণফল দিয়ে ভাগ করলে যে ধ্রুবক মান পাওয়া যায়, তাকে সাম্য ধ্রুবক (Equilibrium Constant) বলে এবং K<sub>c</sub> দ্বারা প্রকাশ করা হয়। যেমন: aA + bB &harr; cC + dD বিক্রিয়ার জন্য,
+K<sub>c</sub> = [C]<sup>c</sup> [D]<sup>d</sup> / [A]<sup>a</sup> [B]<sup>b</sup>
+
+K<sub>c</sub>-এর মান শুধুমাত্র তাপমাত্রার ওপর নির্ভর করে (চাপ বা ঘনমাত্রার ওপর নয়)। K<sub>c</sub>-এর মান যত বেশি, বিক্রিয়াটি তত বেশি উৎপাদমুখী; মান যত কম, বিক্রিয়াটি তত কম উৎপাদমুখী।`,
+        qB: "লা-শাতেলিয়ারের নীতিটি লেখ।",
+        ansB: `লা-শাতেলিয়ারের নীতি (Le Chatelier's Principle) হলো রাসায়নিক সাম্যাবস্থার একটি মৌলিক নীতি, যা বলে: "কোনো সাম্যাবস্থায় যদি বাহ্যিক কোনো প্রভাব (যেমন: তাপমাত্রা, চাপ, বা ঘনমাত্রার পরিবর্তন) প্রয়োগ করা হয়, তবে সাম্যাবস্থা সেই প্রভাবের বিপরীত দিকে সরে যায়, অর্থাৎ প্রভাবকে নিষ্ক্রিয় করার চেষ্টা করে।"
+
+সহজ ভাষায়: কোনো সাম্যাবস্থায় পরিবর্তন আনলে, সিস্টেম নিজেকে এমনভাবে সামঞ্জস্য করে যেন পরিবর্তনটির প্রভাব যতটা সম্ভব কম হয়। এই নীতিটি শিল্পক্ষেত্রে উৎপাদন বাড়ানোর কৌশল নির্ধারণে অত্যন্ত গুরুত্বপূর্ণ।`,
+        qC: "উদ্দীপকের আলোকে চাপ কমালে NO উৎপাদন বাড়ে কেন?",
+        ansC: `উদ্দীপকের বিক্রিয়া: 2NH₃(g) + 5/2 O₂(g) &harr; 2NO(g) + 3H₂O(g)
+
+এখানে বিক্রিয়কের মোট মোল সংখ্যা = 2 + 2.5 = 4.5
+উৎপাদের মোট মোল সংখ্যা = 2 + 3 = 5
+
+লক্ষণীয়, উৎপাদের মোল সংখ্যা (৫) বিক্রিয়কের মোল সংখ্যা (৪.৫)-এর চেয়ে বেশি, অর্থাৎ সামনের দিকে (ডান দিকে) অগ্রসর হলে গ্যাসীয় মোল সংখ্যা বাড়ে (&Delta;n = +০.৫)।
+
+লা-শাতেলিয়ারের নীতি অনুযায়ী, কোনো সাম্যাবস্থায় চাপ কমালে সাম্যাবস্থা সেই দিকে সরে যায় যেদিকে মোল সংখ্যা বেশি (কারণ চাপ কমলে আয়তন বাড়ে এবং মোল বেশি থাকলে চাপের হ্রাস পূরণ হয়)। যেহেতু ডান দিকে মোল সংখ্যা বেশি, তাই চাপ কমালে সাম্যাবস্থা ডান দিকে সরে যায় এবং NO-এর উৎপাদন বৃদ্ধি পায়।`,
+        qD: "তাপমাত্রা ও ঘনমাত্রার প্রভাব বিশ্লেষণ করো।",
+        ansD: `উদ্দীপকের বিক্রিয়াটি: 2NH₃(g) + 5/2 O₂(g) &harr; 2NO(g) + 3H₂O(g); &Delta;H = &minus;104 kJ
+
+তাপমাত্রার প্রভাব: যেহেতু বিক্রিয়াটি তাপপাতপাদী (Exothermic), অর্থাৎ বিক্রিয়ায় তাপ নির্গত হয়, তাই লা-শাতেলিয়ারের নীতি অনুযায়ী তাপমাত্রা কমালে সাম্যাবস্থা ডান দিকে (উৎপাদের দিকে) সরে যাবে এবং NO উৎপাদন বাড়বে। কিন্তু খুব কম তাপমাত্রায় বিক্রিয়ার গতি অত্যন্ত কমে যায়, তাই কারখানায় ৮০০-৯০০°C তাপমাত্রায় অনুঘটক (Pt-Rh) ব্যবহার করে উৎপাদন চালানো হয় (একে 'অনুকূল তাপমাত্রা' বলে)।
+
+ঘনমাত্রার প্রভাব: বিক্রিয়ক (NH₃ ও O₂)-এর ঘনমাত্রা বাড়ালে লা-শাতেলিয়ারের নীতি অনুযায়ী সাম্যাবস্থা ডান দিকে সরে যাবে, ফলে NO উৎপাদন বাড়বে। আবার, উৎপাদিত (NO ও H₂O)-কে বিক্রিয়া পাত্র থেকে দ্রুত সরিয়ে নিলেও সাম্যাবস্থা ডান দিকে সরে যাবে। এই কৌশলগুলো শিল্পক্ষেত্রে 'প্রবাহী পদ্ধতি' বা 'পণ্য অপসারণ কৌশল' নামে পরিচিত।`
+    }];
+
+    // ================================================================
+    //  BUILD MCQ
+    // ================================================================
+    const mcqContainer = document.getElementById('mcq-container');
+    let mcqHTML = '';
+
+    MCQ.forEach((item, idx) => {
+        const labels = ['A', 'B', 'C', 'D'];
+        let optsHTML = '';
+        item.opts.forEach((opt, oi) => {
+            optsHTML += `
+                    <button onclick="checkMCQ(${idx}, ${oi})" id="mcq-opt-${idx}-${oi}" 
+                            class="mcq-option w-full text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-indigo-50/50 dark:hover:bg-slate-800/50 transition-all flex items-center gap-3">
+                        <span class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center font-bold text-xs shrink-0">${labels[oi]}</span>
+                        <span class="text-sm sm:text-base">${opt}</span>
+                    </button>
+                `;
+        });
+
+        mcqHTML += `
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-start justify-between gap-3 mb-4">
+                        <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 font-bold px-3 py-1.5 rounded-lg text-xs">Question ${item.id}</span>
+                    </div>
+                    <h4 class="text-base sm:text-lg font-medium text-slate-900 dark:text-white mb-4 leading-relaxed">${item.q}</h4>
+                    <div class="space-y-2 mb-4">${optsHTML}</div>
+                    <div id="mcq-exp-${idx}" class="hidden mt-4 pt-4 border-t border-dashed border-slate-200 dark:border-slate-800">
+                        <div class="bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 p-4 rounded-xl text-sm leading-relaxed">
+                            <span class="font-bold flex items-center gap-1.5 mb-1 text-xs uppercase tracking-wider">
+                                <i class="fa-solid fa-square-poll-horizontal"></i> Correct Answer & Mathematical Explanation
+                            </span>
+                            ${item.exp}
+                        </div>
+                    </div>
+                </div>
+            `;
+    });
+    mcqContainer.innerHTML = mcqHTML;
+
+    function checkMCQ(qIdx, oIdx) {
+        const item = MCQ[qIdx];
+        const correct = item.ans;
+        for (let i = 0; i < 4; i++) {
+            const btn = document.getElementById(`mcq-opt-${qIdx}-${i}`);
+            btn.disabled = true;
+            btn.classList.remove('hover:bg-indigo-50/50', 'dark:hover:bg-slate-800/50');
+            if (i === correct) {
+                btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-700', 'dark:bg-emerald-950/20', 'dark:text-emerald-300');
+                btn.querySelector('span').classList.add('bg-emerald-500', 'text-white');
+            } else if (i === oIdx) {
+                btn.classList.add('bg-rose-50', 'border-rose-500', 'text-rose-700', 'dark:bg-rose-950/20', 'dark:text-rose-300');
+                btn.querySelector('span').classList.add('bg-rose-500', 'text-white');
+            }
+        }
+        document.getElementById(`mcq-exp-${qIdx}`).classList.remove('hidden');
+    }
+
+    // ================================================================
+    //  BUILD CQ
+    // ================================================================
+    const cqContainer = document.getElementById('cq-container');
+    let cqHTML = '';
+
+    CQ.forEach((item, idx) => {
+        const parts = [
+            { key: 'A', label: 'A', q: item.qA, ans: item.ansA, mark: '1 Mark' },
+            { key: 'B', label: 'B', q: item.qB, ans: item.ansB, mark: '2 Marks' },
+            { key: 'C', label: 'C', q: item.qC, ans: item.ansC, mark: '3 Marks' },
+            { key: 'D', label: 'D', q: item.qD, ans: item.ansD, mark: '4 Marks' }
+        ];
+
+        let partsHTML = '';
+        parts.forEach(p => {
+            const borderClass = (p.key === 'C' || p.key === 'D') ? 'border-indigo-200/50 dark:border-indigo-950' : 'border-slate-100 dark:border-slate-800';
+            const bgClass = (p.key === 'C' || p.key === 'D') ? 'bg-indigo-600/5 dark:bg-indigo-500/5' : 'bg-white dark:bg-slate-900';
+            partsHTML += `
+                    <div class="border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden">
+                        <button onclick="toggleCQ(${idx}, '${p.key}')" 
+                                class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-indigo-50/50 dark:bg-slate-950/50 dark:hover:bg-slate-800/30 transition-all text-left">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center font-bold text-sm">${p.label}</span>
+                                <span class="font-medium text-sm sm:text-base text-slate-800 dark:text-slate-200">${p.q}</span>
+                            </div>
+                            <span class="text-xs font-semibold px-2 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-400">${p.mark}</span>
+                        </button>
+                        <div id="cq-ans-${idx}-${p.key}" class="cq-answer hidden p-4 ${bgClass} border-t ${borderClass} text-slate-600 dark:text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">
+                            ${p.ans}
+                        </div>
+                    </div>
+                `;
+        });
+
+        cqHTML += `
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+                    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-slate-800/50 dark:to-slate-800/30 p-6 border-b border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-indigo-600 text-white font-bold px-3.5 py-1.5 rounded-lg text-xs tracking-wider">Creative Question ${item.id}</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Annual Exam Set-A</span>
+                        </div>
+                        <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-sm">
+                            <p class="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed font-serif">
+                                <strong class="text-indigo-600 dark:text-indigo-400">Stimulus: </strong>${item.stimulus}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">${partsHTML}</div>
+                </div>
+            `;
+    });
+    cqContainer.innerHTML = cqHTML;
+
+    function toggleCQ(idx, key) {
+        const el = document.getElementById(`cq-ans-${idx}-${key}`);
+        el.classList.toggle('hidden');
+    }
+</script>
+
+</body>
+</html>

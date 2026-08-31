@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.AppState = {
     batch:   window.PAGE_BATCH || params.get('batch') || 'all',
-    subject: params.get('subject') || 'all',
+    subject: window.PAGE_SUBJECT || params.get('subject') || 'all',
     query:   params.get('q') || '',
   };
 
@@ -21,7 +21,7 @@ function buildFilterChips() {
   const subjectContainer = document.getElementById('subjectFilters');
   const batchContainer   = document.getElementById('batchFilters');
 
-  if (subjectContainer && window.SUBJECTS) {
+  if (subjectContainer && window.SUBJECTS && !window.PAGE_SUBJECT) {
     subjectContainer.innerHTML = window.SUBJECTS.map(s =>
       `<button class="chip ${window.AppState.subject === s.id ? 'active' : ''}" data-subject="${s.id}">
         <i class="bi ${s.icon}"></i>${s.name}
@@ -66,7 +66,7 @@ function bindSearchEvents() {
   // Delegate click for subject chips
   document.addEventListener('click', e => {
     const subjectBtn = e.target.closest('[data-subject]');
-    if (subjectBtn) {
+    if (subjectBtn && !window.PAGE_SUBJECT) {
       window.AppState.subject = subjectBtn.dataset.subject;
       document.querySelectorAll('[data-subject]').forEach(c =>
         c.classList.toggle('active', c.dataset.subject === window.AppState.subject)
@@ -110,7 +110,8 @@ function renderCoursePrograms() {
     if (!window.PAGE_BATCH && batch !== 'all' && prog.batch !== batch) return;
 
     // Check subject filter
-    if (subject !== 'all' && prog.category !== subject && prog.subject !== subject) return;
+    if (window.PAGE_SUBJECT && prog.category !== window.PAGE_SUBJECT && prog.subject !== window.PAGE_SUBJECT) return;
+    if (!window.PAGE_SUBJECT && subject !== 'all' && prog.category !== subject && prog.subject !== subject) return;
 
     // Check search query
     if (qLow) {
@@ -164,8 +165,8 @@ function renderCoursePrograms() {
 
 /* ── RESET ALL FILTERS ── */
 function resetAllFilters() {
-  window.AppState.subject = 'all';
-  window.AppState.query   = '';
+  if (!window.PAGE_SUBJECT) window.AppState.subject = 'all';
+  window.AppState.query = '';
   if (!window.PAGE_BATCH) window.AppState.batch = 'all';
 
   const inputEl  = document.getElementById('searchInput');
@@ -173,7 +174,9 @@ function resetAllFilters() {
   if (inputEl) inputEl.value = '';
   clearBtn && clearBtn.classList.remove('show');
 
-  document.querySelectorAll('[data-subject]').forEach(c => c.classList.toggle('active', c.dataset.subject === 'all'));
+  if (!window.PAGE_SUBJECT) {
+    document.querySelectorAll('[data-subject]').forEach(c => c.classList.toggle('active', c.dataset.subject === 'all'));
+  }
   if (!window.PAGE_BATCH) {
     document.querySelectorAll('[data-batch]').forEach(c => c.classList.toggle('active', c.dataset.batch === 'all'));
   }
