@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSC 2026 Academic Courses | CourseLink</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar"></nav>
+
+<!-- PAGE HEADER -->
+<section class="hero-banner" style="padding:36px 0 28px;">
+  <div class="container">
+    <div class="hero-pill" style="color:#818cf8;border-color:rgba(99,102,241,0.35);">
+      <i class="bi bi-collection-play-fill"></i> HSC 2026 Batch
+    </div>
+    <h1 class="hero-title" style="font-size:clamp(1.75rem,4vw,2.4rem);">
+      HSC 2026 <span class="gradient-text">Academic Courses</span>
+    </h1>
+    <p class="hero-desc">
+      Higher Math, Physics, and Chemistry courses for HSC 2026. Each course contains all its respective cycle Telegram links.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="container" style="padding-top:28px;">
+
+  <!-- SEARCH & FILTER BAR -->
+  <div class="search-filter-wrapper">
+    <div class="search-input-box">
+      <i class="bi bi-search"></i>
+      <input
+        type="search" 
+        id="searchInput"
+        placeholder="Search HSC 2026 courses or cycles — e.g. Higher Math, Physics Cycle 2, BP Chemistry..."
+        autocomplete="off"
+      />
+      <button class="btn-clear" id="searchClear"><i class="bi bi-x-lg"></i></button>
+    </div>
+
+    <div class="filter-chips-row">
+      <span class="filter-tag-label">Subject:</span>
+      <div id="subjectFilters" style="display:contents;"></div>
+      <span class="results-stats-text" id="resultCount"></span>
+    </div>
+  </div>
+
+  <!-- PROGRAMS CONTAINER -->
+  <div class="programs-wrapper" id="programsContainer">
+    <!-- Populated by main.js -->
+  </div>
+
+</section>
+
+<footer class="site-footer"></footer>
+
+<script>window.PAGE_BATCH = 'HSC 26';</script>
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initNavbar('hsc26');
+    initFooter();
+  });
+</script>
+</body>
+</html>
