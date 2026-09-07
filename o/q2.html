@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>সীরাত কুইজ প্রিমিয়াম স্টাডি পোর্টাল | ঢাকা কলেজ ঈদ-ই-মিলাদুন্নবী (সা.) কুইজ</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            islamic: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    .perspective-1000 {
+      perspective: 1000px;
+      -webkit-perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+    }
+    .flip-card-inner.flipped,
+    .flipped.flip-card-inner,
+    #mainFlashcardBox.flipped {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1.5rem;
+    }
+    .flip-card-front {
+      transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+      z-index: 2;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      z-index: 1;
+    }
+    .flip-card-inner.flipped .flip-card-front,
+    #mainFlashcardBox.flipped .flip-card-front {
+      z-index: 1;
+    }
+    .flip-card-inner.flipped .flip-card-back,
+    #mainFlashcardBox.flipped .flip-card-back {
+      z-index: 2;
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    @media print {
+      header, nav, #globalStatsBar, .no-print {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .print-area {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- Top Announcement / Exam Badge -->
+  <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-amber-950 text-xs py-1.5 px-4 font-bold text-center tracking-wide flex items-center justify-center gap-2 shadow-inner">
+    <span><i class="fa-solid fa-graduation-cap"></i> ঢাকা কলেজ • ঈদ-ই-মিলাদুন্নবী (সা.) কুইজ প্রতিযোগিতা ২০২৬ • গ্রুপ ‘ক’ (দ্বাদশ শ্রেণি)</span>
+    <span class="hidden md:inline bg-amber-950 text-amber-100 px-2 py-0.5 rounded-full text-[11px]">২০০টি প্রশ্নব্যাংক</span>
+  </div>
+
+  <!-- Main Header -->
+  <header class="bg-gradient-to-r from-emerald-900 via-islamic-800 to-teal-900 text-white shadow-xl sticky top-0 z-50 border-b border-emerald-700/50 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex flex-col lg:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center justify-between w-full lg:w-auto">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-emerald-950 text-xl shadow-lg border border-amber-200">
+            <i class="fa-solid fa-kaaba"></i>
+          </div>
+          <div>
+            <h1 class="text-base sm:text-lg font-bold tracking-tight text-emerald-50 flex items-center gap-2">
+              পবিত্র সীরাতুন্নবী (সা.) কুইজ পোর্টাল
+              <span class="text-[11px] font-semibold bg-emerald-700/70 border border-emerald-500/40 text-amber-300 px-2 py-0.5 rounded-md hidden sm:inline-flex items-center gap-1">
+                <i class="fa-solid fa-crown text-[10px]"></i> প্রিমিয়াম
+              </span>
+            </h1>
+            <p class="text-[11px] sm:text-xs text-emerald-200/90 font-medium">দ্বাদশ শ্রেণির চূড়ান্ত কুইজ প্রস্তুতি • সম্পূর্ণ প্রশ্নব্যাংক ও চার্ট</p>
+          </div>
+        </div>
+
+        <!-- Quick utilities for mobile -->
+        <div class="flex items-center gap-1.5 lg:hidden">
+          <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-emerald-800/80 text-amber-300 hover:bg-emerald-700 transition" title="ডার্ক মোড">
+            <i id="darkIconMob" class="fa-solid fa-moon"></i>
+          </button>
+          <button onclick="toggleSound()" id="soundBtnMob" class="p-2 rounded-lg bg-emerald-800/80 text-emerald-200 hover:bg-emerald-700 transition" title="অডিও সাউন্ড">
+            <i id="soundIconMob" class="fa-solid fa-volume-high"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex flex-wrap items-center justify-center gap-1 sm:gap-1.5 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-600/30 text-xs sm:text-sm font-medium w-full lg:w-auto">
+        <button id="navBtnBrowse" onclick="switchMainTab('browse')" class="nav-tab active px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 bg-emerald-600 text-white shadow">
+          <i class="fa-solid fa-grip"></i> <span>কার্ড ভিউ</span>
+        </button>
+        <button id="navBtnChart" onclick="switchMainTab('chart')" class="nav-tab px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 text-emerald-200 hover:text-white hover:bg-emerald-800/50">
+          <i class="fa-solid fa-table-list"></i> <span>র্যাপিড চার্ট</span>
+        </button>
+        <button id="navBtnFlashcard" onclick="switchMainTab('flashcard')" class="nav-tab px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 text-emerald-200 hover:text-white hover:bg-emerald-800/50">
+          <i class="fa-solid fa-layer-group"></i> <span>ফ্ল্যাশকার্ড</span>
+        </button>
+        <button id="navBtnQuiz" onclick="switchMainTab('quiz')" class="nav-tab px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 text-emerald-200 hover:text-white hover:bg-emerald-800/50">
+          <i class="fa-solid fa-stopwatch"></i> <span>মক টেস্ট</span>
+        </button>
+        <button id="navBtnTips" onclick="switchMainTab('tips')" class="nav-tab px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 text-amber-300 hover:text-white hover:bg-emerald-800/50">
+          <i class="fa-solid fa-star"></i> <span>পরীক্ষার টিপস</span>
+        </button>
+      </nav>
+
+      <!-- Desktop Extra Utilities -->
+      <div class="hidden lg:flex items-center gap-2">
+        <button onclick="toggleSound()" id="soundBtn" class="px-2.5 py-1.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-800/80 border border-emerald-600/30 text-emerald-200 text-xs flex items-center gap-1.5 transition" title="সাউন্ড ইফেক্ট">
+          <i id="soundIcon" class="fa-solid fa-volume-high"></i> <span id="soundText">সাউন্ড অন</span>
+        </button>
+        <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-emerald-950/60 hover:bg-emerald-800/80 border border-emerald-600/30 text-amber-300 transition" title="ডার্ক মোড">
+          <i id="darkIcon" class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Global Study Tracker / Progress Bar -->
+  <section id="globalStatsBar" class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 items-center">
+        
+        <!-- Total Progress Stat -->
+        <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-700/60">
+          <div class="w-9 h-9 rounded-lg bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">পড়া সম্পন্ন</div>
+            <div class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">
+              <span id="statCompletedCount">০</span> / <span id="statTotalCount">২০০</span> 
+              <span id="statPercentage" class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">(০%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bookmarked / Flagged Stat -->
+        <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-700/60">
+          <div class="w-9 h-9 rounded-lg bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-bookmark"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">দাগানো প্রশ্ন</div>
+            <div class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">
+              <span id="statBookmarkedCount">০</span> টি গুরুত্বপূর্ণ
+            </div>
+          </div>
+        </div>
+
+        <!-- Pending Stat -->
+        <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-700/60">
+          <div class="w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-hourglass-half"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">পড়া বাকি</div>
+            <div class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">
+              <span id="statPendingCount">২০০</span> টি প্রশ্ন
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Reset/Actions -->
+        <div class="flex items-center justify-between sm:justify-end gap-2">
+          <button onclick="filterOnlyBookmarked()" id="btnFilterBookmarkedOnly" class="flex-1 sm:flex-initial px-3 py-2 text-xs font-semibold rounded-xl border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/60 transition flex items-center justify-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-star text-amber-500"></i> শুধু দাগানো দেখুন
+          </button>
+          <button onclick="openResetModal()" title="অগ্রগতি রিসিট করুন" class="px-2.5 py-2 text-xs font-medium text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-xl border border-slate-200 dark:border-slate-800 transition">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Linear visual progress bar -->
+      <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden mt-2.5 shadow-inner">
+        <div id="topProgressBar" class="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 h-full w-0 transition-all duration-500"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Search Toolbar (Shared across Browse & Chart) -->
+  <div id="filterToolbar" class="bg-slate-100/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 py-3 backdrop-blur transition-colors">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-3 items-center justify-between">
+      
+      <!-- Category Level Badges -->
+      <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
+        <button onclick="setCategoryFilter('all')" class="cat-pill active px-3 py-1 rounded-full text-xs font-semibold border transition" data-cat="all">
+          সকল প্রশ্ন (২০০)
+        </button>
+        <button onclick="setCategoryFilter('basic')" class="cat-pill px-3 py-1 rounded-full text-xs font-semibold border transition" data-cat="basic">
+          ১. বেসিক (১-৯০)
+        </button>
+        <button onclick="setCategoryFilter('medium')" class="cat-pill px-3 py-1 rounded-full text-xs font-semibold border transition" data-cat="medium">
+          ২. মিডিয়াম (৯১-১২৪)
+        </button>
+        <button onclick="setCategoryFilter('advanced')" class="cat-pill px-3 py-1 rounded-full text-xs font-semibold border transition" data-cat="advanced">
+          ৩. অ্যাডভান্সড (১২৫-১৪২)
+        </button>
+        <button onclick="setCategoryFilter('rapid')" class="cat-pill px-3 py-1 rounded-full text-xs font-semibold border transition" data-cat="rapid">
+          ৪. র্যাপিড-ফায়ার (১৪৩-২০০)
+        </button>
+      </div>
+
+      <!-- Status Filter Tabs (All / Studied / Bookmarked / Pending) -->
+      <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-end">
+        <select id="statusFilterSelect" onchange="setStatusFilter(this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs rounded-xl px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium cursor-pointer">
+          <option value="all">অবস্থা: সব প্রশ্ন</option>
+          <option value="bookmarked">★ দাগানো / রিভিশন প্রশ্ন</option>
+          <option value="completed">✓ পড়া সম্পন্ন হয়েছে</option>
+          <option value="pending">⏳ পড়া এখনও বাকি</option>
+        </select>
+
+        <!-- Search Bar -->
+        <div class="relative flex-1 sm:w-60">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <input type="text" id="globalSearchInput" placeholder="যেকোনো নাম, ঘটনা, স্থান খুঁজুন..." oninput="applyFilters()"
+            class="w-full pl-8 pr-3 py-1.5 text-xs sm:text-sm rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition" />
+        </div>
+
+        <!-- Toggle All Answers -->
+        <button onclick="toggleAllAnswersVisibility()" id="toggleAllAnsBtn" class="px-2.5 py-1.5 text-xs font-medium border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60 rounded-xl transition flex items-center gap-1 whitespace-nowrap shadow-sm">
+          <i class="fa-solid fa-eye-slash"></i> <span>উত্তর ঢাকুন</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main View Container -->
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+
+    <!-- ========================================================================= -->
+    <!-- TAB 1: CARD BROWSE VIEW (কার্ড ভিউ) -->
+    <!-- ========================================================================= -->
+    <section id="tabViewBrowse" class="space-y-4">
+      <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1">
+        <div>
+          বর্তমান ফিল্টারে প্রদর্শিত: <span id="browseCount" class="font-bold text-emerald-600 dark:text-emerald-400">২০০</span> টি প্রশ্ন
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800 text-[11px]">
+            <i class="fa-solid fa-check text-emerald-500"></i> ক্লিক করে পড়া শেষ চিহ্নিত করুন
+          </span>
+          <span class="inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800 text-[11px]">
+            <i class="fa-solid fa-bookmark text-amber-500"></i> দাগিয়ে রাখুন
+          </span>
+        </div>
+      </div>
+
+      <!-- Question Cards Grid -->
+      <div id="browseCardsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 2: RAPID-FIRE CHART / TABLE VIEW (র্যাপিড-ফায়ার চার্ট ভিউ) -->
+    <!-- ========================================================================= -->
+    <section id="tabViewChart" class="hidden space-y-4">
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm p-4 sm:p-6 transition-colors">
+        
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-300 dark:border-amber-700">
+                <i class="fa-solid fa-bolt mr-1"></i> র্যাপিড-ফায়ার স্পেশাল
+              </span>
+              <h2 class="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-100">
+                এক নজরে র্যাপিড-ফায়ার চার্ট ও প্রশ্ন তালিকা
+              </h2>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              দ্রুত রিভিশন ও প্রতিযোগিতার মঞ্চে নিশ্চিত উত্তরের জন্য এক নজরে পড়ার উপযোগী চার্ট ভিউ
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 w-full md:w-auto">
+            <button onclick="toggleChartAnswers()" id="btnChartToggleAns" class="px-3 py-1.5 text-xs font-semibold rounded-xl border border-emerald-500/50 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-mask"></i> <span id="chartToggleAnsText">উত্তর স্তম্ভ ঢাকুন (সেলফ প্র্যাকটিস)</span>
+            </button>
+            <button onclick="window.print()" class="px-3 py-1.5 text-xs font-medium rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition flex items-center gap-1">
+              <i class="fa-solid fa-print"></i> প্রিন্ট / PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- The Interactive Table -->
+        <div class="overflow-x-auto mt-4 rounded-xl border border-slate-200 dark:border-slate-800">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead class="bg-slate-100 dark:bg-slate-800/90 text-slate-600 dark:text-slate-300 text-xs uppercase font-bold tracking-wider border-b border-slate-200 dark:border-slate-800">
+              <tr>
+                <th class="py-3 px-3 text-center w-14">ক্র.</th>
+                <th class="py-3 px-4">প্রশ্ন</th>
+                <th class="py-3 px-4" id="tableHeaderAns">সংক্ষিপ্ত / পূর্ণাঙ্গ উত্তর</th>
+                <th class="py-3 px-3 text-center w-36">পড়া ও দাগানো</th>
+              </tr>
+            </thead>
+            <tbody id="chartTableBody" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-800 dark:text-slate-200">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 3: 3D FLASHCARD PRACTICE (ফ্ল্যাশকার্ড মোড) -->
+    <!-- ========================================================================= -->
+    <section id="tabViewFlashcard" class="hidden max-w-2xl mx-auto py-3 space-y-4">
+      
+      <!-- Flashcard Options & Filter -->
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm p-4 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold text-slate-600 dark:text-slate-400">ফ্ল্যাশকার্ড সোর্স:</span>
+          <select id="fcSourceSelect" onchange="changeFlashcardSource(this.value)" class="bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1 text-slate-800 dark:text-slate-200 font-medium focus:outline-none">
+            <option value="all">সকল প্রশ্ন (২০০)</option>
+            <option value="bookmarked">শুধুমাত্র দাগানো প্রশ্ন</option>
+            <option value="pending">পড়া বাকি প্রশ্নসমূহ</option>
+            <option value="rapid">র্যাপিড-ফায়ার প্রশ্নসমূহ</option>
+          </select>
+        </div>
+        <div class="text-slate-500 dark:text-slate-400 font-medium">
+          কার্ড: <span id="fcCurrentNo" class="font-bold text-emerald-600 dark:text-emerald-400">১</span> / <span id="fcTotalNum">২০০</span>
+        </div>
+      </div>
+
+      <!-- Flashcard 3D Board -->
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col items-center">
+        
+        <!-- Top bar inside card box -->
+        <div class="w-full flex items-center justify-between mb-4">
+          <span id="fcBadgeLevel" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+            বেসিক লেভেল
+          </span>
+          <div class="flex items-center gap-2">
+            <button onclick="toggleBookmarkFc()" id="btnFcBookmark" class="p-2 rounded-xl text-slate-400 hover:text-amber-500 bg-slate-100 dark:bg-slate-800 transition" title="দাগিয়ে রাখুন">
+              <i class="fa-regular fa-bookmark text-base"></i>
+            </button>
+            <button onclick="toggleCompleteFc()" id="btnFcComplete" class="p-2 rounded-xl text-slate-400 hover:text-emerald-600 bg-slate-100 dark:bg-slate-800 transition" title="পড়া সম্পন্ন">
+              <i class="fa-regular fa-circle-check text-base"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Visual Progress Bar -->
+        <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mb-6">
+          <div id="fcInnerProgress" class="bg-emerald-600 h-full w-0 transition-all duration-300"></div>
+        </div>
+
+        <!-- 3D Card -->
+        <div class="w-full h-80 cursor-pointer perspective-1000 mb-6 group" onclick="flipFlashcard()">
+          <div id="mainFlashcardBox" class="flip-card-inner w-full h-full relative rounded-3xl shadow-lg border border-slate-200 dark:border-slate-800 transition-all">
+            
+            <!-- Front of Card: Question -->
+            <div class="flip-card-front absolute inset-0 bg-gradient-to-br from-emerald-50/70 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-emerald-950/30 p-6 sm:p-8 rounded-3xl flex flex-col justify-between items-center text-center border-2 border-transparent hover:border-emerald-300 dark:hover:border-emerald-700 transition">
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-950/80 px-3 py-1 rounded-full">
+                <span>প্রশ্ন নং #<span id="fcCardId">১</span></span>
+              </div>
+              <p id="fcCardQ" class="text-lg sm:text-2xl font-bold text-slate-800 dark:text-slate-100 leading-relaxed my-auto">
+                মহানবী হযরত মুহাম্মদ (সা.) কোন বংশে ও কোন গোত্রে জন্মগ্রহণ করেন?
+              </p>
+              <span class="text-xs text-slate-400 dark:text-slate-500 flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">
+                <i class="fa-solid fa-rotate text-emerald-500"></i> কার্ডে ট্যাপ করুন অথবা Space চাপুন
+              </span>
+            </div>
+
+            <!-- Back of Card: Answer -->
+            <div class="flip-card-back absolute inset-0 bg-gradient-to-br from-emerald-800 via-emerald-900 to-teal-950 text-white p-6 sm:p-8 rounded-3xl flex flex-col justify-between items-center text-center shadow-2xl">
+              <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300 bg-emerald-950/80 border border-emerald-700 px-3 py-1 rounded-full">
+                <i class="fa-solid fa-circle-check text-emerald-400"></i> সঠিক উত্তর
+              </div>
+              <p id="fcCardA" class="text-lg sm:text-2xl font-semibold text-emerald-50 leading-relaxed my-auto">
+                কুরাইশ বংশের বনু হাশিম গোত্রে।
+              </p>
+              <span class="text-xs text-emerald-300/80 flex items-center gap-1">
+                <i class="fa-solid fa-arrow-left"></i> প্রশ্ন দেখতে পুনরায় ট্যাপ করুন
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex flex-wrap items-center gap-2.5 w-full justify-center">
+          <button onclick="prevFlashcard()" class="px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-xs sm:text-sm transition flex items-center gap-1.5 active:scale-95 shadow-sm">
+            <i class="fa-solid fa-chevron-left"></i> পূর্ববর্তী
+          </button>
+          <button onclick="flipFlashcard()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition flex items-center gap-2 active:scale-95 shadow-md">
+            <i class="fa-solid fa-rotate"></i> <span id="btnFlipText">উত্তর দেখুন / ফ্লিপ</span>
+          </button>
+          <button onclick="nextFlashcard()" class="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1.5 active:scale-95 shadow-md">
+            পরবর্তী <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <button onclick="randomFlashcard()" class="px-3 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1 active:scale-95 shadow" title="র‍্যান্ডম প্রশ্ন">
+            <i class="fa-solid fa-shuffle"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 4: SELF QUIZ & MOCK TEST (মক টেস্ট মোড) -->
+    <!-- ========================================================================= -->
+    <section id="tabViewQuiz" class="hidden max-w-2xl mx-auto py-3 space-y-4">
+      
+      <!-- Quiz Setup View -->
+      <div id="quizSetupCard" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-lg p-6 sm:p-8 text-center space-y-5">
+        <div class="w-16 h-16 bg-gradient-to-tr from-amber-400 to-amber-300 text-emerald-950 rounded-2xl mx-auto flex items-center justify-center text-3xl shadow-md">
+          <i class="fa-solid fa-trophy"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">সেলফ টেস্ট ও মক কুইজ</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto mt-1">
+            আগামীকালের প্রতিযোগিতার জন্য নিজের তাৎক্ষণিক স্মরণশক্তি ও নির্ভুলতা যাচাই করুন।
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-md mx-auto">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">প্রশ্নের ক্যাটাগরি:</label>
+            <select id="mockCategorySelect" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-800 dark:text-slate-100">
+              <option value="all">সব প্রশ্ন থেকে (Mix)</option>
+              <option value="bookmarked">শুধুমাত্র দাগানো প্রশ্ন (Starred)</option>
+              <option value="basic">১. বেসিক লেভেল (১-৯০)</option>
+              <option value="medium">২. মিডিয়াম লেভেল (৯১-১২৪)</option>
+              <option value="advanced">৩. অ্যাডভান্সড (১২৫-১৪২)</option>
+              <option value="rapid">৪. র্যাপিড-ফায়ার (১৪৩-২০০)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">প্রশ্নের সংখ্যা:</label>
+            <select id="mockCountSelect" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-800 dark:text-slate-100">
+              <option value="15">১৫টি প্রশ্ন (কুইক ড্রিল)</option>
+              <option value="25" selected>২৫টি প্রশ্ন (স্ট্যান্ডার্ড)</option>
+              <option value="50">৫০টি প্রশ্ন (মেগা টেস্ট)</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="beginMockQuiz()" class="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold rounded-2xl transition shadow-lg hover:shadow-emerald-600/30 active:scale-95 text-base flex items-center justify-center gap-2 mx-auto">
+          <i class="fa-solid fa-play"></i> টেস্ট শুরু করুন
+        </button>
+      </div>
+
+      <!-- Quiz Ongoing Box -->
+      <div id="quizLiveCard" class="hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col">
+        
+        <div class="flex items-center justify-between text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mb-3">
+          <span>প্রশ্ন: <span id="quizStepCurrent" class="text-emerald-600 dark:text-emerald-400 font-bold">১</span> / <span id="quizStepTotal">২৫</span></span>
+          <span class="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 rounded-full font-mono">
+            <i class="fa-solid fa-stopwatch"></i> <span id="quizLiveTimer">০০:০০</span>
+          </span>
+        </div>
+
+        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mb-6">
+          <div id="quizLiveProgressBar" class="bg-emerald-600 h-full w-0 transition-all duration-300"></div>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 sm:p-6 mb-5">
+          <span id="quizLiveCatBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 mb-2 inline-block">
+            ক্যাটাগরি
+          </span>
+          <h3 id="quizLiveQuestion" class="text-base sm:text-xl font-bold text-slate-800 dark:text-slate-100 leading-snug">
+            এখানে প্রশ্ন আসবে...
+          </h3>
+        </div>
+
+        <!-- Answer Revealed Section -->
+        <div id="quizLiveAnswerSection" class="hidden bg-emerald-50/80 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 rounded-2xl p-4 sm:p-5 mb-5 text-emerald-950 dark:text-emerald-100">
+          <span class="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider block mb-1">
+            <i class="fa-solid fa-circle-check"></i> সঠিক উত্তর:
+          </span>
+          <p id="quizLiveAnswerText" class="text-base sm:text-lg font-semibold leading-relaxed"></p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 mt-auto">
+          <button id="btnQuizShowAns" onclick="revealLiveAnswer()" class="flex-1 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 shadow">
+            <i class="fa-solid fa-key"></i> উত্তর মিলিয়ে নিন
+          </button>
+          <div id="quizEvalBtns" class="hidden flex-1 flex gap-2">
+            <button onclick="handleQuizAnswer(true)" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition flex items-center justify-center gap-1.5 shadow">
+              <i class="fa-solid fa-check"></i> পেরেছি (+১)
+            </button>
+            <button onclick="handleQuizAnswer(false)" class="flex-1 py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition flex items-center justify-center gap-1.5 shadow">
+              <i class="fa-solid fa-xmark"></i> পারিনি (০)
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quiz Score Summary Card -->
+      <div id="quizScoreCard" class="hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-xl p-6 sm:p-8 text-center space-y-5">
+        <div class="w-20 h-20 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-full mx-auto flex items-center justify-center text-4xl shadow-inner border-2 border-emerald-300">
+          <i class="fa-solid fa-medal"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">মক টেস্ট সমাপ্ত!</h2>
+        
+        <div class="bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 max-w-sm mx-auto">
+          <p class="text-xs uppercase text-slate-400 font-bold tracking-wider">আপনার অর্জিত স্কোর</p>
+          <p class="text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 my-1">
+            <span id="finalScoreVal">০</span> / <span id="finalScoreTotal">২৫</span>
+          </p>
+          <p id="finalScorePercent" class="text-sm font-semibold text-slate-600 dark:text-slate-300"></p>
+        </div>
+
+        <p id="finalScoreFeedback" class="text-sm text-slate-700 dark:text-slate-300 font-medium max-w-md mx-auto"></p>
+
+        <div class="flex justify-center gap-3 pt-2">
+          <button onclick="beginMockQuiz()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition shadow flex items-center gap-1.5">
+            <i class="fa-solid fa-rotate-right"></i> পুনরায় দিন
+          </button>
+          <button onclick="switchMainTab('browse')" class="px-5 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl font-semibold transition">
+            প্রশ্ন তালিকায় ফিরে যান
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 5: EXAM SPECIAL CHEAT SHEET & TIPS (পরীক্ষার স্পেশাল টিপস) -->
+    <!-- ========================================================================= -->
+    <section id="tabViewTips" class="hidden space-y-6 max-w-4xl mx-auto">
+      
+      <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-3xl p-6 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
+            <i class="fa-solid fa-bookmark text-amber-200"></i> দ্বাদশ শ্রেণির কুইজ স্পেশাল নোটস
+          </h2>
+          <p class="text-xs sm:text-sm text-amber-100 mt-1">
+            ঢাকা কলেজ ইসলামী শিক্ষা বিভাগের প্রশ্ন প্যাটার্ন অনুযায়ী যা থেকে সবচেয়ে বেশি পার্থক্য গড়ে দেয়।
+          </p>
+        </div>
+        <button onclick="window.print()" class="px-4 py-2 bg-amber-950 text-amber-200 rounded-xl text-xs font-bold hover:bg-amber-900 transition flex items-center gap-1.5 whitespace-nowrap">
+          <i class="fa-solid fa-print"></i> নোটস প্রিন্ট নিন
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Dates & Years Card -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm space-y-3">
+          <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-calendar"></i>
+            </span>
+            ১. অতি গুরুত্বপূর্ণ তারিখ ও সালসমূহ
+          </h3>
+          <ul class="text-xs sm:text-sm space-y-2 text-slate-600 dark:text-slate-300">
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">ঐতিহাসিক বদর যুদ্ধ:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">২য় হিজরি, ১৭ই রমজান (শুক্রবার)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">কিবলা পরিবর্তনের আদেশ:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">২য় হিজরির শাবান/রজব মাস</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">উহুদ যুদ্ধ:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">৩য় হিজরি, শাওয়াল মাস</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">খন্দক (আহযাব) যুদ্ধ:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">৫ম হিজরি (১০,০০০ কাফের সেনা)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হুদায়বিয়ার সন্ধি:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">৬ষ্ঠ হিজরি, জিলকদ মাস</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">খায়বার বিজয় ও মুতার যুদ্ধ:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">খায়বার ৭ম হিজরি, মুতা ৮ম হিজরি</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">ঐতিহাসিক মক্কা বিজয়:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">৮ম হিজরি, ২০শে রমজান</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">বিদায় হজ:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">১০ম হিজরি, ৯ই জিলহজ</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="font-medium">রাসূল (সা.)-এর ওফাত:</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">১১ই হিজরি, ১২ই রবিউল আউয়াল (সোমবার)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Titles & Honors Card -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm space-y-3">
+          <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-award"></i>
+            </span>
+            ২. সাহাবায়ে কেরামের উপাধিসমূহ
+          </h3>
+          <ul class="text-xs sm:text-sm space-y-2 text-slate-600 dark:text-slate-300">
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হযরত আবু বকর (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">সিদ্দিক (সত্যবাদী)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হযরত উমর (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">ফারুক (সত্য-মিথ্যার পার্থক্যকারী)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হযরত উসমান (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">জুন-নুরাইন (দুই নূরের অধিকারী)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হযরত আলী (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">আসাদুল্লাহ / হায়দার (আল্লাহর সিংহ)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হযরত খালিদ বিন ওয়ালিদ (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">সাইফুল্লাহ (আল্লাহর তরবারি)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হযরত হামজা (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">সাইয়্যিদুশ শুহাদা (শহিদদের সর্দার)</span>
+            </li>
+            <li class="flex justify-between border-b border-slate-50 dark:border-slate-800 pb-1">
+              <span class="font-medium">হযরত আবু উবাইদা (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">আমিনুল উম্মাহ (উম্মতের বিশ্বস্ত ব্যক্তি)</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="font-medium">হযরত যুবায়ের (রা.):</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">হাওয়ারিয়্যুর রাসূল (রাসূলের বিশিষ্ট সহচর)</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reset Confirmation Modal -->
+  <div id="resetModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
+      <div class="w-12 h-12 bg-rose-100 dark:bg-rose-950 text-rose-600 rounded-2xl mx-auto flex items-center justify-center text-xl">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">প্রস্তুতির অগ্রগতি রিসিট করবেন?</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400">
+        এটি আপনার দাগানো প্রশ্ন ও পড়া শেষ করার হিসেব মুছে নতুন করে শুরু করবে।
+      </p>
+      <div class="flex gap-2 pt-2">
+        <button onclick="closeResetModal()" class="flex-1 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          বাতিল
+        </button>
+        <button onclick="confirmResetAll()" class="flex-1 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-xs font-semibold text-white shadow">
+          হ্যাঁ, রিসিট করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-xs mt-12 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div>
+        <p class="text-slate-200 font-bold">পবিত্র সীরাতুন্নবী (সা.) প্রিমিয়াম কুইজ প্রশ্নব্যাংক</p>
+        <p class="text-slate-500 text-[11px] mt-0.5">ঢাকা কলেজ • দ্বাদশ শ্রেণি কুইজ প্রস্তুতি • লোকালস্টোরেজ ডেটা অটো-সেভ মোড</p>
+      </div>
+      <div class="flex items-center gap-3 text-slate-300">
+        <span class="bg-emerald-950/90 text-emerald-400 border border-emerald-800 px-3 py-1 rounded-full text-xs flex items-center gap-1.5">
+          <i class="fa-solid fa-star text-amber-400"></i> ইনশাআল্লাহ বিজয়ী হবেন!
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Complete Javascript Application Engine -->
+  <script>
+    // 200 Questions Database
+    const rawQuestions = [
+      // পর্ব ১: বেসিক লেভেল (১ - ৯০)
+      { id: 1, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'মহানবী হযরত মুহাম্মদ (সা.) কোন বংশে ও কোন গোত্রে জন্মগ্রহণ করেন?', a: 'কুরাইশ বংশের বনু হাশিম গোত্রে।' },
+      { id: 2, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'মহানবী (সা.) কোন শহরে এবং কোন দিন জন্মগ্রহণ করেন?', a: 'পবিত্র মক্কা নগরীতে, ৫৭০ বা ৫৭১ খ্রিষ্টাব্দের ১২ই রবিউল আউয়াল রোজ সোমবার (হস্তী বর্ষে)।' },
+      { id: 3, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'রাসূলুল্লাহ (সা.)-এর পিতার নাম কী এবং তিনি কখন ইন্তেকাল করেন?', a: 'পিতার নাম হযরত আবদুল্লাহ। রাসূল (সা.)-এর জন্মের পূর্বেই তিনি ইন্তেকাল করেন।' },
+      { id: 4, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'রাসূলুল্লাহ (সা.)-এর মাতার নাম কী এবং তিনি কোথায় ইন্তেকাল করেন?', a: 'হযরত আমিনা। রাসূল (সা.)-এর ৬ বছর বয়সে ‘আবওয়া’ নামক স্থানে তিনি ইন্তেকাল করেন।' },
+      { id: 5, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: '‘মুহাম্মদ’ ও ‘আহমদ’ নাম দুটি কে কে রেখেছিলেন?', a: 'দাদা আবদুল মুত্তালিব রেখেছিলেন ‘মুহাম্মদ’ (প্রশংসিত) এবং মাতা আমিনা রেখেছিলেন ‘আহমদ’ (সর্বাধিক প্রশংসাকারী)।' },
+      { id: 6, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'রাসূলুল্লাহ (সা.)-এর প্রথম দুধমাতা কে ছিলেন?', a: 'সুওয়াইবা (আবু লাহাবের দাসী)।' },
+      { id: 7, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'রাসূল (সা.) শৈশবে কোন দুধমাতার ঘরে লালিত-পালিত হন?', a: 'বনু সাদ গোত্রের হালীমা আস-সাদিয়া (রা.)-এর ঘরে।' },
+      { id: 8, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'বক্ষ বিদীর্ণ বা ‘শাক্কে সদর’-এর প্রথম ঘটনা কখন ঘটেছিল?', a: 'হালীমার ঘরে থাকাকালীন সময়ে, ৪ বছর বয়সে।' },
+      { id: 9, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'মা আমিনার ইন্তেকালের পর কে রাসূল (সা.)-এর দায়িত্ব নেন?', a: 'তাঁর দাদা আবদুল মুত্তালিব (৮ বছর বয়স পর্যন্ত)।' },
+      { id: 10, cat: 'basic', section: 'বংশ পরিচয়, জন্ম ও শৈশব', q: 'দাদা আবদুল মুত্তালিবের ইন্তেকালের পর কে আজীবন মহানবী (সা.)-কে লালন-পালন ও নিরাপত্তা দেন?', a: 'তাঁর চাচা আবু তালিব।' },
+
+      { id: 11, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'বাল্যকালে মহানবী (সা.) চাচার সাথে ব্যবসা উপলক্ষে কোন দেশে যান?', a: 'সিরিয়া (শাম) দেশে (তখন তাঁর বয়স ছিল ১২ বছর)।' },
+      { id: 12, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'সিরিয়া যাওয়ার পথে কোন খ্রিষ্টান পাদ্রী তাঁকে শেষ নবী হিসেবে চিহ্নিত করেছিলেন?', a: 'পাদ্রী বুহাইরা (বাহিরা)।' },
+      { id: 13, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: '‘হারবুল ফিজার’ বা অন্যায় সমর কত বছর চলেছিল এবং তখন মহানবী (সা.)-এর বয়স কত ছিল?', a: 'প্রায় ৫ বছর চলেছিল; তখন তাঁর বয়স ছিল প্রায় ১৫ বছর (তিনি যুদ্ধে শুধু তীর কুড়িয়ে দিতেন)।' },
+      { id: 14, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'যুদ্ধ বন্ধ ও মজলুমদের সহায়তার জন্য গঠিত ঐতিহাসিক শান্তি সংঘের নাম কী?', a: 'হিলফুল ফুজুল (Hilf al-Fudul)।' },
+      { id: 15, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'হিলফুল ফুজুল কার বাড়িতে বসে গঠিত হয়েছিল?', a: 'আবদুল্লাহ ইবনে জুদআনের বাড়িতে।' },
+      { id: 16, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'সত্যবাদিতা ও আমানতদারিতার জন্য মক্কাবাসীরা রাসূল (সা.)-কে কী উপাধিতে ভূষিত করেছিল?', a: '‘আল-আমিন’ (বিশ্বস্ত) ও ‘আস-সাদিক’ (সত্যবাদী)।' },
+      { id: 17, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'মহানবী (সা.) খাদিজা (রা.)-এর বাণিজ্য কাফেলা নিয়ে সিরিয়া যাওয়ার সময় তাঁর সঙ্গী খাদিজার দাসীর নাম কী ছিল?', a: 'মায়সারা।' },
+      { id: 18, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'হযরত খাদিজা (রা.)-এর সাথে বিবাহের সময় মহানবী (সা.) ও খাদিজা (রা.)-এর বয়স কত ছিল?', a: 'মহানবী (সা.)-এর বয়স ছিল ২৫ বছর এবং খাদিজা (রা.)-এর বয়স ছিল ৪০ বছর।' },
+      { id: 19, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'কাবা ঘর পুনর্নির্মাণের সময় কোন পাথর স্থাপন নিয়ে বিরোধ দেখা দিয়েছিল?', a: 'হাজরে আসওয়াদ (কালো পাথর)।' },
+      { id: 20, cat: 'basic', section: 'কৈশোর, যৌবন ও নবুওয়াত-পূর্ব জীবন', q: 'হাজরে আসওয়াদ বিবাদের সমাধান মহানবী (সা.) কত বছর বয়সে করেছিলেন?', a: '৩৫ বছর বয়সে (চাদরে পাথর রেখে সব গোত্রপতিদের দিয়ে চাদর ধরিয়ে)।' },
+
+      { id: 21, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'মহানবী (সা.) কোন গুহায় ধ্যানমগ্ন থাকতেন?', a: 'জাবালে নূরের ‘হেরা’ গুহায়।' },
+      { id: 22, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'কত বছর বয়সে এবং কোন মাসে প্রথম ওহী নাযিল হয়?', a: '৪০ বছর বয়সে, রমজান মাসের কদরের রাতে (৬১০ খ্রিষ্টাব্দে)।' },
+      { id: 23, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'সর্বপ্রথম কোন সূরার কোন কোন আয়াত নাযিল হয়েছিল?', a: 'সূরা আলাক-এর প্রথম ৫টি আয়াত (“ইকরা বিসমি রাব্বিকাল্লাযী খালাক...”)।' },
+      { id: 24, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'ওহী নিয়ে কোন প্রধান ফেরেশতা এসেছিলেন?', a: 'হযরত জিবরাঈল (আ.)।' },
+      { id: 25, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'প্রথম ওহী লাভের পর ভীত-সন্ত্রস্ত নবীজিকে নিয়ে খাদিজা (রা.) কার কাছে গিয়েছিলেন?', a: 'তাওরাত ও ইঞ্জিল বিশেষজ্ঞ ওরাকা ইবনে নওফেল-এর কাছে।' },
+      { id: 26, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'নারীদের মধ্যে সর্বপ্রথম কে ইসলাম গ্রহণ করেন?', a: 'উম্মুল মুমিনীন হযরত খাদিজা (রা.)।' },
+      { id: 27, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'পুরুষদের মধ্যে স্বাধীন ও বয়স্কদের ভেতর প্রথম ইসলাম গ্রহণকারী কে?', a: 'হযরত আবু বকর সিদ্দিক (রা.)।' },
+      { id: 28, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'বালকদের মধ্যে এবং দাসদের মধ্যে প্রথম ইসলাম গ্রহণকারী কে কে?', a: 'বালকদের মধ্যে হযরত আলী (রা.) এবং মুক্ত দাসদের মধ্যে হযরত যায়েদ ইবনে হারেসা (রা.)।' },
+      { id: 29, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'প্রাথমিক পর্যায়ে কত বছর গোপনে ইসলামের দাওয়াত দেওয়া হয়েছিল?', a: '৩ বছর।' },
+      { id: 30, cat: 'basic', section: 'নবুওয়াত লাভ ও মাক্কী জীবনের সূচনা', q: 'গোপনে দাওয়াতের সময় সাহাবীদের গোপন মিলনকেন্দ্র ও শিক্ষাকেন্দ্র কোনটি ছিল?', a: 'দারুল আরকাম (আরকাম ইবনে আবিল আরকামের বাড়ি)।' },
+
+      { id: 31, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'প্রকাশ্য দাওয়াতের আদেশ পেয়ে মহানবী (সা.) কোন পাহাড়ে উঠে মক্কাবাসীদের আহ্বান জানান?', a: 'সাফা পাহাড়ে।' },
+      { id: 32, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'সাফা পাহাড়ে নবীর আহ্বানের পর প্রকাশ্যে প্রথম চরম ধৃষ্টতা দেখিয়েছিল কে?', a: 'তাঁর আপন চাচা আবু লাহাব।' },
+      { id: 33, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'ইসলামে প্রথম নারী শহিদ এবং প্রথম পুরুষ শহিদ কে?', a: 'প্রথম নারী শহিদ হযরত সুমাইয়া (রা.) এবং প্রথম পুরুষ শহিদ তাঁর স্বামী হযরত ইয়াসির (রা.)।' },
+      { id: 34, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'হযরত সুমাইয়া (রা.)-কে নির্মমভাবে বর্শা মেরে হত্যা করেছিল কে?', a: 'আবু জাহেল।' },
+      { id: 35, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'উত্তপ্ত বালুর ওপর বুকের ওপর পাথর চাপা দিয়ে নির্যাতন করার পরও “আহাদ, আহাদ” বলতেন কে?', a: 'হযরত বিলাল ইবনে রাবাহ (রা.)।' },
+      { id: 36, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'বিলাল (রা.)-কে তাঁর জালিম মালিক উমাইয়া ইবনে খালাফের কাছ থেকে কিনে মুক্ত করেন কে?', a: 'হযরত আবু বকর সিদ্দিক (রা.)।' },
+      { id: 37, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'মুসলমানদের প্রথম হিজরত কোথায় হয়েছিল এবং কোন সালে?', a: 'নবুওয়াতের ৫ম বছরে আফ্রিকার হাবশায় (বর্তমান ইথিওপিয়া)।' },
+      { id: 38, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'হাবশার ন্যায়পরায়ণ খ্রিষ্টান বাদশাহর নাম কী ছিল?', a: 'নাজ্জাশী (আসহামা)।' },
+      { id: 39, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'হাবশায় দ্বিতীয় হিজরতে কুরাইশদের দরবারে বাদশাহ নাজ্জাশীর সামনে কুরআনের সূরা মারিয়াম তিলাওয়াত করে বক্তব্য দেন কে?', a: 'হযরত জাফর ইবনে আবি তালিব (রা.)।' },
+      { id: 40, cat: 'basic', section: 'প্রকাশ্য দাওয়াত ও নির্যাতন', q: 'বনু হাশিম গোত্রকে মক্কার কাফেররা কত বছর বয়কট (সামাজিক ও অর্থনৈতিক অবরোধ) করে রেখেছিল?', a: 'দীর্ঘ ৩ বছর (নবুওয়াতের ৭ম থেকে ১০ম বছর পর্যন্ত, শিয়াবে আবি তালিবে)।' },
+
+      { id: 41, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: '‘আমুল হুজন’ বা ‘দুঃখের বছর’ কাকে বলা হয়?', a: 'নবুওয়াতের ১০ম বছরকে; কারণ এ বছর মহানবী (সা.)-এর অভিভাবক চাচা আবু তালিব এবং প্রিয় সহধর্মিণী খাদিজা (রা.) ইন্তেকাল করেন।' },
+      { id: 42, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'আশ্রয়ের উদ্দেশ্যে রাসূল (সা.) তায়েফ সফরে গিয়েছিলেন কার সাথে?', a: 'হযরত যায়েদ ইবনে হারেসা (রা.)-এর সাথে।' },
+      { id: 43, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'তায়েফে পাথরের আঘাতে রক্তাক্ত নবীজিকে একটি বাগানে কোন খ্রিষ্টান দাস আঙুর খাইয়েছিল?', a: 'আদ্দাস নামক দাস।' },
+      { id: 44, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: '‘ইসরা’ ও ‘মিরাজ’ শব্দের অর্থ কী?', a: '‘ইসরা’ অর্থ নৈশভ্রমণ এবং ‘মিরাজ’ অর্থ ঊর্ধ্বগমন বা সিঁড়ি।' },
+      { id: 45, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'মিরাজের রাতে মহানবী (সা.) কোন বাহনে চড়ে মক্কা থেকে জেরুজালেমের বায়তুল মোকাদ্দাস যান?', a: '‘বোরাক’ নামক স্বর্গীয় বাহনে।' },
+      { id: 46, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'বায়তুল মোকাদ্দাসে সকল নবী-রাসূলদের জামায়াতে ইমামতি করেছিলেন কে?', a: 'হযরত মুহাম্মদ (সা.) (এজন্য তিনি ইমামুল মুরসালীন)।' },
+      { id: 47, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'সপ্তম আকাশের সিদরাতুল মুনতাহার পর মহানবী (সা.) কোন বাহনে আরোহণ করেন?', a: 'রফরফ।' },
+      { id: 48, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'মিরাজের শ্রেষ্ঠ উপহার কী ছিল?', a: 'পাঁচ ওয়াক্ত সালাত (নামাজ)।' },
+      { id: 49, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'মিরাজের ঘটনা শুনে কাফেরদের উপহাসের মুখে নিঃসংকোচে বিশ্বাস করে কে ‘সিদ্দিক’ উপাধি পান?', a: 'হযরত আবু বকর (রা.)।' },
+      { id: 50, cat: 'basic', section: 'আমুল হুজন, তায়েফ ও ঐতিহাসিক মিরাজ', q: 'মিরাজের রাতে উম্মতের জন্য আর কোন বিশেষ অনুগ্রহের সুসংবাদ দেওয়া হয়?', a: 'সূরা বাকারার শেষ দুই আয়াত এবং শিরক না করা উম্মতের ক্ষমার ঘোষণা।' },
+
+      { id: 51, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'প্রথম ও দ্বিতীয় আকাবার বায়াত যথাক্রমে কত হিজরিতে/নবুওয়াত বর্ষে হয়েছিল?', a: 'নবুওয়াতের ১২শ ও ১৩শ বছরে।' },
+      { id: 52, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'মদিনায় ইসলামের প্রথম শিক্ষক বা রাষ্ট্রদূত হিসেবে কাকে পাঠানো হয়েছিল?', a: 'হযরত মুসআব ইবনে উমাইর (রা.)।' },
+      { id: 53, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'ঐতিহাসিক হিজরত কত খ্রিষ্টাব্দে সংঘটিত হয়?', a: '৬২২ খ্রিষ্টাব্দে।' },
+      { id: 54, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'হিজরতের রাতে রাসূল (সা.)-এর বিছানায় নিজের জীবনের ঝুঁকি নিয়ে কে শুয়েছিলেন?', a: 'হযরত আলী (রা.) (মক্কাবাসীদের আমানত প্রত্যর্পণের জন্য)।' },
+      { id: 55, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'হিজরতের সময় রাসূল (সা.) ও আবু বকর (রা.) কোন পর্বতের গুহায় ৩ দিন আত্মগোপন করেছিলেন?', a: 'জাবালে সাওর (সাওর গুহায়)।' },
+      { id: 56, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'ইসলামের ইতিহাসে নির্মিত সর্বপ্রথম মসজিদ কোনটি?', a: 'মদিনার উপকণ্ঠে অবস্থিত ‘মসজিদে কুবা’।' },
+      { id: 57, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'মদিনায় পৌঁছার পর রাসূল (সা.)-এর উটনী কার বাড়ির সামনে বসেছিল এবং তিনি কার মেহমান হন?', a: 'হযরত আবু আইয়ুব আনসারী (রা.)-এর বাড়ির সামনে।' },
+      { id: 58, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'রাসূল (সা.)-এর বিখ্যাত উটনীটির নাম কী ছিল?', a: 'কাসওয়া (Qaswa)।' },
+      { id: 59, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'মক্কা থেকে হিজরতকারী মুসলমানদের কী বলা হয় এবং মদিনার সাহায্যকারীদের কী বলা হয়?', a: 'হিজরতকারীদের ‘মুহাজির’ এবং সাহায্যকারীদের ‘আনসার’।' },
+      { id: 60, cat: 'basic', section: 'হিজরত ও মদিনার প্রাথমিক জীবন', q: 'বিশ্বের প্রথম লিখিত সংবিধান কোনটি?', a: 'মদিনা সনদ (মদিনার সকল সম্প্রদায় ও ইহুদিদের নিয়ে প্রণীত ৪৭টি ধারার চুক্তি)।' },
+
+      { id: 61, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'ইসলামের প্রথম সশস্ত্র যুদ্ধ কোনটি এবং তা কত হিজরিতে সংঘটিত হয়?', a: 'ঐতিহাসিক বদর যুদ্ধ, ২য় হিজরির ১৭ই রমজান (শুক্রবার)।' },
+      { id: 62, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'বদর যুদ্ধে মুসলিম ও কাফেরদের সৈন্যসংখ্যা কত ছিল?', a: 'মুসলিম ৩১৩ জন, কাফের প্রায় ১০০০ জন।' },
+      { id: 63, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'বদর যুদ্ধে কতজন মুসলিম শহিদ হন এবং কতজন কাফের নিহত হয়?', a: '১৪ জন মুসলিম শহিদ হন; কাফেরদের ৭০ জন নিহত ও ৭০ জন বন্দি হয়।' },
+      { id: 64, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'ইসলামের ঘোর শত্রু আবু জাহেল কোন যুদ্ধে নিহত হয় এবং কার কার হাতে?', a: 'বদর যুদ্ধে; দুই আনসার কিশোর মুআজ ও মুআউওয়িজ-এর আঘাতে এবং পরে আবদুল্লাহ ইবনে মাসউদের হাতে নিহত হয়।' },
+      { id: 65, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'কিবলা পরিবর্তনের আদেশ কত হিজরিতে আসে?', a: '২য় হিজরির শাবান বা রজব মাসে (বায়তুল মোকাদ্দাস থেকে কাবা শরীফের দিকে)।' },
+      { id: 66, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'উহুদ যুদ্ধ কত হিজরিতে সংঘটিত হয়?', a: '৩য় হিজরির শাওয়াল মাসে।' },
+      { id: 67, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'উহুদ পাহাড়ে গিরিপথ পাহারার দায়িত্বে কতজন তীরন্দাজ ছিলেন এবং তাদের নেতা কে ছিলেন?', a: '৫০ জন তীরন্দাজ; দলনেতা ছিলেন হযরত আবদুল্লাহ ইবনে জুবায়ের (রা.)।' },
+      { id: 68, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'উহুদ যুদ্ধে মুসলিমদের প্রাথমিক বিজয়ের পর পেছন দিক থেকে আক্রমণ করেছিল কোন কুরাইশ সেনাপতি (যিনি তখনো ইসলাম গ্রহণ করেননি)?', a: 'খালিদ বিন ওয়ালিদ।' },
+      { id: 69, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'উহুদ যুদ্ধে কতজন সাহাবী শহিদ হন এবং কার কলিজা চিবিয়ে খেয়েছিল আবু সুফিয়ানের স্ত্রী হিন্দা?', a: '৭০ জন সাহাবী শহিদ হন; রাসূল (সা.)-এর প্রিয় চাচা ‘সাইয়্যিদুশ শুহাদা’ হযরত হামজা (রা.)-এর কলিজা।' },
+      { id: 70, cat: 'basic', section: 'বদর, উহুদ ও খন্দক যুদ্ধ', q: 'খন্দকের যুদ্ধ বা আহযাবের যুদ্ধ কত হিজরিতে হয় এবং পরিখা খননের বুদ্ধি কে দিয়েছিলেন?', a: '৫ম হিজরিতে; বুদ্ধি দিয়েছিলেন হযরত সালমান ফারসি (রা.)।' },
+
+      { id: 71, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'হুদায়বিয়ার সন্ধি কত হিজরিতে স্বাক্ষরিত হয়?', a: '৬ষ্ঠ হিজরিতে (জিলকদ মাসে)।' },
+      { id: 72, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'হুদায়বিয়ার সন্ধিপত্র মুসলমানদের পক্ষে কে লিখেছিলেন এবং কুরাইশদের প্রতিনিধি কে ছিল?', a: 'লেখক ছিলেন হযরত আলী (রা.) এবং কুরাইশদের পক্ষে ছিল সুহাইল ইবনে আমর।' },
+      { id: 73, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'হুদায়বিয়ার সন্ধিতে কত বছরের যুদ্ধবিরতির চুক্তি হয়েছিল?', a: '১০ বছর।' },
+      { id: 74, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'হুদায়বিয়ার প্রাক্কালে উসমান (রা.)-এর রক্তের বদলা নেওয়ার জন্য সাহাবীদের নিয়ে বৃক্ষের নিচে যে শপথ নেওয়া হয় তার নাম কী?', a: 'বাইয়াতুর রিদওয়ান (Bay\'at al-Ridwan)।' },
+      { id: 75, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'পবিত্র কুরআনে হুদায়বিয়ার সন্ধিকে কী আখ্যা দেওয়া হয়েছে?', a: '‘ফাতহুম মুবীন’ বা সুস্পষ্ট বিজয় (সূরা আল-ফাতহ)।' },
+      { id: 76, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'খাইবার যুদ্ধ কত হিজরিতে হয় এবং খায়বারের কামুস দুর্গ কে জয় করেন?', a: '৭ম হিজরিতে; হযরত আলী (রা.) দুর্গ জয় করেন (তাঁকে \'আসাদুল্লাহ\' বা আল্লাহর সিংহ বলা হয়)।' },
+      { id: 77, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'ঐতিহাসিক মক্কা বিজয় কত হিজরিতে এবং কোন তারিখে সংঘটিত হয়?', a: '৮ম হিজরির ২০শে রমজান।' },
+      { id: 78, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'মক্কা বিজয়ের দিন রাসূল (সা.) কতজন সৈন্যের বিশাল কাফেলা নিয়ে মক্কায় প্রবেশ করেন?', a: '১০,০০০ সাহাবীর কাফেলা নিয়ে।' },
+      { id: 79, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'মক্কা বিজয়ের পর কাবার ছাদে উঠে প্রথম আজান দিয়েছিলেন কে?', a: 'হযরত বিলাল (রা.)।' },
+      { id: 80, cat: 'basic', section: 'হুদায়বিয়ার সন্ধি থেকে মক্কা বিজয়', q: 'মক্কা বিজয়ের সময় কাবা ঘরে মোট কতটি মূর্তি ছিল যা রাসূল (সা.) অপসারণ করেন?', a: '৩৬০টি মূর্তি।' },
+
+      { id: 81, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'মহানবী (সা.) তাঁর জীবদ্দশায় কতটি পূর্ণাঙ্গ হজ পালন করেছিলেন?', a: 'মাত্র ১টি (১০ম হিজরিতে, যা ‘বিদায় হজ’ নামে পরিচিত)।' },
+      { id: 82, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'বিদায় হজে আরাফাতের ময়দানে জাবালে রহমতে রাসূল (সা.) কোন তারিখে ঐতিহাসিক ভাষণ দেন?', a: '১০ম হিজরির ৯ই জিলহজ।' },
+      { id: 83, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'দ্বীনের পূর্ণতা ঘোষণার ঐতিহাসিক আয়াত (“আজ আমি তোমাদের জন্য দ্বীনকে পূর্ণাঙ্গ করলাম...”) কখন নাযিল হয়?', a: 'বিদায় হজের দিন আরাফাতের ময়দানে (সূরা মায়িদা: ৩)।' },
+      { id: 84, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'রাসূল (সা.) উম্মতকে পথভ্রষ্ট না হওয়ার জন্য কোন দুটি জিনিস আঁকড়ে ধরার নির্দেশ দেন?', a: 'আল্লাহর কিতাব (আল-কুরআন) এবং রাসূলের সুন্নাহ (হাদিস)।' },
+      { id: 85, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'ওফাতের পূর্বে রাসূল (সা.) শেষ দিনগুলোতে কার ঘরে অবস্থান করেছিলেন?', a: 'হযরত আয়েশা সিদ্দিকা (রা.)-এর হুজরায়।' },
+      { id: 86, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'রাসূল (সা.)-এর অসুস্থতার সময় তাঁর নির্দেশে জামায়াতে ইমামতি করেছিলেন কে?', a: 'হযরত আবু বকর সিদ্দিক (রা.)।' },
+      { id: 87, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'মহানবী হযরত মুহাম্মদ (সা.) কোন সালে, কোন তারিখে এবং কত বছর বয়সে ওফাত লাভ করেন?', a: '১১ই হিজরির ১২ই রবিউল আউয়াল রোজ সোমবার (৬৩২ খ্রিষ্টাব্দে); ৬৩ বছর বয়সে।' },
+      { id: 88, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'রাসূল (সা.)-এর গোসল ও কাফনের দায়িত্ব পালন করেন কারা?', a: 'হযরত আলী (রা.), চাচা আব্বাস (রা.), ফজল ইবনে আব্বাস (রা.) সহ নিকটাত্মীয়রা।' },
+      { id: 89, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'রাসূল (সা.)-কে কোথায় দাফন করা হয়?', a: 'হযরত আয়েশা (রা.)-এর হুজরায়, যেখানে তিনি ইন্তেকাল করেছিলেন (বর্তমানে মসজিদে নববীর রওজা মুবারক)।' },
+      { id: 90, cat: 'basic', section: 'বিদায় হজ ও ওফাত', q: 'রাসূল (সা.)-এর ওফাতের সংবাদে স্তব্ধ সাহাবীদের সামনে "যে ব্যক্তি মুহাম্মদের ইবাদত করত সে জানুক মুহাম্মদ মারা গেছেন, আর যে আল্লাহর ইবাদত করে নিশ্চয়ই আল্লাহ চিরঞ্জীব" ঐতিহাসিক বক্তব্যটি কে দেন?', a: 'হযরত আবু বকর সিদ্দিক (রা.)।' },
+
+      // পর্ব ২: মিডিয়াম লেভেল (৯১ - ১২৪)
+      { id: 91, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: '‘উম্মাহাতুল মুমিনীন’ কাদের বলা হয় এবং তাঁদের সংখ্যা কত?', a: 'মহানবী (সা.)-এর পবিত্র স্ত্রীগণকে (সংখ্যায় ১১ জন)।' },
+      { id: 92, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'রাসূল (সা.)-এর একমাত্র কুমারী স্ত্রী কে ছিলেন?', a: 'হযরত আয়েশা সিদ্দিকা (রা.)।' },
+      { id: 93, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: '‘উম্মুল মাসাকীন’ (দরিদ্রদের মা) উপাধি কোন স্ত্রীর ছিল?', a: 'হযরত জয়নব বিনতে খুজায়মা (রা.)।' },
+      { id: 94, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'হাফসা (রা.) কার কন্যা ছিলেন এবং উম্মে হাবিবা (রা.) কার কন্যা ছিলেন?', a: 'হাফসা (রা.) ছিলেন হযরত উমর (রা.)-এর কন্যা এবং উম্মে হাবিবা (রা.) ছিলেন আবু সুফিয়ানের কন্যা।' },
+      { id: 95, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'মহানবী (সা.)-এর মোট কতজন সন্তান ছিলেন?', a: '৭ জন (৩ পুত্র ও ৪ কন্যা)।' },
+      { id: 96, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'রাসূল (সা.)-এর পুত্র সন্তানদের নাম কী কী?', a: 'কাসিম, আবদুল্লাহ (যাঁদের উপাধি ছিল ত্বায়্যিব ও ত্বাহির) এবং ইব্রাহিম (সবাই শৈশবে মারা যান)।' },
+      { id: 97, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'রাসূল (সা.)-এর কন্যা সন্তানদের নাম কী কী?', a: 'জয়নব, রুকাইয়্যা, উম্মে কুলসুম এবং ফাতেমা (রাদিয়াল্লাহু আনহুন্না)।' },
+      { id: 98, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'ইব্রাহিম ছাড়া রাসূল (সা.)-এর বাকি সব সন্তান কার গর্ভে জন্মগ্রহণ করেছিলেন?', a: 'উম্মুল মুমিনীন হযরত খাদিজা (রা.)-এর গর্ভে।' },
+      { id: 99, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'কনিষ্ঠ পুত্র ইব্রাহিমের মাতা কে ছিলেন?', a: 'মারিয়া কিবতিয়া (রা.) (মিশরের শাসক মুকাউকিসের প্রেরিত সম্মানিত নারী)।' },
+      { id: 100, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'রাসূল (সা.)-এর কোন কন্যার মাধ্যমে তাঁর বংশধারা টিকে রয়েছে?', a: 'খাতুনে জান্নাত হযরত ফাতেমা (রা.)-এর মাধ্যমে (হাসান ও হুসাইন রা.-এর দ্বারা)।' },
+      { id: 101, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'হযরত উসমান (রা.)-কে ‘জুন-নুরাইন’ (দুই নূরের অধিকারী) বলা হয় কেন?', a: 'তিনি রাসূল (সা.)-এর দুই কন্যাকে (প্রথমে রুকাইয়্যা, তাঁর মৃত্যুর পর উম্মে কুলসুম) একের পর এক বিবাহ করেছিলেন বলে।' },
+      { id: 102, cat: 'medium', section: 'পরিবার-পরিজন (উম্মাহাতুল মুমিনীন ও সন্তানবর্গ)', q: 'রাসূল (সা.)-এর সবচেয়ে ছোট চাচা কে ছিলেন যিনি বদর যুদ্ধের পর ইসলাম গ্রহণ করেন?', a: 'হযরত আব্বাস (রা.)।' },
+
+      { id: 103, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'প্রধান ওহী লেখক সাহাবীর নাম কী?', a: 'হযরত যায়েদ ইবনে সাবেত (রা.)। মোট ওহী লেখক সাহাবী ছিলেন প্রায় ৪০-৪২ জন।' },
+      { id: 104, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'মদিনায় হিজরতের পর রাসূল (সা.)-এর পক্ষ থেকে নিয়োজিত প্রধান মুয়াজ্জিন কে কে ছিলেন?', a: 'হযরত বিলাল (রা.), অন্ধ সাহাবী আবদুল্লাহ ইবনে উম্মে মাকতুম (রা.) এবং মক্কায় আবু মাহযূরা (রা.)।' },
+      { id: 105, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: '‘আশারা মুবাশশারা’ কাদের বলা হয়?', a: 'জীবদ্দশায় নিশ্চিত জান্নাতের সুসংবাদপ্রাপ্ত ১০ জন বিশিষ্ট সাহাবীকে।' },
+      { id: 106, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'আশারা মুবাশশারার ১০ জন সাহাবীর নাম কী কী?', a: '১. আবু বকর ২. উমর ৩. উসমান ৪. আলী ৫. তালহা ৬. যুবায়ের ৭. আবদুর রহমান ইবনে আওফ ৮. সাদ ইবনে আবি ওয়াক্কাস ৯. সাঈদ ইবনে যায়েদ ১০. আবু উবাইদা ইবনুল জাররাহ (রা.)।' },
+      { id: 107, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'কাকে ‘আমিনুল উম্মাহ’ বা উম্মতের বিশ্বস্ত ব্যক্তি বলা হতো?', a: 'হযরত আবু উবাইদা ইবনুল জাররাহ (রা.)।' },
+      { id: 108, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'কাকে ‘হাওয়ারিয়্যুর রাসূল’ বা রাসূলের বিশিষ্ট সহচর বলা হতো?', a: 'হযরত যুবায়ের ইবনুল আওয়াম (রা.)।' },
+      { id: 109, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'কোন সাহাবীকে দেখে ফেরেশতারাও লজ্জা পেতেন?', a: 'হযরত উসমান ইবনে আফফান (রা.)।' },
+      { id: 110, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'রাসূলুল্লাহ (সা.)-এর সরকারি কবি কে ছিলেন, যিনি কাফেরদের ব্যঙ্গ কবিতার জবাব দিতেন?', a: 'হযরত হাসসান ইবনে সাবেত (রা.)।' },
+      { id: 111, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'পারস্যের রাজদরবারে ইসলাম প্রচারের চিঠি নিয়ে গিয়েছিলেন কোন সাহাবী?', a: 'আবদুল্লাহ ইবনে হুজাফা আস-সাহমী (রা.) (যার চিঠি পারস্য সম্রাট খসরু পারভেজ ছিঁড়ে ফেলেছিল)।' },
+      { id: 112, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'রোমান সম্রাট হেরাক্লিয়াসের দরবারে রাসূলের চিঠি নিয়ে যান কে?', a: 'দিহইয়া কালবী (রা.)।' },
+      { id: 113, cat: 'medium', section: 'সাহাবায়ে কেরাম ও বিশেষ দায়িত্বপ্রাপ্তগণ', q: 'মসজিদের নববীর পাশে বারান্দায় আশ্রয় নেওয়া নিঃস্ব ও জ্ঞানপিপাসু সাহাবীদের দলকে কী বলা হতো?', a: 'আসহাবে সুফফা (যাঁদের মধ্যে আবু হুরায়রা রা. অন্যতম ছিলেন)।' },
+
+      { id: 114, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'মুতার যুদ্ধ কত হিজরিতে কাদের বিরুদ্ধে হয়েছিল?', a: '৮ম হিজরিতে জর্ডানের সীমান্তে রোমান (বাইজেন্টাইন) বাহিনীর বিরুদ্ধে।' },
+      { id: 115, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'মুতার যুদ্ধে পরপর তিনজন সেনাপতি শহিদ হন, তাঁদের নাম কী?', a: '১. যায়েদ ইবনে হারেসা ২. জাফর ইবনে আবি তালিব এবং ৩. আবদুল্লাহ ইবনে রাওয়াহা (রা.)।' },
+      { id: 116, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'মুতার যুদ্ধে ৯টি তরবারি ভেঙে যুদ্ধ পরিচালনা করে মুসলিম বাহিনীকে নিরাপদে ফিরিয়ে এনে ‘সাইফুল্লাহ’ (আল্লাহর তরবারি) উপাধি পান কে?', a: 'হযরত খালিদ বিন ওয়ালিদ (রা.)।' },
+      { id: 117, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'রাসূল (সা.)-এর জীবদ্দশায় সর্বশেষ সামরিক অভিযান কোনটি ছিল?', a: '৯ম হিজরির তাবুক যুদ্ধ (অভিযান)।' },
+      { id: 118, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'তাবুক অভিযানের সময় নিজের ঘরের সমুদয় সম্পদ এনে রাসূল (সা.)-এর হাতে সঁপে দিয়েছিলেন কে?', a: 'হযরত আবু বকর সিদ্দিক (রা.)।' },
+      { id: 119, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'তাবুক অভিযানে সৈন্যবাহিনীর এক-তৃতীয়াংশের পুরো খরচ ও বিপুল পরিমাণ উট-ঘোড়া দান করেছিলেন কে?', a: 'হযরত উসমান (রা.) (এজন্য রাসূল সা. বলেছিলেন, আজকের পর উসমান যা-ই করুক তার ক্ষতি হবে না)।' },
+      { id: 120, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: '‘গাযওয়া’ (Ghazwah) এবং ‘সারিয়্যা’ (Sariyyah)-এর মধ্যে পার্থক্য কী?', a: 'যে যুদ্ধে মহানবী (সা.) নিজে সশরীরে উপস্থিত ও নেতৃত্ব দিয়েছেন তাকে ‘গাযওয়া’ বলে (মোট ২৭টি); আর যে অভিযানে তিনি নিজে যাননি বরং অন্য সাহাবীকে সেনাপতি করে পাঠিয়েছেন তাকে ‘সারিয়্যা’ বলে (প্রায় ৩৮ বা ততোধিক)।' },
+      { id: 121, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'হুনাইনের যুদ্ধ কত হিজরিতে হয়েছিল?', a: '৮ম হিজরিতে (মক্কা বিজয়ের পরপরই হাওয়াযিন ও সাকীফ গোত্রের বিরুদ্ধে)।' },
+      { id: 122, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'মদিনার ইহুদিদের তিনটি প্রধান গোত্র কী কী ছিল?', a: '১. বনু কাইনুকা ২. বনু নাদির এবং ৩. বনু কুরাইজা (বিশ্বাসঘাতকতার কারণে যাদের মদিনা থেকে বিতাড়িত করা হয়)।' },
+      { id: 123, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'বনু কুরাইজা ইহুদিদের বিশ্বাসঘাতকতার ফয়সালা কার তাওরাতের বিধান অনুযায়ী হয়েছিল?', a: 'আনসার নেতা হযরত সাদ ইবনে মুয়াজ (রা.)-এর ফয়সালা অনুযায়ী।' },
+      { id: 124, cat: 'medium', section: 'বিভিন্ন যুদ্ধ ও গুরুত্বপূর্ণ অভিযান', q: 'কোন সাহাবীর ইন্তেকালে আল্লাহর আরশ কেঁপে উঠেছিল?', a: 'হযরত সাদ ইবনে মুয়াজ (রা.)।' },
+
+      // পর্ব ৩: অ্যাডভান্সড ও স্পেশাল কুইজ প্রশ্ন (১২৫ - ১৪২)
+      { id: 125, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'রাসূলুল্লাহ (সা.)-এর আংটি/সিলমোহরে কী খোদাই করা ছিল?', a: 'তিনটি শব্দ নিচ থেকে উপরে লেখা ছিল: ‘মুহাম্মদ’ ‘রাসূল’ ‘আল্লাহ’ (অর্থাৎ মুহাম্মদ রাসূলুল্লাহ)।' },
+      { id: 126, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'রাসূল (সা.)-এর ব্যবহৃত বিখ্যাত তরবারির নাম কী?', a: 'জুলফিকার (যা পরে তিনি আলীকে দিয়েছিলেন), আল-মাছুর, আল-বাত্তা ইত্যাদি।' },
+      { id: 127, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'রাসূল (সা.)-এর সাদা খচ্চরটির নাম কী ছিল যা মিশরের শাসক উপহার দিয়েছিলেন?', a: 'দুলদুল (Duldul)।' },
+      { id: 128, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'রাসূল (সা.)-এর প্রিয় ঘোড়াটির নাম কী ছিল?', a: 'আস-সাকব (As-Sakb)।' },
+      { id: 129, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'রাসূল (সা.) কোন রঙের পাগড়ি পরতে পছন্দ করতেন?', a: 'সাদা ও কালো রঙের।' },
+      { id: 130, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'রাসূল (সা.) মক্কা বিজয়ের দিন মক্কায় প্রবেশের সময় কোন রঙের পাগড়ি পরেছিলেন?', a: 'কালো রঙের পাগড়ি।' },
+      { id: 131, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'মক্কা বিজয়ের সময় বিজয়ী বেশে প্রবেশের সময় নবীজি কোন সূরা তিলাওয়াত করছিলেন?', a: 'সূরা আল-ফাতহ।' },
+      { id: 132, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'রাসূল (সা.)-এর পতাকা ও ব্যানারের রং কী ছিল?', a: 'বড় পতাকার (লিওয়া) রং ছিল সাদা এবং ছোট ব্যানারের (রায়া) রং ছিল কালো।' },
+      { id: 133, cat: 'advanced', section: 'ব্যবহৃত সামগ্রী, প্রাণী, নাম ও মোহর', q: 'মসজিদে নববীতে মিম্বার তৈরির পূর্বে রাসূল (সা.) কোন গাছের কাণ্ডে হেলান দিয়ে খুতবা দিতেন যা মিম্বার বানানোর পর কান্নাকাটি করেছিল?', a: 'শুকনো খেজুর গাছের গুঁড়ি (হান্নানা)।' },
+
+      { id: 134, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: 'মহানবী (সা.)-এর সর্বশ্রেষ্ঠ ও চিরন্তন মুজিযা (অলৌকিক নিদর্শন) কোনটি?', a: 'আল-কুরআনুল কারীম।' },
+      { id: 135, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: 'কাফেরদের দাবির প্রেক্ষিতে চাঁদ দ্বিখণ্ডিত করার মুজিযাটি কোথায় ঘটেছিল?', a: 'মক্কার মিনা প্রান্তরে (কুরআনের সূরা ক্বামারে এর উল্লেখ রয়েছে)।' },
+      { id: 136, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: 'হুদায়বিয়ার ময়দানে সাহাবীদের পানির পিপাসা মেটাতে কী মুজিযা প্রকাশ পেয়েছিল?', a: 'রাসূল (সা.)-এর পবিত্র হাতের আঙ্গুলগুলোর ফাঁক দিয়ে ঝর্ণার মতো পানি প্রবাহিত হয়েছিল।' },
+      { id: 137, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: '‘মুহরি নবুওয়াত’ বা নবুওয়াতের মোহর রাসূল (সা.)-এর শরীরের কোথায় ছিল?', a: 'দুই কাঁধের মধ্যবর্তী স্থানে পিঠের ওপর (কবুতরের ডিমের মতো ফোলা গোশতপিণ্ড যাতে তিল ছিল)।' },
+      { id: 138, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: 'রাসূল (সা.)-এর শারীরিক উচ্চতা কেমন ছিল?', a: 'তিনি অতিরিক্ত লম্বাও ছিলেন না, আবার খাটোও ছিলেন না; ছিলেন সুষম ও আকর্ষণীয় মাঝারি গড়নের।' },
+      { id: 139, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: 'রাসূল (সা.) কোনো মজলিসে কারো দিকে তাকানোর সময় কীভাবে তাকাতেন?', a: 'কেবল চোখ বা ঘাড় বাঁকা করে নয়, বরং পূর্ণ শরীর নিয়ে তাঁর দিকে ফিরে তাকাতেন।' },
+      { id: 140, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: 'ইসলামি বর্ষপঞ্জি বা ‘হিজরি সন’ কোন খলিফার আমলে গণনা শুরু হয় এবং কোন ঐতিহাসিক ঘটনাকে ভিত্তি করে?', a: 'দ্বিতীয় খলিফা হযরত উমর ফারুক (রা.)-এর আমলে; ৬২২ খ্রিষ্টাব্দের রাসূল (সা.)-এর মদিনায় হিজরতকে কেন্দ্র করে।' },
+      { id: 141, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: 'রাসূল (সা.) জীবদ্দশায় কয়টি উমরা পালন করেছিলেন?', a: 'মোট ৪টি উমরা (হুদায়বিয়ার উমরা, উমরাতুল কাযা, জিররানার উমরা এবং বিদায় হজের সাথে উমরা)।' },
+      { id: 142, cat: 'advanced', section: 'মুজিযা, শামায়েল ও বিশেষ ঘটনাবলী', q: '‘আমুল উফুদ’ (وفود) বা বিভিন্ন আরব গোত্রের ইসলাম গ্রহণের জন্য প্রতিনিধি দল আগমনের বছর বলা হয় কোন হিজরি সালকে?', a: '৯ম হিজরি সালকে।' },
+
+      // পর্ব ৪: র্যাপিড-ফায়ার কুইজ প্রশ্ন (১৪৩ - ২০০)
+      { id: 143, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর কুনিয়াত (উপনাম) কী ছিল?', a: 'আবুল কাসিম' },
+      { id: 144, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর প্রপিতামহের (দাদার পিতা) নাম কী?', a: 'হাশিম (প্রকৃত নাম আমর)' },
+      { id: 145, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'দাদা আবদুল মুত্তালিবের আসল নাম কী ছিল?', a: 'শায়বা' },
+      { id: 146, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মা আমিনার পিতার নাম কী ছিল?', a: 'ওয়াহাব' },
+      { id: 147, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হিজরতের পথপ্রদর্শক কে ছিলেন (যিনি অমুসলিম ছিলেন)?', a: 'আবদুল্লাহ ইবনে উরাইকিত' },
+      { id: 148, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'সাওর গুহায় গোপনে খাবার পৌঁছে দিতেন কে?', a: 'আসমা বিনতে আবু বকর' },
+      { id: 149, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'সাওর গুহায় অবস্থানের খবর সংগ্রহ করতেন কে?', a: 'আবদুল্লাহ ইবনে আবু বকর' },
+      { id: 150, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হিজরতের সময় রাসূল (সা.)-কে ধরতে এসে ঘোড়া দেবে গিয়েছিল কার?', a: 'সুরাকা ইবনে মালেক' },
+      { id: 151, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মসজিদে কুবা নির্মাণের জমি কার ছিল?', a: 'কুলসুম ইবনুল হাদাম' },
+      { id: 152, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মসজিদে নববীর জমি কেনা হয়েছিল কোন দুই এতিম বালকের কাছ থেকে?', a: 'সাহল ও সুহাইল' },
+      { id: 153, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মসজিদে নববীর জমি কেনার মূল্য পরিশোধ করেছিলেন কে?', a: 'হযরত আবু বকর (রা.)' },
+      { id: 154, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মদিনায় প্রথম জুমআর নামাজ কোথায় অনুষ্ঠিত হয়?', a: 'বনু সালেম গোত্রের রানুনা উপত্যকায়' },
+      { id: 155, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বদর যুদ্ধে মুশরিকদের সেনাপতি কে ছিল?', a: 'উতবা ইবনে রাবিয়া' },
+      { id: 156, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বদরে মুশরিকদের প্রথম কে মল্লযুদ্ধে নিহত হয়?', a: 'আসওয়াদ ইবনে আবদুল আসাদ' },
+      { id: 157, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বদর যুদ্ধে নিহত কাফেরদের লাশ কোন কূপে ফেলা হয়েছিল?', a: 'কালীব কূপ' },
+      { id: 158, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বদর বন্দিদের মুক্তির শর্ত কী ছিল?', a: '১০ জন মুসলিম বালককে লেখাপড়া শেখানো অথবা অর্থদণ্ড' },
+      { id: 159, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'উহুদ যুদ্ধে কুরাইশ বাহিনীর সেনাপতি কে ছিল?', a: 'আবু সুফিয়ান' },
+      { id: 160, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'উহুদ যুদ্ধে কার আঘাতে নবীজির শিরস্ত্রাণ ভেঙে দাঁত মোবারক শহিদ হয়?', a: 'উতবা ইবনে আবি ওয়াক্কাস ও ইবনে কামিয়া' },
+      { id: 161, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'উহুদ যুদ্ধে নবীজিকে বাঁচাতে নিজের হাত অবশ করে ফেলেছিলেন কে?', a: 'হযরত তালহা ইবনে উবাইদুল্লাহ (রা.)' },
+      { id: 162, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হযরত হামজা (রা.)-কে বর্শা নিক্ষেপ করে হত্যা করেছিল কে?', a: 'ওয়াহশি (তখন দাস ছিল)' },
+      { id: 163, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মদিনার মুনাফিকদের সর্দার কে ছিল?', a: 'আবদুল্লাহ ইবনে উবাই ইবনে সালুল' },
+      { id: 164, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'কোন সাহাবীর পরামর্শে বদরে পানির কূপের সামনে ক্যাম্প করা হয়েছিল?', a: 'হুবাব ইবনুল মুনজির (রা.)' },
+      { id: 165, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'আজানের স্বপ্ন প্রথম কোন সাহাবী দেখেছিলেন?', a: 'হযরত আবদুল্লাহ ইবনে যায়েদ (রা.)' },
+      { id: 166, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বদর যুদ্ধে কুরাইশদের পতাকা কার হাতে ছিল?', a: 'তালহা ইবনে আবি তালহা' },
+      { id: 167, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হযরত খাদিজা (রা.)-এর জানাজা কে পড়িয়েছিলেন?', a: 'তখনো জানাজার সালাতের হুকুম নাযিল হয়নি' },
+      { id: 168, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'খাদিজা (রা.)-কে কোথায় দাফন করা হয়?', a: 'মক্কার জান্নাতুল মুয়াল্লা কবরস্থানে' },
+      { id: 169, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'উম্মাহাতুল মুমিনীন ও বিশিষ্ট সাহাবীদের মদিনার কোন কবরস্থানে দাফন করা হয়?', a: 'জান্নাতুল বাকী' },
+      { id: 170, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'কোন যুদ্ধে কাফেরদের সৈন্যসংখ্যা ছিল ১০,০০০?', a: 'খন্দক / আহযাব যুদ্ধে' },
+      { id: 171, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হুদায়বিয়ার সন্ধির সময় মক্কার কোন সাহাবী শিকল পরা অবস্থায় মুসলিম শিবিরে এসেছিলেন?', a: 'আবু জান্দাল (রা.)' },
+      { id: 172, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রোমানদের বিরুদ্ধে কোন যুদ্ধে রাসূল (সা.) সেনাদল পাঠানোর নির্দেশ দিয়ে যান কিন্তু ওফাতের পর তা রওনা হয়?', a: 'ওসামা ইবনে যায়েদের বাহিনী' },
+      { id: 173, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'ওসামা ইবনে যায়েদের বয়স তখন কত ছিল?', a: 'মাত্র ১৭ বা ১৮ বছর' },
+      { id: 174, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বিদায় হজের খুতবা রাসূল (সা.)-এর হয়ে উচ্চকণ্ঠে সবার কাছে পৌঁছে দিচ্ছিলেন কে?', a: 'রাবিয়া ইবনে উমাইয়া' },
+      { id: 175, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বিদায় হজে কতজন সাহাবী উপস্থিত ছিলেন বলে ধারণা করা হয়?', a: 'প্রায় ১ লক্ষ ২৪ হাজার বা ১ লক্ষ ৪৪ হাজার' },
+      { id: 176, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.) কত বছর বয়সে দুধমাতার ঘর থেকে মা আমিনার কোলে ফিরে আসেন?', a: '৫ বছর বয়সে' },
+      { id: 177, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর সাথে দুধভাই কে ছিলেন?', a: 'হযরত হামজা (রা.) ও আবু সালামা (রা.)' },
+      { id: 178, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর দুধবোন কে ছিলেন যিনি শৈশবে তাঁকে কোলে নিতেন?', a: 'শায়মা (হুযাফা)' },
+      { id: 179, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'তায়েফ বিজয়ের পর যুদ্ধবন্দিদের মধ্যে দুধবোন শায়মাকে দেখে নবীজি কী করেছিলেন?', a: 'নিজের গায়ের চাদর বিছিয়ে সম্মান দিয়েছিলেন' },
+      { id: 180, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হস্তী বাহিনীর নেতা কে ছিল যে কাবা ধ্বংস করতে এসেছিল?', a: 'আবরাহা (ইয়েমেনের গভর্নর)' },
+      { id: 181, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'আবরাহার বাহিনীকে আল্লাহ কী দিয়ে ধ্বংস করেছিলেন?', a: 'ঝাঁকে ঝাঁকে আবাবিল পাখি ও পোড়ামাটির কঙ্কর দিয়ে' },
+      { id: 182, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হস্তী ঘটনার বর্ণনা কুরআনের কোন সূরায় এসেছে?', a: 'সূরা আল-ফীল' },
+      { id: 183, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'নবুওয়াতের পূর্বে কাবা ঘরের কোষাধ্যক্ষ বা চাবি কার দায়িত্বে ছিল?', a: 'উসমান ইবনে তালহা (বনু আবদিদ দার)' },
+      { id: 184, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মক্কা বিজয়ের পর কাবার চাবি নবীজি কার কাছেই ফিরিয়ে দেন?', a: 'উসমান ইবনে তালহার বংশধরের কাছেই' },
+      { id: 185, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মক্কার কোন ঘরে বসে কুরাইশরা নবীজিকে হত্যার ষড়যন্ত্র করেছিল?', a: 'দারুন নদওয়া (Darun Nadwah)' },
+      { id: 186, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'হত্যার রাতে কাফেরদের চোখের সামনে নবীজি সূরা ইয়াসীনের কোন আয়াত পড়ে ধুলো ছিটিয়ে বের হয়ে যান?', a: '৯ নম্বর আয়াত (“ওয়া জাআলনা মিম বাইনি আইদিহিম...”) ' },
+      { id: 187, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মহানবী (সা.)-এর ওফাত কোন বারে হয়েছিল?', a: 'সোমবার' },
+      { id: 188, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর কবরে মাটি স্পর্শ করে লাহাদ তৈরি করেছিলেন কে?', a: 'আবু তালহা আনসারী (রা.)' },
+      { id: 189, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.) কোন রোগ বা উপসর্গে আক্রান্ত হয়ে ইন্তেকাল করেন?', a: 'তীব্র জ্বর ও মাথাব্যথা' },
+      { id: 190, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর পবিত্র মুখ থেকে উচ্চারিত শেষ বাক্যটি কী ছিল?', a: '“বালির রাফীকাল আ’লা” (বরং ঊর্ধ্বলোকের পরম বন্ধুকে চাই)' },
+      { id: 191, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.) যে গাছের নিচে বসে বাইয়াত নিয়েছিলেন সে বাইয়াতকে কী বলে?', a: 'বাইয়াতে রিদওয়ান' },
+      { id: 192, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'কুবা মসজিদ থেকে মসজিদে নববীর দূরত্ব কত?', a: 'প্রায় ৩ থেকে ৪ কিলোমিটার' },
+      { id: 193, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বদর প্রান্তর মদিনা থেকে কত দূরে অবস্থিত?', a: 'প্রায় ১৩০-১৫০ কিমি দক্ষিণ-পশ্চিমে' },
+      { id: 194, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'বদরে মুসলমানদের রণধ্বনি (স্লোগান) কী ছিল?', a: '“আহাদ! আহাদ!” এবং “ইয়া মানসুর আমিত”' },
+      { id: 195, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'উহুদ পাহাড়ে নবীজিকে রক্ষা করতে গিয়ে কতটি তীরের আঘাত বুকে নিয়েছিলেন আবু দুজানা (রা.)?', a: 'অসংখ্য তীরের আঘাত' },
+      { id: 196, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর চাচাদের মধ্যে কতজন ইসলাম গ্রহণ করেছিলেন?', a: '২ জন (হামজা রা. ও আব্বাস রা.)' },
+      { id: 197, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'রাসূল (সা.)-এর মোট কতজন চাচা ছিলেন?', a: 'মোট ১১ বা ১২ জন' },
+      { id: 198, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মক্কা বিজয়ের দিন আবু সুফিয়ান কার মাধ্যমে এসে ইসলাম গ্রহণ করেন?', a: 'হযরত আব্বাস (রা.)-এর মাধ্যমে' },
+      { id: 199, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: '“যে আবু সুফিয়ানের ঘরে আশ্রয় নেবে সে নিরাপদ”—এটি কোন ঘটনার ঘোষণা?', a: 'মক্কা বিজয়ের দিনের ঘোষণা' },
+      { id: 200, cat: 'rapid', section: 'র্যাপিড-ফায়ার পর্ব', q: 'মক্কা বিজয়ের পর সাধারণ ক্ষমা ঘোষণায় রাসূল (সা.) হযরত ইউসুফ (আ.)-এর কোন বাক্যটি উচ্চারণ করেছিলেন?', a: '“লা তাছরীবা আলাইকুমুল ইয়াওম” (আজ তোমাদের বিরুদ্ধে কোনো অভিযোগ নেই)।' }
+    ];
+
+    // LocalStorage Persistent State
+    let completedSet = new Set(JSON.parse(localStorage.getItem('seerah_completed') || '[]'));
+    let bookmarkedSet = new Set(JSON.parse(localStorage.getItem('seerah_bookmarked') || '[]'));
+    let isDarkMode = localStorage.getItem('seerah_dark') === 'true';
+    let isSoundOn = localStorage.getItem('seerah_sound') !== 'false';
+
+    // Application View State
+    let activeTab = 'browse';
+    let currentCategory = 'all';
+    let currentStatusFilter = 'all';
+    let currentSearchTerm = '';
+    let areAllAnswersHidden = false;
+    let areChartAnswersHidden = false;
+
+    // Flashcard State
+    let fcSource = 'all';
+    let fcList = [...rawQuestions];
+    let fcIndex = 0;
+    let isFcCardFlipped = false;
+
+    // Quiz Mock State
+    let mockQuestions = [];
+    let mockIndex = 0;
+    let mockScore = 0;
+    let mockTimer = null;
+    let mockSeconds = 0;
+
+    // Web Audio Synthesizer (No external mp3 files needed)
+    let audioCtx = null;
+    function playTone(type) {
+      if (!isSoundOn) return;
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+        if (type === 'complete') {
+          // Success chime
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+          osc.start(now);
+          osc.stop(now + 0.25);
+        } else if (type === 'bookmark') {
+          // Star ping
+          osc.frequency.setValueAtTime(659.25, now); // E5
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        } else if (type === 'flip') {
+          // Soft whoosh / click
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(320, now);
+          gain.gain.setValueAtTime(0.1, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+          osc.start(now);
+          osc.stop(now + 0.1);
+        } else if (type === 'win') {
+          // Victory arpeggio
+          [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+            const o = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            o.connect(g);
+            g.connect(audioCtx.destination);
+            o.frequency.value = freq;
+            g.gain.setValueAtTime(0.2, now + i * 0.08);
+            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.2);
+            o.start(now + i * 0.08);
+            o.stop(now + i * 0.08 + 0.2);
+          });
+        }
+      } catch (err) {
+        console.warn('Audio play error:', err);
+      }
+    }
+
+    // Initialize App
+    window.addEventListener('DOMContentLoaded', () => {
+      // Apply saved theme
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+        updateDarkIcons(true);
+      }
+      updateSoundIcons();
+      updateGlobalStats();
+      applyFilters();
+      initFlashcards();
+    });
+
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      isDarkMode = !isDarkMode;
+      localStorage.setItem('seerah_dark', isDarkMode);
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      updateDarkIcons(isDarkMode);
+    }
+
+    function updateDarkIcons(dark) {
+      const icon = dark ? 'fa-sun' : 'fa-moon';
+      const color = dark ? 'text-amber-400' : 'text-amber-300';
+      ['darkIcon', 'darkIconMob'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.className = `fa-solid ${icon} ${color}`;
+        }
+      });
+    }
+
+    // Sound Toggle
+    function toggleSound() {
+      isSoundOn = !isSoundOn;
+      localStorage.setItem('seerah_sound', isSoundOn);
+      updateSoundIcons();
+      if (isSoundOn) playTone('bookmark');
+    }
+
+    function updateSoundIcons() {
+      const icon = isSoundOn ? 'fa-volume-high' : 'fa-volume-xmark';
+      const text = isSoundOn ? 'সাউন্ড অন' : 'মিউট';
+      ['soundIcon', 'soundIconMob'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.className = `fa-solid ${icon}`;
+      });
+      const st = document.getElementById('soundText');
+      if (st) st.innerText = text;
+    }
+
+    // Update Global Dashboard Metrics
+    function updateGlobalStats() {
+      const total = rawQuestions.length;
+      const completed = completedSet.size;
+      const bookmarked = bookmarkedSet.size;
+      const pending = Math.max(0, total - completed);
+      const pct = Math.round((completed / total) * 100);
+
+      document.getElementById('statCompletedCount').innerText = completed;
+      document.getElementById('statTotalCount').innerText = total;
+      document.getElementById('statPercentage').innerText = `(${pct}%)`;
+      document.getElementById('statBookmarkedCount').innerText = bookmarked;
+      document.getElementById('statPendingCount').innerText = pending;
+
+      document.getElementById('topProgressBar').style.width = `${pct}%`;
+
+      // Save to localStorage
+      localStorage.setItem('seerah_completed', JSON.stringify([...completedSet]));
+      localStorage.setItem('seerah_bookmarked', JSON.stringify([...bookmarkedSet]));
+    }
+
+    // Main Navigation Tabs
+    function switchMainTab(tab) {
+      activeTab = tab;
+      playTone('flip');
+
+      // Hide all tabs
+      ['tabViewBrowse', 'tabViewChart', 'tabViewFlashcard', 'tabViewQuiz', 'tabViewTips'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+
+      // Reset nav button styling
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white', 'shadow');
+        btn.classList.add('text-emerald-200');
+      });
+
+      // Show filter toolbar only on browse and chart
+      const toolbar = document.getElementById('filterToolbar');
+      if (tab === 'browse' || tab === 'chart') {
+        toolbar.classList.remove('hidden');
+      } else {
+        toolbar.classList.add('hidden');
+      }
+
+      if (tab === 'browse') {
+        document.getElementById('tabViewBrowse').classList.remove('hidden');
+        setActiveNav('navBtnBrowse');
+        applyFilters();
+      } else if (tab === 'chart') {
+        document.getElementById('tabViewChart').classList.remove('hidden');
+        setActiveNav('navBtnChart');
+        applyFilters();
+      } else if (tab === 'flashcard') {
+        document.getElementById('tabViewFlashcard').classList.remove('hidden');
+        setActiveNav('navBtnFlashcard');
+        initFlashcards();
+      } else if (tab === 'quiz') {
+        document.getElementById('tabViewQuiz').classList.remove('hidden');
+        setActiveNav('navBtnQuiz');
+      } else if (tab === 'tips') {
+        document.getElementById('tabViewTips').classList.remove('hidden');
+        setActiveNav('navBtnTips');
+      }
+    }
+
+    function setActiveNav(btnId) {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.classList.add('bg-emerald-600', 'text-white', 'shadow');
+        btn.classList.remove('text-emerald-200');
+      }
+    }
+
+    // Filter Logic
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.className = "cat-pill active px-3 py-1 rounded-full text-xs font-semibold border border-emerald-600 bg-emerald-600 text-white transition shadow-sm";
+        } else {
+          btn.className = "cat-pill px-3 py-1 rounded-full text-xs font-semibold border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition";
+        }
+      });
+      applyFilters();
+    }
+
+    function setStatusFilter(status) {
+      currentStatusFilter = status;
+      applyFilters();
+    }
+
+    function filterOnlyBookmarked() {
+      currentStatusFilter = 'bookmarked';
+      document.getElementById('statusFilterSelect').value = 'bookmarked';
+      if (activeTab !== 'browse' && activeTab !== 'chart') {
+        switchMainTab('browse');
+      } else {
+        applyFilters();
+      }
+    }
+
+    function applyFilters() {
+      const kw = (document.getElementById('globalSearchInput').value || '').trim().toLowerCase();
+      currentSearchTerm = kw;
+
+      const filtered = rawQuestions.filter(item => {
+        const matchesCat = currentCategory === 'all' || item.cat === currentCategory;
+        
+        let matchesStatus = true;
+        if (currentStatusFilter === 'completed') {
+          matchesStatus = completedSet.has(item.id);
+        } else if (currentStatusFilter === 'bookmarked') {
+          matchesStatus = bookmarkedSet.has(item.id);
+        } else if (currentStatusFilter === 'pending') {
+          matchesStatus = !completedSet.has(item.id);
+        }
+
+        const matchesSearch = !kw || 
+          item.q.toLowerCase().includes(kw) || 
+          item.a.toLowerCase().includes(kw) || 
+          item.section.toLowerCase().includes(kw) || 
+          item.id.toString() === kw;
+
+        return matchesCat && matchesStatus && matchesSearch;
+      });
+
+      renderBrowseCards(filtered);
+      renderChartTable(filtered);
+    }
+
+    // Toggle Single Question Completed Status
+    function toggleComplete(id) {
+      if (completedSet.has(id)) {
+        completedSet.delete(id);
+      } else {
+        completedSet.add(id);
+        playTone('complete');
+        // Confetti check if milestone reached (e.g. 50, 100, 200)
+        if (completedSet.size === 50 || completedSet.size === 100 || completedSet.size === 200) {
+          triggerCelebration();
+        }
+      }
+      updateGlobalStats();
+      applyFilters();
+    }
+
+    // Toggle Single Question Bookmark / Star Status
+    function toggleBookmark(id) {
+      if (bookmarkedSet.has(id)) {
+        bookmarkedSet.delete(id);
+      } else {
+        bookmarkedSet.add(id);
+        playTone('bookmark');
+      }
+      updateGlobalStats();
+      applyFilters();
+    }
+
+    // Render Tab 1: Cards View
+    function renderBrowseCards(list) {
+      const container = document.getElementById('browseCardsContainer');
+      document.getElementById('browseCount').innerText = list.length;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-slate-400">
+            <i class="fa-solid fa-folder-open text-4xl mb-2 text-slate-300 dark:text-slate-700"></i>
+            <p class="font-semibold text-slate-700 dark:text-slate-300">কোনো প্রশ্ন পাওয়া যায়নি!</p>
+            <p class="text-xs text-slate-400 mt-1">ফিল্টার পরিবর্তন করে দেখুন।</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(item => {
+        const isDone = completedSet.has(item.id);
+        const isStarred = bookmarkedSet.has(item.id);
+        const isAnswerHidden = areAllAnswersHidden;
+
+        const catBadgeColors = {
+          basic: 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800',
+          medium: 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800',
+          advanced: 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800',
+          rapid: 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+        };
+
+        const catNames = {
+          basic: 'বেসিক',
+          medium: 'মিডিয়াম',
+          advanced: 'অ্যাডভান্সড',
+          rapid: 'র্যাপিড-ফায়ার'
+        };
+
+        return `
+          <div class="bg-white dark:bg-slate-900 border ${isDone ? 'border-emerald-400/70 dark:border-emerald-600/60 bg-emerald-50/20 dark:bg-emerald-950/10' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+            
+            <div>
+              <!-- Header tags -->
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-md border ${catBadgeColors[item.cat]}">
+                    #${item.id} • ${catNames[item.cat]}
+                  </span>
+                  ${isDone ? `<span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950 px-2 py-0.5 rounded"><i class="fa-solid fa-check"></i> পড়া শেষ</span>` : ''}
+                </div>
+
+                <!-- Bookmark and Complete Quick Action Icons -->
+                <div class="flex items-center gap-1.5">
+                  <button onclick="toggleBookmark(${item.id})" class="p-1.5 rounded-lg transition ${isStarred ? 'text-amber-500 bg-amber-50 dark:bg-amber-950/60' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400'}" title="${isStarred ? 'দাগানো বাদ দিন' : 'দাগিয়ে রাখুন / বুকমার্ক'}">
+                    <i class="${isStarred ? 'fa-solid' : 'fa-regular'} fa-bookmark text-sm"></i>
+                  </button>
+                  <button onclick="toggleComplete(${item.id})" class="p-1.5 rounded-lg transition ${isDone ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60' : 'text-slate-300 dark:text-slate-600 hover:text-emerald-500'}" title="${isDone ? 'পড়া বাকি করুন' : 'পড়া শেষ চিহ্নিত করুন'}">
+                    <i class="${isDone ? 'fa-solid fa-circle-check text-emerald-600' : 'fa-regular fa-circle-check'} text-base"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Question text -->
+              <h4 class="font-bold text-slate-800 dark:text-slate-100 text-base leading-snug mb-3">
+                ${item.q}
+              </h4>
+            </div>
+
+            <!-- Answer section -->
+            <div class="mt-2 pt-2.5 border-t border-slate-100 dark:border-slate-800/80">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[11px] text-slate-400 truncate max-w-[200px]" title="${item.section}">
+                  ${item.section}
+                </span>
+                <button onclick="toggleCardSingleAnswer(${item.id})" class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline flex items-center gap-1">
+                  <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                  <span id="btnAnsLabel-${item.id}">${isAnswerHidden ? 'উত্তর দেখুন' : 'উত্তর ঢাকুন'}</span>
+                </button>
+              </div>
+
+              <div id="cardAnsBox-${item.id}" class="${isAnswerHidden ? 'hidden' : ''} bg-emerald-50/70 dark:bg-slate-800 border border-emerald-100 dark:border-slate-700/80 p-3 rounded-xl text-sm font-medium text-slate-800 dark:text-slate-100 leading-relaxed transition-all">
+                <span class="text-emerald-700 dark:text-emerald-400 font-bold block mb-0.5">উত্তর:</span>
+                ${item.a}
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleCardSingleAnswer(id) {
+      const box = document.getElementById(`cardAnsBox-${id}`);
+      const lbl = document.getElementById(`btnAnsLabel-${id}`);
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        lbl.innerText = 'উত্তর ঢাকুন';
+      } else {
+        box.classList.add('hidden');
+        lbl.innerText = 'উত্তর দেখুন';
+      }
+    }
+
+    function toggleAllAnswersVisibility() {
+      areAllAnswersHidden = !areAllAnswersHidden;
+      const btn = document.getElementById('toggleAllAnsBtn');
+      if (areAllAnswersHidden) {
+        btn.innerHTML = `<i class="fa-solid fa-eye"></i> <span>সব উত্তর দেখান</span>`;
+      } else {
+        btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i> <span>সব উত্তর ঢাকুন</span>`;
+      }
+      applyFilters();
+    }
+
+    // Render Tab 2: Rapid-Fire Chart Table
+    function renderChartTable(list) {
+      const tbody = document.getElementById('chartTableBody');
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" class="py-8 text-center text-slate-400">কোনো তথ্য পাওয়া যায়নি</td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(item => {
+        const isDone = completedSet.has(item.id);
+        const isStarred = bookmarkedSet.has(item.id);
+
+        return `
+          <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition-colors ${isDone ? 'bg-emerald-50/30 dark:bg-emerald-950/20' : ''}">
+            <td class="py-3 px-3 text-center font-bold text-xs text-slate-500 dark:text-slate-400">
+              #${item.id}
+            </td>
+            <td class="py-3 px-4 font-semibold text-slate-800 dark:text-slate-100 text-sm">
+              ${item.q}
+              <div class="text-[11px] text-slate-400 mt-0.5 font-normal">${item.section}</div>
+            </td>
+            <td class="py-3 px-4 text-sm font-medium text-emerald-800 dark:text-emerald-300">
+              <div class="${areChartAnswersHidden ? 'filter blur-sm select-none hover:blur-none transition' : ''}" title="ক্লিক করলে স্পষ্ট দেখা যাবে">
+                ${item.a}
+              </div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <div class="flex items-center justify-center gap-2">
+                <button onclick="toggleBookmark(${item.id})" class="p-1.5 rounded-lg border ${isStarred ? 'border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950 text-amber-500' : 'border-slate-200 dark:border-slate-700 text-slate-400 hover:text-amber-400'} text-xs font-semibold transition" title="দাগিয়ে রাখুন">
+                  <i class="${isStarred ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i>
+                </button>
+                <button onclick="toggleComplete(${item.id})" class="px-2.5 py-1 rounded-lg border ${isDone ? 'border-emerald-300 dark:border-emerald-700 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300' : 'border-slate-200 dark:border-slate-700 text-slate-500 hover:text-emerald-600'} text-xs font-semibold transition flex items-center gap-1">
+                  <i class="fa-solid ${isDone ? 'fa-check' : 'fa-check text-slate-300'}"></i>
+                  <span>${isDone ? 'শেষ' : 'পড়া'}</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function toggleChartAnswers() {
+      areChartAnswersHidden = !areChartAnswersHidden;
+      const btnText = document.getElementById('chartToggleAnsText');
+      if (areChartAnswersHidden) {
+        btnText.innerText = 'উত্তর স্তম্ভ প্রদর্শন করুন';
+      } else {
+        btnText.innerText = 'উত্তর স্তম্ভ ঢাকুন (সেলফ প্র্যাকটিস)';
+      }
+      applyFilters();
+    }
+
+    // Flashcard Logic
+    function initFlashcards() {
+      changeFlashcardSource(fcSource);
+    }
+
+    function changeFlashcardSource(src) {
+      fcSource = src;
+      document.getElementById('fcSourceSelect').value = src;
+
+      if (src === 'all') {
+        fcList = [...rawQuestions];
+      } else if (src === 'bookmarked') {
+        fcList = rawQuestions.filter(q => bookmarkedSet.has(q.id));
+        if (fcList.length === 0) {
+          alert('আপনার এখনও কোনো দাগানো প্রশ্ন নেই! কার্ডের বুকমার্ক আইকনে ক্লিক করে দাগিয়ে নিন।');
+          fcList = [...rawQuestions];
+          document.getElementById('fcSourceSelect').value = 'all';
+        }
+      } else if (src === 'pending') {
+        fcList = rawQuestions.filter(q => !completedSet.has(q.id));
+        if (fcList.length === 0) {
+          alert('মাশাআল্লাহ! আপনি সব প্রশ্ন পড়া সম্পন্ন করেছেন!');
+          fcList = [...rawQuestions];
+          document.getElementById('fcSourceSelect').value = 'all';
+        }
+      } else if (src === 'rapid') {
+        fcList = rawQuestions.filter(q => q.cat === 'rapid');
+      }
+
+      fcIndex = 0;
+      updateFlashcardView();
+    }
+
+    function updateFlashcardView() {
+      if (fcList.length === 0) return;
+      const current = fcList[fcIndex];
+      const box = document.getElementById('mainFlashcardBox');
+
+      box.classList.remove('flipped');
+      isFcCardFlipped = false;
+      const flipBtn = document.getElementById('btnFlipText');
+      if (flipBtn) flipBtn.innerText = 'উত্তর দেখুন / ফ্লিপ';
+
+      document.getElementById('fcCardId').innerText = current.id;
+      document.getElementById('fcCardQ').innerText = current.q;
+      document.getElementById('fcCardA').innerText = current.a;
+
+      document.getElementById('fcCurrentNo').innerText = fcIndex + 1;
+      document.getElementById('fcTotalNum').innerText = fcList.length;
+
+      const progress = ((fcIndex + 1) / fcList.length) * 100;
+      document.getElementById('fcInnerProgress').style.width = `${progress}%`;
+
+      const catNames = {
+        basic: '১. বেসিক লেভেল',
+        medium: '২. মিডিয়াম লেভেল',
+        advanced: '৩. অ্যাডভান্সড লেভেল',
+        rapid: '৪. র্যাপিড ফায়ার পর্ব'
+      };
+      document.getElementById('fcBadgeLevel').innerText = `${catNames[current.cat]} • ${current.section}`;
+
+      // Update bookmark & complete buttons on flashcard
+      const isStarred = bookmarkedSet.has(current.id);
+      const isDone = completedSet.has(current.id);
+
+      const bBtn = document.getElementById('btnFcBookmark');
+      bBtn.innerHTML = `<i class="${isStarred ? 'fa-solid text-amber-500' : 'fa-regular'} fa-bookmark text-base"></i>`;
+
+      const cBtn = document.getElementById('btnFcComplete');
+      cBtn.innerHTML = `<i class="${isDone ? 'fa-solid text-emerald-600' : 'fa-regular'} fa-circle-check text-base"></i>`;
+    }
+
+    function flipFlashcard() {
+      const box = document.getElementById('mainFlashcardBox');
+      if (!box) return;
+      isFcCardFlipped = !isFcCardFlipped;
+      if (isFcCardFlipped) {
+        box.classList.add('flipped');
+      } else {
+        box.classList.remove('flipped');
+      }
+      const flipBtn = document.getElementById('btnFlipText');
+      if (flipBtn) {
+        flipBtn.innerText = isFcCardFlipped ? 'প্রশ্ন দেখুন' : 'উত্তর দেখুন / ফ্লিপ';
+      }
+      playTone('flip');
+    }
+
+    function nextFlashcard() {
+      if (fcIndex < fcList.length - 1) {
+        fcIndex++;
+      } else {
+        fcIndex = 0;
+      }
+      playTone('flip');
+      updateFlashcardView();
+    }
+
+    function prevFlashcard() {
+      if (fcIndex > 0) {
+        fcIndex--;
+      } else {
+        fcIndex = fcList.length - 1;
+      }
+      playTone('flip');
+      updateFlashcardView();
+    }
+
+    function randomFlashcard() {
+      fcIndex = Math.floor(Math.random() * fcList.length);
+      playTone('flip');
+      updateFlashcardView();
+    }
+
+    function toggleBookmarkFc() {
+      const current = fcList[fcIndex];
+      toggleBookmark(current.id);
+      updateFlashcardView();
+    }
+
+    function toggleCompleteFc() {
+      const current = fcList[fcIndex];
+      toggleComplete(current.id);
+      updateFlashcardView();
+    }
+
+    // Keyboard Shortcuts for Flashcards
+    document.addEventListener('keydown', (e) => {
+      if (activeTab !== 'flashcard') return;
+      if (e.code === 'Space' || e.code === 'Enter' || e.code === 'ArrowUp' || e.code === 'ArrowDown') {
+        e.preventDefault();
+        flipFlashcard();
+      } else if (e.code === 'ArrowRight') {
+        nextFlashcard();
+      } else if (e.code === 'ArrowLeft') {
+        prevFlashcard();
+      }
+    });
+
+    // Mock Test / Quiz Logic
+    function beginMockQuiz() {
+      const cat = document.getElementById('mockCategorySelect').value;
+      const count = parseInt(document.getElementById('mockCountSelect').value, 10);
+
+      let pool = [...rawQuestions];
+      if (cat === 'bookmarked') {
+        pool = rawQuestions.filter(q => bookmarkedSet.has(q.id));
+        if (pool.length === 0) {
+          alert('দাগানো প্রশ্নের কোনো তালিকা পাওয়া যায়নি। সব প্রশ্ন থেকে টেস্ট শুরু হচ্ছে।');
+          pool = [...rawQuestions];
+        }
+      } else if (cat !== 'all') {
+        pool = rawQuestions.filter(q => q.cat === cat);
+      }
+
+      // Shuffle pool
+      const shuffled = pool.sort(() => 0.5 - Math.random());
+      mockQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
+
+      mockIndex = 0;
+      mockScore = 0;
+      mockSeconds = 0;
+
+      document.getElementById('quizSetupCard').classList.add('hidden');
+      document.getElementById('quizScoreCard').classList.add('hidden');
+      document.getElementById('quizLiveCard').classList.remove('hidden');
+
+      // Start timer
+      clearInterval(mockTimer);
+      mockTimer = setInterval(() => {
+        mockSeconds++;
+        const mins = String(Math.floor(mockSeconds / 60)).padStart(2, '0');
+        const secs = String(mockSeconds % 60).padStart(2, '0');
+        document.getElementById('quizLiveTimer').innerText = `${mins}:${secs}`;
+      }, 1000);
+
+      renderMockQuestion();
+    }
+
+    function renderMockQuestion() {
+      const current = mockQuestions[mockIndex];
+      const total = mockQuestions.length;
+
+      document.getElementById('quizStepCurrent').innerText = mockIndex + 1;
+      document.getElementById('quizStepTotal').innerText = total;
+
+      const progress = (mockIndex / total) * 100;
+      document.getElementById('quizLiveProgressBar').style.width = `${progress}%`;
+
+      document.getElementById('quizLiveCatBadge').innerText = `#${current.id} • ${current.section}`;
+      document.getElementById('quizLiveQuestion').innerText = current.q;
+      document.getElementById('quizLiveAnswerText').innerText = current.a;
+
+      document.getElementById('quizLiveAnswerSection').classList.add('hidden');
+      document.getElementById('btnQuizShowAns').classList.remove('hidden');
+      document.getElementById('quizEvalBtns').classList.add('hidden');
+    }
+
+    function revealLiveAnswer() {
+      document.getElementById('quizLiveAnswerSection').classList.remove('hidden');
+      document.getElementById('btnQuizShowAns').classList.add('hidden');
+      document.getElementById('quizEvalBtns').classList.remove('hidden');
+      playTone('flip');
+    }
+
+    function handleQuizAnswer(isCorrect) {
+      if (isCorrect) {
+        mockScore++;
+        playTone('complete');
+      }
+
+      mockIndex++;
+      if (mockIndex < mockQuestions.length) {
+        renderMockQuestion();
+      } else {
+        finishMockQuiz();
+      }
+    }
+
+    function finishMockQuiz() {
+      clearInterval(mockTimer);
+      document.getElementById('quizLiveCard').classList.add('hidden');
+      document.getElementById('quizScoreCard').classList.remove('hidden');
+
+      const total = mockQuestions.length;
+      document.getElementById('finalScoreVal').innerText = mockScore;
+      document.getElementById('finalScoreTotal').innerText = total;
+
+      const pct = Math.round((mockScore / total) * 100);
+      document.getElementById('finalScorePercent').innerText = `সঠিক উত্তর: ${pct}% • সময় লেগেছে: ${document.getElementById('quizLiveTimer').innerText}`;
+
+      let feedback = '';
+      if (pct >= 90) {
+        feedback = 'অসাধারণ! মাশাআল্লাহ, আপনার প্রস্তুতি শতভাগ নিখুঁত। ইনশাআল্লাহ আগামীকাল ঢাকা কলেজের কুইজে আপনি চ্যাম্পিয়ন হবেন!';
+        triggerCelebration();
+        playTone('win');
+      } else if (pct >= 70) {
+        feedback = 'খুব ভালো ফলাফল! বাকি ভুল হওয়া প্রশ্নগুলো দাগিয়ে নিন এবং পরীক্ষার আগে একবার রিভিশন দিয়ে যান।';
+        playTone('win');
+      } else {
+        feedback = 'আরেকটু ঝালাই প্রয়োজন। র্যাপিড চার্ট ও ফ্ল্যাশকার্ডগুলো দিয়ে অন্তত দুইবার প্র্যাকটিস করুন।';
+      }
+      document.getElementById('finalScoreFeedback').innerText = feedback;
+    }
+
+    // Confetti Celebration
+    function triggerCelebration() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+    }
+
+    // Reset Progress Modal
+    function openResetModal() {
+      document.getElementById('resetModal').classList.remove('hidden');
+    }
+
+    function closeResetModal() {
+      document.getElementById('resetModal').classList.add('hidden');
+    }
+
+    function confirmResetAll() {
+      completedSet.clear();
+      bookmarkedSet.clear();
+      localStorage.removeItem('seerah_completed');
+      localStorage.removeItem('seerah_bookmarked');
+      closeResetModal();
+      updateGlobalStats();
+      applyFilters();
+      alert('অগ্রগতি সফলভাবে রিসিট করা হয়েছে!');
+    }
+  </script>
+</body>
+</html>
