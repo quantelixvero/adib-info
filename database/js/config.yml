@@ -1,0 +1,266 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: "https://seadib.github.io/hall/"
+display_url: "https://seadib.github.io/hall/"
+
+collections:
+  - name: "settings"
+    label: "Global Settings"
+    files:
+      - name: "site"
+        label: "Site Settings"
+        file: "data/settings.json"
+        format: "json"
+        fields:
+          - { label: "Site Title EN", name: "site_title_en", widget: "string" }
+          - { label: "Site Title BN", name: "site_title_bn", widget: "string" }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Hero Title EN", name: "hero_title_en", widget: "string" }
+          - { label: "Hero Title BN", name: "hero_title_bn", widget: "string" }
+          - { label: "Hero Subtitle EN", name: "hero_subtitle_en", widget: "text" }
+          - { label: "Hero Subtitle BN", name: "hero_subtitle_bn", widget: "text" }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Notice PDF", name: "notice_pdf", widget: "file", required: false }
+          - label: "Menu Items"
+            name: "menu_items"
+            widget: "list"
+            fields:
+              - { label: "Position", name: "position", widget: "number", value_type: "int", default: 1 }
+              - { label: "Text EN", name: "text_en", widget: "string" }
+              - { label: "Text BN", name: "text_bn", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+          - label: "Contact Logos"
+            name: "contact_logos"
+            widget: "object"
+            fields:
+              - { label: "Phone Logo", name: "phone", widget: "image", required: false }
+              - { label: "WhatsApp Logo", name: "whatsapp", widget: "image", required: false }
+              - { label: "Email Logo", name: "email", widget: "image", required: false }
+              - { label: "Facebook Logo", name: "facebook", widget: "image", required: false }
+              - { label: "Messenger Logo", name: "messenger", widget: "image", required: false }
+
+  - name: "home"
+    label: "Homepage Content"
+    files:
+      - name: "homepage_content"
+        label: "Homepage Content"
+        file: "data/home.json"
+        format: "json"
+        fields:
+          - { label: "Hero Eyebrow EN", name: "hero_eyebrow_en", widget: "string", default: "Dhaka College" }
+          - { label: "Hero Eyebrow BN", name: "hero_eyebrow_bn", widget: "string", default: "ঢাকা কলেজ" }
+          - { label: "Hero Title EN", name: "hero_title_en", widget: "string", default: "International Hall" }
+          - { label: "Hero Title BN", name: "hero_title_bn", widget: "string", default: "আন্তর্জাতিক ছাত্রাবাস" }
+          - label: "Hero Rotating Phrases"
+            name: "hero_phrases"
+            widget: "list"
+            fields:
+              - { label: "Phrase EN", name: "text_en", widget: "string" }
+              - { label: "Phrase BN", name: "text_bn", widget: "string" }
+          - { label: "Info Title EN", name: "info_title_en", widget: "string" }
+          - { label: "Info Title BN", name: "info_title_bn", widget: "string" }
+          - { label: "Info Lead EN", name: "info_lead_en", widget: "text" }
+          - { label: "Info Lead BN", name: "info_lead_bn", widget: "text" }
+          - { label: "History Text EN", name: "history_text_en", widget: "text" }
+          - { label: "History Text BN", name: "history_text_bn", widget: "text" }
+          - { label: "Notable Alumni Text EN", name: "famous_text_en", widget: "text" }
+          - { label: "Notable Alumni Text BN", name: "famous_text_bn", widget: "text" }
+          - { label: "Admission Success Text EN", name: "success_text_en", widget: "text" }
+          - { label: "Admission Success Text BN", name: "success_text_bn", widget: "text" }
+          - { label: "Location Section Title EN", name: "location_title_en", widget: "string" }
+          - { label: "Location Section Title BN", name: "location_title_bn", widget: "string" }
+          - { label: "Location Section Text EN", name: "location_text_en", widget: "text" }
+          - { label: "Location Section Text BN", name: "location_text_bn", widget: "text" }
+          - { label: "Google Map Iframe URL", name: "map_url", widget: "string", hint: "The 'src' attribute of the Google Map embed iframe" }
+
+  - name: "developer"
+    label: "Developer Profile"
+    files:
+      - name: "developer_profile"
+        label: "Developer Profile"
+        file: "data/developer.json"
+        format: "json"
+        fields:
+          - { label: "Name EN", name: "name_en", widget: "string" }
+          - { label: "Name BN", name: "name_bn", widget: "string" }
+          - { label: "Photo / Portrait", name: "portrait", widget: "image" }
+          - { label: "Lead Bio EN", name: "lead_en", widget: "text" }
+          - { label: "Lead Bio BN", name: "lead_bn", widget: "text" }
+          - { label: "About Title EN", name: "about_title_en", widget: "string", default: "About" }
+          - { label: "About Title BN", name: "about_title_bn", widget: "string", default: "পরিচিতি" }
+          - { label: "About Text EN", name: "about_text_en", widget: "text" }
+          - { label: "About Text BN", name: "about_text_bn", widget: "text" }
+          - { label: "Contact Title EN", name: "contact_title_en", widget: "string", default: "Contact" }
+          - { label: "Contact Title BN", name: "contact_title_bn", widget: "string", default: "যোগাযোগ" }
+          - { label: "Contact Text EN", name: "contact_text_en", widget: "text" }
+          - { label: "Contact Text BN", name: "contact_text_bn", widget: "text" }
+          - { label: "Focus Title EN", name: "focus_title_en", widget: "string", default: "Focus" }
+          - { label: "Focus Title BN", name: "focus_title_bn", widget: "string", default: "মূল লক্ষ্য" }
+          - { label: "Focus Text EN", name: "focus_text_en", widget: "text" }
+          - { label: "Focus Text BN", name: "focus_text_bn", widget: "text" }
+          - { label: "Skills (Comma separated list or tags)", name: "skills", widget: "list", field: { label: "Skill", name: "skill", widget: "string" } }
+          - label: "Timeline / Method"
+            name: "timeline"
+            widget: "list"
+            fields:
+              - { label: "Step Title EN", name: "step_en", widget: "string" }
+              - { label: "Step Title BN", name: "step_bn", widget: "string" }
+              - { label: "Description EN", name: "desc_en", widget: "text" }
+              - { label: "Description BN", name: "desc_bn", widget: "text" }
+          - label: "Featured Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Category EN/BN", name: "title_en", widget: "string", hint: "e.g., Blog, Tool, Hall" }
+              - { label: "Project Title / Domain", name: "url", widget: "string", hint: "e.g., seadib.blogspot.com" }
+              - { label: "Project Link / URL", name: "link", widget: "string" }
+              - { label: "Short Description EN", name: "desc_en", widget: "text" }
+              - { label: "Short Description BN", name: "desc_bn", widget: "text" }
+          - label: "Project Contributors"
+            name: "contributors"
+            widget: "list"
+            fields:
+              - { label: "Name EN", name: "name_en", widget: "string" }
+              - { label: "Name BN", name: "name_bn", widget: "string" }
+              - { label: "Photo / Avatar", name: "photo", widget: "image" }
+              - { label: "Role Description EN", name: "desc_en", widget: "text" }
+              - { label: "Role Description BN", name: "desc_bn", widget: "text" }
+
+  - name: "students"
+    label: "Students"
+    label_singular: "Student"
+    folder: "data/students"
+    create: true
+    format: "json"
+    slug: "{{student_id}}"
+    identifier_field: "name_en"
+    summary: "{{position}}. {{name_en}} - Room {{room_no}}"
+    media_folder: "../../assets/uploads/students/{{slug}}"
+    public_folder: "/assets/uploads/students/{{slug}}"
+    fields:
+      - { label: "Position", name: "position", widget: "number", value_type: "int", default: 1 }
+      - { label: "Student ID", name: "student_id", widget: "string", hint: "Example: adib1. This becomes the JSON file name." }
+      - { label: "Name EN", name: "name_en", widget: "string" }
+      - { label: "Name BN", name: "name_bn", widget: "string" }
+      - { label: "Room No", name: "room_no", widget: "string" }
+      - { label: "Roommate IDs (Optional)", name: "roommate_ids", widget: "list", required: false, field: { label: "Student ID", name: "student_id", widget: "string" } }
+      - { label: "Short Roll", name: "short_roll", widget: "string" }
+      - { label: "Full Roll", name: "full_roll", widget: "string" }
+      - { label: "Class", name: "class_no", widget: "string", default: "11" }
+      - { label: "Group Key", name: "group", widget: "select", options: ["science", "commerce", "arts"], default: "science" }
+      - { label: "Group EN", name: "group_en", widget: "string", required: false }
+      - { label: "Group BN", name: "group_bn", widget: "string", required: false }
+      - { label: "Section", name: "section", widget: "string", required: false }
+      - { label: "Practical Group", name: "practical_group", widget: "string", required: false }
+      - { label: "Blood Group", name: "blood_group", widget: "string", required: false }
+      - { label: "Address EN", name: "address_en", widget: "text", required: false }
+      - { label: "Address BN", name: "address_bn", widget: "text", required: false }
+      - { label: "Phone", name: "phone", widget: "string", required: false }
+      - { label: "Father Phone", name: "father_phone", widget: "string", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false }
+      - { label: "Messenger Username/Link", name: "messenger", widget: "string", required: false }
+      - { label: "Bio EN", name: "bio_en", widget: "text", required: false }
+      - { label: "Bio BN", name: "bio_bn", widget: "text", required: false }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - label: "Result PDFs"
+        name: "pdfs"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "CT-1", name: "ct1", widget: "file", required: false }
+          - { label: "CT-2", name: "ct2", widget: "file", required: false }
+          - { label: "Half Yearly", name: "hy", widget: "file", required: false }
+          - { label: "CT-3", name: "ct3", widget: "file", required: false }
+          - { label: "Yearly", name: "yearly", widget: "file", required: false }
+
+  - name: "rooms"
+    label: "Rooms"
+    label_singular: "Room"
+    folder: "data/rooms"
+    create: true
+    format: "json"
+    slug: "{{room_no}}"
+    identifier_field: "room_no"
+    summary: "Room {{room_no}}"
+    fields:
+      - { label: "Room No", name: "room_no", widget: "string" }
+      - { label: "Title EN", name: "title_en", widget: "string" }
+      - { label: "Title BN", name: "title_bn", widget: "string" }
+      - { label: "Description EN", name: "description_en", widget: "text", required: false }
+      - { label: "Description BN", name: "description_bn", widget: "text", required: false }
+      - label: "Photos"
+        name: "photos"
+        widget: "list"
+        field: { label: "Photo", name: "photo", widget: "image" }
+
+  - name: "gallery"
+    label: "Gallery"
+    files:
+      - name: "gallery_items"
+        label: "Gallery Items"
+        file: "data/gallery.json"
+        format: "json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Position", name: "position", widget: "number", value_type: "int", default: 1 }
+              - { label: "Title EN", name: "title_en", widget: "string" }
+              - { label: "Title BN", name: "title_bn", widget: "string" }
+              - { label: "Description EN", name: "description_en", widget: "text", required: false }
+              - { label: "Description BN", name: "description_bn", widget: "text", required: false }
+              - { label: "Photo", name: "photo", widget: "image" }
+
+  - name: "alumni"
+    label: "Alumni"
+    files:
+      - name: "alumni_profiles"
+        label: "Alumni Profiles"
+        file: "data/alumni.json"
+        format: "json"
+        fields:
+          - label: "Profiles"
+            name: "profiles"
+            widget: "list"
+            fields:
+              - { label: "Position", name: "position", widget: "number", value_type: "int", default: 1 }
+              - { label: "Name EN", name: "name_en", widget: "string" }
+              - { label: "Name BN", name: "name_bn", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - { label: "Role EN", name: "role_en", widget: "string", required: false }
+              - { label: "Role BN", name: "role_bn", widget: "string", required: false }
+              - { label: "Biography EN", name: "biography_en", widget: "text", required: false }
+              - { label: "Biography BN", name: "biography_bn", widget: "text", required: false }
+              - { label: "Career EN", name: "career_en", widget: "text", required: false }
+              - { label: "Career BN", name: "career_bn", widget: "text", required: false }
+              - { label: "Hall Memories EN", name: "hall_memory_en", widget: "text", required: false }
+              - { label: "Hall Memories BN", name: "hall_memory_bn", widget: "text", required: false }
+              - { label: "Hall Contribution EN", name: "hall_contribution_en", widget: "text", required: false }
+              - { label: "Hall Contribution BN", name: "hall_contribution_bn", widget: "text", required: false }
+
+  - name: "hall"
+    label: "Hall Pages"
+    files:
+      - name: "hall_info"
+        label: "Hall Info"
+        file: "data/hall.json"
+        format: "json"
+        fields:
+          - { label: "History Title EN", name: "history_title_en", widget: "string" }
+          - { label: "History Title BN", name: "history_title_bn", widget: "string" }
+          - { label: "History Text EN", name: "history_text_en", widget: "text" }
+          - { label: "History Text BN", name: "history_text_bn", widget: "text" }
+          - { label: "Hall Super Name EN", name: "hall_super_name_en", widget: "string", required: false }
+          - { label: "Hall Super Name BN", name: "hall_super_name_bn", widget: "string", required: false }
+          - { label: "Hall Super Photo", name: "hall_super_photo", widget: "image", required: false }
+          - { label: "Hall Super Bio EN", name: "hall_super_bio_en", widget: "text", required: false }
+          - { label: "Hall Super Bio BN", name: "hall_super_bio_bn", widget: "text", required: false }

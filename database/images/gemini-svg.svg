@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="proGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#14B8A6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#3B82F6" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  
+  <rect width="512" height="512" rx="128" fill="#090D16"/>
+  
+  <g filter="url(#glow)" transform="translate(106, 86)">
+    <!-- Graduation Cap + Data Layer Top -->
+    <polygon points="150,20 270,80 150,140 30,80" fill="url(#proGrad)"/>
+    <polygon points="150,45 230,80 150,115 70,80" fill="#090D16" opacity="0.3"/>
+    
+    <!-- Database Stack Layers -->
+    <path d="M40 125 C40 150 260 150 260 125 V160 C260 185 40 185 40 160 Z" fill="url(#proGrad)" opacity="0.85"/>
+    <path d="M40 180 C40 205 260 205 260 180 V215 C260 240 40 240 40 215 Z" fill="url(#proGrad)" opacity="0.6"/>
+    <path d="M40 235 C40 260 260 260 260 235 V270 C260 295 40 295 40 270 Z" fill="url(#proGrad)" opacity="0.35"/>
+    
+    <!-- Data Node Tassel -->
+    <circle cx="270" cy="80" r="10" fill="#38BDF8"/>
+    <path d="M270 90 V165" stroke="#38BDF8" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 6"/>
+    <circle cx="270" cy="175" r="12" fill="#38BDF8"/>
+  </g>
+</svg>
